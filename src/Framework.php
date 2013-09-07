@@ -64,6 +64,7 @@ class Framework {
 		$app = new \Slim\Slim();
 		if (php_sapi_name() == 'cli') {
 			$_SERVER['DOCUMENT_ROOT'] = $_SERVER['PWD'];
+			$_SERVER['REQUEST_METHOD'] = 'GET';
 			$app->get('/build', function () {
 				echo 'Build', "\n";
 				exit;
