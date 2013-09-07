@@ -66,6 +66,7 @@ class Framework {
 			$_SERVER['DOCUMENT_ROOT'] = $_SERVER['PWD'];
 			$_SERVER['REQUEST_METHOD'] = 'GET';
 			$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+			$_SERVER['REQUEST_URI'] = $argv(1);
 			$app->get('/build', function () {
 				echo 'Build', "\n";
 				exit;
