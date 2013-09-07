@@ -65,6 +65,7 @@ class Framework {
 		if (php_sapi_name() == 'cli') {
 			$_SERVER['DOCUMENT_ROOT'] = $_SERVER['PWD'];
 			$_SERVER['REQUEST_METHOD'] = 'GET';
+			$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
 			$app->get('/build', function () {
 				echo 'Build', "\n";
 				exit;
