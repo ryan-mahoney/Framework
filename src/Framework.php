@@ -1,7 +1,7 @@
 <?php
 class Framework {
 	public static function routeCollections (&$app, &$route, $prefix='') {
-		$dirFiles = glob(__DIR__ . '/../collections/*.php');
+		$dirFiles = glob($_SERVER['DOCUMENT_ROOT'] . '/collections/*.php');
 		$collectios = [];
 		foreach ($dirFiles as $collection) {
 			require_once($collection);

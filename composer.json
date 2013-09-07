@@ -18,5 +18,10 @@
         "virtuecenter/separation": "dev-master",
         "virtuecenter/collection": "dev-master",
         "virtuecenter/form": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Framework": "src"
+        }
     }
 }
