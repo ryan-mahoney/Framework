@@ -38,8 +38,8 @@ class Framework {
                 	['Sep' => $collection['p'], 'a' => ['slug' => basename($slug, '.html')]]
                 ])->template()->write();
             });
-            if (isset($collection['templates']) && is_array($collection['templates'])) {
-            	foreach ($collection['templates'] as $template) {
+            if (isset($collection['partials']) && is_array($collection['partials'])) {
+            	foreach ($collection['partials'] as $template) {
 					$app->get('/' . $collection['s'] . '-' . $template . '/:slug', function ($slug) use ($collection, $template) {
 		               	$separation = Separation::html($collection['s'] . '-' . $template . '.html')->template()->write();
         			});
@@ -71,7 +71,7 @@ class Framework {
     		exit ('Route class not defined properly.');
 		}
 		Separation::config([
-			'templates' 	=> $_SERVER['DOCUMENT_ROOT'] . '/templates/',
+			'partials' 	=> $_SERVER['DOCUMENT_ROOT'] . '/partials/',
 			'layouts' 		=> $_SERVER['DOCUMENT_ROOT'] . '/layouts/',
 			'sep'			=> $_SERVER['DOCUMENT_ROOT'] . '/sep/'
 		]);
