@@ -2,7 +2,7 @@
 class Framework {
 	public static function routeCollections (&$app, &$route, $prefix='') {
 		$dirFiles = glob($_SERVER['DOCUMENT_ROOT'] . '/collections/*.php');
-		$collectios = [];
+		$collections = [];
 		foreach ($dirFiles as $collection) {
 			require_once($collection);
 			$class = basename($collection, '.php');
@@ -78,6 +78,7 @@ class Framework {
 		$route = new Route();
 		self::routeCollections($app, $route);
 		self::routeCustom($app, $route);
+		collectionRoute::dataRoutes($app);
 		$app->run();
 	}
 }

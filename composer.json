@@ -17,6 +17,8 @@
         "slim/slim": "2.3.1",
         "virtuecenter/separation": "dev-master",
         "virtuecenter/collection": "dev-master",
+        "virtuecenter/config": "dev-master",
+        "virtuecenter/event": "dev-master",
         "virtuecenter/form": "dev-master"
     },
     "autoload": {
