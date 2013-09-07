@@ -58,4 +58,26 @@ class Framework {
 		}
 		$route->custom($app);
 	}
+
+	public static function route () {
+		\Slim\Slim::registerAutoloader();
+		$app = new \Slim\Slim();
+		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
+		if (!file_exists($routePath)) {
+    		exit('Route.php file undefined in site.');
+		}
+		require $routePath;
+		if (!class_exists('Route')) {
+    		exit ('Route class not defined properly.');
+		}
+		Separation::config([
+			'templates' 	=> $_SERVER['DOCUMENT_ROOT'] . '/templates/',
+			'layouts' 		=> $_SERVER['DOCUMENT_ROOT'] . '/layouts/',
+			'sep'			=> $_SERVER['DOCUMENT_ROOT'] . '/sep/'
+		]);
+		$route = new Route();
+		self::routeCollections($app, $route);
+		self::routeCustom($app, $route);
+		$app->run();
+	}
 }
