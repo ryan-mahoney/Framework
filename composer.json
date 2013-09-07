@@ -22,8 +22,6 @@
         "virtuecenter/form": "dev-master"
     },
     "autoload": {
-        "psr-0": {
-            "Framework": "src"
-        }
+        "classmap": ["src/"]
     }
 }
