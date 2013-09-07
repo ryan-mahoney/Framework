@@ -78,7 +78,7 @@ class Framework {
 		$route = new Route();
 		self::routeCollections($app, $route);
 		self::routeCustom($app, $route);
-		CollectionRoute::dataRoutes($app);
+		CollectionRoute::json($app);
 		$app->run();
 	}
 }
