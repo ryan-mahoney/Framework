@@ -1,5 +1,5 @@
 <?php
-class FrontController {
+class Framework {
 	public static function routeCollections (&$app, &$route, $prefix='') {
 		$dirFiles = glob(__DIR__ . '/../collections/*.php');
 		$collectios = [];
