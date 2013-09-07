@@ -1,3 +1,27 @@
 {
-    "name": "virtuecenter/framework"
+    "name": "virtuecenter/framework",
+    "type": "library",
+    "description": "Slim glue for virtuecenter components and routes",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Mahoney",
+            "email": "ryan@virtuecenter.com",
+            "homepage": "http://www.virtuecenter.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+    	"php": ">=5.3.0",
+        "slim/slim": "2.3.1",
+        "virtuecenter/separation": "dev-master",
+        "virtuecenter/collection": "dev-master",
+        "virtuecenter/form": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Framework": "src"
+        }
+    }
 }
