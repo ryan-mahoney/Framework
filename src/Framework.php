@@ -60,6 +60,8 @@ class Framework {
 	}
 
 	public static function route () {
+		\Slim\Slim::registerAutoloader();
+		$app = new \Slim\Slim();
 		if (php_sapi_name() == 'cli') {
 			$_SERVER['DOCUMENT_ROOT'] = __DIR__;
 			$app->get('/build', function () {
@@ -67,8 +69,6 @@ class Framework {
 				exit;
 			});
 		}
-		\Slim\Slim::registerAutoloader();
-		$app = new \Slim\Slim();
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined in site.');
