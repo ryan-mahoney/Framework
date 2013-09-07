@@ -60,6 +60,13 @@ class Framework {
 	}
 
 	public static function route () {
+		if (php_sapi_name() == 'cli') {
+			$_SERVER['DOCUMENT_ROOT'] = __DIR__;
+			$app->get('/build', function () {
+				echo 'Build', "\n";
+				exit;
+			});
+		}
 		\Slim\Slim::registerAutoloader();
 		$app = new \Slim\Slim();
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';

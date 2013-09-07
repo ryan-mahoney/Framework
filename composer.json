@@ -19,7 +19,8 @@
         "virtuecenter/collection": "dev-master",
         "virtuecenter/config": "dev-master",
         "virtuecenter/event": "dev-master",
-        "virtuecenter/form": "dev-master"
+        "virtuecenter/form": "dev-master",
+        "virtuecenter/build": "dev-master"
     },
     "autoload": {
         "classmap": ["src/"]
