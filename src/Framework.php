@@ -63,7 +63,7 @@ class Framework {
 		\Slim\Slim::registerAutoloader();
 		$app = new \Slim\Slim();
 		if (php_sapi_name() == 'cli') {
-			$_SERVER['DOCUMENT_ROOT'] = __DIR__;
+			$_SERVER['DOCUMENT_ROOT'] = $_SERVER['PWD'];
 			$app->get('/build', function () {
 				echo 'Build', "\n";
 				exit;
