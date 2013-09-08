@@ -68,6 +68,7 @@ class Framework {
 			$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
 			$_SERVER['REQUEST_URI'] = $_SERVER['argv'][1];
 			$_SERVER['SERVER_NAME'] = 'separation.localhost';
+			$_SERVER['SERVER_PORT'] = 80;
 			$app->get('/build', function () {
 				echo 'Build', "\n";
 				exit;
