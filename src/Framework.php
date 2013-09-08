@@ -5,17 +5,9 @@ class Framework {
 		if (!file_exists($cacheFile)) {
 			return;
 		}
-		$collections = json_decode(file_get_contents($cacheFile));
+		$collections = (array)json_decode(file_get_contents($cacheFile), true);
 		if (!is_array($collections)) {
 			return;
-		}
-		foreach ($dirFiles as $collection) {
-			require_once($collection);
-			$class = basename($collection, '.php');
-			$collections[] = [
-				'p' => $class,
-				's' => $class::$singular
-			];
 		}
 	    foreach ($collections as $collection) {
 	        if (isset($collection['p'])) {
