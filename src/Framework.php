@@ -1,8 +1,14 @@
 <?php
 class Framework {
 	public static function routeCollections (&$app, &$route, $prefix='') {
-		$dirFiles = glob($_SERVER['DOCUMENT_ROOT'] . '/collections/*.php');
-		$collections = [];
+		$cacheFile = $_SERVER['DOCUMENT_ROOT'] . '/collections/cache.json';
+		if (!file_exists($cacheFile)) {
+			return;
+		}
+		$collections = json_decode(file_get_contents($cacheFile));
+		if (!is_array($collections)) {
+			return;
+		}
 		foreach ($dirFiles as $collection) {
 			require_once($collection);
 			$class = basename($collection, '.php');
