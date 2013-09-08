@@ -60,20 +60,14 @@ class Framework {
 	}
 
 	public static function route () {
+		if (php_sapi_name() == 'cli') {
+			if ($_SERVER['argv'][1] != 'build') {
+				exit;
+			}
+			Build::project($_SERVER['PWD']);
+		}
 		\Slim\Slim::registerAutoloader();
 		$app = new \Slim\Slim();
-		if (php_sapi_name() == 'cli') {
-			$_SERVER['DOCUMENT_ROOT'] = $_SERVER['PWD'];
-			$_SERVER['REQUEST_METHOD'] = 'GET';
-			$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
-			$_SERVER['REQUEST_URI'] = $_SERVER['argv'][1];
-			$_SERVER['SERVER_NAME'] = 'separation.localhost';
-			$_SERVER['SERVER_PORT'] = 80;
-			$app->get('/build', function () {
-				echo 'Build', "\n";
-				exit;
-			});
-		}
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined in site.');
