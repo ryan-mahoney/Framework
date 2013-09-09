@@ -20,7 +20,14 @@
         "virtuecenter/config": "dev-master",
         "virtuecenter/event": "dev-master",
         "virtuecenter/form": "dev-master",
-        "virtuecenter/build": "dev-master"
+        "virtuecenter/build": "dev-master",
+        "aws/aws-sdk-php": "2.4.*@dev",
+        "pda/pheanstalk": "dev-master",
+        "itbz/fpdf": "dev-master",
+        "solarium/solarium": "dev-develop",
+        "hybridauth/hybridauth": "3.0.0.*@dev",
+        "paypal/sdk-core-php": "dev-stable-php5.3",
+        "ajbdev/authorizenet-php-api": "dev-master"
     },
     "autoload": {
         "classmap": ["src/"]
