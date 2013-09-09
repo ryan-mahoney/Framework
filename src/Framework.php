@@ -30,9 +30,12 @@ class Framework {
 			'sep'			=> $_SERVER['DOCUMENT_ROOT'] . '/sep/'
 		]);
 		CollectionRoute::json($app);
-		CollectionRout::pages($app);
+		CollectionRoute::pages($app);
+		FormRoute::json($app);
+		FormRoute::pages($app);
 		$route = new Route();
 		self::routeCustom($app, $route);
 		$app->run();
+		//apply filters
 	}
 }
