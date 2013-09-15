@@ -19,14 +19,15 @@ class Framework {
 		$app->get('/routes', function () use ($app) {
 			$routes = $app->router()->getNamedRoutes();
 			$paths = [];
+			echo '<html><body>';
 			foreach ($routes as $route) {
-				$refl = new ReflectionClass($route); 
-				$paths[] = [
-					'name' => $route->getName(),
-					'pattern' => $route->getPattern()
-				];
+				$pattern = $route->getPattern();
+				if (substr_count($pattern, '(')) {
+					$pattern = explode('(', $pattern, 2)[0];
+				}
+				echo '<a href="', $pattern, '">', $route->getName(), '</a><br />';
 			}
-			echo json_encode($paths, JSON_PRETTY_PRINT);
+			echo '</body></html>';
 			exit;
 		});
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
