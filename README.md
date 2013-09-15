@@ -14,3 +14,8 @@ to install:
 ```bash
 wget https://raw.github.com/virtuecenter/framework/master/new.sh -v -O new.sh && ./new.sh projectFolderName; rm -rf new.sh
 ```
+
+periodically, you will need to re-build the project as you add more forms, collections, etc
+```bash
+php index.php build
+```
