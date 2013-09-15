@@ -12,5 +12,5 @@ Philosophically, this framework aims to use the latest PHP technology for high-s
 to install:
 
 ```bash
-wget https://raw.github.com/virtuecenter/framework/master/new.sh -v -O new.sh && ./new.sh upftv; rm -rf new.sh
+wget https://raw.github.com/virtuecenter/framework/master/new.sh -v -O new.sh && ./new.sh projectFolderName; rm -rf new.sh
 ```
