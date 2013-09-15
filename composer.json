@@ -22,6 +22,7 @@
         "virtuecenter/form": "dev-master",
         "virtuecenter/build": "dev-master",
         "twbs/bootstrap": "v3.0.0",
+        "mobiledetect/mobiledetectlib": "dev-master",
         "aws/aws-sdk-php": "2.4.*@dev",
         "pda/pheanstalk": "dev-master",
         "itbz/fpdf": "dev-master",
