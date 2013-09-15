@@ -16,6 +16,19 @@ class Framework {
 		}
 		\Slim\Slim::registerAutoloader();
 		$app = new \Slim\Slim();
+		$app->get('/routes', function () use ($app) {
+			$routes = $app->router()->getNamedRoutes();
+			$paths = [];
+			foreach ($routes as $route) {
+				$refl = new ReflectionClass($route); 
+				$paths[] = [
+					'name' => $route->getName(),
+					'pattern' => $route->getPattern()
+				];
+			}
+			echo json_encode($paths, JSON_PRETTY_PRINT);
+			exit;
+		});
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined in site.');
