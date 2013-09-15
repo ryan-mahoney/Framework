@@ -16,20 +16,8 @@ class Framework {
 		}
 		\Slim\Slim::registerAutoloader();
 		$app = new \Slim\Slim();
-		$app->get('/routes', function () use ($app) {
-			$routes = $app->router()->getNamedRoutes();
-			$paths = [];
-			echo '<html><body>';
-			foreach ($routes as $route) {
-				$pattern = $route->getPattern();
-				if (substr_count($pattern, '(')) {
-					$pattern = explode('(', $pattern, 2)[0];
-				}
-				echo '<a href="', $pattern, '">', $route->getName(), '</a><br />';
-			}
-			echo '</body></html>';
-			exit;
-		});
+		self::routeList($app);
+		self::separationBuilder($app);
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined in site.');
@@ -51,5 +39,31 @@ class Framework {
 		self::routeCustom($app, $route);
 		$app->run();
 		//apply filters
+	}
+
+	private static function separationBuilder ($app) {
+		$app->get('/separations', function () {
+			$separation = Separation::layout('separation-builder')->template()->write();
+		})->name('separation-builder');
+		$app->post('/separations', function () {
+			print_r($_POST);	
+		});
+	}
+
+	private static function routeList ($app) {
+		$app->get('/routes', function () use ($app) {
+			$routes = $app->router()->getNamedRoutes();
+			$paths = [];
+			echo '<html><body>';
+			foreach ($routes as $route) {
+				$pattern = $route->getPattern();
+				if (substr_count($pattern, '(')) {
+					$pattern = explode('(', $pattern, 2)[0];
+				}
+				echo '<a href="', $pattern, '">', $route->getName(), '</a><br />';
+			}
+			echo '</body></html>';
+			exit;
+		})->name('routes');
 	}
 }
