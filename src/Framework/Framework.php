@@ -24,7 +24,7 @@ class Framework {
     		exit('Route.php file undefined in site.');
 		}
 		require $routePath;
-		if (!class_exists('Route')) {
+		if (!class_exists('\Route')) {
     		exit ('Route class not defined properly.');
 		}
 		Separation::config([
@@ -37,7 +37,7 @@ class Framework {
 		EventRoute::events();
 		FormRoute::json($app);
 		FormRoute::pages($app);
-		$route = new Route();
+		$route = new \Route();
 		self::routeCustom($app, $route);
 		$app->run();
 		//apply filters
