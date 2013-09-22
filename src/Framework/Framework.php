@@ -6,6 +6,8 @@ use Separation\Separation;
 use Collection\CollectionRoute;
 use Form\FormRoute;
 use Event\EventRoute;
+use Helper\HelperRoute;
+use Filter\Filter;
 
 class Framework {
 	public static function route () {
@@ -16,7 +18,7 @@ class Framework {
 			Build::project($_SERVER['PWD']);
 		}
 		Slim::registerAutoloader();
-		$app = new \Slim\Slim();
+		$app = new Slim();
 		self::routeList($app);
 		self::separationBuilder($app);
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
@@ -32,6 +34,7 @@ class Framework {
 			'layouts' 		=> $_SERVER['DOCUMENT_ROOT'] . '/layouts/',
 			'sep'			=> $_SERVER['DOCUMENT_ROOT'] . '/sep/'
 		]);
+		HelperRoute::helpers();
 		CollectionRoute::json($app);
 		CollectionRoute::pages($app);
 		EventRoute::events();
@@ -39,8 +42,11 @@ class Framework {
 		FormRoute::pages($app);
 		$route = new \Route();
 		self::routeCustom($app, $route);
+		ob_start();
 		$app->run();
-		//apply filters
+		$return = ob_get_clean();
+		Filter::apply($return);
+		echo $return;
 	}
 
 	public static function routeCustom (&$app, &$route) {
