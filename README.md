@@ -1,13 +1,29 @@
-# Virtue Center Framework 
+# PHP FMF
 
-## RESTful, Event-Driven, NoSQL PHP Framework... based on many micro-components.
+## PHP Federated Micro Framework
 
-This framework is based on Slim and is installed via Composer.  Requires PHP 5.4.
+RESTful, Event-Driven, NoSQL PHP Framework... based on other small micro frameworks.
 
-PHP Module Dependencies:
-mbstring, memcache, mongo, openssl
+This framework is based on Slim and is installed via Composer.  
 
-Philosophically, this framework aims to use the latest PHP technology for high-speed execution, but a design that is extremely modular and minimal while achieving maximum unit-testability.
+**Requires PHP 5.4.**  
+
+**PHP Module Dependencies:**  
+*mbstring, memcache, openssl*
+
+**System Support:**  
+*Linux*
+
+**Server Process Dependecies**  
+*Memcached*
+
+**Extra Dependecies / For Production Server**   
+(not for working Local)  
+*MongoDB, Beanstalkd, Solr*
+
+- - -
+
+This framework aims to use the latest PHP technology for high-speed execution, but a design that is extremely modular and minimal while achieving maximum unit-testability.
 
 to install:
 
