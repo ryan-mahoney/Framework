@@ -22,7 +22,7 @@ class Framework {
 		Slim::registerAutoloader();
 		$app = new Slim();
 		self::routeList($app);
-		self::separationBuilder($app);
+		//self::separationBuilder($app);
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined for site.');
