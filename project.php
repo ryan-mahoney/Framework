@@ -19,7 +19,9 @@ file_put_contents('composer.json', '{
 	echo 'composer.json already exists.', "\n";
 }
 
-shell_exec('composer install');
+echo 'Installing dependencies with composer.', "\n";
+flush();
+passthru('composer install');
 
 if (!file_exists('index.php')) {
 file_put_contents('index.php', '<?php
@@ -30,6 +32,11 @@ Framework\Framework::route();');
 	echo 'index.php already exists.', "\n";	
 }
 
-shell_exec('php index.php build');
+echo 'Building project...', "\n";
+flush();
+passthru('php index.php build');
 
-echo 'Project Built', "\n";
+echo 'Project Built.', "\n";
+
+echo 'FOR NGINX: ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
+echo 'FOR APACHE: ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/apache.conf'), "\n";
