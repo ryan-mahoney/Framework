@@ -16,7 +16,7 @@ class Framework {
 			if ($_SERVER['argv'][1] != 'build') {
 				exit;
 			}
-			Build::project($_SERVER['PWD']);
+			Build::project(getcwd ());
 		}
 		self::configCache($_SERVER['DOCUMENT_ROOT']);
 		Slim::registerAutoloader();
