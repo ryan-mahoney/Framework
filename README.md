@@ -1,6 +1,4 @@
-# PHP FMF
-
-## PHP Federated Micro Framework
+![PHP Federated Micro Framework](https://raw.github.com/virtuecenter/framework/master/fmf-logo.jpg)
 
 RESTful, Event-Driven, NoSQL PHP Framework... based on micro frameworks.
 
