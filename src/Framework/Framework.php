@@ -8,6 +8,7 @@ use Form\FormRoute;
 use Event\EventRoute;
 use Helper\HelperRoute;
 use Filter\Filter;
+use Cache\Cache;
 
 class Framework {
 	public static function route () {
@@ -17,13 +18,14 @@ class Framework {
 			}
 			Build::project($_SERVER['PWD']);
 		}
+		self::configCache($_SERVER['DOCUMENT_ROOT']);
 		Slim::registerAutoloader();
 		$app = new Slim();
 		self::routeList($app);
 		self::separationBuilder($app);
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
-    		exit('Route.php file undefined in site.');
+    		exit('Route.php file undefined for site.');
 		}
 		require $routePath;
 		if (!class_exists('\Route')) {
@@ -47,6 +49,22 @@ class Framework {
 		$return = ob_get_clean();
 		Filter::apply($return);
 		echo $return;
+	}
+
+	private static function configCache ($root) {
+		$items = [
+			$root . '-collections.json' => false,
+			$root . '-filters.json' => false,
+			$root . '-helpers.json' => false,
+			$root . '-events.json' => false
+		];
+		$result = Cache::getBatch($items);
+		if ($result === true) {
+			CollectionRoute::cacheSet(json_decode($items[$root . '-collections.json'], true));
+			Filter::cacheSet(json_decode($items[$root . '-filters.json'], true));
+			HelperRoute::cacheSet(json_decode($items[$root . '-helpers.json'], true));
+			EventRoute::cacheSet(json_decode($items[$root . '-events.json'], true));
+		}
 	}
 
 	public static function routeCustom (&$app, &$route) {
