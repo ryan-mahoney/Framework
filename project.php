@@ -1,4 +1,3 @@
-<?php
 if (!is_writable(__DIR__)) {
 	echo 'You need write permissions for this directory.', "\n";
 	exit;

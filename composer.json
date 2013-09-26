@@ -31,9 +31,7 @@
         "pda/pheanstalk": "dev-master",
         "itbz/fpdf": "dev-master",
         "solarium/solarium": "dev-develop",
-        "hybridauth/hybridauth": "3.0.0.*@dev",
-        "paypal/sdk-core-php": "dev-stable-php5.3",
-        "ajbdev/authorizenet-php-api": "dev-master"
+        "hybridauth/hybridauth": "3.0.0.*@dev"
     },
     "autoload": {
         "psr-0": {"Framework": "src/"}
