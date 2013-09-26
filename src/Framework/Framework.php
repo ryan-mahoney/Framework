@@ -22,6 +22,7 @@ class Framework {
 		Slim::registerAutoloader();
 		$app = new Slim();
 		self::routeList($app);
+		self::collectionList($app);
 		//self::separationBuilder($app);
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
@@ -98,5 +99,19 @@ class Framework {
 			echo '</body></html>';
 			exit;
 		})->name('routes');
+	}
+
+	private static function collectionList ($app) {
+		$app->get('/collections', function () use ($app) {
+			$collections = (array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/collections/cache.json'), true);
+			print_r($collections);
+			exit;
+			echo '<html><body>';
+			foreach ($collections as $colection) {
+				echo '<a href="http://json.virtuecenter.com/json-data/' . $colection['p'] . '/all?pretty" target="_new">', $collection['p'], '</a><br />';
+			}
+			echo '</body></html>';
+			exit;
+		})->name('collections');
 	}
 }
