@@ -104,8 +104,6 @@ class Framework {
 	private static function collectionList ($app) {
 		$app->get('/collections', function () use ($app) {
 			$collections = (array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/collections/cache.json'), true);
-			print_r($collections);
-			exit;
 			echo '<html><body>';
 			foreach ($collections as $colection) {
 				echo '<a href="http://json.virtuecenter.com/json-data/' . $colection['p'] . '/all?pretty" target="_new">', $collection['p'], '</a><br />';
