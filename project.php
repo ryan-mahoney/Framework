@@ -31,6 +31,11 @@ Framework\Framework::route();');
 	echo 'index.php already exists.', "\n";	
 }
 
+if (!file_exists('.gitignore')) {
+file_put_contents('.gitignore', 'composer.lock
+vendor');
+}
+
 echo 'Building project...', "\n";
 flush();
 passthru('php index.php build');
