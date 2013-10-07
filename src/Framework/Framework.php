@@ -35,7 +35,7 @@ class Framework {
 		Separation::config([
 			'partials' 		=> $_SERVER['DOCUMENT_ROOT'] . '/partials/',
 			'layouts' 		=> $_SERVER['DOCUMENT_ROOT'] . '/layouts/',
-			'sep'			=> $_SERVER['DOCUMENT_ROOT'] . '/sep/'
+			'app'			=> $_SERVER['DOCUMENT_ROOT'] . '/app/'
 		]);
 		HelperRoute::helpers();
 		CollectionRoute::json($app);
