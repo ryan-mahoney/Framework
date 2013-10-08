@@ -26,7 +26,7 @@ This framework aims to use the latest PHP technology for high-speed execution, b
 to install, from withing a new folder:  
 
 ```bash
-php -r 'eval(file_get_contents("https://raw.github.com/virtuecenter/framework/master/project.php"));'
+php -r "eval(file_get_contents('https://raw.github.com/virtuecenter/framework/master/project.php'));"
 ```
 
 If your project already exits, you will just need to obtain it via git, and build it with composer.  
