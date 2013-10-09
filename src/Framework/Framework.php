@@ -106,7 +106,7 @@ class Framework {
 			$collections = (array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/collections/cache.json'), true);
 			echo '<html><body>';
 			foreach ($collections as $collection) {
-				echo '<a href="http://json.virtuecenter.com/json-data/' . $collection['p'] . '/all?pretty">', $collection['p'], '</a><br />';
+				echo '<a href="/json-data/' . $collection['p'] . '/all?pretty">', $collection['p'], '</a><br />';
 			}
 			echo '</body></html>';
 			exit;
