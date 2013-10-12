@@ -9,6 +9,7 @@ use Event\EventRoute;
 use Helper\HelperRoute;
 use Filter\Filter;
 use Cache\Cache;
+use Imageresizer\Imageresizer;
 
 class Framework {
 	public static function route () {
@@ -23,7 +24,6 @@ class Framework {
 		$app = new Slim();
 		self::routeList($app);
 		self::collectionList($app);
-		//self::separationBuilder($app);
 		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined for site.');
@@ -43,6 +43,7 @@ class Framework {
 		EventRoute::events();
 		FormRoute::json($app);
 		FormRoute::pages($app);
+		ImageResizer::route($app);
 		$route = new \Route();
 		self::routeCustom($app, $route);
 		ob_start();

@@ -25,7 +25,8 @@
         "virtuecenter/helper": "dev-master",
         "virtuecenter/filter": "dev-master",
         "virtuecenter/cache": "dev-master",
-        "twbs/bootstrap": "v3.0.0",
+        "virtuecenter/imageresizer": "dev-master",
+        "virtuecenter/container": "dev-master"
         "mobiledetect/mobiledetectlib": "dev-master",
         "aws/aws-sdk-php": "2.4.*@dev",
         "pda/pheanstalk": "dev-master",
