@@ -57,9 +57,9 @@ class Framework {
 		$formRoute->json($root);
 		$formRoute->pages($root);
 		$imageResizer->route();
-		$myRoute = new \Route();
+		$myRoute = new \Route($container);
 		if (method_exists($myRoute, 'custom')) {
-			$myRoute->custom($slim);
+			$myRoute->custom();
 		}
 		
 		//generate output
