@@ -1,30 +1,48 @@
 <?php
 namespace Framework;
-use Slim\Slim;
-use Build\Build;
-use Separation\Separation;
-use Collection\CollectionRoute;
-use Form\FormRoute;
-use Event\EventRoute;
-use Helper\HelperRoute;
-use Filter\Filter;
-use Cache\Cache;
-use Imageresizer\Imageresizer;
+use Container\Container;
 
 class Framework {
-	public static function route () {
-		if (php_sapi_name() == 'cli') {
-			if ($_SERVER['argv'][1] != 'build') {
+	public function frontController () {
+		$sapi = php_sapi_name();
+		$root = (($sapi == 'cli') ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
+		$container = new Container($root . '/container.yml');
+		if ($sapi == 'cli') {
+			if (!isset($_SERVER['argv'][1]) || $_SERVER['argv'][1] != 'build') {
 				exit;
 			}
-			Build::project(getcwd ());
+			$container->build->project($root);
 		}
-		self::configCache($_SERVER['DOCUMENT_ROOT']);
-		Slim::registerAutoloader();
-		$app = new Slim();
-		self::routeList($app);
-		self::collectionList($app);
-		$routePath = $_SERVER['DOCUMENT_ROOT'] . '/Route.php';
+		$cache = $container->cache;
+		$collectionRoute = $container->collectionRoute;
+		$filter = $container->filter;
+		$helperRoute = $container->helperRoute;
+		$eventRoute = $container->eventRoute;
+		$formRoute = $container->formRoute;
+		$slim = $container->slim;
+		$imageResizer = $container->imageResizer;
+		$separation = $container->separation;
+		
+		//configuration cache
+		$items = [
+			$root . '-collections.json' => false,
+			$root . '-filters.json' => false,
+			$root . '-helpers.json' => false,
+			$root . '-events.json' => false
+		];
+		$result = $cache->getBatch($items);
+		if ($result === true) {
+			$collectionRoute->cacheSet(json_decode($items[$root . '-collections.json'], true));
+			$filter->cacheSet(json_decode($items[$root . '-filters.json'], true));
+			$helperRoute->cacheSet(json_decode($items[$root . '-helpers.json'], true));
+			$eventRoute->cacheSet(json_decode($items[$root . '-events.json'], true));
+		}
+
+		//smart routing
+		$slim::registerAutoloader();
+		$this->routeList($slim);
+		$this->collectionList($slim);
+		$routePath = $root . '/Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined for site.');
 		}
@@ -32,60 +50,27 @@ class Framework {
 		if (!class_exists('\Route')) {
     		exit ('Route class not defined properly.');
 		}
-		Separation::config([
-			'partials' 		=> $_SERVER['DOCUMENT_ROOT'] . '/partials/',
-			'layouts' 		=> $_SERVER['DOCUMENT_ROOT'] . '/layouts/',
-			'app'			=> $_SERVER['DOCUMENT_ROOT'] . '/app/'
-		]);
-		HelperRoute::helpers();
-		CollectionRoute::json($app);
-		CollectionRoute::pages($app);
-		EventRoute::events();
-		FormRoute::json($app);
-		FormRoute::pages($app);
-		ImageResizer::route($app);
-		$route = new \Route();
-		self::routeCustom($app, $route);
+		$helperRoute->helpers($root);
+		$collectionRoute->json($root);
+		$collectionRoute->pages($root);
+		$eventRoute->events($root);
+		$formRoute->json($root);
+		$formRoute->pages($root);
+		$imageResizer->route();
+		$myRoute = new \Route();
+		if (method_exists($myRoute, 'custom')) {
+			$myRoute->custom($slim);
+		}
+		
+		//generate output
 		ob_start();
-		$app->run();
+		$slim->run();
 		$return = ob_get_clean();
-		Filter::apply($return);
+		$filter->apply($root, $return);
 		echo $return;
 	}
 
-	private static function configCache ($root) {
-		$items = [
-			$root . '-collections.json' => false,
-			$root . '-filters.json' => false,
-			$root . '-helpers.json' => false,
-			$root . '-events.json' => false
-		];
-		$result = Cache::getBatch($items);
-		if ($result === true) {
-			CollectionRoute::cacheSet(json_decode($items[$root . '-collections.json'], true));
-			Filter::cacheSet(json_decode($items[$root . '-filters.json'], true));
-			HelperRoute::cacheSet(json_decode($items[$root . '-helpers.json'], true));
-			EventRoute::cacheSet(json_decode($items[$root . '-events.json'], true));
-		}
-	}
-
-	public static function routeCustom (&$app, &$route) {
-		if (!method_exists($route, 'custom')) {
-			return;
-		}
-		$route->custom($app);
-	}
-
-	private static function separationBuilder ($app) {
-		$app->get('/separations', function () {
-			$separation = Separation::layout('separation-builder')->template()->write();
-		})->name('separation-builder');
-		$app->post('/separations', function () {
-			print_r($_POST);	
-		});
-	}
-
-	private static function routeList ($app) {
+	private function routeList ($app) {
 		$app->get('/routes', function () use ($app) {
 			$routes = $app->router()->getNamedRoutes();
 			$paths = [];
@@ -102,7 +87,7 @@ class Framework {
 		})->name('routes');
 	}
 
-	private static function collectionList ($app) {
+	private function collectionList ($app) {
 		$app->get('/collections', function () use ($app) {
 			$collections = (array)json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/collections/cache.json'), true);
 			echo '<html><body>';
