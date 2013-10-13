@@ -26,7 +26,7 @@ if (!file_exists('index.php')) {
 file_put_contents('index.php', '<?php
 date_default_timezone_set(\'America/New_York\');
 require \'vendor/autoload.php\';
-Framework\Framework::route();');
+(new Framework\Framework())->frontController();');
 } else {
 	echo 'index.php already exists.', "\n";	
 }
@@ -35,6 +35,10 @@ if (!file_exists('.gitignore')) {
 file_put_contents('.gitignore', 'composer.lock
 vendor');
 }
+
+$root = getcwd();
+echo 'Cloning dependency contiainer...', "\n";
+file_put_contents('container.yml', str_replace('{{$root}}', $root, file_get_contents('vendor/virtuecenter/build/static/container.yml')));
 
 echo 'Building project...', "\n";
 flush();
