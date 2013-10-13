@@ -6,7 +6,7 @@ class Framework {
 	public function frontController () {
 		$sapi = php_sapi_name();
 		$root = (($sapi == 'cli') ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
-		$container = new Container($root . '/container.yml');
+		$container = new Container($root);
 		if ($sapi == 'cli') {
 			if (!isset($_SERVER['argv'][1]) || $_SERVER['argv'][1] != 'build') {
 				exit;
@@ -16,22 +16,20 @@ class Framework {
 		$slim = $container->slim;
 		
 		//configuration cache
-		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false, $root . '-events.json' => false];
+		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false];
 		$result = $container->cache->getBatch($items);
 		if ($result === true) {
 			$container->collectionRoute->cacheSet(json_decode($items[$root . '-collections.json'], true));
 			$container->filter->cacheSet(json_decode($items[$root . '-filters.json'], true));
 			$container->helperRoute->cacheSet(json_decode($items[$root . '-helpers.json'], true));
-			$container->eventRoute->cacheSet(json_decode($items[$root . '-events.json'], true));
+			//form cache
 		}
 
 		//smart routing
-		$this->routeList($slim);
 		$container->helperRoute->helpers($root);
 		$container->collectionRoute->json($root);
 		$container->collectionRoute->pages($root);
 		$container->collectionRoute->collectionList($root);
-		$container->eventRoute->events($root);
 		$container->formRoute->json($root);
 		$container->formRoute->pages($root);
 		$container->imageResizer->route();
@@ -51,6 +49,7 @@ class Framework {
 		}
 
 		//generate output
+		$this->routeList($slim);
 		ob_start();
 		$slim->run();
 		$return = ob_get_clean();
