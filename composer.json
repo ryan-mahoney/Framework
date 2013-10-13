@@ -19,7 +19,7 @@
         "virtuecenter/separation": "dev-master",
         "virtuecenter/collection": "dev-master",
         "virtuecenter/config": "dev-master",
-        "virtuecenter/event": "dev-master",
+        "virtuecenter/pubsub": "dev-master",
         "virtuecenter/form": "dev-master",
         "virtuecenter/build": "dev-master",
         "virtuecenter/helper": "dev-master",
