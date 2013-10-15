@@ -14,6 +14,9 @@ class Framework {
 			$container->build->project($root);
 		}
 		$slim = $container->slim;
+		if (isset($_POST) && !empty($_POST)) {
+			$container->post->populate($slim->request->getResourceUri(), $_POST);
+		}
 		
 		//configuration cache
 		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false];
@@ -28,10 +31,10 @@ class Framework {
 		//smart routing
 		$container->helperRoute->helpers($root);
 		$container->collectionRoute->json($root);
-		$container->collectionRoute->pages($root);
+		$container->collectionRoute->app($root);
 		$container->collectionRoute->collectionList($root);
 		$container->formRoute->json($root);
-		$container->formRoute->pages($root);
+		$container->formRoute->app($root);
 		$container->imageResizer->route();
 		
 		//custom routing
@@ -50,11 +53,9 @@ class Framework {
 
 		//generate output
 		$this->routeList($slim);
-		ob_start();
 		$slim->run();
-		$return = ob_get_clean();
-		$container->filter->apply($root, $return);
-		echo $return;
+		$container->filter->apply($root);
+		echo $container->response;
 	}
 
 	private function routeList ($slim) {
