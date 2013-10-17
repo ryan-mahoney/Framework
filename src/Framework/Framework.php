@@ -39,7 +39,7 @@ class Framework {
 		$container->imageResizer->route();
 		
 		//custom routing
-		$routePath = $root . '/Route.php';
+		$routePath = $root . '/../Route.php';
 		if (!file_exists($routePath)) {
     		exit('Route.php file undefined for project.');
 		}
