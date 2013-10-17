@@ -31,7 +31,7 @@
         "virtuecenter/person": "dev-master",
         "virtuecenter/pubsub": "dev-master",
         "virtuecenter/queue": "dev-master",
-        "virtuecenter/search": "dev-master"
+        "virtuecenter/search": "dev-master",
         "virtuecenter/separation": "dev-master"
     },
     "autoload": {
