@@ -35,6 +35,7 @@ class Framework {
 		$container->collectionRoute->collectionList($root);
 		$container->formRoute->json($root);
 		$container->formRoute->app($root);
+		$container->manager->app($root);
 		$container->imageResizer->route();
 		
 		//custom routing

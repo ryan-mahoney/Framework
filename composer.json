@@ -1,8 +1,8 @@
 {
     "name": "virtuecenter/framework",
     "type": "library",
-    "description": "Slim glue for virtuecenter components and routes",
-    "keywords": [],
+    "description": "PHP-FMF: the Federated Micro Framework",
+    "keywords": ["framework"],
     "license": "MIT",
     "authors": [
         {
@@ -15,25 +15,24 @@
     "require": {
     	"php": ">=5.4.0",
         "slim/slim": "2.3.1",
-        "virtuecenter/db": "dev-master",
-        "virtuecenter/separation": "dev-master",
+        "virtuecenter/authentication": "dev-master",
+        "virtuecenter/build": "dev-master",
+        "virtuecenter/cache": "dev-master",
         "virtuecenter/collection": "dev-master",
         "virtuecenter/config": "dev-master",
-        "virtuecenter/pubsub": "dev-master",
-        "virtuecenter/form": "dev-master",
-        "virtuecenter/build": "dev-master",
-        "virtuecenter/helper": "dev-master",
-        "virtuecenter/filter": "dev-master",
-        "virtuecenter/cache": "dev-master",
-        "virtuecenter/imageresizer": "dev-master",
         "virtuecenter/container": "dev-master",
+        "virtuecenter/db": "dev-master",
+        "virtuecenter/filter": "dev-master",
+        "virtuecenter/form": "dev-master",
+        "virtuecenter/helper": "dev-master",
         "virtuecenter/http": "dev-master",
-        "mobiledetect/mobiledetectlib": "dev-master",
-        "aws/aws-sdk-php": "2.4.*@dev",
-        "pda/pheanstalk": "dev-master",
-        "itbz/fpdf": "dev-master",
-        "solarium/solarium": "dev-develop",
-        "hybridauth/hybridauth": "3.0.0.*@dev"
+        "virtuecenter/imageresizer": "dev-master",
+        "virtuecenter/manager": "dev-master",
+        "virtuecenter/person": "dev-master",
+        "virtuecenter/pubsub": "dev-master",
+        "virtuecenter/queue": "dev-master",
+        "virtuecenter/search": "dev-master"
+        "virtuecenter/separation": "dev-master"
     },
     "autoload": {
         "psr-0": {"Framework": "src/"}
