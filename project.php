@@ -22,13 +22,16 @@ echo 'Installing dependencies with composer.', "\n";
 flush();
 passthru('composer install');
 
-if (!file_exists('index.php')) {
-file_put_contents('index.php', '<?php
+if (!file_exists('public')) {
+    mkdir('public');
+}
+if (!file_exists('public/index.php')) {
+file_put_contents('public/index.php', '<?php
 date_default_timezone_set(\'America/New_York\');
-require \'vendor/autoload.php\';
+require \'../vendor/autoload.php\';
 (new Framework\Framework())->frontController();');
 } else {
-	echo 'index.php already exists.', "\n";	
+	echo 'public/index.php already exists.', "\n";	
 }
 
 if (!file_exists('.gitignore')) {
@@ -38,11 +41,11 @@ vendor');
 
 $root = getcwd();
 echo 'Cloning dependency contiainer...', "\n";
-file_put_contents('container.yml', str_replace('{{$root}}', $root, file_get_contents('vendor/virtuecenter/build/static/container.yml')));
+file_put_contents('container.yml', file_get_contents('vendor/virtuecenter/build/static/container.yml'));
 
 echo 'Building project...', "\n";
 flush();
-passthru('php index.php build');
+passthru('php public/index.php build');
 
 echo 'Project Built.', "\n";
 
