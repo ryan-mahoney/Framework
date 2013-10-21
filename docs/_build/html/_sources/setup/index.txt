@@ -6,12 +6,12 @@ System Requirements
 
 **For Project Theming only:**
 
-* PHP 5.4
-* PHP Composer
+* `PHP 5.4 <http://www.php.net/>`_
+* `PHP Composer <http://getcomposer.org/>`_
 * Local Web Server
-  Nginx or Apache
+  `Nginx <http://nginx.org/>`_ or `Apache <http://httpd.apache.org/>`_
 * PHP Modules:
-  mbstring, openssl
+  `mbstring <http://php.net/manual/en/book.mbstring.php>`_, `openssl <http://php.net/manual/en/book.openssl.php>`_
 
 *For Full-Stack Development:*
 
@@ -26,6 +26,8 @@ Docker
 ******
 
 A version of the system for Docker.io will be available soon.
+
+-----------
 
 Creating A Project
 ++++++++++++++++++
