@@ -4,7 +4,9 @@ Installation
 System Requirements
 +++++++++++++++++++
 
-**For Project Theming only:**
+For Project Theming only:
+*************************
+
 * `PHP 5.4 <http://www.php.net/>`_
 * `PHP Composer <http://getcomposer.org/>`_
 * Local Web Server 
@@ -12,9 +14,9 @@ System Requirements
 * PHP Modules: 
   `mbstring <http://php.net/manual/en/book.mbstring.php>`_, `openssl <http://php.net/manual/en/book.openssl.php>`_
 
+For Full-Stack Development:
+***************************
 
-
-**For Full-Stack Development:**
 * `Memcached <http://memcached.org/>`_
 * `MongoDB <http://www.mongodb.org/>`_
 * `Solr <http://lucene.apache.org/solr/>`_
