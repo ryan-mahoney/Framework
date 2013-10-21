@@ -146,8 +146,18 @@
           
   <div class="section" id="folder-structure">
 <h1>Folder Structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">¶</a></h1>
+<p>A place for everyhing and everything in it&#8217;s place.</p>
+<hr class="docutils" />
 <div class="section" id="index-php">
 <h2>index.php<a class="headerlink" href="#index-php" title="Permalink to this headline">¶</a></h2>
+<p>The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">);</span>
+<span class="k">require</span> <span class="s1">&#39;../vendor/autoload.php&#39;</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">new</span> <span class="nx">Framework\Framework</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">frontController</span><span class="p">();</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="app">
 <h2>app<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
