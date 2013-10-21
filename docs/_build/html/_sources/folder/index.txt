@@ -247,7 +247,7 @@ public/partials
 
 The partials folder stores all of the *partials* files that will be used in layouts to render data.  The are .hbs or Handle Bar Script files.
 
-.. code-block:: hbs
+.. code-block:: html
 
 	<ul class="" style="padding:0; border:0; margin:0">
 	{{#each menus}}
