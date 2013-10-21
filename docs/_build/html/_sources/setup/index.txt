@@ -88,4 +88,4 @@ Add the following logic to your .htaccess files:
 Windows
 +++++++
 
-FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn't it time to make the `switch <http://www.ubuntu.com/>'_?
+FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn't it time to make the `switch <http://www.ubuntu.com/>`_?
