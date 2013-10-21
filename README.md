@@ -12,7 +12,8 @@ http://fmf.readthedocs.org
 
 - - -
 
-``About the Author
+About the Author
+----------------
 
 PHP FMF was created by Ryan Mahoney and is sponsored by Virtue Center for Art & Technology http://www.virtuecenter.com
 
