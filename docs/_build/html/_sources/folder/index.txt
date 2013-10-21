@@ -36,7 +36,7 @@ These files are written in the YAML language.
           url: "%dataAPI%/footer"
           type: "html"
 
-You can read more about this in the *Separation* component.
+For more details on this component, see: :ref:`separation`.
 
 ---------
 
@@ -54,7 +54,7 @@ The collections folder stores *collection* files that are each one small class f
       public static $singular = 'blog';
   }
 
-You can read more about this in the *Collection* component, see: :ref:`collections`.  FMF comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.
+For more details on this component, see: :ref:`collection`.  FMF comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.
 
 ---------
 
@@ -171,6 +171,8 @@ The forms folder contains PHP configuration classes for each of the forms on the
 			];
 		}
 	}
+
+For more details on this component, see: :ref:`form`.
 
 ----------
 
@@ -294,6 +296,8 @@ And here is the subscriber that stores data in the database that is published wh
 		$documentObject->upsert();
 		$post->statusSaved();
 	};
+
+For more details on this component, see: :ref:`pubsub`.
 
 ----------
 
