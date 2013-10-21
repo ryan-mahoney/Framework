@@ -107,10 +107,79 @@ The filters file stores output filters that can be used to perform string replac
 forms
 +++++
 
+The forms folder contains PHP configuration classes for each of the forms on the website.  Theses files are used to generate user-friendly forms and automate the work of validating, sanitizing and saving data.
+
+
+.. code-block:: php
+
+	<?php
+	class contact {
+		public function __construct ($field) {
+			$this->field = $field;
+		}
+		public $storage = [
+			'collection'	=> 'contacts',
+			'key'			=> '_id'
+		];
+		public $after = 'notice';
+		public $notice = 'Your contact request has been received';
+		public $noticeDetails = 'We will be in touch soon.';
+
+		function first_nameField() {
+			return [
+				'name'		=> 'first_name',
+				'placeholder' => 'First Name',
+				'display'	=> $this->field->inputText(),
+				'required' 	=> true
+			];
+		}
+		
+		function last_nameField() {
+			return [
+				'name'		=> 'last_name',
+				'placeholder' => 'Last Name',
+				'label'		=> 'Last Name',
+				'display'	=> $this->field->inputText(),
+				'required'	=> true
+			];
+		}
+
+		function phoneField() {
+			return [
+				'name'		=> 'phone',
+				'placeholder'	=> 'Phone',
+				'display'	=> $this->field->inputText(),
+				'required'	=> true
+			];
+		}
+		
+		function emailField() {
+			return [
+				'name'		=> 'email',
+				'placeholder'		=> 'Email Address',
+				'display'	=> $this->field->inputText(),
+				'required'	=> true
+			];
+		}
+		
+		function messageField() {
+			return [
+				'name'		=> 'message',
+				'placeholder'		=> 'Enter your message here',
+				'display'	=> $this->field->textarea(),
+				'required'	=> true
+			];
+		}
+	}
+
+----------
+
 public
 ++++++
 
-index.php
+The public folder stores files that should be publicly available on the website such as css and js files, as well as some files in the "layouts", "partials" and "helpers" folder that are used for front-end theming.
+
+public/index.php
 *********
 
 The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.
@@ -123,25 +192,22 @@ The index.php is an auto-generated bootstrap file that includes the auto-loader 
 
    (new Framework\Framework())->frontController();
 
-css
-***
+---------
 
-fonts
-*****
+public/css, public/fonts, public/images, public/js
+**************************************************
 
-helpers
+Self explanatory.
+
+---------
+
+public/helpers
 *******
 
-images
-******
-
-js
-**
-
-layouts
+public/layouts
 *******
 
-partials
+public/partials
 ********
 
 subscribers
@@ -149,3 +215,5 @@ subscribers
 
 vendors
 +++++++
+
+FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependecies it compiles and the auto-loader.

@@ -243,11 +243,75 @@
 <hr class="docutils" />
 <div class="section" id="forms">
 <h2>forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<p>The forms folder contains PHP configuration classes for each of the forms on the website.  Theses files are used to generate user-friendly forms and automate the work of validating, sanitizing and saving data.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">contact</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span> <span class="p">(</span><span class="nv">$field</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span> <span class="o">=</span> <span class="nv">$field</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s1">&#39;collection&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;contacts&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span>                   <span class="o">=&gt;</span> <span class="s1">&#39;_id&#39;</span>
+        <span class="p">];</span>
+        <span class="k">public</span> <span class="nv">$after</span> <span class="o">=</span> <span class="s1">&#39;notice&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$notice</span> <span class="o">=</span> <span class="s1">&#39;Your contact request has been received&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$noticeDetails</span> <span class="o">=</span> <span class="s1">&#39;We will be in touch soon.&#39;</span><span class="p">;</span>
+
+        <span class="k">function</span> <span class="nf">first_nameField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;first_name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First Name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">last_nameField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;last_name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Last Name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;label&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;Last Name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">phoneField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;phone&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;Phone&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">emailField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;Email Address&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">messageField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;Enter your message here&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">textarea</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+</div>
+<hr class="docutils" />
 <div class="section" id="public">
 <h2>public<a class="headerlink" href="#public" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="index-php">
-<h3>index.php<a class="headerlink" href="#index-php" title="Permalink to this headline">¶</a></h3>
+<p>The public folder stores files that should be publicly available on the website such as css and js files, as well as some files in the &#8220;layouts&#8221;, &#8220;partials&#8221; and &#8220;helpers&#8221; folder that are used for front-end theming.</p>
+<div class="section" id="public-index-php">
+<h3>public/index.php<a class="headerlink" href="#public-index-php" title="Permalink to this headline">¶</a></h3>
 <p>The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="nb">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">);</span>
@@ -257,26 +321,20 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="css">
-<h3>css<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<div class="section" id="public-css-public-fonts-public-images-public-js">
+<h3>public/css, public/fonts, public/images, public/js<a class="headerlink" href="#public-css-public-fonts-public-images-public-js" title="Permalink to this headline">¶</a></h3>
+<p>Self explanatory.</p>
 </div>
-<div class="section" id="fonts">
-<h3>fonts<a class="headerlink" href="#fonts" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<div class="section" id="public-helpers">
+<h3>public/helpers<a class="headerlink" href="#public-helpers" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="helpers">
-<h3>helpers<a class="headerlink" href="#helpers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="public-layouts">
+<h3>public/layouts<a class="headerlink" href="#public-layouts" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="images">
-<h3>images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="js">
-<h3>js<a class="headerlink" href="#js" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="layouts">
-<h3>layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="partials">
-<h3>partials<a class="headerlink" href="#partials" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="public-partials">
+<h3>public/partials<a class="headerlink" href="#public-partials" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="subscribers">
@@ -284,6 +342,7 @@
 </div>
 <div class="section" id="vendors">
 <h2>vendors<a class="headerlink" href="#vendors" title="Permalink to this headline">¶</a></h2>
+<p>FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependecies it compiles and the auto-loader.</p>
 </div>
 </div>
 
