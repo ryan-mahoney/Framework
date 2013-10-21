@@ -30,9 +30,9 @@ Contents:
 About the Author
 ================
 
-PHP FMF was originally created by Ryan Mahoney and sponsored by `Virtue Center for Art & Technology <http://www.virtuecenter.com>`_
+PHP FMF was created by Ryan Mahoney and is sponsored by `Virtue Center for Art & Technology <http://www.virtuecenter.com>`_.
 
-Ryan created the framework to take advantage of patterns and concepts popularized in other software languages and architecturs.
+Ryan created the framework to take advantage of patterns and concepts popularized in other software languages and architectures in PHP, with simplicity, speed, elegance and as little code as possible.
 
 He can be reaced at `ryan@virtuecenter.com <mailto:ryan@virtuecenter.com>`_
 
