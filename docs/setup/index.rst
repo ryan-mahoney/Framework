@@ -5,22 +5,20 @@ System Requirements
 +++++++++++++++++++
 
 **For Project Theming only:**
-
-* `PHP 5.4 <http://www.php.net/>`_
-* `PHP Composer <http://getcomposer.org/>`_
-* Local Web Server
+- `PHP 5.4 <http://www.php.net/>`_
+- `PHP Composer <http://getcomposer.org/>`_
+- Local Web Server
   `Nginx <http://nginx.org/>`_ or `Apache <http://httpd.apache.org/>`_
-* PHP Modules:
-  `mbstring <http://php.net/manual/en/book.mbstring.php>`_, `openssl <http://php.net/manual/en/book.openssl.php>`_
+- PHP Modules:
+   `mbstring <http://php.net/manual/en/book.mbstring.php>`_, `openssl <http://php.net/manual/en/book.openssl.php>`_
 
 **For Full-Stack Development:**
-
-* `Memcached <http://memcached.org/>`_
-* `MongoDB <http://www.mongodb.org/>`_
-* `Solr <http://lucene.apache.org/solr/>`_
-* `Beanstalkd <http://kr.github.io/beanstalkd/>`_
-* PHP Modules:
-  `memcache <http://pecl.php.net/package/memcache>`_, `gd <http://php.net/manual/en/book.image.php>`_, `mongo <http://pecl.php.net/package/mongo>`_, `yaml <http://pecl.php.net/package/yaml>`_
+- `Memcached <http://memcached.org/>`_
+- `MongoDB <http://www.mongodb.org/>`_
+- `Solr <http://lucene.apache.org/solr/>`_
+- `Beanstalkd <http://kr.github.io/beanstalkd/>`_
+- PHP Modules:
+   `memcache <http://pecl.php.net/package/memcache>`_, `gd <http://php.net/manual/en/book.image.php>`_, `mongo <http://pecl.php.net/package/mongo>`_, `yaml <http://pecl.php.net/package/yaml>`_
 
 Docker
 ******
