@@ -364,11 +364,32 @@
 <hr class="docutils" />
 <div class="section" id="public-partials">
 <h3>public/partials<a class="headerlink" href="#public-partials" title="Permalink to this headline">¶</a></h3>
+<p>The partials folder stores all of the <em>partials</em> files that will be used in layouts to render data.  The are .hbs or Handle Bar Script files.</p>
+<div class="highlight-hbs"><pre>&lt;ul class="" style="padding:0; border:0; margin:0"&gt;
+{{#each menus}}
+        &lt;li&gt;&lt;a href="{{url}}"&gt;{{label}}&lt;/a&gt;&lt;/li&gt;
+{{/each}}
+&lt;/ul&gt;</pre>
 </div>
 </div>
+</div>
+<hr class="docutils" />
 <div class="section" id="subscribers">
 <h2>subscribers<a class="headerlink" href="#subscribers" title="Permalink to this headline">¶</a></h2>
+<p>FMF relies heavily on the PubSub pattern.  As such, we need a way to specify &#8220;subscribers&#8221; that will receive published &#8220;topics&#8221;, as well as a mapping of which subscribers will be subscribed to which topics.</p>
+<p>First, the subscriptions, in YAML format:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">topics</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">form-contact-save</span><span class="p-Indicator">:</span>
+       <span class="l-Scalar-Plain">PostToDB</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="s">&#39;post&#39;</span><span class="p-Indicator">,</span> <span class="s">&#39;db&#39;</span><span class="p-Indicator">]</span>
+    <span class="l-Scalar-Plain">form-contactbrief-save</span><span class="p-Indicator">:</span>
+       <span class="l-Scalar-Plain">PostToDB</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="s">&#39;post&#39;</span><span class="p-Indicator">,</span> <span class="s">&#39;db&#39;</span><span class="p-Indicator">]</span>
+    <span class="l-Scalar-Plain">form-subscribe-save</span><span class="p-Indicator">:</span>
+       <span class="l-Scalar-Plain">PostToDB</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="s">&#39;post&#39;</span><span class="p-Indicator">,</span> <span class="s">&#39;db&#39;</span><span class="p-Indicator">]</span>
+</pre></div>
 </div>
+<p>And here is the subscriber that stores data in the database that is published when forms are submitted:</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="vendors">
 <h2>vendors<a class="headerlink" href="#vendors" title="Permalink to this headline">¶</a></h2>
 <p>FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependecies it compiles and the auto-loader.</p>
