@@ -214,6 +214,7 @@ public/layouts
 The layouts folder stores individual *layouts* are the outer-HTML of a single-page application that the partials are rendered into.  For example:
 
 .. code-block:: html
+
     <!DOCTYPE html>
 	<html lang="en">
 	<head>
