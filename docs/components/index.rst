@@ -348,7 +348,7 @@ Here is the subscriber that stores data in the database that is published when f
 Separation
 ++++++++++
 
-Fork on github here: `form source <https://github.com/virtuecenter/separation>`_
+Fork on github here: `separation source <https://github.com/virtuecenter/separation>`_
 
 Separation is a way to bind the data returned from a RESTful API to a "partial" template that will render the data into a complete page "layout".
 
