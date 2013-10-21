@@ -42,8 +42,13 @@ Open your command line terminal.  Enter the following commands to make a new fol
    composer install
    php public/index.php build
 
-For Nginx & PHP-FPM
-+++++++++++++++++++
+----------
+
+Web Servers
++++++++++++
+
+Nginx & PHP-FPM
+***************
 
 This is the recommended web-server.
 
@@ -65,8 +70,8 @@ This is the recommended web-server.
 	}
 
 
-For Apache
-++++++++++
+Apache
+******
 
 Add the following logic to your .htaccess files:
 
@@ -77,6 +82,8 @@ Add the following logic to your .htaccess files:
    RewriteCond %{REQUEST_FILENAME} !-d
    RewriteCond %{REQUEST_FILENAME} !-f
    RewriteRule ^ index.php [L] 
+
+--------
 
 Windows
 +++++++
