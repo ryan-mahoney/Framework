@@ -10,8 +10,9 @@
     
     <title>Welcome to FMF’s documentation! &mdash; FMF 1.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,29 +26,60 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="FMF 1.0 documentation" href="#" /> 
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="FMF 1.0 documentation" href="#" />
+    <link rel="next" title="Overview" href="installation/overview.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li><a href="#">FMF 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+      <div class="header"><h1 class="heading"><a href="#">
+          <span>FMF 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Welcome to FMF’s documentation!</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="installation/overview.html">Overview</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="welcome-to-fmf-s-documentation">
 <h1>Welcome to FMF&#8217;s documentation!<a class="headerlink" href="#welcome-to-fmf-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Ryan will fill this in soon.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$imagine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Gd\Imagine</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nv">$imagine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Imagick\Imagine</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nv">$imagine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Gmagick\Imagine</span><span class="p">();</span>
+
+<span class="nv">$size</span>    <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Image\Box</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+
+<span class="nv">$mode</span>    <span class="o">=</span> <span class="nx">Imagine\Image\ImageInterface</span><span class="o">::</span><span class="na">THUMBNAIL_INSET</span><span class="p">;</span>
+<span class="c1">// or</span>
+<span class="nv">$mode</span>    <span class="o">=</span> <span class="nx">Imagine\Image\ImageInterface</span><span class="o">::</span><span class="na">THUMBNAIL_OUTBOUND</span><span class="p">;</span>
+
+<span class="nv">$imagine</span><span class="o">-&gt;</span><span class="na">open</span><span class="p">(</span><span class="s1">&#39;/path/to/large_image.jpg&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">thumbnail</span><span class="p">(</span><span class="nv">$size</span><span class="p">,</span> <span class="nv">$mode</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;/path/to/thumbnail.png&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation/overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#palette-class">Palette Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#about-colorspaces-support">About colorspaces support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#color-class">Color Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#profile-class">Profile Class</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -61,50 +93,17 @@
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to FMF&#8217;s documentation!</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="installation/overview.html">Overview</a>&#160;&#160;»
+        </p>
 
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li><a href="#">FMF 1.0 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
+
     <div class="footer">
         &copy; Copyright 2013, Ryan Mahoney.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.

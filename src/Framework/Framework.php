@@ -60,7 +60,6 @@ class Framework {
 		$container->formRoute->app($root);
 		$container->managerRoute->app($root);
 		
-		
 		//custom routing
 		$routePath = $root . '/../Route.php';
 		if (!file_exists($routePath)) {
