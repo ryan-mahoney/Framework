@@ -106,7 +106,8 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Theming</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sample-project">Sample Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#listing-routes">Listing Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listing-auto-generated-routes">Listing Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#types-of-pages">Types of Pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#handlebars-php">Handlebars PHP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#separataion-app">Separataion App</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-layouts">Working with Layouts</a></li>
@@ -153,18 +154,39 @@
           
   <div class="section" id="theming">
 <h1>Theming<a class="headerlink" href="#theming" title="Permalink to this headline">¶</a></h1>
+<p>Applying a visual theme to a website or mobile-web application is a critical aspect of the success of the project.  It won&#8217;t matter how scalable the site is if it&#8217;s users are not provided with a high quality experience.</p>
+<hr class="docutils" />
 <div class="section" id="sample-project">
 <h2>Sample Project<a class="headerlink" href="#sample-project" title="Permalink to this headline">¶</a></h2>
+<p>Here is a link to a sample project. You can download, build and run this project and see a practical example of how an FMF works, and specifically, how it is themed.</p>
 </div>
-<div class="section" id="listing-routes">
-<h2>Listing Routes<a class="headerlink" href="#listing-routes" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="listing-auto-generated-routes">
+<h2>Listing Auto-Generated Routes<a class="headerlink" href="#listing-auto-generated-routes" title="Permalink to this headline">¶</a></h2>
+<p>To see a list of the routes that are defined in your project, simply go to the &#8220;/routes&#8221; path of your project in a browsers and they will be listed.</p>
+<p>For example, if you are working with the &#8220;blogs&#8221; <em>Collection</em>, the routes &#8220;/blogs&#8221; and &#8220;/blog/:slug.html&#8221; will automatically be routed in your project.  The same is true for forms that you use.</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="types-of-pages">
+<h2>Types of Pages<a class="headerlink" href="#types-of-pages" title="Permalink to this headline">¶</a></h2>
+<p>The first consideration when theming an FMF page is to know what <em>type</em> of page you are dealing with.  For example, the page could be for a <em>Collection</em>, a <em>Document</em>, a <em>Form</em> or it may be a custom page, such as a homepage.  Determining the type is important, because the type will tell you where to find it&#8217;s constituent files.</p>
+<p>Every page is going to need and app.yml file, a layout.html file and at least one partial.hbs file.</p>
+<p>When you build you project, the builder will put an app under &#8220;/app/collections/blogs.yml&#8221;, a layout under &#8220;/public/layouts/blogs.html&#8221;, and a partial under &#8220;/public/partials/blogs.hbs&#8221;.  In this sense, you start out with a &#8220;laced-up&#8221; application, and just need to modify these files.  For <em>Collections</em>, the builder will also create stub files for the related <em>Document</em> versions, so &#8220;/app/document/blog.yml&#8221;, &#8220;/public/layout/blog.html&#8221; and &#8220;/public/partial/blog.hbs&#8221; will also be created.</p>
+<p>At this point, you primary need to be focused on adding the relevant CSS, HTML structure and JS to your project and of course, being aware of the data structure supplied by your API so you can subsitute data in your partials file.</p>
+<div class="section" id="listing-data-apis-viewing-json-data">
+<h3>Listing Data APIs &amp; Viewing JSON data<a class="headerlink" href="#listing-data-apis-viewing-json-data" title="Permalink to this headline">¶</a></h3>
+<p><em>Collections</em> will each provide a data API URL.  To see the collections available for your project, go to the &#8220;/collections&#8221; path in a browser and they will be listed.  Clicking on a link will show you a pretty-printed representation of the data that makes knowing the field names you will need for partials easy.</p>
+</div>
+</div>
+<hr class="docutils" />
 <div class="section" id="handlebars-php">
 <h2>Handlebars PHP<a class="headerlink" href="#handlebars-php" title="Permalink to this headline">¶</a></h2>
 </div>
+<hr class="docutils" />
 <div class="section" id="separataion-app">
 <h2>Separataion App<a class="headerlink" href="#separataion-app" title="Permalink to this headline">¶</a></h2>
 </div>
+<hr class="docutils" />
 <div class="section" id="working-with-layouts">
 <h2>Working with Layouts<a class="headerlink" href="#working-with-layouts" title="Permalink to this headline">¶</a></h2>
 </div>
