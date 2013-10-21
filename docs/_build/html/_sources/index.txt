@@ -6,6 +6,8 @@
 PHP Federated Micro-Framework
 =============================
 
+.. image:: https://raw.github.com/virtuecenter/framework/master/fmf-logo.jpg
+
 FMF is an opinionated PHP Framework. 
 
 FMF is small and aims to provide a single best-practices approach to addressing all the concerns of developing modern web and mobile-web applications.  
@@ -15,7 +17,7 @@ It is No-SQL, API-Centric, Service Oriented, RESTful and uses PubSub decoupling 
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    setup/index
    concepts/index
