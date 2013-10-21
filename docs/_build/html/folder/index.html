@@ -88,15 +88,12 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Folder Structure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#index-php">index.php</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#app">app</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#collections">collections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#config">config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#filters">filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#forms">forms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#public">public</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#public-layouts">public/layouts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#partials">partials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#subscribers">subscribers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vendors">vendors</a></li>
 </ul>
@@ -160,20 +157,35 @@
 <h1>Folder Structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">¶</a></h1>
 <p>A place for everyhing and everything in it&#8217;s place.</p>
 <hr class="docutils" />
-<div class="section" id="index-php">
-<h2>index.php<a class="headerlink" href="#index-php" title="Permalink to this headline">¶</a></h2>
-<p>The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
-<span class="nb">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">);</span>
-<span class="k">require</span> <span class="s1">&#39;../vendor/autoload.php&#39;</span><span class="p">;</span>
+<div class="section" id="app">
+<h2>app<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
+<p>The app folder stores single-page application configurations.  Specifcally, it stores the bindings between:</p>
+<ul class="simple">
+<li>the id of the section in layout to populate markup into, in this example: contact, header and footer</li>
+<li>a RESTful API &#8220;url&#8221;</li>
+<li>&#8220;args&#8221; to pass to the data URL</li>
+<li>a &#8220;partial&#8221; template to render the data with</li>
+<li>a built in &#8220;type&#8221; for type-specific rendering logics</li>
+</ul>
+<p>These files are written in the YAML language.  You can read more about this in the <em>Separation</em> component.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
 
-<span class="p">(</span><span class="k">new</span> <span class="nx">Framework\Framework</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">frontController</span><span class="p">();</span>
+<span class="l-Scalar-Plain">binding</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">contact</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-form/contact&#39;</span>
+        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;form-contact.hbs&#39;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;Form&quot;</span>
+    <span class="l-Scalar-Plain">header</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;%dataAPI%/header&quot;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;html&quot;</span>
+    <span class="l-Scalar-Plain">footer</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;%dataAPI%/footer&quot;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;html&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="app">
-<h2>app<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
-</div>
+<hr class="docutils" />
 <div class="section" id="collections">
 <h2>collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -188,6 +200,17 @@
 </div>
 <div class="section" id="public">
 <h2>public<a class="headerlink" href="#public" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="index-php">
+<h3>index.php<a class="headerlink" href="#index-php" title="Permalink to this headline">¶</a></h3>
+<p>The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">);</span>
+<span class="k">require</span> <span class="s1">&#39;../vendor/autoload.php&#39;</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">new</span> <span class="nx">Framework\Framework</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">frontController</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="css">
 <h3>css<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h3>
 </div>
@@ -203,12 +226,12 @@
 <div class="section" id="js">
 <h3>js<a class="headerlink" href="#js" title="Permalink to this headline">¶</a></h3>
 </div>
-</div>
-<div class="section" id="public-layouts">
-<h2>public/layouts<a class="headerlink" href="#public-layouts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="layouts">
+<h3>layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="partials">
-<h2>partials<a class="headerlink" href="#partials" title="Permalink to this headline">¶</a></h2>
+<h3>partials<a class="headerlink" href="#partials" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="subscribers">
 <h2>subscribers<a class="headerlink" href="#subscribers" title="Permalink to this headline">¶</a></h2>
