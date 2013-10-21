@@ -101,8 +101,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Components</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#collection">Collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#form">Form</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#separation">Separation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pubsub">PubSub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#separation">Separation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../theming/index.html">Theming</a><ul>
@@ -236,7 +236,7 @@
 <ul class="simple">
 <li>all</li>
 <li>byAuthorId</li>
-<li>byAuthorSlug</li>
+<li>byAuthor</li>
 <li>byCategory</li>
 <li>byCategoryFeatured</li>
 <li>byCategoryId</li>
@@ -256,15 +256,195 @@
 </div>
 <div class="section" id="form">
 <h2>Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h2>
-<p>forms...</p>
+<p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/form">form source</a></p>
+<p>The Form component is a very advanced form generator that supports rendering a wide variety of field types in a very flexible way.</p>
+<p>It is intended to be used with <a class="reference external" href="http://semantic-ui.com/collections/form.html">Semantic UI Form Collection</a></p>
+<p>An individual form class looks like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">contact</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span> <span class="p">(</span><span class="nv">$field</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span> <span class="o">=</span> <span class="nv">$field</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s1">&#39;collection&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;contacts&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span>                   <span class="o">=&gt;</span> <span class="s1">&#39;_id&#39;</span>
+        <span class="p">];</span>
+        <span class="k">public</span> <span class="nv">$after</span> <span class="o">=</span> <span class="s1">&#39;notice&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$notice</span> <span class="o">=</span> <span class="s1">&#39;Your contact request has been received&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$noticeDetails</span> <span class="o">=</span> <span class="s1">&#39;We will be in touch soon.&#39;</span><span class="p">;</span>
+
+        <span class="k">function</span> <span class="nf">first_nameField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;first_name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First Name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">last_nameField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;last_name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Last Name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;label&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;Last Name&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">phoneField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;phone&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;Phone&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">emailField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;Email Address&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">inputText</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">messageField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;placeholder&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;Enter your message here&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span><span class="o">-&gt;</span><span class="na">textarea</span><span class="p">(),</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="separation">
-<span id="id2"></span><h2>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h2>
-<p>separation...</p>
+<p>It&#8217;s possible to define customer callbacks for validation and data sanitization.</p>
+<p>Under the hood, the system takes information like this, and uses it to form a JSON array of field types that populates a partial.</p>
+<p>Note, in the partial below, the form has an attribute set: data-xhr=&#8221;true&#8221;</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;ui dividing header&quot;</span><span class="nt">&gt;</span>Contact Form<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;ui form segment&quot;</span> <span class="na">data-xhr=</span><span class="s">&quot;true&quot;</span> <span class="na">data-marker=</span><span class="s">&quot;contact&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui warning message&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>There was a problem<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>First Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui left labeled input&quot;</span><span class="nt">&gt;</span>
+            {{{first_name}}}
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui corner label&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon asterisk&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Last Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui left labeled input&quot;</span><span class="nt">&gt;</span>
+            {{{last_name}}}
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui corner label&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon asterisk&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Phone<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui left labeled input&quot;</span><span class="nt">&gt;</span>
+            {{{phone}}}
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui corner label&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon asterisk&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui left labeled input&quot;</span><span class="nt">&gt;</span>
+            {{{email}}}
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui corner label&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon asterisk&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Message<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui left labeled input&quot;</span><span class="nt">&gt;</span>
+            {{{message}}}
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ui corner label&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon asterisk&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    {{{id}}}
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;ui blue submit button&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit Contact Form&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+</div>
+<p>A partial like that could be rendered into a layout like this:</p>
+<div class="highlight-layout"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;{{page_title}}&lt;/title&gt;
+        &lt;link href="/semantic-ui/css/semantic.min.css" rel="stylesheet" type="text/css" media="all" /&gt;
+        &lt;script src="/js/jquery.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/jquery.form.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/formXHR.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/formHelperSemantic.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body id="example"&gt;
+        &lt;div id="main container" style="width: 1200px; margin: auto"&gt;
+            {{{contact}}}
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<p>The system will then handle all the business and display logic of handling errors and saving the data in the database.</p>
 </div>
 <div class="section" id="pubsub">
-<span id="id3"></span><h2>PubSub<a class="headerlink" href="#pubsub" title="Permalink to this headline">¶</a></h2>
-<p>pubsub...</p>
+<span id="id2"></span><h2>PubSub<a class="headerlink" href="#pubsub" title="Permalink to this headline">¶</a></h2>
+<p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/pubsub">form source</a></p>
+<p>The PubSub pattern is a great way to separate components in a highly decoupled manner.  In the form above, there is no logic for saving data in the database.  All the form component does, is publish a &#8220;topic&#8221; with the data attached, and if there is a subscriber to the topic the data would get saved.  In theory, there could be multiple subscribers, one for sending and email, one for logging the data, andother for indexing it in the search engine &#8211; any number of subscribers can listen to a single topic.</p>
+<p>First, the subscriptions, in YAML format:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">topics</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">form-contact-save</span><span class="p-Indicator">:</span>
+       <span class="l-Scalar-Plain">PostToDB</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="s">&#39;post&#39;</span><span class="p-Indicator">,</span> <span class="s">&#39;db&#39;</span><span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p>You can see in the example above, the topic is &#8220;form-contact-save&#8221;.</p>
+<p>The PostToDB subscriber is specifying that it wants to receive the &#8220;post&#8221; and &#8220;db&#8221; services from the dependecy injetion container.</p>
+<p>Also, all subscibers receice as their first argument, the &#8220;event&#8221; which is an array containing contextual information... such as the data to save.</p>
+<p>Here is the subscriber that stores data in the database that is published when forms are submitted:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$post</span><span class="p">,</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;dbURI&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;dbURI&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">&#39;Event does not contain a dbURI&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;formMarker&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">&#39;Form marker not set in post&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$document</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;formMarker&#39;</span><span class="p">]};</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$document</span> <span class="o">===</span> <span class="k">false</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$document</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">&#39;Document not found in post&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$documentObject</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">documentStage</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;dbURI&#39;</span><span class="p">],</span> <span class="nv">$document</span><span class="p">);</span>
+        <span class="nv">$documentObject</span><span class="o">-&gt;</span><span class="na">upsert</span><span class="p">();</span>
+        <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">statusSaved</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="separation">
+<span id="id4"></span><h2>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h2>
+<p>separation...</p>
 </div>
 </div>
 

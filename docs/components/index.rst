@@ -103,7 +103,7 @@ The API has many built in methods:
 
 * all
 * byAuthorId
-* byAuthorSlug
+* byAuthor
 * byCategory
 * byCategoryFeatured
 * byCategoryId
@@ -131,7 +131,217 @@ http://json.virtuecenter.com/json-data/blogs/byTag-GovernorBentley
 Form
 ++++
 
-forms...
+Fork on github here: `form source <https://github.com/virtuecenter/form>`_
+
+The Form component is a very advanced form generator that supports rendering a wide variety of field types in a very flexible way.
+
+It is intended to be used with `Semantic UI Form Collection <http://semantic-ui.com/collections/form.html>`_
+
+An individual form class looks like this:
+
+.. code-block:: php
+
+	<?php
+	class contact {
+		public function __construct ($field) {
+			$this->field = $field;
+		}
+		public $storage = [
+			'collection'	=> 'contacts',
+			'key'			=> '_id'
+		];
+		public $after = 'notice';
+		public $notice = 'Your contact request has been received';
+		public $noticeDetails = 'We will be in touch soon.';
+
+		function first_nameField() {
+			return [
+				'name'		=> 'first_name',
+				'placeholder' => 'First Name',
+				'display'	=> $this->field->inputText(),
+				'required' 	=> true
+			];
+		}
+		
+		function last_nameField() {
+			return [
+				'name'		=> 'last_name',
+				'placeholder' => 'Last Name',
+				'label'		=> 'Last Name',
+				'display'	=> $this->field->inputText(),
+				'required'	=> true
+			];
+		}
+
+		function phoneField() {
+			return [
+				'name'		=> 'phone',
+				'placeholder'	=> 'Phone',
+				'display'	=> $this->field->inputText(),
+				'required'	=> true
+			];
+		}
+		
+		function emailField() {
+			return [
+				'name'		=> 'email',
+				'placeholder'		=> 'Email Address',
+				'display'	=> $this->field->inputText(),
+				'required'	=> true
+			];
+		}
+		
+		function messageField() {
+			return [
+				'name'		=> 'message',
+				'placeholder'		=> 'Enter your message here',
+				'display'	=> $this->field->textarea(),
+				'required'	=> true
+			];
+		}
+	}
+
+It's possible to define customer callbacks for validation and data sanitization.
+
+Under the hood, the system takes information like this, and uses it to form a JSON array of field types that populates a partial.
+
+Note, in the partial below, the form has an attribute set: data-xhr="true"
+
+.. code-block:: html
+
+    <h2 class="ui dividing header">Contact Form</h2>
+
+    <form class="ui form segment" data-xhr="true" data-marker="contact" method="post">
+        <div class="ui warning message">
+            <div class="header">There was a problem</div>
+            <ul class="list">
+            </ul>
+        </div>
+
+        <div class="field">
+            <label>First Name</label>
+            <div class="ui left labeled input">
+                {{{first_name}}}
+                <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Last Name</label>
+            <div class="ui left labeled input">
+                {{{last_name}}}
+                <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Phone</label>
+            <div class="ui left labeled input">
+                {{{phone}}}
+                <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Email</label>
+            <div class="ui left labeled input">
+                {{{email}}}
+                <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Message</label>
+            <div class="ui left labeled input">
+                {{{message}}}
+                <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                </div>
+            </div>
+        </div>
+        {{{id}}}
+        <input type="submit" class="ui blue submit button" value="Submit Contact Form" />
+    </form>
+
+A partial like that could be rendered into a layout like this:
+
+.. code-block:: layout
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>{{page_title}}</title>
+            <link href="/semantic-ui/css/semantic.min.css" rel="stylesheet" type="text/css" media="all" />
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/jquery.form.js"></script>
+            <script src="/js/formXHR.js"></script>
+            <script src="/js/formHelperSemantic.js"></script>
+        </head>
+        <body id="example">
+            <div id="main container" style="width: 1200px; margin: auto">
+                {{{contact}}}
+            </div>
+        </body>
+    </html>
+
+The system will then handle all the business and display logic of handling errors and saving the data in the database.
+
+
+.. _pubsub:
+
+
+PubSub
+++++++
+
+Fork on github here: `form source <https://github.com/virtuecenter/pubsub>`_
+
+The PubSub pattern is a great way to separate components in a highly decoupled manner.  In the form above, there is no logic for saving data in the database.  All the form component does, is publish a "topic" with the data attached, and if there is a subscriber to the topic the data would get saved.  In theory, there could be multiple subscribers, one for sending and email, one for logging the data, andother for indexing it in the search engine -- any number of subscribers can listen to a single topic.
+
+First, the subscriptions, in YAML format:
+
+.. code-block:: yaml
+
+	topics:
+	    form-contact-save: 
+	       PostToDB: ['post', 'db']
+
+You can see in the example above, the topic is "form-contact-save".  
+
+The PostToDB subscriber is specifying that it wants to receive the "post" and "db" services from the dependecy injetion container.
+
+Also, all subscibers receice as their first argument, the "event" which is an array containing contextual information... such as the data to save.
+
+Here is the subscriber that stores data in the database that is published when forms are submitted:
+
+.. code-block:: php
+
+	<?php
+	return function ($event, $post, $db) {
+		if (!isset($event['dbURI']) || empty($event['dbURI'])) {
+			throw new \Exception('Event does not contain a dbURI');
+		}
+		if (!isset($event['formMarker'])) {
+			throw new \Exception('Form marker not set in post');
+		}
+		$document = $post->{$event['formMarker']};
+		if ($document === false || empty($document)) {
+			throw new \Exception('Document not found in post');
+		}
+		$documentObject = $db->documentStage($event['dbURI'], $document);
+		$documentObject->upsert();
+		$post->statusSaved();
+	};
+
+----------
 
 .. _separation:
 
@@ -139,11 +349,3 @@ Separation
 ++++++++++
 
 separation...
-
-
-.. _pubsub:
-
-PubSub
-++++++
-
-pubsub...
