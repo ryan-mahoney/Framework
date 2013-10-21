@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &mdash; FMF 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="FMF 1.0 documentation" href="../index.html" />
+    <link rel="prev" title="Welcome to FMF’s documentation!" href="../index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>FMF 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Overview</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Welcome to FMF&#8217;s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>Imagine provides a fully-featured colors API with the Palette object :</p>
+<div class="section" id="palette-class">
+<h2>Palette Class<a class="headerlink" href="#palette-class" title="Permalink to this headline">¶</a></h2>
+<p>Every image in Imagine is attached to a Palette. The palette handles the colors.
+Imagine provides two palettes :</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$palette</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Image\Palette\RGB</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nv">$palette</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Image\Palette\CMYK</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>When creating a new Image, the default RGB palette is used. It can be easily customized. For example the following code creates a new Image object with a white background and a CMYK palette.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$palette</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Image\Palette\CMYK</span><span class="p">();</span>
+<span class="nv">$imagine</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="k">new</span> <span class="nx">Imagine\Image\Box</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="nv">$palette</span><span class="o">-&gt;</span><span class="na">color</span><span class="p">(</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>You can switch your palette at any moment, for example to turn a CMYK image in RGB mode :</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$image</span> <span class="o">=</span> <span class="nv">$imagine</span><span class="o">-&gt;</span><span class="na">open</span><span class="p">(</span><span class="s1">&#39;my-cmyk-jpg.jpg&#39;</span><span class="p">);</span>
+<span class="nv">$image</span><span class="o">-&gt;</span><span class="na">usePalette</span><span class="p">(</span><span class="k">new</span> <span class="nx">Imagine\Image\Palette\RGB</span><span class="p">())</span>
+      <span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;my-rgb-jpg.jpg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Switching to a palette is the same a changing the colorspace.</p>
+</div>
+</div>
+<div class="section" id="about-colorspaces-support">
+<h2>About colorspaces support<a class="headerlink" href="#about-colorspaces-support" title="Permalink to this headline">¶</a></h2>
+<p>Drivers do not handle colorspace the same way.
+Whereas GD only supports RGB images, Imagick supports CMYK, RGB and Grayscale
+colorspaces. Gmagick only supports CMYK and RGB colorspaces.</p>
+</div>
+<div class="section" id="color-class">
+<h2>Color Class<a class="headerlink" href="#color-class" title="Permalink to this headline">¶</a></h2>
+<p>Color is a class in Imagine, and is created through a palette with two arguments in its constructor: the RGB color code and a transparency percentage. The following examples are equivalent ways of defining a fully-transparent white color.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$white</span> <span class="o">=</span> <span class="nv">$palette</span><span class="o">-&gt;</span><span class="na">color</span><span class="p">(</span><span class="s1">&#39;fff&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="nv">$white</span> <span class="o">=</span> <span class="nv">$palette</span><span class="o">-&gt;</span><span class="na">color</span><span class="p">(</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="nv">$white</span> <span class="o">=</span> <span class="nv">$palette</span><span class="o">-&gt;</span><span class="na">color</span><span class="p">(</span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="nv">$white</span> <span class="o">=</span> <span class="nv">$palette</span><span class="o">-&gt;</span><span class="na">color</span><span class="p">(</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="nv">$white</span> <span class="o">=</span> <span class="nv">$palette</span><span class="o">-&gt;</span><span class="na">color</span><span class="p">(</span><span class="mh">0xFFFFFF</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="nv">$white</span> <span class="o">=</span> <span class="nv">$palette</span><span class="o">-&gt;</span><span class="na">color</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">100</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">CMYK colors does not support alpha parameters.</p>
+</div>
+<p>After you have instantiated an RGB color, you can easily get its Red, Green, Blue and Alpha (transparency) values:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+   <span class="s1">&#39;R&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getRed</span><span class="p">(),</span>
+   <span class="s1">&#39;G&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getGreen</span><span class="p">(),</span>
+   <span class="s1">&#39;B&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getBlue</span><span class="p">(),</span>
+   <span class="s1">&#39;A&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getAlpha</span><span class="p">()</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>The same behavior is available for CMYK colors :</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+   <span class="s1">&#39;C&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getCyan</span><span class="p">(),</span>
+   <span class="s1">&#39;M&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getMagenta</span><span class="p">(),</span>
+   <span class="s1">&#39;Y&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getYellow</span><span class="p">(),</span>
+   <span class="s1">&#39;K&#39;</span> <span class="o">=&gt;</span> <span class="nv">$white</span><span class="o">-&gt;</span><span class="na">getKeyline</span><span class="p">()</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="profile-class">
+<h2>Profile Class<a class="headerlink" href="#profile-class" title="Permalink to this headline">¶</a></h2>
+<p>You can apply ICC profile on any Image class with the <tt class="docutils literal"><span class="pre">profile</span></tt> method :</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$profile</span> <span class="o">=</span> <span class="nx">Image\Image\Profile</span><span class="o">::</span><span class="na">fromPath</span><span class="p">(</span><span class="s1">&#39;your-ICC-profile.icc&#39;</span><span class="p">);</span>
+<span class="nv">$image</span><span class="o">-&gt;</span><span class="na">profile</span><span class="p">(</span><span class="nv">$profile</span><span class="p">)</span>
+      <span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;my-rgb-jpg-profiled.jpg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Welcome to FMF&#8217;s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ryan Mahoney.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

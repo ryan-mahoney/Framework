@@ -6,11 +6,35 @@
 Welcome to FMF's documentation!
 ===============================
 
+Ryan will fill this in soon.
+
+.. code-block:: php
+
+    <?php
+
+    $imagine = new Imagine\Gd\Imagine();
+    // or
+    $imagine = new Imagine\Imagick\Imagine();
+    // or
+    $imagine = new Imagine\Gmagick\Imagine();
+
+    $size    = new Imagine\Image\Box(40, 40);
+
+    $mode    = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+    // or
+    $mode    = Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
+
+    $imagine->open('/path/to/large_image.jpg')
+        ->thumbnail($size, $mode)
+        ->save('/path/to/thumbnail.png')
+    ;
+
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   installation/overview
 
 
 Indices and tables
