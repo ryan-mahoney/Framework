@@ -167,7 +167,7 @@
 <li>a &#8220;partial&#8221; template to render the data with</li>
 <li>a built in &#8220;type&#8221; for type-specific rendering logics</li>
 </ul>
-<p>These files are written in the YAML language.  You can read more about this in the <em>Separation</em> component.</p>
+<p>These files are written in the YAML language.</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
 
 <span class="l-Scalar-Plain">binding</span><span class="p-Indicator">:</span>
@@ -184,17 +184,55 @@
         <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;html&quot;</span>
 </pre></div>
 </div>
+<p>You can read more about this in the <em>Separation</em> component.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="collections">
 <h2>collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h2>
+<p>The collections folder stores <em>collection</em> files that are each one small class for each data collections that will be used in the project.  They are used by to auto-generate APIs and routes.  Here is an example of a blogs collection file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">blogs</span> <span class="p">{</span>
+    <span class="k">use</span> <span class="nx">Collection\Collection</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$publishable</span> <span class="o">=</span> <span class="k">true</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="nv">$singular</span> <span class="o">=</span> <span class="s1">&#39;blog&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+<p>You can read more about this in the <em>Collection</em> component.  FMF comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="config">
 <h2>config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
+<p>The config folder stores indivdual component configurations, such as the database config file:</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="filters">
 <h2>filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<p>The filters file stores output filters that can be used to perform string replacements on the output just before it is returned to the client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="k">function</span> <span class="p">(</span><span class="o">&amp;</span><span class="nv">$html</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="nv">$tracking</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;&#39;TRACKING&#39;</span>
+<span class="s">&lt;script type=&quot;text/javascript&quot;&gt;</span>
+<span class="s">  var _gaq = _gaq || [];</span>
+<span class="s">  _gaq.push([&#39;_setAccount&#39;, &#39;UA-XXXXX-X&#39;]);</span>
+<span class="s">  _gaq.push([&#39;_trackPageview&#39;]);</span>
+
+<span class="s">  (function() {</span>
+<span class="s">    var ga = document.createElement(&#39;script&#39;); ga.type = &#39;text/javascript&#39;; ga.async = true;</span>
+<span class="s">    ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.google-analytics.com/ga.js&#39;;</span>
+<span class="s">    var s = document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(ga, s);</span>
+<span class="s">  })();</span>
+<span class="s">&lt;/script&gt;</span>
+<span class="s">&lt;/body&gt;</span>
+<span class="s">TRACKING;</span>
+
+    <span class="nv">$html</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;&lt;/body&gt;&#39;</span><span class="p">,</span> <span class="nv">$tracking</span><span class="p">,</span> <span class="nv">$html</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
 </div>
+</div>
+<hr class="docutils" />
 <div class="section" id="forms">
 <h2>forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
 </div>

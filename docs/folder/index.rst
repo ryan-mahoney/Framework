@@ -17,7 +17,7 @@ The app folder stores single-page application configurations.  Specifcally, it s
 * a built in "type" for type-specific rendering logics
 
 
-These files are written in the YAML language.  You can read more about this in the *Separation* component.
+These files are written in the YAML language.
 
 .. code-block:: yaml
 
@@ -36,16 +36,72 @@ These files are written in the YAML language.  You can read more about this in t
           url: "%dataAPI%/footer"
           type: "html"
 
+You can read more about this in the *Separation* component.
+
 ---------
 
 collections
 +++++++++++
 
+The collections folder stores *collection* files that are each one small class for each data collections that will be used in the project.  They are used by to auto-generate APIs and routes.  Here is an example of a blogs collection file:
+
+.. code-block:: php
+
+  <?php
+  class blogs {
+      use Collection\Collection;
+      public $publishable = true
+      public static $singular = 'blog';
+  }
+
+You can read more about this in the *Collection* component.  FMF comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.
+
+---------
+
 config
 ++++++
 
+The config folder stores indivdual component configurations, such as the database config file:
+
+.. code-block:: php
+  <?php
+  return [
+      'name' => 'db',
+      'conn' => 'mongodb://user:pass@localhost/db',
+      'dataAPI'  => 'http://json.virtuecenter.com'
+  ];
+
+---------
+
 filters
 +++++++
+
+The filters file stores output filters that can be used to perform string replacements on the output just before it is returned to the client.
+
+.. code-block:: php
+
+  <?php
+  return function (&$html) {
+
+  $tracking = <<<'TRACKING'
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+  TRACKING;
+
+      $html = str_replace('</body>', $tracking, $html);
+  };
+
+----------
 
 forms
 +++++
