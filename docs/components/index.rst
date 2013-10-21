@@ -50,7 +50,7 @@ An example of the result of a collection can be found here: `Blogs Collection AP
 Collection APIs are handy, because you can see the field layout easily in JSON:
 
 
-..code-block:: json
+..code-block:: js
 
 	{
 	    "blogs": [
