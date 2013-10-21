@@ -273,7 +273,7 @@ Note, in the partial below, the form has an attribute set: data-xhr="true"
 
 A partial like that could be rendered into a layout like this:
 
-.. code-block:: layout
+.. code-block:: html
 
     <!DOCTYPE html>
     <html>
