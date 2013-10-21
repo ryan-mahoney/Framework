@@ -276,7 +276,7 @@ First, the subscriptions, in YAML format:
 
 And here is the subscriber that stores data in the database that is published when forms are submitted:
 
-.. code-sample:: php
+.. code-block:: php
 
 	<?php
 	return function ($event, $post, $db) {
