@@ -13,19 +13,19 @@ System Requirements
 * PHP Modules:
   `mbstring <http://php.net/manual/en/book.mbstring.php>`_, `openssl <http://php.net/manual/en/book.openssl.php>`_
 
-*For Full-Stack Development:*
+**For Full-Stack Development:**
 
-* Memcached
-* MongoDB
-* Solr
-* Beanstalkd
+* `Memcached <http://memcached.org/>`_
+* `MongoDB <http://www.mongodb.org/>`_
+* `Solr <http://lucene.apache.org/solr/>`_
+* `Beanstalkd <http://kr.github.io/beanstalkd/>`_
 * PHP Modules:
-  memcache, gd, mongo, yaml
+  `memcache <http://pecl.php.net/package/memcache>`_, `gd <http://php.net/manual/en/book.image.php>`_, `mongo <http://pecl.php.net/package/mongo>`_, `yaml <http://pecl.php.net/package/yaml>`_
 
 Docker
 ******
 
-A version of the system for Docker.io will be available soon.
+A version of the system for `Docker <https://www.docker.io/>`_ will be available soon.
 
 -----------
 
@@ -81,4 +81,4 @@ Add the following logic to your .htaccess files:
 Windows
 +++++++
 
-FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn't it time to make the switch?
+FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn't it time to make the `switch <http://www.ubuntu.com/>'_?
