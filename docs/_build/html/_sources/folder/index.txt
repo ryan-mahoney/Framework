@@ -64,6 +64,7 @@ config
 The config folder stores indivdual component configurations, such as the database config file:
 
 .. code-block:: php
+  
   <?php
   return [
       'name' => 'db',
