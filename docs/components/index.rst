@@ -1,10 +1,10 @@
 Components
 ==========
 
+.. _collections:
+
 Collections
 +++++++++++
-
-.. _collections:
 
 Some text about collections
 
