@@ -445,7 +445,40 @@
 </div>
 <div class="section" id="separation">
 <span id="id4"></span><h2>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h2>
-<p>separation...</p>
+<p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/separation">form source</a></p>
+<p>Separation is a way to bind the data returned from a RESTful API to a &#8220;partial&#8221; template that will render the data into a complete page &#8220;layout&#8221;.</p>
+<p>FMF uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;separation-&gt;layout(&#39;home&#39;)-&gt;template()-&gt;write();</span>
+</pre></div>
+</div>
+<p>In the above example, it will load the &#8220;public/layouts/home.html&#8221; layout file.</p>
+<p>Then, it calls the template() function which is intended as a verb in this instance, like &#8220;template this layout&#8221;.</p>
+<p>And, then, it calls the &#8220;write()&#8221; method to output the merged logic.</p>
+<p>Below is the YAML file for the contact form.  It would use the layout and template specified above to bring all the &#8220;separate&#8221; aspects together.</p>
+<p>The config file is concerned with:</p>
+<ul class="simple">
+<li>the id of the section in layout to populate markup into, in this example: contact, header and footer</li>
+<li>a RESTful API &#8220;url&#8221;</li>
+<li>&#8220;args&#8221; to pass to the data URL</li>
+<li>a &#8220;partial&#8221; template to render the data with</li>
+<li>a built in &#8220;type&#8221; for type-specific rendering logics</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
+
+<span class="l-Scalar-Plain">binding</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">contact</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-form/contact&#39;</span>
+        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;form-contact.hbs&#39;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;Form&quot;</span>
+    <span class="l-Scalar-Plain">header</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;%dataAPI%/header&quot;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;html&quot;</span>
+    <span class="l-Scalar-Plain">footer</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;%dataAPI%/footer&quot;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;html&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 

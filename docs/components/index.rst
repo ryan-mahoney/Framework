@@ -348,4 +348,45 @@ Here is the subscriber that stores data in the database that is published when f
 Separation
 ++++++++++
 
-separation...
+Fork on github here: `form source <https://github.com/virtuecenter/separation>`_
+
+Separation is a way to bind the data returned from a RESTful API to a "partial" template that will render the data into a complete page "layout".
+
+FMF uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:
+
+.. code-block:: php
+
+  $this->separation->layout('home')->template()->write();
+
+In the above example, it will load the "public/layouts/home.html" layout file.
+
+Then, it calls the template() function which is intended as a verb in this instance, like "template this layout".
+
+And, then, it calls the "write()" method to output the merged logic.
+
+Below is the YAML file for the contact form.  It would use the layout and template specified above to bring all the "separate" aspects together.
+
+The config file is concerned with:
+
+* the id of the section in layout to populate markup into, in this example: contact, header and footer
+* a RESTful API "url"
+* "args" to pass to the data URL
+* a "partial" template to render the data with
+* a built in "type" for type-specific rendering logics
+
+.. code-block:: yaml
+
+  js:
+
+  binding:
+      contact:
+          url: '%dataAPI%/json-form/contact'
+          args: []
+          partial: 'form-contact.hbs'
+          type: "Form"
+      header:
+          url: "%dataAPI%/header"
+          type: "html"
+      footer:
+          url: "%dataAPI%/footer"
+          type: "html"
