@@ -180,7 +180,7 @@ public
 The public folder stores files that should be publicly available on the website such as css and js files, as well as some files in the "layouts", "partials" and "helpers" folder that are used for front-end theming.
 
 public/index.php
-*********
+****************
 
 The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.
 
@@ -202,13 +202,13 @@ Self explanatory.
 ---------
 
 public/helpers
-*******
+**************
 
 public/layouts
-*******
+**************
 
 public/partials
-********
+***************
 
 subscribers
 +++++++++++
