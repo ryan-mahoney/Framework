@@ -245,8 +245,57 @@ In the above example, things like {{{header}}} will be substituted with the mark
 public/partials
 ***************
 
+The partials folder stores all of the *partials* files that will be used in layouts to render data.  The are .hbs or Handle Bar Script files.
+
+.. code-block:: hbs
+
+	<ul class="" style="padding:0; border:0; margin:0">
+	{{#each menus}}
+		<li><a href="{{url}}">{{label}}</a></li>
+	{{/each}}
+	</ul>
+
+----------
+
 subscribers
 +++++++++++
+
+FMF relies heavily on the PubSub pattern.  As such, we need a way to specify "subscribers" that will receive published "topics", as well as a mapping of which subscribers will be subscribed to which topics.
+
+First, the subscriptions, in YAML format:
+
+.. code-block:: yaml
+
+	topics:
+	    form-contact-save: 
+	       PostToDB: ['post', 'db']
+	    form-contactbrief-save: 
+	       PostToDB: ['post', 'db']
+	    form-subscribe-save:
+	       PostToDB: ['post', 'db']
+
+And here is the subscriber that stores data in the database that is published when forms are submitted:
+
+.. code-sample:: php
+
+	<?php
+	return function ($event, $post, $db) {
+		if (!isset($event['dbURI']) || empty($event['dbURI'])) {
+			throw new \Exception('Event does not contain a dbURI');
+		}
+		if (!isset($event['formMarker'])) {
+			throw new \Exception('Form marker not set in post');
+		}
+		$document = $post->{$event['formMarker']};
+		if ($document === false || empty($document)) {
+			throw new \Exception('Document not found in post');
+		}
+		$documentObject = $db->documentStage($event['dbURI'], $document);
+		$documentObject->upsert();
+		$post->statusSaved();
+	};
+
+----------
 
 vendors
 +++++++
