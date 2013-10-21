@@ -149,7 +149,7 @@
 <div class="section" id="build-and-re-build">
 <h2>Build and Re-Build<a class="headerlink" href="#build-and-re-build" title="Permalink to this headline">¶</a></h2>
 <p>Making a modern website or mobile-website can be complicated, and as such, folder structures have become more and more cluttered.  FMF provides a facilty for builing projects initially, which is to basically go into your projects root folder, and run the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre>mkdir myproject
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>myproject
 php public/index.php build
 </pre></div>
 </div>
@@ -159,15 +159,23 @@ php public/index.php build
 </div>
 <div class="section" id="auto-generated-routes">
 <h2>Auto-Generated Routes<a class="headerlink" href="#auto-generated-routes" title="Permalink to this headline">¶</a></h2>
+<p>A lot of &#8220;lacing-up&#8221; of application routes is handled automatically by FMF.  So, for example, if you have a <em>form</em> file named &#8220;contact&#8221; in your project, the route /form/contact will automatically be created.  The same is true for collections.  So, if you have a <em>collection</em> &#8220;blogs&#8221;, then the &#8220;/blogs&#8221; and &#8220;blog/:slug&#8221; routes will be generated.</p>
 </div>
 <div class="section" id="api-centric">
 <h2>API Centric<a class="headerlink" href="#api-centric" title="Permalink to this headline">¶</a></h2>
+<p>Some framework really emphasize their object-relational-mappers [ORMs].  ORMs are tools that try to make the banal work of working with antiquated SQL commands more object oriented.  Basically, ORMs are crap.  They make queries that are easy to write... easy to write and complex queries even more difficult.  But &#8211; why would you use a SQL database in the first place, right?</p>
+<p>If you are using FMF, you are also using <a class="reference external" href="http://www.mongodb.org/">MongoDB</a> (or a derivive like <a class="reference external" href="http://www.tokutek.com/products/tokumx-for-mongodb/">TokuMX</a>) then and ORM won&#8217;t help you, the native driver provides a simple mechanism for writing queries.  But then, why are you writing queries?  FMF comes with a very robust RESTful API for working with MongoDB data sources and discourages you as much as possible from writing queries.  Instead, you should be creating APIs and depending on built it components like the <em>form</em> component for writing inserts for you.</p>
+<p>At a time where mobile apps are so pervasive, if your application is important, you&#8217;re going to have to write and API anyway &#8211; so you might as well just create one universal API for both web and mobile applications.</p>
+<p>End rant.</p>
 </div>
 <div class="section" id="service-oriented">
 <h2>Service Oriented<a class="headerlink" href="#service-oriented" title="Permalink to this headline">¶</a></h2>
+<p>I know Service Oriented Architecture [SOA] sounds like some kind of BS buzzword, but bear with me.  My utilizing a dependecy injection container, FMF provides a range of &#8220;services&#8221; to applications that creates an excellent de-coupling of logic and maximizes the potential for unit-testing the framework and your own services.</p>
 </div>
 <div class="section" id="less-logic-templates">
 <h2>Less-Logic Templates<a class="headerlink" href="#less-logic-templates" title="Permalink to this headline">¶</a></h2>
+<p>Isn&#8217;t PHP itself a templating language?  Well, that&#8217;s how I always looked at it.  Smarty?  No thank you!  But then, as a plethora of JS bases templating languages emerged, I realized that the real beauty of logic-less templates is that they really force the API to provide data in a useful format and prevent front-end developers from writing queries.</p>
+<p>I think the battle for best templating language is not over yet, but for now, I choose Handlebars which is popular in Javascript and has a PHP implemenation as well.</p>
 </div>
 <div class="section" id="pubsub-decoupling">
 <h2>PubSub Decoupling<a class="headerlink" href="#pubsub-decoupling" title="Permalink to this headline">¶</a></h2>
