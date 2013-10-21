@@ -190,61 +190,43 @@
 <hr class="docutils" />
 <p>An example of the result of a collection can be found here: <a class="reference external" href="http://json.virtuecenter.com/json-data/blogs/all?pretty">Blogs Collection API</a></p>
 <p>Collection APIs are handy, because you can see the field layout easily in JSON:</p>
-<p>..code-block:: json</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>{</dt>
-<dd><dl class="first docutils">
-<dt>&#8220;blogs&#8221;: [</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><p class="first">&#8220;_id&#8221;: &#8220;50490cb9b79921001200000b&#8221;,
-&#8220;authors&#8221;: [</p>
-<blockquote>
-<div>&#8220;50491761b79921131200000a&#8221;</div></blockquote>
-<p>],
-&#8220;body&#8221;: &#8220;&lt;p&gt;Article Content&lt;/p&gt;&#8221;,
-&#8220;code_name&#8221;: &#8220;naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools&#8221;,
-&#8220;comments&#8221;: &#8220;t&#8221;,
-&#8220;description&#8221;: &#8220;Some Descriptive Text&#8221;&#8221;,
-&#8220;display_date&#8221;: {</p>
-<blockquote>
-<div>&#8220;sec&#8221;: 1346126400,
-&#8220;usec&#8221;: 0</div></blockquote>
-<p>},
-&#8220;featured&#8221;: &#8220;f&#8221;,
-&#8220;image&#8221;: {</p>
-<blockquote>
-<div>&#8220;name&#8221;: &#8220;us-davis-pepper-spray.jpg&#8221;,
-&#8220;size&#8221;: &#8220;411507&#8221;,
-&#8220;type&#8221;: &#8220;image/jpeg&#8221;,
-&#8220;url&#8221;: &#8220;<a class="reference external" href="http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg">http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg</a>&#8221;,
-&#8220;height&#8221;: &#8220;453&#8221;,
-&#8220;width&#8221;: &#8220;680&#8221;</div></blockquote>
-<p class="last">},
-&#8220;pinned&#8221;: &#8220;f&#8221;,
-&#8220;status&#8221;: &#8220;published&#8221;,
-&#8220;tags&#8221;: [],
-&#8220;title&#8221;: &#8220;NAACP calls for an end to Birmingham police using pepper spray in schools&#8221;,
-&#8220;display_date__MdY&#8221;: &#8220;Aug 28, 2012&#8221;,
-&#8220;path&#8221;: &#8220;/blog/naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools.html&#8221;</p>
-</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>],
-&#8220;pagination&#8221;: {</p>
-<blockquote>
-<div>&#8220;limit&#8221;: 20,
-&#8220;total&#8221;: 1,
-&#8220;page&#8221;: 1,
-&#8220;pageCount&#8221;: 1</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<div class="highlight-json"><pre>{
+    "blogs": [
+        {
+            "_id": "50490cb9b79921001200000b",
+            "body": "&lt;p&gt;Article Content&lt;/p&gt;",
+            "code_name": "naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools",
+            "comments": "t",
+            "description": "Some Descriptive Text"",
+            "display_date": {
+                "sec": 1346126400,
+                "usec": 0
+            },
+            "featured": "f",
+            "image": {
+                "name": "us-davis-pepper-spray.jpg",
+                "size": "411507",
+                "type": "image/jpeg",
+                "url": "http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg",
+                "height": "453",
+                "width": "680"
+            },
+            "pinned": "f",
+            "status": "published",
+            "tags": [],
+            "title": "NAACP calls for an end to Birmingham police using pepper spray in schools",
+            "display_date__MdY": "Aug 28, 2012",
+            "path": "/blog/naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools.html"
+        }
+    ],
+    "pagination": {
+        "limit": 20,
+        "total": 1,
+        "page": 1,
+        "pageCount": 1
+    }
+}</pre>
+</div>
 <hr class="docutils" />
 <p>The API for working with collection data is restul and follows the follwing format:</p>
 <p><a class="reference external" href="http://website.com/json-date/collection/method/limit/page/sortjson">http://website.com/json-date/collection/method/limit/page/sortjson</a></p>
