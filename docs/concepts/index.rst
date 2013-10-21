@@ -31,7 +31,7 @@ API Centric
 
 Some frameworks really emphasize their amazing `object relational mappers <http://four.laravel.com/docs/eloquent>`_ [ORMs].  ORMs are tools that try to make the banal work of writing SQL commands more modern and automated.  ORMs are crap.  They make queries that are easy to write... easy to write... and complex queries even more difficult.  But -- why would you use a SQL database in the first place, right?
 
-If you are using FMF, you are also using `MongoDB <http://www.mongodb.org/>`_ (or a derivive like `TokuMX <http://www.tokutek.com/products/tokumx-for-mongodb/>`_), so an ORM won't help you much, as the native `MongoDB <http://pecl.php.net/package/mongo>`_ driver provides a simple mechanism for writing queries.  
+If you are using FMF, you are also using `MongoDB <http://www.mongodb.org/>`_ (or a derivive like `TokuMX <http://www.tokutek.com/products/tokumx-for-mongodb/>`_), so an ORM won't help you much, as the native `mongo <http://pecl.php.net/package/mongo>`_ driver provides a simple mechanism for writing queries.  
 
 But then, why are you writing queries?  FMF comes with a very robust RESTful API for working with MongoDB data sources and discourages you as much as possible from writing queries.  Instead, you should be creating APIs and depending on built in components like the *form* component for saving, validating and sanitizing data for you.
 
