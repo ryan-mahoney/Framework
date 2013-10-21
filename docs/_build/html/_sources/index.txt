@@ -25,9 +25,21 @@ Contents:
    components/index
    theming/index
 
-Indices and tables
-==================
+About the Author
+================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+PHP FMF was originally created by Ryan Mahoney and sponsored by `Virtue Center for Art & Technology <http://www.virtuecenter.com>`_
+
+Ryan created the framework to take advantage of patterns and concepts popularized in other software languages and architecturs.
+
+He can be reaced at `ryan@virtuecenter.com <mailto:ryan@virtuecenter.com>`_
+
+Contributions
+=============
+
+There are currently no outside contributors to the project, however Faizan Sattar from Saleforce.com has advised on the architecture and Daniel Bickett came up with the name.
+
+Copyright and Licence
+=====================
+
+FMF is © 2013 Ryan Mahoney and licenced under the `MIT Open Source License <https://github.com/virtuecenter/framework/blob/master/LICENSE>`_
