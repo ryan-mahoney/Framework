@@ -12,7 +12,7 @@ FMF is an opinionated PHP Framework.
 
 FMF is small and aims to provide a single best-practices approach to addressing all the concerns of developing modern web and mobile-web applications.  
 
-It is No-SQL, API-Centric, Service Oriented, RESTful and uses PubSub decoupling application logic.
+It can be described as No-SQL, API-Centric, Less-Logic, Service Oriented, RESTful, PubSub and much more.
 
 Contents:
 
