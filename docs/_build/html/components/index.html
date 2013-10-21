@@ -99,11 +99,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Components</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#collections">Collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#forms">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#form">Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#separation">Separation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subscribers">Subscribers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#manager">Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pubsub">PubSub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../theming/index.html">Theming</a><ul>
@@ -155,21 +154,133 @@
           
   <div class="section" id="components">
 <h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="collections">
-<span id="id1"></span><h2>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h2>
-<p>Some text about collections</p>
+<div class="section" id="collection">
+<span id="id1"></span><h2>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
+<p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/collection">collection source</a></p>
+<p>Collections are at the heart of how FMF makes data accessable.  FMF will create RESTful APIs that product JSON data, as well as front-end routes for collection data on a website front-end.</p>
+<p>Collection files are typically small, but they may contain logic for transforming individual documents returned:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">use</span> <span class="nx">UrlId\UrlId</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">videos</span> <span class="p">{</span>
+        <span class="k">use</span> <span class="nx">Collection\Collection</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$publishable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="nv">$singular</span> <span class="o">=</span> <span class="s1">&#39;video&#39;</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">document</span> <span class="p">(</span><span class="o">&amp;</span><span class="nv">$document</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;video_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+                <span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;video_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;video&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                        <span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;video_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">UrlId</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;video&#39;</span><span class="p">],</span> <span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;video_type&#39;</span><span class="p">]);</span>
+                <span class="p">}</span>
+                <span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;category_titles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nv">$category</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;categories&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">findOne</span><span class="p">([</span><span class="s1">&#39;_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">(</span><span class="nv">$id</span><span class="p">)],</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]);</span>
+                                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$category</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                                        <span class="k">continue</span><span class="p">;</span>
+                                <span class="p">}</span>
+                                <span class="nv">$document</span><span class="p">[</span><span class="s1">&#39;category_titles&#39;</span><span class="p">][]</span> <span class="o">=</span> <span class="nv">$category</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">];</span>
+                        <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="forms">
-<h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>An example of the result of a collection can be found here: <a class="reference external" href="http://json.virtuecenter.com/json-data/blogs/all?pretty">Blogs Collection API</a></p>
+<p>Collection APIs are handy, because you can see the field layout easily in JSON:</p>
+<p>..code-block:: json</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>{</dt>
+<dd><dl class="first docutils">
+<dt>&#8220;blogs&#8221;: [</dt>
+<dd><dl class="first docutils">
+<dt>{</dt>
+<dd><p class="first">&#8220;_id&#8221;: &#8220;50490cb9b79921001200000b&#8221;,
+&#8220;authors&#8221;: [</p>
+<blockquote>
+<div>&#8220;50491761b79921131200000a&#8221;</div></blockquote>
+<p>],
+&#8220;body&#8221;: &#8220;&lt;p&gt;Article Content&lt;/p&gt;&#8221;,
+&#8220;code_name&#8221;: &#8220;naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools&#8221;,
+&#8220;comments&#8221;: &#8220;t&#8221;,
+&#8220;description&#8221;: &#8220;Some Descriptive Text&#8221;&#8221;,
+&#8220;display_date&#8221;: {</p>
+<blockquote>
+<div>&#8220;sec&#8221;: 1346126400,
+&#8220;usec&#8221;: 0</div></blockquote>
+<p>},
+&#8220;featured&#8221;: &#8220;f&#8221;,
+&#8220;image&#8221;: {</p>
+<blockquote>
+<div>&#8220;name&#8221;: &#8220;us-davis-pepper-spray.jpg&#8221;,
+&#8220;size&#8221;: &#8220;411507&#8221;,
+&#8220;type&#8221;: &#8220;image/jpeg&#8221;,
+&#8220;url&#8221;: &#8220;<a class="reference external" href="http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg">http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg</a>&#8221;,
+&#8220;height&#8221;: &#8220;453&#8221;,
+&#8220;width&#8221;: &#8220;680&#8221;</div></blockquote>
+<p>},
+&#8220;pinned&#8221;: &#8220;f&#8221;,
+&#8220;status&#8221;: &#8220;published&#8221;,
+&#8220;tags&#8221;: [</p>
+<p class="last">],
+&#8220;title&#8221;: &#8220;NAACP calls for an end to Birmingham police using pepper spray in schools&#8221;,
+&#8220;display_date__MdY&#8221;: &#8220;Aug 28, 2012&#8221;,
+&#8220;path&#8221;: &#8220;/blog/naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools.html&#8221;</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>],
+&#8220;pagination&#8221;: {</p>
+<blockquote>
+<div>&#8220;limit&#8221;: 20,
+&#8220;total&#8221;: 1,
+&#8220;page&#8221;: 1,
+&#8220;pageCount&#8221;: 1</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>The API for working with collection data is restul and follows the follwing format:</p>
+<p><a class="reference external" href="http://website.com/json-date/collection/method/limit/page/sortjson">http://website.com/json-date/collection/method/limit/page/sortjson</a></p>
+<p>For example:</p>
+<p><a class="reference external" href="http://json.virtuecenter.com/json-data/blogs/all/5/0">http://json.virtuecenter.com/json-data/blogs/all/5/0</a>/{&#8220;display_date&#8221;:-1}</p>
+<p>The API has many built in methods:</p>
+<ul class="simple">
+<li>all</li>
+<li>byAuthorId</li>
+<li>byAuthorSlug</li>
+<li>byCategory</li>
+<li>byCategoryFeatured</li>
+<li>byCategoryId</li>
+<li>byCategoryIdFeatured</li>
+<li>byDatePast</li>
+<li>byDateUpcoming</li>
+<li>byId</li>
+<li>bySlug</li>
+<li>byTag</li>
+<li>byTagFeatured</li>
+<li>featured</li>
+<li>popular</li>
+</ul>
+<p>To use a method that takes and argument, hyphenate the argument with the method, for example:</p>
+<p><a class="reference external" href="http://json.virtuecenter.com/json-data/blogs/byTag-GovernorBentley">http://json.virtuecenter.com/json-data/blogs/byTag-GovernorBentley</a></p>
+<hr class="docutils" />
+</div>
+<div class="section" id="form">
+<h2>Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="separation">
-<h2>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="subscribers">
-<h2>Subscribers<a class="headerlink" href="#subscribers" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="manager">
-<h2>Manager<a class="headerlink" href="#manager" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pubsub">
+<span id="id3"></span><h2>PubSub<a class="headerlink" href="#pubsub" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
