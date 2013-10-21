@@ -21,11 +21,21 @@ forms
 
 public
 ++++++
+
 css
+***
+
 fonts
+*****
+
 helpers
+*******
+
 images
+******
+
 js
+**
 
 public/layouts
 ++++++++++++++
