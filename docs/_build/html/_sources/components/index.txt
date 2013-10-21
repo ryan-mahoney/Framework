@@ -41,11 +41,14 @@ Collection files are typically small, but they may contain logic for transformin
 		}
 	}
 
+
 ----------
+
 
 An example of the result of a collection can be found here: `Blogs Collection API <http://json.virtuecenter.com/json-data/blogs/all?pretty>`_
 
 Collection APIs are handy, because you can see the field layout easily in JSON:
+
 
 ..code-block:: json
 
@@ -91,7 +94,9 @@ Collection APIs are handy, because you can see the field layout easily in JSON:
 	    }
 	}
 
+
 ---------
+
 
 The API for working with collection data is restul and follows the follwing format:
 
@@ -119,23 +124,33 @@ The API has many built in methods:
 * featured
 * popular
 
+
 To use a method that takes and argument, hyphenate the argument with the method, for example:
 
 http://json.virtuecenter.com/json-data/blogs/byTag-GovernorBentley
 
+
 ----------
+
 
 .. form:
 
 Form
 ++++
 
+forms...
+
 .. _separation:
 
 Separation
 ++++++++++
 
+separation...
+
+
 .. _pubsub:
 
 PubSub
 ++++++
+
+pubsub...
