@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to FMF’s documentation! &mdash; FMF 1.0 documentation</title>
+  <title>PHP Federated Micro-Framework &mdash; FMF 1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
 
   
     <link rel="top" title="FMF 1.0 documentation" href="#"/>
-        <link rel="next" title="Overview" href="installation/overview.html"/> 
+        <link rel="next" title="Installation" href="setup/index.html"/> 
 
   
   
@@ -67,11 +67,54 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation/overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#palette-class">Palette Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#about-colorspaces-support">About colorspaces support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#color-class">Color Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#profile-class">Profile Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup/index.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup/index.html#creating-a-project">Creating A Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="concepts/index.html">Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#build-and-re-build">Build and Re-Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#auto-generated-routes">Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#api-centric">API Centric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#service-oriented">Service Oriented</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#less-logic-templates">Less-Logic Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#pubsub-decoupling">PubSub Decoupling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#no-sql">No-SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#queues">Queues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="folder/index.html">Folder Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#index-php">index.php</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#app">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#collections">collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#config">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#filters">filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#forms">forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#public">public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#public-layouts">public/layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#partials">partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#subscribers">subscribers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#vendors">vendors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#collections">Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#forms">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#separation">Separation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#subscribers">Subscribers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#manager">Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theming/index.html">Theming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#sample-project">Sample Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#listing-routes">Listing Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#handlebars-php">Handlebars PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#separataion-app">Separataion App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#working-with-layouts">Working with Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#working-with-partials">Working with Partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#headers-and-footers">Headers and Footers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#page-titles">Page Titles</a></li>
 </ul>
 </li>
 </ul>
@@ -95,44 +138,69 @@
 
 <ul class="wy-breadcrumbs">
   <li><a href="/">Docs</a> &raquo;</li>
-  <li><a href="">Welcome to FMF&#8217;s documentation!</a></li>
+  <li><a href="">PHP Federated Micro-Framework</a></li>
   
 </ul>
 <hr/>
 
 
           
-  <div class="section" id="welcome-to-fmf-s-documentation">
-<h1>Welcome to FMF&#8217;s documentation!<a class="headerlink" href="#welcome-to-fmf-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Ryan will fill this in soon.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
-
-<span class="nv">$imagine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Gd\Imagine</span><span class="p">();</span>
-<span class="c1">// or</span>
-<span class="nv">$imagine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Imagick\Imagine</span><span class="p">();</span>
-<span class="c1">// or</span>
-<span class="nv">$imagine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Gmagick\Imagine</span><span class="p">();</span>
-
-<span class="nv">$size</span>    <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagine\Image\Box</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
-
-<span class="nv">$mode</span>    <span class="o">=</span> <span class="nx">Imagine\Image\ImageInterface</span><span class="o">::</span><span class="na">THUMBNAIL_INSET</span><span class="p">;</span>
-<span class="c1">// or</span>
-<span class="nv">$mode</span>    <span class="o">=</span> <span class="nx">Imagine\Image\ImageInterface</span><span class="o">::</span><span class="na">THUMBNAIL_OUTBOUND</span><span class="p">;</span>
-
-<span class="nv">$imagine</span><span class="o">-&gt;</span><span class="na">open</span><span class="p">(</span><span class="s1">&#39;/path/to/large_image.jpg&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">thumbnail</span><span class="p">(</span><span class="nv">$size</span><span class="p">,</span> <span class="nv">$mode</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;/path/to/thumbnail.png&#39;</span><span class="p">)</span>
-<span class="p">;</span>
-</pre></div>
-</div>
+  <div class="section" id="php-federated-micro-framework">
+<h1>PHP Federated Micro-Framework<a class="headerlink" href="#php-federated-micro-framework" title="Permalink to this headline">¶</a></h1>
+<p>FMF is an opinionated PHP Framework.</p>
+<p>FMF is small and aims to provide a single best-practices approach to addressing all the concerns of developing modern web and mobile-web applications.</p>
+<p>It is No-SQL, API-Centric, Service Oriented, RESTful and uses PubSub decoupling application logic.</p>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation/overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#palette-class">Palette Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#about-colorspaces-support">About colorspaces support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#color-class">Color Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#profile-class">Profile Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup/index.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup/index.html#creating-a-project">Creating A Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="concepts/index.html">Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#build-and-re-build">Build and Re-Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#auto-generated-routes">Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#api-centric">API Centric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#service-oriented">Service Oriented</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#less-logic-templates">Less-Logic Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#pubsub-decoupling">PubSub Decoupling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#no-sql">No-SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/index.html#queues">Queues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="folder/index.html">Folder Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#index-php">index.php</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#app">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#collections">collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#config">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#filters">filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#forms">forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#public">public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#public-layouts">public/layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#partials">partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#subscribers">subscribers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="folder/index.html#vendors">vendors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#collections">Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#forms">Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#separation">Separation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#subscribers">Subscribers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components/index.html#manager">Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theming/index.html">Theming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#sample-project">Sample Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#listing-routes">Listing Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#handlebars-php">Handlebars PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#separataion-app">Separataion App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#working-with-layouts">Working with Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#working-with-partials">Working with Partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#headers-and-footers">Headers and Footers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming/index.html#page-titles">Page Titles</a></li>
 </ul>
 </li>
 </ul>

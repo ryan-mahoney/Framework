@@ -3,39 +3,25 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to FMF's documentation!
-===============================
+PHP Federated Micro-Framework
+=============================
 
-Ryan will fill this in soon.
+FMF is an opinionated PHP Framework. 
 
-.. code-block:: php
+FMF is small and aims to provide a single best-practices approach to addressing all the concerns of developing modern web and mobile-web applications.  
 
-    <?php
-
-    $imagine = new Imagine\Gd\Imagine();
-    // or
-    $imagine = new Imagine\Imagick\Imagine();
-    // or
-    $imagine = new Imagine\Gmagick\Imagine();
-
-    $size    = new Imagine\Image\Box(40, 40);
-
-    $mode    = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-    // or
-    $mode    = Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
-
-    $imagine->open('/path/to/large_image.jpg')
-        ->thumbnail($size, $mode)
-        ->save('/path/to/thumbnail.png')
-    ;
+It is No-SQL, API-Centric, Service Oriented, RESTful and uses PubSub decoupling application logic.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   installation/overview
-
+   setup/index
+   concepts/index
+   folder/index
+   components/index
+   theming/index
 
 Indices and tables
 ==================
@@ -43,4 +29,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
