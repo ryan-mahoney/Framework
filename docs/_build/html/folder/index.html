@@ -388,6 +388,24 @@
 </pre></div>
 </div>
 <p>And here is the subscriber that stores data in the database that is published when forms are submitted:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$post</span><span class="p">,</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;dbURI&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;dbURI&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">&#39;Event does not contain a dbURI&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;formMarker&#39;</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">&#39;Form marker not set in post&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$document</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;formMarker&#39;</span><span class="p">]};</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$document</span> <span class="o">===</span> <span class="k">false</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$document</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">&#39;Document not found in post&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$documentObject</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">documentStage</span><span class="p">(</span><span class="nv">$event</span><span class="p">[</span><span class="s1">&#39;dbURI&#39;</span><span class="p">],</span> <span class="nv">$document</span><span class="p">);</span>
+        <span class="nv">$documentObject</span><span class="o">-&gt;</span><span class="na">upsert</span><span class="p">();</span>
+        <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">statusSaved</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="vendors">
