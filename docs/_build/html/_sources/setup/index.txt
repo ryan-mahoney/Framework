@@ -45,7 +45,7 @@ For Nginx & PHP-FPM
 
 This is the recommended web-server.
 
-.. code-block:: bash
+.. code-block:: nginx
 
     server {
 	    listen       *:80;
@@ -68,7 +68,7 @@ For Apache
 
 Add the following logic to your .htaccess files:
 
-.. code-block:: bash
+.. code-block:: apache
    
    Options +FollowSymLinks
    RewriteEngine On

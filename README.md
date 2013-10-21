@@ -1,41 +1,21 @@
 ![PHP Federated Micro Framework](https://raw.github.com/virtuecenter/framework/master/fmf-logo.jpg)
 
-RESTful, Event-Driven, NoSQL PHP Framework... based on micro frameworks.
+Federated Micro-Framework is an opinionated PHP Framework. 
 
-This framework is installed via Composer.  
+FMF is small and aims to provide a single best-practices approach to addressing all the concerns of developing modern web and mobile-web applications.
 
-**Requires PHP 5.4.**  
+It can be described as No-SQL, API-Centric, Less-Logic, Service Oriented, RESTful, PubSub and much more.
 
-**PHP Minimum Module Dependencies:**  
-*mbstring, memcache, openssl*
+*Learn all about it here*
 
-**System Support:**  
-*Linux / Windows / Mac*
-
-**Server Process Dependecies**  
-*Memcached*
-
-**Extra Dependecies / For DB Interaction**   
-(not for working Local)  
-*MongoDB, Beanstalkd, Solr*
+http://fmf.readthedocs.org
 
 - - -
 
-This framework aims to use the latest PHP technology for high-speed execution, but a design that is extremely modular and minimal while achieving maximum unit-testability.  
+``About the Author
 
-to install, from withing a new folder:  
+PHP FMF was created by Ryan Mahoney and is sponsored by Virtue Center for Art & Technology http://www.virtuecenter.com
 
-```bash
-php -r "eval(file_get_contents('https://raw.github.com/virtuecenter/framework/master/project.php'));"
-```
+Ryan created the framework to take advantage of patterns and concepts popularized in other software languages and architectures in PHP, with simplicity, elegance and as little code as possible.
 
-If your project already exits, you will just need to obtain it via git, and build it with composer.  
-
-```bash
-composer install
-```
-
-periodically, you will need to re-build the project as you add more forms, collections, helpers, filters, etc.  
-```bash
-php index.php build
-```
+He can be reaced at ryan@virtuecenter.com

@@ -186,31 +186,31 @@ php public/index.php build
 <div class="section" id="for-nginx-php-fpm">
 <h2>For Nginx &amp; PHP-FPM<a class="headerlink" href="#for-nginx-php-fpm" title="Permalink to this headline">¶</a></h2>
 <p>This is the recommended web-server.</p>
-<div class="highlight-bash"><div class="highlight"><pre>server <span class="o">{</span>
-        listen       *:80;
-        server_name  myrpoject.localhost myproject.com;
-        root         /etc/nginx/sites-available/myproject/public;
+<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+        <span class="kn">listen</span>       <span class="s">*:80</span><span class="p">;</span>
+        <span class="kn">server_name</span>  <span class="s">myrpoject.localhost</span> <span class="s">myproject.com</span><span class="p">;</span>
+        <span class="kn">root</span>         <span class="s">/etc/nginx/sites-available/myproject/public</span><span class="p">;</span>
 
-        try_files <span class="nv">$uri</span> /index.php?<span class="nv">$query_string</span>;
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
 
-        location ~ .php<span class="nv">$ </span><span class="o">{</span>
-            fastcgi_connect_timeout 3s;
-            fastcgi_read_timeout 10s;
-            include fastcgi_params;
-            fastcgi_pass 127.0.0.1:9000;
-        <span class="o">}</span>
-    <span class="o">}</span>
+        <span class="kn">location</span> <span class="p">~</span> <span class="sr">.php$</span> <span class="p">{</span>
+            <span class="kn">fastcgi_connect_timeout</span> <span class="s">3s</span><span class="p">;</span>
+            <span class="kn">fastcgi_read_timeout</span> <span class="s">10s</span><span class="p">;</span>
+            <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+            <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="for-apache">
 <h2>For Apache<a class="headerlink" href="#for-apache" title="Permalink to this headline">¶</a></h2>
 <p>Add the following logic to your .htaccess files:</p>
-<div class="highlight-bash"><div class="highlight"><pre>Options +FollowSymLinks
-RewriteEngine On
-RewriteCond %<span class="o">{</span>REQUEST_FILENAME<span class="o">}</span> !-d
-RewriteCond %<span class="o">{</span>REQUEST_FILENAME<span class="o">}</span> !-f
-RewriteRule ^ index.php <span class="o">[</span>L<span class="o">]</span>
+<div class="highlight-apache"><div class="highlight"><pre><span class="nb">Options</span> +FollowSymLinks
+<span class="nb">RewriteEngine</span> <span class="k">On</span>
+<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
+<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+<span class="nb">RewriteRule</span> ^ index.php [L]
 </pre></div>
 </div>
 </div>
