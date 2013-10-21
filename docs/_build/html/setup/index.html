@@ -71,8 +71,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-project">Creating A Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#for-nginx-php-fpm">For Nginx &amp; PHP-FPM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#for-apache">For Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web-servers">Web Servers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
 </ul>
 </li>
@@ -184,8 +183,11 @@ php public/index.php build
 </pre></div>
 </div>
 </div>
-<div class="section" id="for-nginx-php-fpm">
-<h2>For Nginx &amp; PHP-FPM<a class="headerlink" href="#for-nginx-php-fpm" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="web-servers">
+<h2>Web Servers<a class="headerlink" href="#web-servers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nginx-php-fpm">
+<h3>Nginx &amp; PHP-FPM<a class="headerlink" href="#nginx-php-fpm" title="Permalink to this headline">¶</a></h3>
 <p>This is the recommended web-server.</p>
 <div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
         <span class="kn">listen</span>       <span class="s">*:80</span><span class="p">;</span>
@@ -204,8 +206,8 @@ php public/index.php build
 </pre></div>
 </div>
 </div>
-<div class="section" id="for-apache">
-<h2>For Apache<a class="headerlink" href="#for-apache" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Apache<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Add the following logic to your .htaccess files:</p>
 <div class="highlight-apache"><div class="highlight"><pre><span class="nb">Options</span> +FollowSymLinks
 <span class="nb">RewriteEngine</span> <span class="k">On</span>
@@ -215,9 +217,11 @@ php public/index.php build
 </pre></div>
 </div>
 </div>
+</div>
+<hr class="docutils" />
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<p>FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn&#8217;t it time to make the <a href="#id2"><span class="problematic" id="id3">`</span></a>switch &lt;<a class="reference external" href="http://www.ubuntu.com/">http://www.ubuntu.com/</a>&gt;&#8217;_?</p>
+<p>FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn&#8217;t it time to make the <a href="#id3"><span class="problematic" id="id4">`</span></a>switch &lt;<a class="reference external" href="http://www.ubuntu.com/">http://www.ubuntu.com/</a>&gt;&#8217;_?</p>
 </div>
 </div>
 
