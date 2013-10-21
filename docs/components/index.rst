@@ -41,24 +41,19 @@ Collection files are typically small, but they may contain logic for transformin
 		}
 	}
 
-
 ----------
-
 
 An example of the result of a collection can be found here: `Blogs Collection API <http://json.virtuecenter.com/json-data/blogs/all?pretty>`_
 
 Collection APIs are handy, because you can see the field layout easily in JSON:
 
 
-..code-block:: json
+.. code-block:: json
 
     {
         "blogs": [
             {
                 "_id": "50490cb9b79921001200000b",
-                "authors": [
-                    "50491761b79921131200000a"
-                ],
                 "body": "<p>Article Content</p>",
                 "code_name": "naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools",
                 "comments": "t",
