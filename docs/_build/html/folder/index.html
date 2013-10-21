@@ -216,7 +216,7 @@
 <hr class="docutils" />
 <div class="section" id="filters">
 <h2>filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
-<p>The filters file stores output filters that can be used to perform string replacements on the output just before it is returned to the client.</p>
+<p>The filters folder stores output filters that can be used to perform string replacements on the output just before it is returned to the client.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">return</span> <span class="k">function</span> <span class="p">(</span><span class="o">&amp;</span><span class="nv">$html</span><span class="p">)</span> <span class="p">{</span>
 
@@ -329,10 +329,15 @@
 <hr class="docutils" />
 <div class="section" id="public-helpers">
 <h3>public/helpers<a class="headerlink" href="#public-helpers" title="Permalink to this headline">¶</a></h3>
+<p>The helpers folders stores &#8220;helper&#8221; files that help the less-logic templateing enginer (Handlebars) do more logic.  This should be used sparingly, but is good for things like pagination which might be hard to achieve in Handlebars without a help.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="public-layouts">
 <h3>public/layouts<a class="headerlink" href="#public-layouts" title="Permalink to this headline">¶</a></h3>
+<p>The layouts folder stores individual <em>layouts</em> are the outer-HTML of a single-page application that the partials are rendered into.  For example:</p>
+<p>In the above example, things like {{{header}}} will be substituted with the markup for the header.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="public-partials">
 <h3>public/partials<a class="headerlink" href="#public-partials" title="Permalink to this headline">¶</a></h3>
 </div>

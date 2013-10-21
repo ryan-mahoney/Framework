@@ -77,7 +77,7 @@ The config folder stores indivdual component configurations, such as the databas
 filters
 +++++++
 
-The filters file stores output filters that can be used to perform string replacements on the output just before it is returned to the client.
+The filters folder stores output filters that can be used to perform string replacements on the output just before it is returned to the client.
 
 .. code-block:: php
 
@@ -204,8 +204,42 @@ Self explanatory.
 public/helpers
 **************
 
+The helpers folders stores "helper" files that help the less-logic templateing enginer (Handlebars) do more logic.  This should be used sparingly, but is good for things like pagination which might be hard to achieve in Handlebars without a help.
+
+----------
+
 public/layouts
 **************
+
+The layouts folder stores individual *layouts* are the outer-HTML of a single-page application that the partials are rendered into.  For example:
+
+.. code-block:: html
+    <!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{{title}}</title>
+	</head>
+	<body>
+		<div class="wrapper">
+	  		{{{header}}}
+	  		<div class="container main_container">
+	    		<div class="content_left">
+	    			{{{pages}}}
+	    		</div>
+	    		<div class="content_right">
+	    			{{{twitter}}}
+	    		</div>
+	    		<div class="clear"></div>
+	  		</div>
+	  		{{{footer}}}
+		</div>
+	</body>
+	</html>
+
+In the above example, things like {{{header}}} will be substituted with the markup for the header.
+
+---------
 
 public/partials
 ***************
