@@ -108,12 +108,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#sample-project">Sample Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#listing-auto-generated-routes">Listing Auto-Generated Routes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#types-of-pages">Types of Pages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#handlebars-php">Handlebars PHP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#separataion-app">Separataion App</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-layouts">Working with Layouts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-partials">Working with Partials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#headers-and-footers">Headers and Footers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#page-titles">Page Titles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#separation-applications">Separation Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
 </ul>
 </li>
 </ul>
@@ -179,25 +177,79 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="handlebars-php">
-<h2>Handlebars PHP<a class="headerlink" href="#handlebars-php" title="Permalink to this headline">¶</a></h2>
-</div>
-<hr class="docutils" />
-<div class="section" id="separataion-app">
-<h2>Separataion App<a class="headerlink" href="#separataion-app" title="Permalink to this headline">¶</a></h2>
-</div>
-<hr class="docutils" />
 <div class="section" id="working-with-layouts">
 <h2>Working with Layouts<a class="headerlink" href="#working-with-layouts" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+    <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+            <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;title&gt;</span>{{title}}<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrapper&quot;</span><span class="nt">&gt;</span>
+                    {{{header}}}
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container main_container&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content_left&quot;</span><span class="nt">&gt;</span>
+                            {{{pages}}}
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content_right&quot;</span><span class="nt">&gt;</span>
+                            {{{twitter}}}
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clear&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    {{{footer}}}
+            <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+    <span class="nt">&lt;/html&gt;</span>
+</pre></div>
 </div>
+<p>The above code block is a typical layout file.  Often it will not contain too much markup because a most of the markup will be found in the partials for this layout.  HandlebarsPHP will be used to substitute the variables, that is why they are all in the triple curly-bracket format.</p>
+<p>In this example, there are 5 sections that will be substituted: {{{title}}}, {{{header}}}, {{{pages}}}, {{{twitter}}}, {{{footer}}}.  Each one of these names corresponds to a particular binding in the app files that specifies where the data will come from, and which partial to render it with.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="working-with-partials">
 <h2>Working with Partials<a class="headerlink" href="#working-with-partials" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;&quot;</span> <span class="na">style=</span><span class="s">&quot;padding:0; border:0; margin:0&quot;</span><span class="nt">&gt;</span>
+{{#each menus}}
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{url}}&quot;</span><span class="nt">&gt;</span>{{label}}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+{{/each}}
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
 </div>
+<p>Partials are just the individual parts of a webapages HTML.  FMF currently has standardized on HandlearsPHP as a templating language.  In the example above, the API must be providing a array of data called &#8220;menus&#8221;, and each menu has a &#8220;url&#8221; and &#8220;label&#8221; attribute.</p>
+<p>If you need to know more about how Handlebars works, refer to the Javascript website as all the documentation is there and the PHP version functions the same way.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="separation-applications">
+<h2>Separation Applications<a class="headerlink" href="#separation-applications" title="Permalink to this headline">¶</a></h2>
+<p>One of the distinct features of FMF is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Separation library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
+
+<span class="l-Scalar-Plain">binding</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">contact</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-form/contact&#39;</span>
+        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;form-contact.hbs&#39;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;Form&quot;</span>
+    <span class="l-Scalar-Plain">header</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;%dataAPI%/header&quot;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;html&quot;</span>
+    <span class="l-Scalar-Plain">footer</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;%dataAPI%/footer&quot;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;html&quot;</span>
+</pre></div>
+</div>
+<p>In the code block above, there are 3 bindings.  &#8220;contact&#8221; will obtain the markup for the individual form fields of a contact form and provide it to a partial template for rendering the form.  &#8220;header&#8221; and &#8220;footer&#8221; will call URLs that supply raw HTML and render them directly into the appropriate variables in the layout file.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="headers-and-footers">
-<h2>Headers and Footers<a class="headerlink" href="#headers-and-footers" title="Permalink to this headline">¶</a></h2>
+<h3>Headers and Footers<a class="headerlink" href="#headers-and-footers" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="page-titles">
-<h2>Page Titles<a class="headerlink" href="#page-titles" title="Permalink to this headline">¶</a></h2>
+<h3>Page Titles<a class="headerlink" href="#page-titles" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
