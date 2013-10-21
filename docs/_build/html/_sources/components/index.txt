@@ -50,49 +50,47 @@ An example of the result of a collection can be found here: `Blogs Collection AP
 Collection APIs are handy, because you can see the field layout easily in JSON:
 
 
-..code-block:: js
+..code-block:: json
 
-	{
-	    "blogs": [
-	        {
-	            "_id": "50490cb9b79921001200000b",
-	            "authors": [
-	                "50491761b79921131200000a"
-	            ],
-	            "body": "<p>Article Content</p>",
-	            "code_name": "naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools",
-	            "comments": "t",
-	            "description": "Some Descriptive Text"",
-	            "display_date": {
-	                "sec": 1346126400,
-	                "usec": 0
-	            },
-	            "featured": "f",
-	            "image": {
-	                "name": "us-davis-pepper-spray.jpg",
-	                "size": "411507",
-	                "type": "image/jpeg",
-	                "url": "http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg",
-	                "height": "453",
-	                "width": "680"
-	            },
-	            "pinned": "f",
-	            "status": "published",
-	            "tags": [
-
-	            ],
-	            "title": "NAACP calls for an end to Birmingham police using pepper spray in schools",
-	            "display_date__MdY": "Aug 28, 2012",
-	            "path": "/blog/naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools.html"
-	        }
-	    ],
-	    "pagination": {
-	        "limit": 20,
-	        "total": 1,
-	        "page": 1,
-	        "pageCount": 1
-	    }
-	}
+    {
+        "blogs": [
+            {
+                "_id": "50490cb9b79921001200000b",
+                "authors": [
+                    "50491761b79921131200000a"
+                ],
+                "body": "<p>Article Content</p>",
+                "code_name": "naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools",
+                "comments": "t",
+                "description": "Some Descriptive Text"",
+                "display_date": {
+                    "sec": 1346126400,
+                    "usec": 0
+                },
+                "featured": "f",
+                "image": {
+                    "name": "us-davis-pepper-spray.jpg",
+                    "size": "411507",
+                    "type": "image/jpeg",
+                    "url": "http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg",
+                    "height": "453",
+                    "width": "680"
+                },
+                "pinned": "f",
+                "status": "published",
+                "tags": [],
+                "title": "NAACP calls for an end to Birmingham police using pepper spray in schools",
+                "display_date__MdY": "Aug 28, 2012",
+                "path": "/blog/naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools.html"
+            }
+        ],
+        "pagination": {
+            "limit": 20,
+            "total": 1,
+            "page": 1,
+            "pageCount": 1
+        }
+    }
 
 
 ---------
