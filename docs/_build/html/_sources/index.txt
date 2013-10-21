@@ -25,6 +25,8 @@ Contents:
    components/index
    theming/index
 
+------------
+
 About the Author
 ================
 
@@ -34,10 +36,14 @@ Ryan created the framework to take advantage of patterns and concepts popularize
 
 He can be reaced at `ryan@virtuecenter.com <mailto:ryan@virtuecenter.com>`_
 
+------------
+
 Contributions
 =============
 
 There are currently no outside contributors to the project, however Faizan Sattar from Saleforce.com has advised on the architecture and Daniel Bickett came up with the name.
+
+------------
 
 Copyright and Licence
 =====================
