@@ -388,23 +388,24 @@
 </pre></div>
 </div>
 <p>A partial like that could be rendered into a layout like this:</p>
-<div class="highlight-layout"><pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset="utf-8"&gt;
-        &lt;title&gt;{{page_title}}&lt;/title&gt;
-        &lt;link href="/semantic-ui/css/semantic.min.css" rel="stylesheet" type="text/css" media="all" /&gt;
-        &lt;script src="/js/jquery.min.js"&gt;&lt;/script&gt;
-        &lt;script src="/js/jquery.form.js"&gt;&lt;/script&gt;
-        &lt;script src="/js/formXHR.js"&gt;&lt;/script&gt;
-        &lt;script src="/js/formHelperSemantic.js"&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body id="example"&gt;
-        &lt;div id="main container" style="width: 1200px; margin: auto"&gt;
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>{{page_title}}<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;/semantic-ui/css/semantic.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/js/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/js/jquery.form.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/js/formXHR.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/js/formHelperSemantic.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body</span> <span class="na">id=</span><span class="s">&quot;example&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;main container&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 1200px; margin: auto&quot;</span><span class="nt">&gt;</span>
             {{{contact}}}
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</pre>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
 </div>
 <p>The system will then handle all the business and display logic of handling errors and saving the data in the database.</p>
 </div>
