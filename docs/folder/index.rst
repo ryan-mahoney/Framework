@@ -198,6 +198,7 @@ public/css, public/fonts, public/images, public/js
 **************************************************
 
 Self explanatory.
+
 ---------
 
 public/helpers
