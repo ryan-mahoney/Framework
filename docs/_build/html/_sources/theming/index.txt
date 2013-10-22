@@ -8,7 +8,12 @@ Applying a visual theme to a website or mobile-web application is a critical asp
 Sample Project
 ++++++++++++++
 
-Here is a link to a sample project. You can download, build and run this project and see a practical example of how an FMF works, and specifically, how it is themed.
+Here is a link to a `Demo Project <https://github.com/virtuecenter/demo>`_. You can download, build and run this project and see a practical example of how an FMF works, and specifically, how it is themed.
+
+ * download and build as you would any FMF project
+ * create a database in Mongo called "fmfdemo", with user "demo" and password as "password".  From MongoDB terminal: use fmfdemo; db.addUser('demo', 'password');
+ * import the data: "tar xzf dump.tar.gz", then "cd dump", mongorestore -d fmfdemo ./fmfdemo
+ * configure your webserver, and edit your hosts file to point fmf-demo.localhost to 127.0.0.1
 
 ---------
 

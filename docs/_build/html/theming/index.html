@@ -156,7 +156,15 @@
 <hr class="docutils" />
 <div class="section" id="sample-project">
 <h2>Sample Project<a class="headerlink" href="#sample-project" title="Permalink to this headline">¶</a></h2>
-<p>Here is a link to a sample project. You can download, build and run this project and see a practical example of how an FMF works, and specifically, how it is themed.</p>
+<p>Here is a link to a <a class="reference external" href="https://github.com/virtuecenter/demo">Demo Project</a>. You can download, build and run this project and see a practical example of how an FMF works, and specifically, how it is themed.</p>
+<blockquote>
+<div><ul class="simple">
+<li>download and build as you would any FMF project</li>
+<li>create a database in Mongo called &#8220;fmfdemo&#8221;, with user &#8220;demo&#8221; and password as &#8220;password&#8221;.  From MongoDB terminal: use fmfdemo; db.addUser(&#8216;demo&#8217;, &#8216;password&#8217;);</li>
+<li>import the data: &#8220;tar xzf dump.tar.gz&#8221;, then &#8220;cd dump&#8221;, mongorestore -d fmfdemo ./fmfdemo</li>
+<li>configure your webserver, and edit your hosts file to point fmf-demo.localhost to 127.0.0.1</li>
+</ul>
+</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="listing-auto-generated-routes">
