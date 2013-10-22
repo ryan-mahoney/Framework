@@ -29,6 +29,9 @@ class Framework {
 	public function frontController () {
 		$sapi = php_sapi_name();
 		$root = (($sapi == 'cli') ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
+		if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
+			$root .= '/public';
+		}
 		$container = new Container($root);
 		if ($sapi == 'cli') {
 			if (!isset($_SERVER['argv'][1]) || $_SERVER['argv'][1] != 'build') {
@@ -42,13 +45,13 @@ class Framework {
 		}
 		
 		//configuration cache
-		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false];
+		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false, $root . '-forms.json'];
 		$result = $container->cache->getBatch($items);
 		if ($result === true) {
 			$container->collectionRoute->cacheSet(json_decode($items[$root . '-collections.json'], true));
 			$container->filter->cacheSet(json_decode($items[$root . '-filters.json'], true));
 			$container->helperRoute->cacheSet(json_decode($items[$root . '-helpers.json'], true));
-			//form cache
+			$container->formRoute->cacheSet(json_decode($items[$root . '-forms.json'], true));
 		}
 
 		//smart routing
