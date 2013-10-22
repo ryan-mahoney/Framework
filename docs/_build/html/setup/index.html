@@ -199,21 +199,21 @@ php public/index.php build
 <h2>Web Servers<a class="headerlink" href="#web-servers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="nginx-php-fpm">
 <h3>Nginx &amp; PHP-FPM<a class="headerlink" href="#nginx-php-fpm" title="Permalink to this headline">¶</a></h3>
-<p>This is the recommended web-server.</p>
-<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
-        <span class="kn">listen</span>       <span class="s">*:80</span><span class="p">;</span>
-        <span class="kn">server_name</span>  <span class="s">myrpoject.localhost</span> <span class="s">myproject.com</span><span class="p">;</span>
-        <span class="kn">root</span>         <span class="s">/etc/nginx/sites-available/myproject/public</span><span class="p">;</span>
+<p>Nginx is the recommended web-server for FMF.</p>
+<div class="highlight-nginx"><div class="highlight"><pre>  <span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>       <span class="s">*:80</span><span class="p">;</span>
+    <span class="kn">server_name</span>  <span class="s">myrpoject.localhost</span> <span class="s">myproject.com</span><span class="p">;</span>
+    <span class="kn">root</span>         <span class="s">/etc/nginx/sites-available/myproject/public</span><span class="p">;</span>
 
-        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
+    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
 
-        <span class="kn">location</span> <span class="p">~</span> <span class="sr">.php$</span> <span class="p">{</span>
-            <span class="kn">fastcgi_connect_timeout</span> <span class="s">3s</span><span class="p">;</span>
-            <span class="kn">fastcgi_read_timeout</span> <span class="s">10s</span><span class="p">;</span>
-            <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
-            <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
-        <span class="p">}</span>
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">.php$</span> <span class="p">{</span>
+        <span class="kn">fastcgi_connect_timeout</span> <span class="s">3s</span><span class="p">;</span>
+        <span class="kn">fastcgi_read_timeout</span> <span class="s">10s</span><span class="p">;</span>
+        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
     <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>

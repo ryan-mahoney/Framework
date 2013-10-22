@@ -52,24 +52,24 @@ Web Servers
 Nginx & PHP-FPM
 ***************
 
-This is the recommended web-server.
+Nginx is the recommended web-server for FMF.
 
 .. code-block:: nginx
 
     server {
-	    listen       *:80;
-	    server_name  myrpoject.localhost myproject.com;
-	    root         /etc/nginx/sites-available/myproject/public;
+      listen       *:80;
+      server_name  myrpoject.localhost myproject.com;
+      root         /etc/nginx/sites-available/myproject/public;
 
-	    try_files $uri /index.php?$query_string;
+      try_files $uri /index.php?$query_string;
 
-	    location ~ .php$ {
-	        fastcgi_connect_timeout 3s;
-	        fastcgi_read_timeout 10s;
-	        include fastcgi_params;
-	        fastcgi_pass 127.0.0.1:9000;
-	    }
-	}
+      location ~ .php$ {
+          fastcgi_connect_timeout 3s;
+          fastcgi_read_timeout 10s;
+          include fastcgi_params;
+          fastcgi_pass 127.0.0.1:9000;
+      }
+  }
 
 
 Apache
