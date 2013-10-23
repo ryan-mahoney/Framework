@@ -27,7 +27,9 @@ For Full-Stack Development:
 Docker
 ******
 
-A version of the system for `Docker <https://www.docker.io/>`_ will be available soon.
+A version of the system for `Docker <https://www.docker.io/>`_ will be available soon. 
+
+**Kenny Raghunath is working on this.**
 
 -----------
 
