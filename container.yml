@@ -1,0 +1,92 @@
+parameters:
+
+services:
+    slim:
+        class:     'Slim\Slim'
+        calls:
+            - [registerAutoloader, []]
+    build:
+        class:     'Build\Build'
+        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@filter', '@cache']
+    pubSubBuild:
+        class:     'PubSub\PubSubBuild'
+    topic:
+        class:     'PubSub\Topic'
+        arguments: ['@container', '@yamlSlow']
+        calls:
+            - [load, ['%root%']]
+    separation:
+        class:     'Separation\Separation'
+        arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow']
+    collectionRoute:
+        class:     'Collection\CollectionRoute'
+        arguments: ['@slim', '@db', '@separation', '@response']
+    field:
+        class:     'Field\Field'
+        arguments: ['@db', '@captcha']
+    captcha:
+        class:     'Captcha\Captcha'
+    formRoute:
+        class:     'Form\FormRoute'
+        arguments: ['@slim', '@form', '@field', '@post', '@separation', '@topic', '@response']
+    form:
+        class:     'Form\Form'
+        arguments: ['%root%', '@field', '@post', '@db', '@response']
+    managerRoute:
+        class:     'Manager\ManagerRoute'
+        arguments: ['@authentication', '@separation', '@slim', '@form', '@manager']
+    manager:
+        class:     'Manager\Manager'
+        arguments: []
+    authentication:
+        class:     'Authentication\Authentication'
+        arguments: ['@db', '@config','@separation', '@response']
+    helperRoute:
+        class:     'Helper\HelperRoute'
+        arguments: ['@slim', '@handlebars']
+    configRoute:
+        class:     'Config\ConfigRoute'
+        arguments: ['@config', '@cache']
+    filter:
+        class:     'Filter\Filter'
+        arguments: ['@response']
+    cache:
+        class:     'Cache\Cache'
+    muneeDispatcher:
+        class:     'Munee\Dispatcher'
+    muneeRequest:
+        class:     'Munee\Request'
+    cache:
+        class:     'Cache\Cache'
+    handlebars:
+        class:     'Handlebars\Handlebars'
+    config:
+        class:     'Config\Config'
+        arguments: ['%root%', '@cache']
+    db:
+        class:     'DB\Mongo'
+        arguments: ['@config']
+    post:
+        class:     'HTTP\Post'
+    response:
+        class:     'HTTP\Response'
+    person:
+        class:     'Person\Person'
+        arguments: ['@db']
+    errors:
+        class:     'Errors\Errors'
+        arguments: ['@config', '@topic', '@separation']
+    mail:
+        class:     'Mail\Mail'
+        arguments: ['@mailSES']
+    mailSES:
+        class:     'Mail\SES'
+        arguments: ['@config']
+    yamlSlow:
+        class:     'Symfony\Component\Yaml\Yaml'
+    queueGateway: 
+        class:     'Pheanstalk_Pheanstalk'
+        arguments: ['127.0.0.1']
+    queue:
+        class:     'Queue\Queue'
+        arguments: ['@queueGateway']
