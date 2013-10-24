@@ -167,13 +167,13 @@ php public/index.php build
 <div class="section" id="auto-generated-routes">
 <h2>Auto-Generated Routes<a class="headerlink" href="#auto-generated-routes" title="Permalink to this headline">¶</a></h2>
 <p>A lot of &#8220;lacing-up&#8221; of application routes is handled automatically by FMF.  For example, if you have a <em>form</em> file named &#8220;contact&#8221; in your project, the route /form/contact will automatically be created.  The same is true for <em>collections</em>.  So, if you have a <em>collection</em> &#8220;blogs&#8221;, then the &#8220;/blogs&#8221; and &#8220;blog/:slug&#8221; routes will also be generated.</p>
-<p>This is convenient, but it also helps if you are buildig many website with the same data collections, because you will get familiar with the route layout and it will make development and testing easier.</p>
+<p>This is convenient, but it also helps if you are building many website with the same data collections, because you will get familiar with the route layout and it will make development and testing easier.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="api-centric">
 <h2>API Centric<a class="headerlink" href="#api-centric" title="Permalink to this headline">¶</a></h2>
 <p>Some frameworks really emphasize their amazing <a class="reference external" href="http://four.laravel.com/docs/eloquent">object relational mappers</a> [ORMs].  ORMs are tools that try to make the banal work of writing SQL commands more modern and automated.  ORMs are crap.  They make queries that are easy to write... easy to write... and complex queries even more difficult.  But &#8211; why would you use a SQL database in the first place, right?</p>
-<p>If you are using FMF, you are also using <a class="reference external" href="http://www.mongodb.org/">MongoDB</a> (or a derivive like <a class="reference external" href="http://www.tokutek.com/products/tokumx-for-mongodb/">TokuMX</a>), so an ORM won&#8217;t help you much, as the native <a class="reference external" href="http://pecl.php.net/package/mongo">mongo</a> driver provides a simple mechanism for writing queries.</p>
+<p>If you are using FMF, you are also using <a class="reference external" href="http://www.mongodb.org/">MongoDB</a> (or a derivative like <a class="reference external" href="http://www.tokutek.com/products/tokumx-for-mongodb/">TokuMX</a>), so an ORM won&#8217;t help you much, as the native <a class="reference external" href="http://pecl.php.net/package/mongo">mongo</a> driver provides a simple mechanism for writing queries.</p>
 <p>But then, why are you writing queries?  FMF comes with a very robust RESTful API for working with MongoDB data sources and discourages you as much as possible from writing queries.  Instead, you should be creating APIs and depending on built in components like the <em>form</em> component for saving, validating and sanitizing data for you.</p>
 <p>At a time when mobile applications are so pervasive, you are going to have to write and API anyway &#8211; so you might as well just create one universal API for both web and mobile applications and be done with it.</p>
 <p>End rant.</p>
