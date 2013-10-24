@@ -35,7 +35,7 @@ If you are using FMF, you are also using `MongoDB <http://www.mongodb.org/>`_ (o
 
 But then, why are you writing queries?  FMF comes with a very robust RESTful API for working with MongoDB data sources and discourages you as much as possible from writing queries.  Instead, you should be creating APIs and depending on built in components like the *form* component for saving, validating and sanitizing data for you.
 
-At a time when mobile applications are so pervasive, you are going to have to write and API anyway -- so you might as well just create one universal API for both web and mobile applications and be done with it.
+At a time when mobile applications are so pervasive, you are going to have to write an API anyway -- so you might as well just create one universal API for both web and mobile applications and be done with it.
 
 End rant.
 
@@ -76,7 +76,7 @@ SQL is legacy.  I'm sorry.  It's been around for a long time, and I know it's no
 Search
 ++++++
 
-Just about every application needs to have a search facility.  Search is a `hard problem <http://en.wikipedia.org/wiki/NP-hard>`_ that thankfully has been more or less solved by `Lucene <http://lucene.apache.org/>`_.  `Solr <http://lucene.apache.org/solr/>`_ is a fairly simple application that handles both the indexing and retreival of data.  Solr is built into FMF in a number of ways and will make your search consumtion easier whenever you need search in your application... which is always. 
+Just about every application needs to have a search facility.  Search is a `hard problem <http://en.wikipedia.org/wiki/NP-hard>`_ that thankfully has been more or less solved by `Lucene <http://lucene.apache.org/>`_.  `Solr <http://lucene.apache.org/solr/>`_ is a fairly simple application that handles both the indexing and retreival of data.  Solr is built into FMF in a number of ways and will make your search consumption easier whenever you need search in your application... which is always. 
 
 -------
 
