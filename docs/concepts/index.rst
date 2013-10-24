@@ -22,7 +22,7 @@ Auto-Generated Routes
 
 A lot of "lacing-up" of application routes is handled automatically by FMF.  For example, if you have a *form* file named "contact" in your project, the route /form/contact will automatically be created.  The same is true for *collections*.  So, if you have a *collection* "blogs", then the "/blogs" and "blog/:slug" routes will also be generated.
 
-This is convenient, but it also helps if you are buildig many website with the same data collections, because you will get familiar with the route layout and it will make development and testing easier.
+This is convenient, but it also helps if you are building many website with the same data collections, because you will get familiar with the route layout and it will make development and testing easier.
 
 -------
 
