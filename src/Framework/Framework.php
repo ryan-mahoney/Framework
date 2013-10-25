@@ -32,7 +32,7 @@ class Framework {
 		if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
 			$root .= '/public';
 		}
-		$container = new Container($root);
+		$container = new Container($root, $root . '/../container.yml');
 		if ($sapi == 'cli') {
 			if (!isset($_SERVER['argv'][1]) || $_SERVER['argv'][1] != 'build') {
 				exit;
