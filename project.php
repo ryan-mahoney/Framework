@@ -15,10 +15,10 @@ file_put_contents('composer.json', '{
     }
 }');
 } else {
-	echo 'composer.json already exists.', "\n";
+	echo 'composer.json already exists.', "\n\n";
 }
 
-echo 'Installing dependencies with composer.', "\n";
+echo 'Installing dependencies with composer.', "\n\n";
 flush();
 passthru('composer install');
 
@@ -40,14 +40,18 @@ vendor');
 }
 
 $root = getcwd();
-echo 'Cloning dependency contiainer...', "\n";
+echo 'Cloning dependency contiainer...', "\n\n";
 file_put_contents('container.yml', file_get_contents('vendor/virtuecenter/build/static/container.yml'));
 
-echo 'Building project...', "\n";
+echo 'Building project...', "\n\n";
 flush();
 passthru('php public/index.php build');
 
-echo 'Project Built.', "\n";
+echo 'Building complete.', "\n\n";
 
-echo 'FOR NGINX: ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
-echo 'FOR APACHE: ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/apache.conf'), "\n";
+echo 'Webserver config: (NGINX) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
+echo 'Webserver config: (APACHE) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/apache.conf'), "\n\n";
+
+echo 'If you are working locally do not forget to add the host name to your /etc/hosts file and restart your webserver.', "\n\n";
+
+echo 'Happy coding!', "\n";
