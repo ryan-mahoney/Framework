@@ -24,6 +24,7 @@ Contents:
    folder/index
    components/index
    theming/index
+   flightcheck/index
 
 ------------
 
