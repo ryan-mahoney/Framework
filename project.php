@@ -49,8 +49,8 @@ passthru('php public/index.php build');
 
 echo 'Building complete.', "\n\n";
 
-echo 'Webserver config: (NGINX) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
-echo 'Webserver config: (APACHE) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/apache.conf'), "\n\n";
+echo 'Webserver config: (NGINX server block) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
+echo 'Webserver config: (APACHE .htaccess file) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/apache.conf'), "\n\n";
 
 echo 'If you are working locally do not forget to add the host name to your /etc/hosts file and restart your webserver.', "\n\n";
 
