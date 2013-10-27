@@ -40,7 +40,7 @@ services:
         arguments: []
     authentication:
         class:     'Authentication\Authentication'
-        arguments: ['@db', '@config','@separation', '@response']
+        arguments: ['@db']
     helperRoute:
         class:     'Helper\HelperRoute'
         arguments: ['@slim', '@handlebars']
@@ -52,10 +52,6 @@ services:
         arguments: ['@response']
     cache:
         class:     'Cache\Cache'
-    muneeDispatcher:
-        class:     'Munee\Dispatcher'
-    muneeRequest:
-        class:     'Munee\Request'
     cache:
         class:     'Cache\Cache'
     handlebars:
@@ -98,5 +94,5 @@ services:
     search:
         class:     'Search\Search'
         arguments: ['@searchGateway', '%root%']
-    bundle:
-        class:     'Bundle\Bundle'
+    bundleRoute:
+        class:     'Bundle\BundleRoute'
