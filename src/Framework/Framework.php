@@ -75,7 +75,7 @@ class Framework {
 		$container->formRoute->json();
 		$container->formRoute->app($root);
 		$container->managerRoute->app($root);
-		//$container->bundleRoute->app();
+		$container->bundleRoute->app($root);
 		
 		//custom routing
 		$routePath = $root . '/../Route.php';
