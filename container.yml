@@ -93,3 +93,8 @@ services:
     worker:
         class:     'Queue\Worker'
         arguments: ['@queueGateway', '@topic', '%root%']
+    searchGateway:
+        class:     'Elasticsearch\Client'
+    search:
+        class:     'virtuecenter\search'
+        arguments: ['@searchGateway', '%root%']
