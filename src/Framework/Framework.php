@@ -58,13 +58,14 @@ class Framework {
 		}
 		
 		//configuration cache
-		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false, $root . '-forms.json'];
+		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false, $root . '-forms.json', $root . '-bundles.json'];
 		$result = $container->cache->getBatch($items);
 		if ($result === true) {
 			$container->collectionRoute->cacheSet(json_decode($items[$root . '-collections.json'], true));
 			$container->filter->cacheSet(json_decode($items[$root . '-filters.json'], true));
 			$container->helperRoute->cacheSet(json_decode($items[$root . '-helpers.json'], true));
 			$container->formRoute->cacheSet(json_decode($items[$root . '-forms.json'], true));
+			$container->bundleRoute->cacheSet(json_decode($items[$root . '-bundles.json'], true));
 		}
 
 		//smart routing
