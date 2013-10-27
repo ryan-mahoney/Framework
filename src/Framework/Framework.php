@@ -45,10 +45,12 @@ class Framework {
 					break;
 
 				case 'worker':
+					set_time_limit(0);
 					$container->worker->work();
 					exit;
 					break;
 			}
+			exit;
 		}
 		$slim = $container->slim;
 		if (isset($_POST) && !empty($_POST)) {
