@@ -89,4 +89,7 @@ services:
         arguments: ['127.0.0.1']
     queue:
         class:     'Queue\Queue'
-        arguments: ['@queueGateway']
+        arguments: ['@queueGateway', '%root%']
+    worker:
+        class:     'Queue\Worker'
+        arguments: ['@queueGateway', '@topic', '%root%']

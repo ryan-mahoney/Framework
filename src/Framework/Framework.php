@@ -34,10 +34,21 @@ class Framework {
 		}
 		$container = new Container($root, $root . '/../container.yml');
 		if ($sapi == 'cli') {
-			if (!isset($_SERVER['argv'][1]) || $_SERVER['argv'][1] != 'build') {
+			if (!isset($_SERVER['argv'][1])) {
 				exit;
 			}
-			$container->build->project($root);
+			$command = $_SERVER['argv'][1];
+			switch ($command) {
+				'build':
+					$container->build->project($root);
+					exit;
+					break;
+
+				'worker':
+					$container->worker->work();
+					exit;
+					break;
+			}
 		}
 		$slim = $container->slim;
 		if (isset($_POST) && !empty($_POST)) {
