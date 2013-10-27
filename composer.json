@@ -34,7 +34,8 @@
         "virtuecenter/pubsub": "dev-master",
         "virtuecenter/queue": "dev-master",
         "virtuecenter/search": "dev-master",
-        "virtuecenter/separation": "dev-master"
+        "virtuecenter/separation": "dev-master",
+        "virtuecenter/bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {"Framework": "src/"}

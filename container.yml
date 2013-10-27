@@ -96,5 +96,7 @@ services:
     searchGateway:
         class:     'Elasticsearch\Client'
     search:
-        class:     'virtuecenter\search'
+        class:     'Search\Search'
         arguments: ['@searchGateway', '%root%']
+    bundle:
+        class:     'Bundle\Bundle'
