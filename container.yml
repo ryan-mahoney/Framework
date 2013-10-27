@@ -7,7 +7,7 @@ services:
             - [registerAutoloader, []]
     build:
         class:     'Build\Build'
-        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@filter', '@cache']
+        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@filter', '@cache']
     pubSubBuild:
         class:     'PubSub\PubSubBuild'
     topic:
@@ -61,7 +61,7 @@ services:
         arguments: ['%root%', '@cache']
     db:
         class:     'DB\Mongo'
-        arguments: ['@config']
+        arguments: ['@config', '@topic']
     post:
         class:     'HTTP\Post'
     response:
@@ -96,3 +96,4 @@ services:
         arguments: ['@searchGateway', '%root%']
     bundleRoute:
         class:     'Bundle\BundleRoute'
+        arguments: ['@slim', '@container']
