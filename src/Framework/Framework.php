@@ -39,12 +39,12 @@ class Framework {
 			}
 			$command = $_SERVER['argv'][1];
 			switch ($command) {
-				'build':
+				case 'build':
 					$container->build->project($root);
 					exit;
 					break;
 
-				'worker':
+				case 'worker':
 					$container->worker->work();
 					exit;
 					break;
