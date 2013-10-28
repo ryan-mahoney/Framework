@@ -8,7 +8,7 @@ Collection
 
 Fork on github here: `collection source <https://github.com/virtuecenter/collection>`_
 
-Collections are at the heart of how FMF makes data accessable.  FMF will create RESTful APIs that product JSON data, as well as front-end routes for collection data on a website front-end.
+Collections are at the heart of how FMF makes data accessable.  FMF will create RESTful APIs that produce JSON data, as well as front-end routes for collection data on a website front-end.
 
 Collection files are typically small, but they may contain logic for transforming individual documents returned:
 
@@ -201,7 +201,7 @@ An individual form class looks like this:
 		}
 	}
 
-It's possible to define customer callbacks for validation and data sanitization.
+It's possible to define custom callbacks for validation and data sanitization.
 
 Under the hood, the system takes information like this, and uses it to form a JSON array of field types that populates a partial.
 
@@ -316,9 +316,9 @@ First, the subscriptions, in YAML format:
 
 You can see in the example above, the topic is "form-contact-save".  
 
-The PostToDB subscriber is specifying that it wants to receive the "post" and "db" services from the dependecy injetion container.
+The PostToDB subscriber is specifying that it wants to receive the "post" and "db" services from the dependency injection container.
 
-Also, all subscibers receice as their first argument, the "event" which is an array containing contextual information... such as the data to save.
+Also, all subscibers receive as their first argument, the "event" which is an array containing contextual information... such as the data to save.
 
 Here is the subscriber that stores data in the database that is published when forms are submitted:
 
@@ -368,7 +368,7 @@ Below is the YAML file for the contact form.  It would use the layout and templa
 
 The config file is concerned with:
 
-* the id of the section in layout to populate markup into, in this example: contact, header and footer
+* the id of the section in the layout to populate markup into, in this example: contact, header and footer
 * a RESTful API "url"
 * "args" to pass to the data URL
 * a "partial" template to render the data with

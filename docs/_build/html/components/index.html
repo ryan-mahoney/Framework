@@ -115,6 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#best-practices">Best Practices</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../bundles/index.html">Bundles</a></li>
 </ul>
 
       </div>
@@ -156,7 +157,7 @@
 <div class="section" id="collection">
 <span id="id1"></span><h2>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
 <p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/collection">collection source</a></p>
-<p>Collections are at the heart of how FMF makes data accessable.  FMF will create RESTful APIs that product JSON data, as well as front-end routes for collection data on a website front-end.</p>
+<p>Collections are at the heart of how FMF makes data accessable.  FMF will create RESTful APIs that produce JSON data, as well as front-end routes for collection data on a website front-end.</p>
 <p>Collection files are typically small, but they may contain logic for transforming individual documents returned:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">use</span> <span class="nx">UrlId\UrlId</span><span class="p">;</span>
@@ -320,7 +321,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>It&#8217;s possible to define customer callbacks for validation and data sanitization.</p>
+<p>It&#8217;s possible to define custom callbacks for validation and data sanitization.</p>
 <p>Under the hood, the system takes information like this, and uses it to form a JSON array of field types that populates a partial.</p>
 <p>Note, in the partial below, the form has an attribute set: data-xhr=&#8221;true&#8221;</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;ui dividing header&quot;</span><span class="nt">&gt;</span>Contact Form<span class="nt">&lt;/h2&gt;</span>
@@ -419,8 +420,8 @@
 </pre></div>
 </div>
 <p>You can see in the example above, the topic is &#8220;form-contact-save&#8221;.</p>
-<p>The PostToDB subscriber is specifying that it wants to receive the &#8220;post&#8221; and &#8220;db&#8221; services from the dependecy injetion container.</p>
-<p>Also, all subscibers receice as their first argument, the &#8220;event&#8221; which is an array containing contextual information... such as the data to save.</p>
+<p>The PostToDB subscriber is specifying that it wants to receive the &#8220;post&#8221; and &#8220;db&#8221; services from the dependency injection container.</p>
+<p>Also, all subscibers receive as their first argument, the &#8220;event&#8221; which is an array containing contextual information... such as the data to save.</p>
 <p>Here is the subscriber that stores data in the database that is published when forms are submitted:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">return</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$post</span><span class="p">,</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
@@ -456,7 +457,7 @@
 <p>Below is the YAML file for the contact form.  It would use the layout and template specified above to bring all the &#8220;separate&#8221; aspects together.</p>
 <p>The config file is concerned with:</p>
 <ul class="simple">
-<li>the id of the section in layout to populate markup into, in this example: contact, header and footer</li>
+<li>the id of the section in the layout to populate markup into, in this example: contact, header and footer</li>
 <li>a RESTful API &#8220;url&#8221;</li>
 <li>&#8220;args&#8221; to pass to the data URL</li>
 <li>a &#8220;partial&#8221; template to render the data with</li>

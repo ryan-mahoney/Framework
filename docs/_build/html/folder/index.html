@@ -115,6 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#best-practices">Best Practices</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../bundles/index.html">Bundles</a></li>
 </ul>
 
       </div>
@@ -187,7 +188,7 @@
 <hr class="docutils" />
 <div class="section" id="collections">
 <h2>collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h2>
-<p>The collections folder stores <em>collection</em> files that are each one small class for each data collections that will be used in the project.  They are used by to auto-generate APIs and routes.  Here is an example of a blogs collection file:</p>
+<p>The collections folder stores <em>collection</em> files that are each one small class for each data collection that will be used in the project.  They are used to auto-generate APIs and routes.  Here is an example of a blogs collection file:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">blogs</span> <span class="p">{</span>
     <span class="k">use</span> <span class="nx">Collection\Collection</span><span class="p">;</span>
@@ -201,7 +202,7 @@
 <hr class="docutils" />
 <div class="section" id="config">
 <h2>config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
-<p>The config folder stores indivdual component configurations, such as the database config file:</p>
+<p>The config folder stores individual component configurations, such as the database config file:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">return</span> <span class="p">[</span>
     <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;db&#39;</span><span class="p">,</span>
@@ -328,12 +329,12 @@
 <hr class="docutils" />
 <div class="section" id="public-helpers">
 <h3>public/helpers<a class="headerlink" href="#public-helpers" title="Permalink to this headline">¶</a></h3>
-<p>The helpers folders stores &#8220;helper&#8221; files that help the less-logic templateing enginer (Handlebars) do more logic.  This should be used sparingly, but is good for things like pagination which might be hard to achieve in Handlebars without a help.</p>
+<p>The helpers folders stores &#8220;helper&#8221; files that help the less-logic templating engine (Handlebars) do more logic.  This should be used sparingly, but is good for things like pagination which might be hard to achieve in Handlebars without a helper.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="public-layouts">
 <h3>public/layouts<a class="headerlink" href="#public-layouts" title="Permalink to this headline">¶</a></h3>
-<p>The layouts folder stores individual <em>layouts</em> are the outer-HTML of a single-page application that the partials are rendered into.  For example:</p>
+<p>The layouts folder stores individual <em>layouts</em> which are the outer-HTML of a single-page application that the partials are rendered into.  For example:</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
     <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;head&gt;</span>
@@ -363,7 +364,7 @@
 <hr class="docutils" />
 <div class="section" id="public-partials">
 <h3>public/partials<a class="headerlink" href="#public-partials" title="Permalink to this headline">¶</a></h3>
-<p>The partials folder stores all of the <em>partials</em> files that will be used in layouts to render data.  The are .hbs or Handle Bar Script files.</p>
+<p>The partials folder stores all of the <em>partials</em> files that will be used in layouts to render data.  They are .hbs or Handle Bar Script files.</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;&quot;</span> <span class="na">style=</span><span class="s">&quot;padding:0; border:0; margin:0&quot;</span><span class="nt">&gt;</span>
 {{#each menus}}
         <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{url}}&quot;</span><span class="nt">&gt;</span>{{label}}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -411,7 +412,7 @@
 <hr class="docutils" />
 <div class="section" id="vendors">
 <h2>vendors<a class="headerlink" href="#vendors" title="Permalink to this headline">¶</a></h2>
-<p>FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependecies it compiles and the auto-loader.</p>
+<p>FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependencies it compiles and the auto-loader.</p>
 </div>
 </div>
 

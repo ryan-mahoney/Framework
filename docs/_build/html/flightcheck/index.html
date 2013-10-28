@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; FMF 1.0 documentation</title>
+  <title>Flight Check &mdash; FMF 1.0 documentation</title>
   
 
   
@@ -38,9 +38,7 @@
     
 
   
-    <link rel="top" title="FMF 1.0 documentation" href="../index.html"/>
-        <link rel="next" title="Concepts" href="../concepts/index.html"/>
-        <link rel="prev" title="PHP Federated Micro-Framework" href="../index.html"/> 
+    <link rel="top" title="FMF 1.0 documentation" href="../index.html"/> 
 
   
   
@@ -67,12 +65,12 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix">
-        <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-a-project">Creating A Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#web-servers">Web Servers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#creating-a-project">Creating A Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#web-servers">Web Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#windows">Windows</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Concepts</a><ul>
@@ -138,7 +136,7 @@
 <script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <ul class="wy-breadcrumbs">
   <li><a href="/">Docs</a> &raquo;</li>
-  <li><a href="">Installation</a></li>
+  <li><a href="">Flight Check</a></li>
   
 
   	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
@@ -147,94 +145,30 @@
 	<li class="wy-breadcrumbs-aside"><span class='st_twitter_large' displayText='Tweet'></span></li>
 	<li class="wy-breadcrumbs-aside" style="margin-left: 20px"><span class='st_facebook_large' displayText='Facebook'></span></li>
 <li class="wy-breadcrumbs-aside">
-      <a href="https://github.com///edit/setup/index.rst" class="icon icon-github"> Edit on GitHub</a>
+      <a href="https://github.com///edit/flightcheck/index.rst" class="icon icon-github"> Edit on GitHub</a>
     </li>
 </ul>
 <hr/>
           
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="system-requirements">
-<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="for-project-theming-only">
-<h3>For Project Theming only:<a class="headerlink" href="#for-project-theming-only" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="http://www.php.net/">PHP 5.4</a></li>
-<li><a class="reference external" href="http://getcomposer.org/">PHP Composer</a></li>
-<li>Local Web Server
-<a class="reference external" href="http://nginx.org/">Nginx</a> or <a class="reference external" href="http://httpd.apache.org/">Apache</a></li>
-<li>PHP Modules:
-<a class="reference external" href="http://php.net/manual/en/book.mbstring.php">mbstring</a>, <a class="reference external" href="http://php.net/manual/en/book.openssl.php">openssl</a></li>
-</ul>
-</div>
-<div class="section" id="for-full-stack-development">
-<h3>For Full-Stack Development:<a class="headerlink" href="#for-full-stack-development" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="http://memcached.org/">Memcached</a></li>
-<li><a class="reference external" href="http://www.mongodb.org/">MongoDB</a></li>
-<li><a class="reference external" href="http://lucene.apache.org/solr/">Solr</a></li>
-<li><a class="reference external" href="http://kr.github.io/beanstalkd/">Beanstalkd</a></li>
-<li>PHP Modules:
-<a class="reference external" href="http://pecl.php.net/package/memcache">memcache</a>, <a class="reference external" href="http://php.net/manual/en/book.image.php">gd</a>, <a class="reference external" href="http://pecl.php.net/package/mongo">mongo</a>, <a class="reference external" href="http://pecl.php.net/package/yaml">yaml</a></li>
-</ul>
-</div>
-<div class="section" id="docker">
-<h3>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h3>
-<p>A version of the system for <a class="reference external" href="https://www.docker.io/">Docker</a> will be available soon.</p>
-<p><strong>Kenny Raghunath is working on this.</strong></p>
-</div>
-</div>
+  <div class="section" id="flight-check">
+<h1>Flight Check<a class="headerlink" href="#flight-check" title="Permalink to this headline">¶</a></h1>
+<p>This is a quick guide to getting your project running.</p>
 <hr class="docutils" />
-<div class="section" id="creating-a-project">
-<h2>Creating A Project<a class="headerlink" href="#creating-a-project" title="Permalink to this headline">¶</a></h2>
-<p>Open your command line terminal.  Enter the following commands to make a new folder, go into it, download the framework, and compose / build it.</p>
-<div class="highlight-bash"><div class="highlight"><pre>mkdir myproject
-<span class="nb">cd </span>myproject
-php -r <span class="s2">&quot;eval(file_get_contents(&#39;https://raw.github.com/virtuecenter/framework/master/project.php&#39;));&quot;</span>
-composer install
-php public/index.php build
-</pre></div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="web-servers">
-<h2>Web Servers<a class="headerlink" href="#web-servers" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="nginx-php-fpm">
-<h3>Nginx &amp; PHP-FPM<a class="headerlink" href="#nginx-php-fpm" title="Permalink to this headline">¶</a></h3>
-<p>Nginx is the recommended web-server for FMF.</p>
-<div class="highlight-nginx"><div class="highlight"><pre>  <span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span>       <span class="s">*:80</span><span class="p">;</span>
-    <span class="kn">server_name</span>  <span class="s">myrpoject.localhost</span> <span class="s">myproject.com</span><span class="p">;</span>
-    <span class="kn">root</span>         <span class="s">/etc/nginx/sites-available/myproject/public</span><span class="p">;</span>
-
-    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
-
-    <span class="kn">location</span> <span class="p">~</span> <span class="sr">.php$</span> <span class="p">{</span>
-        <span class="kn">fastcgi_connect_timeout</span> <span class="s">3s</span><span class="p">;</span>
-        <span class="kn">fastcgi_read_timeout</span> <span class="s">10s</span><span class="p">;</span>
-        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
-        <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>Apache<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Add the following logic to your .htaccess files:</p>
-<div class="highlight-apache"><div class="highlight"><pre><span class="nb">Options</span> +FollowSymLinks
-<span class="nb">RewriteEngine</span> <span class="k">On</span>
-<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
-<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
-<span class="nb">RewriteRule</span> ^ index.php [L]
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<p>FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn&#8217;t it time to make the <a class="reference external" href="http://www.ubuntu.com/">switch</a>?</p>
+<div class="section" id="where-does-this-project-come-from">
+<h2>Where does this project come from?<a class="headerlink" href="#where-does-this-project-come-from" title="Permalink to this headline">¶</a></h2>
+<p>If you are working on an existing project, you should clone it down from git.</p>
+<p>If you are creating a new project,</p>
+<p>Existing project, clone from Git</p>
+<p>New project, build from scratch</p>
+<p>Composer instal</p>
+<p>Install your webserver&#8217;s virtual host</p>
+<p>Update your local hosts file</p>
+<p>Install database</p>
+<p>Set database access in config</p>
+<p>Build</p>
+<p>Visit site</p>
+<p>Check routes</p>
+<p>Check collections</p>
 </div>
 </div>
 
