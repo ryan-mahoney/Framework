@@ -75,7 +75,6 @@ class Framework {
 		$container->collectionRoute->collectionList($root);
 		$container->formRoute->json();
 		$container->formRoute->app($root);
-		$container->managerRoute->app($root);
 		$container->bundleRoute->app($root);
 		
 		//custom routing
