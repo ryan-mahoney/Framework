@@ -43,7 +43,7 @@ For more details on this component, see: :ref:`separation`.
 collections
 +++++++++++
 
-The collections folder stores *collection* files that are each one small class for each data collections that will be used in the project.  They are used by to auto-generate APIs and routes.  Here is an example of a blogs collection file:
+The collections folder stores *collection* files that are each one small class for each data collection that will be used in the project.  They are used to auto-generate APIs and routes.  Here is an example of a blogs collection file:
 
 .. code-block:: php
 
@@ -61,7 +61,7 @@ For more details on this component, see: :ref:`collection`.  FMF comes with many
 config
 ++++++
 
-The config folder stores indivdual component configurations, such as the database config file:
+The config folder stores individual component configurations, such as the database config file:
 
 .. code-block:: php
   
@@ -206,14 +206,14 @@ Self explanatory.
 public/helpers
 **************
 
-The helpers folders stores "helper" files that help the less-logic templateing enginer (Handlebars) do more logic.  This should be used sparingly, but is good for things like pagination which might be hard to achieve in Handlebars without a help.
+The helpers folders stores "helper" files that help the less-logic templating engine (Handlebars) do more logic.  This should be used sparingly, but is good for things like pagination which might be hard to achieve in Handlebars without a helper.
 
 ----------
 
 public/layouts
 **************
 
-The layouts folder stores individual *layouts* are the outer-HTML of a single-page application that the partials are rendered into.  For example:
+The layouts folder stores individual *layouts* which are the outer-HTML of a single-page application that the partials are rendered into.  For example:
 
 .. code-block:: html
 
@@ -247,7 +247,7 @@ In the above example, things like {{{header}}} will be substituted with the mark
 public/partials
 ***************
 
-The partials folder stores all of the *partials* files that will be used in layouts to render data.  The are .hbs or Handle Bar Script files.
+The partials folder stores all of the *partials* files that will be used in layouts to render data.  They are .hbs or Handle Bar Script files.
 
 .. code-block:: html
 
@@ -304,4 +304,4 @@ For more details on this component, see: :ref:`pubsub`.
 vendors
 +++++++
 
-FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependecies it compiles and the auto-loader.
+FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependencies it compiles and the auto-loader.
