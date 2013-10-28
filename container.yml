@@ -96,4 +96,4 @@ services:
         arguments: ['@searchGateway', '%root%']
     bundleRoute:
         class:     'Bundle\BundleRoute'
-        arguments: ['@slim', '@container']
+        arguments: ['@container']
