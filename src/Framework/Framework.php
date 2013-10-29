@@ -58,7 +58,14 @@ class Framework {
 		}
 		
 		//configuration cache
-		$items = [$root . '-collections.json' => false, $root . '-filters.json' => false, $root . '-helpers.json' => false, $root . '-forms.json', $root . '-bundles.json'];
+		$items = [
+			$root . '-collections.json' => false, 
+			$root . '-filters.json' => false, 
+			$root . '-helpers.json' => false, 
+			$root . '-forms.json' => false, 
+			$root . '-bundles.json' => false, 
+			$root . '-topics.json' => false
+		];
 		$result = $container->cache->getBatch($items);
 		if ($result === true) {
 			$container->collectionRoute->cacheSet(json_decode($items[$root . '-collections.json'], true));
@@ -66,6 +73,7 @@ class Framework {
 			$container->helperRoute->cacheSet(json_decode($items[$root . '-helpers.json'], true));
 			$container->formRoute->cacheSet(json_decode($items[$root . '-forms.json'], true));
 			$container->bundleRoute->cacheSet(json_decode($items[$root . '-bundles.json'], true));
+			$container->topic->cacheSet(json_decode($items[$root . '-topics.json'], true));
 		}
 
 		//smart routing
@@ -75,6 +83,7 @@ class Framework {
 		$container->collectionRoute->collectionList($root);
 		$container->formRoute->json();
 		$container->formRoute->app($root);
+		$container->topic->load($root);
 		$container->bundleRoute->app($root);
 		
 		//custom routing
