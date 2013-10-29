@@ -39,7 +39,7 @@ services:
         arguments: []
     authentication:
         class:     'Authentication\Authentication'
-        arguments: ['@db']
+        arguments: ['@db', '@config']
     helperRoute:
         class:     'Helper\HelperRoute'
         arguments: ['@slim', '@handlebars']
