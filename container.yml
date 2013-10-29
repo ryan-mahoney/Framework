@@ -10,11 +10,10 @@ services:
         arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@filter', '@cache']
     pubSubBuild:
         class:     'PubSub\PubSubBuild'
+        arguments: ['%root%', '@yamlSlow']
     topic:
         class:     'PubSub\Topic'
-        arguments: ['@container', '@yamlSlow']
-        calls:
-            - [load, ['%root%']]
+        arguments: ['@container']
     separation:
         class:     'Separation\Separation'
         arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow']
