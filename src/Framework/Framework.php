@@ -52,7 +52,7 @@ class Framework {
 			}
 			exit;
 		}
-		if (empty(session_id())) {
+		if (strlen(session_id()) == 0) {
     		session_start();
 		} 
 		$slim = $container->slim;
