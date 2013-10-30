@@ -34,6 +34,10 @@ apt-get install -y beanstalkd mongodb-10gen memcached nginx git openjdk-6-jdk li
 wget http://us2.php.net/get/php-5.5.5.tar.gz/from/us1.php.net/mirror -O ./php-5.5.5.tar.gz
 tar xzf ./php-5.5.5.tar.gz && cd php-5.5.5/ && ./configure --enable-fpm --with-curl --with-openssl --with-gd --with-tidy --enable-zip --with-mcrypt && make && make install
 
+# composer
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+
 # Install the PHP extensions that's needed for FMF. Since some of the pecl requests are interactive, the printf command tells it to default to whatever it has.
 printf "\n" | pecl install yaml memcache mongo
 
