@@ -45,11 +45,12 @@ dpkg -i elasticsearch-0.90.5.deb
 #EXPOSE 80 11211 27017 11300
 
 # Configure nginx, PHP and other pieces of software for use.
-#ADD https://raw.github.com/masyafStudios/docker-collections/master/fmf/conf/nginx.conf /etc/nginx/nginx.conf
-#ADD https://raw.github.com/masyafStudios/docker-collections/master/fmf/conf/php.ini /usr/local/lib/php.ini
-#ADD https://raw.github.com/masyafStudios/docker-collections/master/fmf/conf/php-fpm.conf /usr/local/etc/php-fpm.conf
-
-wget 
+#nginx.conf
+#
+#php.ini
+#php-fpm.conf
+#update-rc.d php-fpm defaults
+#wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/beanstalkd -O /etc/default/beanstalkd
 
 # Run commands to start up the environment.
 #CMD nginx && php-fpm && mongod && memcache && beanstalkd -p 11300 && service elasticsearch start
