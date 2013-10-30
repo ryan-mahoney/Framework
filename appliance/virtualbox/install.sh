@@ -45,12 +45,23 @@ dpkg -i elasticsearch-0.90.5.deb
 #EXPOSE 80 11211 27017 11300
 
 # Configure nginx, PHP and other pieces of software for use.
-#nginx.conf
-#
-#php.ini
-#php-fpm.conf
-#update-rc.d php-fpm defaults
-#wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/beanstalkd -O /etc/default/beanstalkd
+wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/nginx.conf -O /etc/nginx/nginx.conf
+wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/fastcgi_params -O /etc/nginx/fastcgi_params
+wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/php.ini -O /usr/local/lib/php.ini
+wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/php-fpm.conf -O /usr/local/lib/php-fpm.conf
+wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/php-fpm -O /etc/init.d/php-fpm
+chmod +x /etc/init.d/php-fpm
+update-rc.d php-fpm defaults
+wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/beanstalkd -O /etc/default/beanstalkd
 
 # Run commands to start up the environment.
-#CMD nginx && php-fpm && mongod && memcache && beanstalkd -p 11300 && service elasticsearch start
+/etc/init.d/nginx stop
+/etc/init.d/nginx start
+/etc/init.d/php-fpm stop
+/etc/init.d/php-fpm start
+service mongodb stop
+service mongodb start
+/etc/init.d/beanstalkd stop
+/etc/init.d/beanstalkd start
+service elasticsearch stop
+service elasticsearch start
