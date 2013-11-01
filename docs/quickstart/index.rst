@@ -27,7 +27,7 @@ If you are building a brand new project from scratch, follow these directions: :
 Compose Project Or Download Vendors Folder
 ++++++++++++++++++++++++++++++++++++++++++
 
-Modern PHP applications obtain their dependencies via Composer.  Composer puts all the dependencies in a “vendors” folder and creates an autoloader.  You can run Composer either locally or on the virtual server from within the project simply by running the command below. 
+Modern PHP applications obtain their dependencies via `Composer <http://getcomposer.org/>`_.  Composer puts all the dependencies in a “vendors” folder and creates an autoloader.  You can run Composer either locally or on the virtual server from within the project simply by running the command below. 
 
 .. code-block:: bash
 
