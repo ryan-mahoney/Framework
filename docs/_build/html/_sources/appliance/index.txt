@@ -15,6 +15,8 @@ To download VirtualBox for any platform, `go to this link <https://www.virtualbo
 
 Once downloaded, follow the installation steps for your platform, it is easy to install.
 
+.. image:: ./images/virtualbox.PNG
+
 
 Obtaining the Appliance
 +++++++++++++++++++++++
