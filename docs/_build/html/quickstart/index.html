@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Flight Check &mdash; FMF 1.0 documentation</title>
+  <title>Quick Start Guide &mdash; FMF 1.0 documentation</title>
   
 
   
@@ -145,7 +145,7 @@
 <script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <ul class="wy-breadcrumbs">
   <li><a href="/">Docs</a> &raquo;</li>
-  <li><a href="">Flight Check</a></li>
+  <li><a href="">Quick Start Guide</a></li>
   
 
   	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
@@ -154,30 +154,52 @@
 	<li class="wy-breadcrumbs-aside"><span class='st_twitter_large' displayText='Tweet'></span></li>
 	<li class="wy-breadcrumbs-aside" style="margin-left: 20px"><span class='st_facebook_large' displayText='Facebook'></span></li>
 <li class="wy-breadcrumbs-aside">
-      <a href="https://github.com///edit/flightcheck/index.rst" class="icon icon-github"> Edit on GitHub</a>
+      <a href="https://github.com///edit/quickstart/index.rst" class="icon icon-github"> Edit on GitHub</a>
     </li>
 </ul>
 <hr/>
           
-  <div class="section" id="flight-check">
-<h1>Flight Check<a class="headerlink" href="#flight-check" title="Permalink to this headline">¶</a></h1>
-<p>This is a quick guide to getting your project running.</p>
-<hr class="docutils" />
-<div class="section" id="where-does-this-project-come-from">
-<h2>Where does this project come from?<a class="headerlink" href="#where-does-this-project-come-from" title="Permalink to this headline">¶</a></h2>
-<p>If you are working on an existing project, you should clone it down from git.</p>
-<p>If you are creating a new project,</p>
-<p>Existing project, clone from Git</p>
-<p>New project, build from scratch</p>
-<p>Composer instal</p>
-<p>Install your webserver&#8217;s virtual host</p>
-<p>Update your local hosts file</p>
-<p>Install database</p>
-<p>Set database access in config</p>
-<p>Build</p>
-<p>Visit site</p>
-<p>Check routes</p>
-<p>Check collections</p>
+  <div class="section" id="quick-start-guide">
+<h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<p>This guide covers the basic steps to get your local environment ready so you can start working on a project as quickly as possible.</p>
+<div class="section" id="obtain-run-virtual-server">
+<h2>Obtain &amp; Run Virtual Server<a class="headerlink" href="#obtain-run-virtual-server" title="Permalink to this headline">¶</a></h2>
+<p>You could setup an entire development environment with a web server, database server, search server, etc – but the fastest way to get started is just to use the pre-configured server appliance.  The files and directions are here <em class="xref std std-ref">appliance</em></p>
+</div>
+<div class="section" id="existing-project-git-pull-the-project-to-the-shared-drive">
+<h2>Existing Project: git pull the Project to the Shared Drive<a class="headerlink" href="#existing-project-git-pull-the-project-to-the-shared-drive" title="Permalink to this headline">¶</a></h2>
+<p>If a project has already been created, just pull it down to the shared drive. Most projects will be stored in Git, if you don&#8217;t know Git – learn it.  The shared drive will be mapped on Windows computers as //fmf/www each website project should be saved here. Restart the appliance whenever you install a new website project.</p>
+</div>
+<div class="section" id="new-project-build-from-scratch">
+<h2>New Project: Build from Scratch<a class="headerlink" href="#new-project-build-from-scratch" title="Permalink to this headline">¶</a></h2>
+<p>If you are building a brand new project from scratch, follow these directions: <em class="xref std std-ref">create</em></p>
+</div>
+<div class="section" id="compose-project-or-download-vendors-folder">
+<h2>Compose Project Or Download Vendors Folder<a class="headerlink" href="#compose-project-or-download-vendors-folder" title="Permalink to this headline">¶</a></h2>
+<p>Modern PHP applications obtain their dependencies via Composer.  Composer puts all the dependencies in a “vendors” folder and creates an autoloader.  You can run Composer either locally or on the virtual server from within the project simply by running the command below.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> /var/www/myproject
+composer install
+</pre></div>
+</div>
+<p>If for some reason you can not run Composer, you could download a pre-compose vendors folder from here: <a href="#id1"><span class="problematic" id="id2">`LINK &lt;&gt;`_</span></a>, but composing on your own project is always better.</p>
+</div>
+<div class="section" id="import-project-data">
+<h2>Import Project Data<a class="headerlink" href="#import-project-data" title="Permalink to this headline">¶</a></h2>
+<p>If your project is pre-built, it may need to have it&#8217;s data dump installed.  You will need to extract the data dump, enter the dump folder, list the folder to see the database name, and run mongorestore to import the data.</p>
+<div class="highlight-bash"><div class="highlight"><pre>tar xzf ./dump.tar.gz
+<span class="nb">cd </span>dump
+ls
+mongorestore dbname ./dbname
+</pre></div>
+</div>
+</div>
+<div class="section" id="verify-in-web-browser">
+<h2>Verify in Web Browser<a class="headerlink" href="#verify-in-web-browser" title="Permalink to this headline">¶</a></h2>
+<p>When you login to your virtual server, it tells you what it&#8217;s IP is.  If you have installed a new project and re-started Nginx (or the server itself), then going to that IP address in your local web browser should bring up the project.</p>
+</div>
+<div class="section" id="write-code">
+<h2>Write Code<a class="headerlink" href="#write-code" title="Permalink to this headline">¶</a></h2>
+<p>Good luck!</p>
 </div>
 </div>
 
