@@ -19,6 +19,7 @@ Contents:
 .. toctree::
    :maxdepth: 1
 
+   quickstart/index
    setup/index
    concepts/index
    folder/index
