@@ -11,7 +11,7 @@ Installing VirtualBox
 
 If you are not familiar with Virtualization, it is basically a way to run one or more operating systems inside another.  In our case, we are using the free and Virtualization "Hypervisor" VirtualBox which is now owned by Oracle.
 
-To download VirtualBox for any platform, `go to this link<https://www.virtualbox.org/wiki/Downloads>`_. 
+To download VirtualBox for any platform, `go to this link <https://www.virtualbox.org/wiki/Downloads>`_. 
 
 Once downloaded, follow the installation steps for your platform, it is easy to install.
 
@@ -19,7 +19,7 @@ Once downloaded, follow the installation steps for your platform, it is easy to 
 Obtaining the Appliance
 +++++++++++++++++++++++
 
-To run the FMF server, you will need to download and import the server appliance.  You can `download it here<http://virtuecenter-fmf.s3.amazonaws.com/fmf.ova>`_.  It is a large file, a little over 1GB.
+To run the FMF server, you will need to download and import the server appliance.  You can `download it here <http://virtuecenter-fmf.s3.amazonaws.com/fmf.ova>`_.  It is a large file, a little over 1GB.
 
 
 Using the Appliance
