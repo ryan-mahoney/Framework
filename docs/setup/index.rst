@@ -31,10 +31,10 @@ A version of the system for `Docker <https://www.docker.io/>`_ will be available
 
 -----------
 
+.. _create:
+
 Creating A Project
 ++++++++++++++++++
-
-.. _create:
 
 Open your command line terminal.  Enter the following commands to make a new folder, go into it, download the framework, and compose / build it.
 
