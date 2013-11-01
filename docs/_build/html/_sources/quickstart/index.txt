@@ -13,7 +13,9 @@ Existing Project: git pull the Project to the Shared Drive
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-If a project has already been created, just pull it down to the shared drive. Most projects will be stored in Git, if you don't know Git – learn it.  The shared drive will be mapped on Windows computers as **//fmf/www** each website project should be saved here. Restart the appliance whenever you install a new website project.
+If a project has already been created, just pull it down to the shared drive. Most projects will be stored in Git, if you don't know Git – learn it.  The shared drive will be mapped on Windows computers as **//fmf/www** each website project should be saved here. 
+
+Restart the appliance whenever you install a new website project.
 
 
 New Project: Build from Scratch
