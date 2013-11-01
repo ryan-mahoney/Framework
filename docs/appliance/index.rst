@@ -1,6 +1,8 @@
 Server Appliance
 ================
 
+.. _appliance:
+
 FMF does not compromise on using the latest server technologies and platforms.  As such, FMF has many dependencies, some of which are hard to install and configure.  
 
 A VirtualBox appliance has been created which bundles all of the dependencies into one file.  This document will show you how to install your own local server appliance so you can quickly begin developing websites on this advanced platform.
