@@ -35,7 +35,7 @@ The first time you run it, it may ask you to update the network settings.
 
 Make sure you are using "Bridged" networking, and choose your network adapter -- it should be automatically selected.  
 
-.. image:: images/003-Bridge.PNG
+.. image:: images/003-Brindge.PNG
 
 The virtual server will obtain a new IP from your router.
 
