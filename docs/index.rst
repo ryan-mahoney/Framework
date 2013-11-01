@@ -25,6 +25,7 @@ Contents:
    components/index
    theming/index
    bundles/index
+   appliance/index
 
 ------------
 
