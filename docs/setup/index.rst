@@ -27,14 +27,14 @@ For Full-Stack Development:
 Docker
 ******
 
-A version of the system for `Docker <https://www.docker.io/>`_ will be available soon. 
-
-**Kenny Raghunath is working on this.**
+A version of the system for `Docker <https://www.docker.io/>`_ will be available soon.
 
 -----------
 
 Creating A Project
 ++++++++++++++++++
+
+.. _create:
 
 Open your command line terminal.  Enter the following commands to make a new folder, go into it, download the framework, and compose / build it.
 
