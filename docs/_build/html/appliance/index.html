@@ -1,0 +1,201 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Server Appliance &mdash; FMF 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link rel="stylesheet" href="../_static/sphinx_rtd_theme.css" type="text/css" />
+      
+
+      
+  
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.0',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_rtd_theme.js"></script>
+    
+    
+
+  
+    <link rel="top" title="FMF 1.0 documentation" href="../index.html"/> 
+
+  
+  
+    <script type="text/javascript" src="//use.typekit.net/hiw1hhg.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+    
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html">PHP Federated Micro-Framework</a>
+        <form class="wy-form" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#creating-a-project">Creating A Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#web-servers">Web Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#build-and-re-build">Build and Re-Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#auto-generated-routes">Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#api-centric">API Centric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#service-oriented-architecture">Service Oriented Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#less-logic-templates">Less-Logic Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#pubsub-pattern">PubSub Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#no-sql">No-SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#queues">Queues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../folder/index.html">Folder Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#app">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#collections">collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#config">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#filters">filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#forms">forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#public">public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#subscribers">subscribers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#vendors">vendors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#form">Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#pubsub">PubSub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#separation">Separation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theming/index.html">Theming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#sample-project">Sample Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#listing-auto-generated-routes">Listing Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#types-of-pages">Types of Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-layouts">Working with Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-partials">Working with Partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#separation-applications">Separation Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bundles/index.html">Bundles</a></li>
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="/">FMF 1.0 documentation</a>        
+      </nav>
+      
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<ul class="wy-breadcrumbs">
+  <li><a href="/">Docs</a> &raquo;</li>
+  <li><a href="">Server Appliance</a></li>
+  
+
+  	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
+	<li class="wy-breadcrumbs-aside"><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
+	<li class="wy-breadcrumbs-aside"><span class='st_googleplus_large' displayText='Google +'></span></li>
+	<li class="wy-breadcrumbs-aside"><span class='st_twitter_large' displayText='Tweet'></span></li>
+	<li class="wy-breadcrumbs-aside" style="margin-left: 20px"><span class='st_facebook_large' displayText='Facebook'></span></li>
+<li class="wy-breadcrumbs-aside">
+      <a href="https://github.com///edit/appliance/index.rst" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+</ul>
+<hr/>
+          
+  <div class="section" id="server-appliance">
+<h1>Server Appliance<a class="headerlink" href="#server-appliance" title="Permalink to this headline">¶</a></h1>
+<p>FMF does not compromise on using the latest server technologies and platforms.  As such, FMF has many dependencies, some of which are hard to install and configure.</p>
+<p>A VirtualBox appliance has been created which bundles all of the dependencies into one file.  This document will show you how to install your own local server appliance so you can quickly begin developing websites on this advanced platform.</p>
+<div class="section" id="installing-virtualbox">
+<h2>Installing VirtualBox<a class="headerlink" href="#installing-virtualbox" title="Permalink to this headline">¶</a></h2>
+<p>If you are not familiar with Virtualization, it is basically a way to run one or more operating systems inside another.  In our case, we are using the free and Virtualization &#8220;Hypervisor&#8221; VirtualBox which is now owned by Oracle.</p>
+<p>To download VirtualBox for any platform, <a href="#id1"><span class="problematic" id="id2">`go to this link&lt;https://www.virtualbox.org/wiki/Downloads&gt;`_</span></a>.</p>
+<p>Once downloaded, follow the installation steps for your platform, it is easy to install.</p>
+</div>
+<div class="section" id="obtaining-the-appliance">
+<h2>Obtaining the Appliance<a class="headerlink" href="#obtaining-the-appliance" title="Permalink to this headline">¶</a></h2>
+<p>To run the FMF server, you will need to download and import the server appliance.  You can <a href="#id3"><span class="problematic" id="id4">`download it here&lt;http://virtuecenter-fmf.s3.amazonaws.com/fmf.ova&gt;`_</span></a>.  It is a large file, a little over 1GB.</p>
+</div>
+<div class="section" id="using-the-appliance">
+<h2>Using the Appliance<a class="headerlink" href="#using-the-appliance" title="Permalink to this headline">¶</a></h2>
+<p>Using the appliance is a simple as importing it in VirtualBox and clicking the start button.  A window will pop-up and your web server will be running.</p>
+<p>The first time you run it, it may ask you to update the network settings.  Make sure you are using &#8220;Bridged&#8221; networking, and choose your network adapter.  The virtual server will obtain a new IP from your router.</p>
+</div>
+<div class="section" id="share-drive">
+<h2>Share Drive<a class="headerlink" href="#share-drive" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Windows, you should automatically see a new shared drive appear named FMF.  This shared directory maps the /var/www folder to an accessible folder for you to work on in your local drive.  Putting a folder in this directory makes it accessible to your web server.</p>
+</div>
+</div>
+
+
+        </div>
+
+        <hr class="docutils" style="margin-top: 60px">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'fmfdoc'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+
+      </div>
+    </section>
+
+    
+  </div>
+</body>
+</html>
