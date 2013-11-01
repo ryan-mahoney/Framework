@@ -52,7 +52,7 @@ If you are using Windows, you should automatically see a new shared drive appear
 Demo Project
 ++++++++++++
 
-The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically asisgned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account *fmf* and the password *fmf*.  Also, the super user account's password is also *fmf*, incase you need it.  The IP address is displayed when you login.
+The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically assigned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account *fmf* and the password *fmf*.  Also, the super user account's password is also *fmf*, in-case you need it.  The IP address is displayed when you login.
 
 .. image:: images/004-login.PNG
 
@@ -63,7 +63,7 @@ Below, the IP address has been typed into the web browser on the host machine wi
 New Project
 +++++++++++
 
-When you install a new project, it will be configured on port 80 so as not to conflict with the demo project.  Unless you map hostnames to the IP, you will only be able to work on one project at a time, or you can shift each project to a different port number.
+When you install a new project, it will be configured on port 80 so as not to conflict with the demo project.  Unless you map host names to the IP, you will only be able to work on one project at a time, or you can shift each project to a different port number.
 
 When you first install a new project with a new vhost file, the web server will not be aware of it.  You can either restart Nginx itself, or restart the appliance.
 
@@ -74,4 +74,3 @@ To restart Nginx:
    sudo /etc/init.d/nginx restart
 
 You will be prompted for the super-user password, which is *FMF*
-
