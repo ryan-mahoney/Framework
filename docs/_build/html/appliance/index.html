@@ -192,14 +192,14 @@
 </div>
 <div class="section" id="demo-project">
 <h2>Demo Project<a class="headerlink" href="#demo-project" title="Permalink to this headline">¶</a></h2>
-<p>The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically asisgned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account <em>fmf</em> and the password <em>fmf</em>.  Also, the super user account&#8217;s password is also <em>fmf</em>, incase you need it.  The IP address is displayed when you login.</p>
+<p>The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically assigned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account <em>fmf</em> and the password <em>fmf</em>.  Also, the super user account&#8217;s password is also <em>fmf</em>, in-case you need it.  The IP address is displayed when you login.</p>
 <img alt="../_images/004-login.PNG" src="../_images/004-login.PNG" />
 <p>Below, the IP address has been typed into the web browser on the host machine with the port # of 81. The demo site is displayed.</p>
 <img alt="../_images/005-demosite.PNG" src="../_images/005-demosite.PNG" />
 </div>
 <div class="section" id="new-project">
 <h2>New Project<a class="headerlink" href="#new-project" title="Permalink to this headline">¶</a></h2>
-<p>When you install a new project, it will be configured on port 80 so as not to conflict with the demo project.  Unless you map hostnames to the IP, you will only be able to work on one project at a time, or you can shift each project to a different port number.</p>
+<p>When you install a new project, it will be configured on port 80 so as not to conflict with the demo project.  Unless you map host names to the IP, you will only be able to work on one project at a time, or you can shift each project to a different port number.</p>
 <p>When you first install a new project with a new vhost file, the web server will not be aware of it.  You can either restart Nginx itself, or restart the appliance.</p>
 <p>To restart Nginx:</p>
 <div class="highlight-bash"><div class="highlight"><pre>sudo /etc/init.d/nginx restart
