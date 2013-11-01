@@ -32,7 +32,7 @@ Modern PHP applications obtain their dependencies via Composer.  Composer puts a
    cd /var/www/myproject
    composer install
 
-If for some reason you can not run Composer, you could download a pre-compose vendors folder from here: `LINK <>`_, but composing on your own project is always better.
+If for some reason you can not run Composer, you could download a pre-compose vendors folder from `here: <http://virtuecenter-fmf.s3.amazonaws.com/vendor.zip>`_, but composing on your own project is always better.
 
 
 Import Project Data
