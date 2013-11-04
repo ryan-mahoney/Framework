@@ -19,7 +19,10 @@ services:
         arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow']
     collectionRoute:
         class:     'Collection\CollectionRoute'
-        arguments: ['@slim', '@db', '@separation', '@response']
+        arguments: ['@collection', '@slim', '@db', '@separation', '@response']
+    collection:
+        class:     'Collection\Collection'
+        arguments: ['%root%', '@db']
     field:
         class:     'Field\Field'
         arguments: ['@db', '@captcha']
