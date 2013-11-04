@@ -51,7 +51,7 @@ The collections folder stores *collection* files that are each one small class f
   class blogs {
       use Collection\Collection;
       public $publishable = true
-      public static $singular = 'blog';
+      public $singular = 'blog';
   }
 
 For more details on this component, see: :ref:`collection`.  FMF comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.
