@@ -49,6 +49,11 @@ class Framework {
 					$container->worker->work();
 					exit;
 					break;
+
+				case 'upgrade':
+					$container->build->upgrade();
+					exit;
+					break;
 			}
 			exit;
 		}

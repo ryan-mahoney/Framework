@@ -7,7 +7,7 @@ services:
             - [registerAutoloader, []]
     build:
         class:     'Build\Build'
-        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@filter', '@cache']
+        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@filter', '@cache', '@search']
     pubSubBuild:
         class:     'PubSub\PubSubBuild'
         arguments: ['%root%', '@yamlSlow']
