@@ -86,11 +86,12 @@ In the example above, there is binding called "blogs", see below:
 
 .. code-block:: yaml
 
-	blogs:
-		url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
-		args: []
-		partial: 'collections/blogs.hbs'
-		type: 'Collection'
+		blogs:
+			url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+			args: []
+			partial: 'collections/blogs.hbs'
+			type: 'Collection'
+
 
 For this binding, Separation will send and HTTP GET request to the url: 
 
