@@ -143,5 +143,8 @@ Fetching HTML
 
 In some cases, you don't want to use a logicless template, you want to either plug in static HTML from a file, or have a script generate the HTML the old fashioned way.  No proble, refer to the URL of the HTML, and specify the type as "html".
 
-Cacheing Data
-*************
+.. code-block:: yaml
+    
+    header:
+        url: '%dataAPI%/Manager/header'
+        type: 'html'
