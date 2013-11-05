@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bundles &mdash; FMF 1.0 documentation</title>
+  <title>Separation &mdash; FMF 1.0 documentation</title>
   
 
   
@@ -39,8 +39,7 @@
 
   
     <link rel="top" title="FMF 1.0 documentation" href="../index.html"/>
-        <link rel="next" title="Server Appliance" href="../appliance/index.html"/>
-        <link rel="prev" title="Theming" href="../theming/index.html"/> 
+        <link rel="prev" title="Server Appliance" href="../appliance/index.html"/> 
 
   
   
@@ -125,7 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#best-practices">Best Practices</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Bundles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bundles/index.html">Bundles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appliance/index.html">Server Appliance</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#installing-virtualbox">Installing VirtualBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#obtaining-the-appliance">Obtaining the Appliance</a></li>
@@ -135,8 +134,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#new-project">New Project</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../separation/index.html">Separation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#introduction">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Separation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 </ul>
 </li>
 </ul>
@@ -161,7 +160,7 @@
 <script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <ul class="wy-breadcrumbs">
   <li><a href="/">Docs</a> &raquo;</li>
-  <li><a href="">Bundles</a></li>
+  <li><a href="">Separation</a></li>
   
 
   	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
@@ -170,24 +169,20 @@
 	<li class="wy-breadcrumbs-aside"><span class='st_twitter_large' displayText='Tweet'></span></li>
 	<li class="wy-breadcrumbs-aside" style="margin-left: 20px"><span class='st_facebook_large' displayText='Facebook'></span></li>
 <li class="wy-breadcrumbs-aside">
-      <a href="https://github.com///edit/bundles/index.rst" class="icon icon-github"> Edit on GitHub</a>
+      <a href="https://github.com///edit/separation/index.rst" class="icon icon-github"> Edit on GitHub</a>
     </li>
 </ul>
 <hr/>
           
-  <div class="section" id="bundles">
-<h1>Bundles<a class="headerlink" href="#bundles" title="Permalink to this headline">¶</a></h1>
-<p>Bundles allow for packages applications to be embedded within other FMF applications.  Bundles should not be confused with services.  If you create a new service, you would simply add it to the composer.json and the projects container and use the new service objects. Bundles should be used when you are distributing an application that has it&#8217;s own routes and visual layouts.</p>
-<p>Quick notes about bundles (complete documentation coming soon)</p>
-<ul class="simple">
-<li>Bundles can have their own &#8220;forms&#8221; but not their own collections, collections always belong to parent projects</li>
-<li>Bundles always have a base folder the routed URL that matches the bundle name, for example: /Somebundle/foo or just /Somebundle</li>
-<li>Bundles have their own public assets, ie, css, layouts, js, etc &#8211; probably not a good idea to reference the parents assets</li>
-<li>Bundles can have their own containers, these containers need to be added as includes in the project container</li>
-<li>Bundles are namespaced with their bundle name</li>
-<li>Bundles start with on file named Appliaction.php that receives the project container via constructor injection</li>
-<li>Bundles can access the $container-&gt;slim object to do their own routing</li>
-</ul>
+  <div class="section" id="separation">
+<h1>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h1>
+<p>Separation is a software service for binding logic-less templates to JSON data sources.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>These days, more websites are being built without direct database queries, but with RESTful API calls that return JSON. Additionally, whereas in the traditional MVC approach to building websites Views would have logic in them, Views are being done away with in favor of logic-less templates, or, the slightly more flexible less-logic templates.</p>
+<p>The FMF framework relies heavily on Handlebars for rendering HTML and RESTful APIs for all data.  As such, the Separation library allows us to create a configuration file that specified where all the partials in an HTML layout will obtain their data from, and then it processes each partial outputting a fully populated HTML template.</p>
+<p>Beyond its core features, Separation has the ability to to interact with a few specialized types of bindings, such as for working with FMF&#8217;s custom data APIs, such as Collection, Document and Form.</p>
+</div>
 </div>
 
 
