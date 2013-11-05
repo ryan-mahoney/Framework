@@ -51,14 +51,16 @@ In the configation file above,  is a YAML file that Separation would read to kno
  * most importantly, which data to bind
 
 
-Data Binding
-++++++++++++
+HTML Layout Template (Outer Template)
++++++++++++++++++++++++++++++++++++++
 
 In the yaml file above, there would be a related HTML layout file, like the one below.
 
 The import thing to notice, is that the layout file container Handlebar variables, one for each binding.  So, the "blogs" binding in the YAML configuration file, also has a {{{blogs}}} variable in the HTML layout file.
 
-HTML Layout file:
+It's also important to note, that by default, hompepage.yml will be associated to homepage.html.
+
+HTML Layout file: **project/public/layout/homepage.html**
 
 .. code-block:: html
 
@@ -75,3 +77,71 @@ HTML Layout file:
 			</div>
 		</body>
 	</html>
+
+
+Data Binding, JSON API data and Less-Logic Partial Templates
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+In the example above, there is binding called "blogs", see below:
+
+.. code-block:: yaml
+
+	blogs:
+        url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+        args: []
+        partial: 'collections/blogs.hbs'
+        type: 'Collection'
+
+For this binding, Separation will send and HTTP GET request to the url: 
+
+%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}
+
+%dataAPI% is a variable set in the projects database config that usually specified the URL of the project, but could specify an external data-source.  This is helpful for abstracting out the URL so it doesn't need to be changed when switching from development to production.  It is the same as:
+
+http://project.localhost/json-data/blogs/all/10/0/{"display_date":-1}
+
+This URL will return some JSON, that probably looks like:
+
+.. code-block:: json
+
+
+Then, Separation will take that data, and render it with the less-logic partials file: **projct/public/collections/blogs.hbs**
+
+.. code-block:: html
+
+
+Special Types
++++++++++++++
+
+Separation has some special internal logic for dealing with certain data API types, such as Collection, Form and Document API types.  The bottom line, is that these types return JSON data, but sometimes there are some particular ways of calling them.
+
+
+Tips and Tricks
++++++++++++++++
+
+This section show a few short-cuts and work arounds for using Separation.
+
+Inline Partials
+***************
+
+It is possible not to specify an partial file, but to put the Handlebar logic directly into the configuration file.  This may sound silly, but if you are just substituting a single value from an data source, it may be more efficient.  For example:
+
+
+.. code-block:: yaml
+
+	about:
+	    url: '%dataAPI%/json-data/blurbsReportByTag/all'
+	    args: []
+	    partial: '{{{blurbs.about}}}'
+	    type: 'Collection'
+
+The above example will pull a list of "blurbs" and then the handlebar logic will render the "about" key of the blurbs response JSON.
+
+
+Fetching HTML
+*************
+
+In some cases, you don't want to use a logicless template, you want to either plug in static HTML from a file, or have a script generate the HTML the old fashioned way.  No proble, refer to the URL of the HTML, and specify the type as "html".
+
+Cacheing Data
+*************
