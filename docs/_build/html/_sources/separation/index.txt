@@ -17,7 +17,7 @@ Beyond its core features, Separation has the ability to to interact with a few s
 A Sample Configuration File
 +++++++++++++++++++++++++++
 
-**project/app/hompeage.yaml**
+Example: **project/app/hompeage.yaml**
 
 .. code-block:: yaml
 
@@ -37,6 +37,7 @@ A Sample Configuration File
 	        args: []
 	        partial: 'forms/contactbrief.hbs'
 	        type: "Form"
+
 
 In the configation file above,  is a YAML file that Separation would read to know:
 
