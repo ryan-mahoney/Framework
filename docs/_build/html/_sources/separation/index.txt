@@ -46,8 +46,8 @@ In the configation file above,  is a YAML file that Separation would read to kno
  * most importantly, which data to bind
 
 
- Data Binding
- ++++++++++++
+Data Binding
+++++++++++++
 
- In the yaml file above, there would be a related HTML "layoutt" file, like the one below.
+In the yaml file above, there would be a related HTML "layoutt" file, like the one below.
 
