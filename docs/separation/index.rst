@@ -27,21 +27,21 @@ Configuration file: **project/app/hompeage.yaml**
 	js:
 
 	binding:
-	    blogs:
-	        url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
-	        args: []
-	        partial: 'collections/blogs.hbs'
-	        type: 'Collection'
-	    about:
-	        url: '%dataAPI%/json-data/blurbs/all'
-	        args: []
-	        partial: '{{{blurbs.about}}}'
-	        type: 'Collection'
-	    contactbrief:
-	        url: '%dataAPI%/json-form/contactbrief'
-	        args: []
-	        partial: 'forms/contactbrief.hbs'
-	        type: "Form"
+		blogs:
+			url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+			args: []
+			partial: 'collections/blogs.hbs'
+			type: 'Collection'
+		about:
+			url: '%dataAPI%/json-data/blurbs/all'
+			args: []
+			partial: '{{{blurbs.about}}}'
+			type: 'Collection'
+		contactbrief:
+			url: '%dataAPI%/json-form/contactbrief'
+			args: []
+			partial: 'forms/contactbrief.hbs'
+			type: "Form"
 
 
 In the configuration file above,  is a YAML file that Separation would read to know:
@@ -87,10 +87,10 @@ In the example above, there is binding called "blogs", see below:
 .. code-block:: yaml
 
 	blogs:
-        url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
-        args: []
-        partial: 'collections/blogs.hbs'
-        type: 'Collection'
+		url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+		args: []
+		partial: 'collections/blogs.hbs'
+		type: 'Collection'
 
 For this binding, Separation will send and HTTP GET request to the url: 
 
@@ -105,34 +105,34 @@ This URL will return some JSON, that probably looks like:
 .. code-block:: json
 
 	{
-	    "blogs": [
-	        {
-	            "_id": "50490cb9b79921001200000b",
-	            "body": "Body",
-	            "code_name": "human_readable",
-	            "comments": "t",
-	            "description": "Description",
-	            "display_date": {
-	                "sec": 1346126400,
-	                "usec": 0
-	            },
-	            "featured": "f",
-	            "image": {
-	                "name": "us-davis-pepper-spray.jpg",
-	                "size": "411507",
-	                "type": "image\/jpeg",
-	                "url": "http:\/\/virtuecenter.s3.amazonaws.com\/files\/2012-09-06-16\/us-davis-pepper-spray.jpg",
-	                "height": "453",
-	                "width": "680"
-	            },
-	            "pinned": "f",
-	            "status": "published",
-	            "tags": [],
-	            "title": "Title",
-	            "display_date__MdY": "Aug 28, 2012",
-	            "path": "/blog/human_readable.html"
-	        }
-	    ]
+		"blogs": [
+			{
+				"_id": "50490cb9b79921001200000b",
+				"body": "Body",
+				"code_name": "human_readable",
+				"comments": "t",
+				"description": "Description",
+				"display_date": {
+					"sec": 1346126400,
+					"usec": 0
+				},
+				"featured": "f",
+				"image": {
+					"name": "us-davis-pepper-spray.jpg",
+					"size": "411507",
+					"type": "image\/jpeg",
+					"url": "http:\/\/virtuecenter.s3.amazonaws.com\/files\/2012-09-06-16\/us-davis-pepper-spray.jpg",
+					"height": "453",
+					"width": "680"
+				},
+				"pinned": "f",
+				"status": "published",
+				"tags": [],
+				"title": "Title",
+				"display_date__MdY": "Aug 28, 2012",
+				"path": "/blog/human_readable.html"
+			}
+		]
 	}
 
 
@@ -165,10 +165,10 @@ It is possible not to specify an partial file, but to put the Handlebar logic di
 .. code-block:: yaml
 
 	about:
-	    url: '%dataAPI%/json-data/blurbsReportByTag/all'
-	    args: []
-	    partial: '{{{blurbs.about}}}'
-	    type: 'Collection'
+		url: '%dataAPI%/json-data/blurbsReportByTag/all'
+		args: []
+		partial: '{{{blurbs.about}}}'
+		type: 'Collection'
 
 The above example will pull a list of "blurbs" and then the handlebar logic will render the "about" key of the blurbs response JSON.
 
@@ -179,7 +179,7 @@ Fetching HTML
 In some cases, you don't want to use a logicless template, you want to either plug in static HTML from a file, or have a script generate the HTML the old fashioned way.  No proble, refer to the URL of the HTML, and specify the type as "html".
 
 .. code-block:: yaml
-    
-    header:
-        url: '%dataAPI%/Manager/header'
-        type: 'html'
+	
+	header:
+		url: '%dataAPI%/Manager/header'
+		type: 'html'
