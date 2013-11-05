@@ -19,24 +19,24 @@ A Sample Configuration File
 
 **project/app/hompeage.yaml**
 
-.. code-block::yaml
+.. code-block:: yaml
 
-    imports:
-     - base.yml
+	imports:
+	 - base.yml
 
-    js:
+	js:
 
-    binding:
-        about:
-            url: '%dataAPI%/json-data/blurbs/all'
-            args: []
-            partial: '{{{blurbs.about}}}'
-            type: 'Collection'
-        contactbrief:
-            url: '%dataAPI%/json-form/contactbrief'
-            args: []
-            partial: 'forms/contactbrief.hbs'
-            type: "Form"
+	binding:
+	    about:
+	        url: '%dataAPI%/json-data/blurbs/all'
+	        args: []
+	        partial: '{{{blurbs.about}}}'
+	        type: 'Collection'
+	    contactbrief:
+	        url: '%dataAPI%/json-form/contactbrief'
+	        args: []
+	        partial: 'forms/contactbrief.hbs'
+	        type: "Form"
 
 In the configation file above,  is a YAML file that Separation would read to know:
 
