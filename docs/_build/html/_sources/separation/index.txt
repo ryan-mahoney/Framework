@@ -28,10 +28,10 @@ Configuration file: **project/app/hompeage.yaml**
 
 	binding:
 	    blogs:
-            url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
-            args: []
-            partial: 'collections/blogs.hbs'
-            type: 'Collection'
+	        url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+	        args: []
+	        partial: 'collections/blogs.hbs'
+	        type: 'Collection'
 	    about:
 	        url: '%dataAPI%/json-data/blurbs/all'
 	        args: []
