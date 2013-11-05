@@ -215,7 +215,7 @@
         <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;Form&quot;</span>
 </pre></div>
 </div>
-<p>In the configation file above,  is a YAML file that Separation would read to know:</p>
+<p>In the configuration file above,  is a YAML file that Separation would read to know:</p>
 <blockquote>
 <div><ul class="simple">
 <li>which other Separation files to import (header, footers, etc.)</li>
@@ -228,7 +228,7 @@
 <h2>HTML Layout Template (Outer Template)<a class="headerlink" href="#html-layout-template-outer-template" title="Permalink to this headline">¶</a></h2>
 <p>In the yaml file above, there would be a related HTML layout file, like the one below.</p>
 <p>The import thing to notice, is that the layout file container Handlebar variables, one for each binding.  So, the &#8220;blogs&#8221; binding in the YAML configuration file, also has a {{{blogs}}} variable in the HTML layout file.</p>
-<p>It&#8217;s also important to note, that by default, hompepage.yml will be associated to homepage.html.</p>
+<p>It&#8217;s also important to note, that by default, homepage.yml will be associated to homepage.html.</p>
 <p>HTML Layout file: <strong>project/public/layout/homepage.html</strong></p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
         <span class="nt">&lt;body&gt;</span>

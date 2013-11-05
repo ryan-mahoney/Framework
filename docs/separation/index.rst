@@ -44,7 +44,7 @@ Configuration file: **project/app/hompeage.yaml**
 	        type: "Form"
 
 
-In the configation file above,  is a YAML file that Separation would read to know:
+In the configuration file above,  is a YAML file that Separation would read to know:
 
  * which other Separation files to import (header, footers, etc.)
  * any JS files it will compile
@@ -58,7 +58,7 @@ In the yaml file above, there would be a related HTML layout file, like the one 
 
 The import thing to notice, is that the layout file container Handlebar variables, one for each binding.  So, the "blogs" binding in the YAML configuration file, also has a {{{blogs}}} variable in the HTML layout file.
 
-It's also important to note, that by default, hompepage.yml will be associated to homepage.html.
+It's also important to note, that by default, homepage.yml will be associated to homepage.html.
 
 HTML Layout file: **project/public/layout/homepage.html**
 
