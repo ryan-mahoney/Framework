@@ -19,7 +19,8 @@ A Sample Configuration File
 
 **project/app/hompeage.yaml**
 
-.. code-block:: yaml
+.. code-block::yaml
+
     imports:
      - base.yml
 
@@ -49,4 +50,3 @@ In the configation file above,  is a YAML file that Separation would read to kno
 
  In the yaml file above, there would be a related HTML "layoutt" file, like the one below.
 
- 
