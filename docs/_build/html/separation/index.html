@@ -136,6 +136,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Separation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-sample-configuration-file">A Sample Configuration File</a></li>
 </ul>
 </li>
 </ul>
@@ -179,9 +180,23 @@
 <p>Separation is a software service for binding logic-less templates to JSON data sources.</p>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>These days, more websites are being built without direct database queries, but with RESTful API calls that return JSON. Additionally, whereas in the traditional MVC approach to building websites Views would have logic in them, Views are being done away with in favor of logic-less templates, or, the slightly more flexible less-logic templates.</p>
-<p>The FMF framework relies heavily on Handlebars for rendering HTML and RESTful APIs for all data.  As such, the Separation library allows us to create a configuration file that specified where all the partials in an HTML layout will obtain their data from, and then it processes each partial outputting a fully populated HTML template.</p>
+<p>These days, more websites are being built without direct database queries, but with RESTful API calls that return JSON data.</p>
+<p>Traditionally, the MVC approach to building websites would have Views containing presentation logic.  Many modern applications are getting rid of Views in favor of logic-less templates, or, the slightly more flexible less-logic templates.</p>
+<p>The FMF framework relies heavily on the Handlebars engine for rendering HTML and RESTful APIs for all data.  As such, the Separation library allows us to create a configuration file that specified where all the partials in an HTML layout will obtain their data from, and then it processes each partial outputting a fully populated HTML template.</p>
 <p>Beyond its core features, Separation has the ability to to interact with a few specialized types of bindings, such as for working with FMF&#8217;s custom data APIs, such as Collection, Document and Form.</p>
+</div>
+<div class="section" id="a-sample-configuration-file">
+<h2>A Sample Configuration File<a class="headerlink" href="#a-sample-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p><strong>project/app/hompeage.yaml</strong></p>
+<p>In the configation file above,  is a YAML file that Separation would read to know:</p>
+<blockquote>
+<div><ul class="simple">
+<li>which other Separation files to import (header, footers, etc.)</li>
+<li>any JS files it will compile</li>
+<li>most importantly, which data to bind</li>
+</ul>
+<p>In the yaml file above, there would be a related HTML &#8220;layoutt&#8221; file, like the one below.</p>
+</div></blockquote>
 </div>
 </div>
 
