@@ -27,6 +27,7 @@ Contents:
    theming/index
    bundles/index
    appliance/index
+   separation/index
 
 ------------
 
