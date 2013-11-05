@@ -51,7 +51,7 @@ class Framework {
 					break;
 
 				case 'upgrade':
-					$container->build->upgrade();
+					$container->build->upgrade($root);
 					exit;
 					break;
 			}
