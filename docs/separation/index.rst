@@ -104,10 +104,45 @@ This URL will return some JSON, that probably looks like:
 
 .. code-block:: json
 
+	{
+	    "blogs": [
+	        {
+	            "_id": "50490cb9b79921001200000b",
+	            "body": "Body",
+	            "code_name": "human_readable",
+	            "comments": "t",
+	            "description": "Description",
+	            "display_date": {
+	                "sec": 1346126400,
+	                "usec": 0
+	            },
+	            "featured": "f",
+	            "image": {
+	                "name": "us-davis-pepper-spray.jpg",
+	                "size": "411507",
+	                "type": "image\/jpeg",
+	                "url": "http:\/\/virtuecenter.s3.amazonaws.com\/files\/2012-09-06-16\/us-davis-pepper-spray.jpg",
+	                "height": "453",
+	                "width": "680"
+	            },
+	            "pinned": "f",
+	            "status": "published",
+	            "tags": [],
+	            "title": "Title",
+	            "display_date__MdY": "Aug 28, 2012",
+	            "path": "/blog/human_readable.html"
+	        }
+	    ]
+	}
+
 
 Then, Separation will take that data, and render it with the less-logic partials file: **projct/public/collections/blogs.hbs**
 
 .. code-block:: html
+
+	{{#each}}
+		<div><a href="{{path}}">{{title}}</a></div>
+	{{/each}}
 
 
 Special Types
