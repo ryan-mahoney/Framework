@@ -17,7 +17,7 @@ Beyond its core features, Separation has the ability to to interact with a few s
 A Sample Configuration File
 +++++++++++++++++++++++++++
 
-Example: **project/app/hompeage.yaml**
+Configuration file: **project/app/hompeage.yaml**
 
 .. code-block:: yaml
 
@@ -27,6 +27,11 @@ Example: **project/app/hompeage.yaml**
 	js:
 
 	binding:
+	    blogs:
+            url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+            args: []
+            partial: 'collections/blogs.hbs'
+            type: 'Collection'
 	    about:
 	        url: '%dataAPI%/json-data/blurbs/all'
 	        args: []
@@ -49,5 +54,24 @@ In the configation file above,  is a YAML file that Separation would read to kno
 Data Binding
 ++++++++++++
 
-In the yaml file above, there would be a related HTML "layoutt" file, like the one below.
+In the yaml file above, there would be a related HTML layout file, like the one below.
 
+The import thing to notice, is that the layout file container Handlebar variables, one for each binding.  So, the "blogs" binding in the YAML configuration file, also has a {{{blogs}}} variable in the HTML layout file.
+
+HTML Layout file:
+
+.. code-block:: html
+
+	<html>
+		<body>
+			<div class="container">
+				<div class="left">
+					<div class="blog-posts">{{{blogs}}}</div>
+				</div>
+				<div class="right">
+					<div class="about-me">{{{about}}}</div>
+					<div class="contact-form">{{{contactbrief}}}</div>
+				</div>
+			</div>
+		</body>
+	</html>
