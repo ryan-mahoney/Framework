@@ -198,21 +198,21 @@
 <span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
 
 <span class="l-Scalar-Plain">binding</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">blogs</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blogs/all/10/0/{&quot;display_date&quot;:-1}&#39;</span>
-        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
-        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;collections/blogs.hbs&#39;</span>
-        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
-    <span class="l-Scalar-Plain">about</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blurbs/all&#39;</span>
-        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
-        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;{{{blurbs.about}}}&#39;</span>
-        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
-    <span class="l-Scalar-Plain">contactbrief</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-form/contactbrief&#39;</span>
-        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
-        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;forms/contactbrief.hbs&#39;</span>
-        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;Form&quot;</span>
+        <span class="l-Scalar-Plain">blogs</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blogs/all/10/0/{&quot;display_date&quot;:-1}&#39;</span>
+                <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+                <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;collections/blogs.hbs&#39;</span>
+                <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
+        <span class="l-Scalar-Plain">about</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blurbs/all&#39;</span>
+                <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+                <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;{{{blurbs.about}}}&#39;</span>
+                <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
+        <span class="l-Scalar-Plain">contactbrief</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-form/contactbrief&#39;</span>
+                <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+                <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;forms/contactbrief.hbs&#39;</span>
+                <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;Form&quot;</span>
 </pre></div>
 </div>
 <p>In the configuration file above,  is a YAML file that Separation would read to know:</p>
@@ -250,10 +250,10 @@
 <h2>Data Binding, JSON API data and Less-Logic Partial Templates<a class="headerlink" href="#data-binding-json-api-data-and-less-logic-partial-templates" title="Permalink to this headline">¶</a></h2>
 <p>In the example above, there is binding called &#8220;blogs&#8221;, see below:</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">blogs</span><span class="p-Indicator">:</span>
-<span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blogs/all/10/0/{&quot;display_date&quot;:-1}&#39;</span>
-<span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
-<span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;collections/blogs.hbs&#39;</span>
-<span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blogs/all/10/0/{&quot;display_date&quot;:-1}&#39;</span>
+        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;collections/blogs.hbs&#39;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
 </pre></div>
 </div>
 <p>For this binding, Separation will send and HTTP GET request to the url:</p>
@@ -262,34 +262,34 @@
 <p><a class="reference external" href="http://project.localhost/json-data/blogs/all/10/0">http://project.localhost/json-data/blogs/all/10/0</a>/{&#8220;display_date&#8221;:-1}</p>
 <p>This URL will return some JSON, that probably looks like:</p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;blogs&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;50490cb9b79921001200000b&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Body&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;code_name&quot;</span><span class="p">:</span> <span class="s2">&quot;human_readable&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;comments&quot;</span><span class="p">:</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;display_date&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;sec&quot;</span><span class="p">:</span> <span class="mi">1346126400</span><span class="p">,</span>
-                <span class="nt">&quot;usec&quot;</span><span class="p">:</span> <span class="mi">0</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;us-davis-pepper-spray.jpg&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;411507&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image\/jpeg&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http:\/\/virtuecenter.s3.amazonaws.com\/files\/2012-09-06-16\/us-davis-pepper-spray.jpg&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="s2">&quot;453&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="s2">&quot;680&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;pinned&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;published&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Title&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;display_date__MdY&quot;</span><span class="p">:</span> <span class="s2">&quot;Aug 28, 2012&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/blog/human_readable.html&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
+        <span class="nt">&quot;blogs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                        <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;50490cb9b79921001200000b&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Body&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;code_name&quot;</span><span class="p">:</span> <span class="s2">&quot;human_readable&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;comments&quot;</span><span class="p">:</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;display_date&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;sec&quot;</span><span class="p">:</span> <span class="mi">1346126400</span><span class="p">,</span>
+                                <span class="nt">&quot;usec&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;featured&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;us-davis-pepper-spray.jpg&quot;</span><span class="p">,</span>
+                                <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;411507&quot;</span><span class="p">,</span>
+                                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image\/jpeg&quot;</span><span class="p">,</span>
+                                <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http:\/\/virtuecenter.s3.amazonaws.com\/files\/2012-09-06-16\/us-davis-pepper-spray.jpg&quot;</span><span class="p">,</span>
+                                <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="s2">&quot;453&quot;</span><span class="p">,</span>
+                                <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="s2">&quot;680&quot;</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;pinned&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;published&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+                        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Title&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;display_date__MdY&quot;</span><span class="p">:</span> <span class="s2">&quot;Aug 28, 2012&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/blog/human_readable.html&quot;</span>
+                <span class="p">}</span>
+        <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -311,10 +311,10 @@
 <h3>Inline Partials<a class="headerlink" href="#inline-partials" title="Permalink to this headline">¶</a></h3>
 <p>It is possible not to specify an partial file, but to put the Handlebar logic directly into the configuration file.  This may sound silly, but if you are just substituting a single value from an data source, it may be more efficient.  For example:</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">about</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blurbsReportByTag/all&#39;</span>
-    <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
-    <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;{{{blurbs.about}}}&#39;</span>
-    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blurbsReportByTag/all&#39;</span>
+        <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+        <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;{{{blurbs.about}}}&#39;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
 </pre></div>
 </div>
 <p>The above example will pull a list of &#8220;blurbs&#8221; and then the handlebar logic will render the &#8220;about&#8221; key of the blurbs response JSON.</p>
@@ -323,8 +323,8 @@
 <h3>Fetching HTML<a class="headerlink" href="#fetching-html" title="Permalink to this headline">¶</a></h3>
 <p>In some cases, you don&#8217;t want to use a logicless template, you want to either plug in static HTML from a file, or have a script generate the HTML the old fashioned way.  No proble, refer to the URL of the HTML, and specify the type as &#8220;html&#8221;.</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">header</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/Manager/header&#39;</span>
-    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;html&#39;</span>
+        <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/Manager/header&#39;</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;html&#39;</span>
 </pre></div>
 </div>
 </div>
