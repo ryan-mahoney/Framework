@@ -137,7 +137,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Separation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-sample-configuration-file">A Sample Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-binding">Data Binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#html-layout-template-outer-template">HTML Layout Template (Outer Template)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-binding-json-api-data-and-less-logic-partial-templates">Data Binding, JSON API data and Less-Logic Partial Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#special-types">Special Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips-and-tricks">Tips and Tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -221,11 +224,12 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="data-binding">
-<h2>Data Binding<a class="headerlink" href="#data-binding" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="html-layout-template-outer-template">
+<h2>HTML Layout Template (Outer Template)<a class="headerlink" href="#html-layout-template-outer-template" title="Permalink to this headline">¶</a></h2>
 <p>In the yaml file above, there would be a related HTML layout file, like the one below.</p>
 <p>The import thing to notice, is that the layout file container Handlebar variables, one for each binding.  So, the &#8220;blogs&#8221; binding in the YAML configuration file, also has a {{{blogs}}} variable in the HTML layout file.</p>
-<p>HTML Layout file:</p>
+<p>It&#8217;s also important to note, that by default, hompepage.yml will be associated to homepage.html.</p>
+<p>HTML Layout file: <strong>project/public/layout/homepage.html</strong></p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
         <span class="nt">&lt;body&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
@@ -240,6 +244,56 @@
         <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="data-binding-json-api-data-and-less-logic-partial-templates">
+<h2>Data Binding, JSON API data and Less-Logic Partial Templates<a class="headerlink" href="#data-binding-json-api-data-and-less-logic-partial-templates" title="Permalink to this headline">¶</a></h2>
+<p>In the example above, there is binding called &#8220;blogs&#8221;, see below:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">blogs</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blogs/all/10/0/{&quot;display_date&quot;:-1}&#39;</span>
+<span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;collections/blogs.hbs&#39;</span>
+<span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
+</pre></div>
+</div>
+<p>For this binding, Separation will send and HTTP GET request to the url:</p>
+<p>%dataAPI%/json-data/blogs/all/10/0/{&#8220;display_date&#8221;:-1}</p>
+<p>%dataAPI% is a variable set in the projects database config that usually specified the URL of the project, but could specify an external data-source.  This is helpful for abstracting out the URL so it doesn&#8217;t need to be changed when switching from development to production.  It is the same as:</p>
+<p><a class="reference external" href="http://project.localhost/json-data/blogs/all/10/0">http://project.localhost/json-data/blogs/all/10/0</a>/{&#8220;display_date&#8221;:-1}</p>
+<p>This URL will return some JSON, that probably looks like:</p>
+<div class="highlight-json"><div class="highlight"><pre>
+</pre></div>
+</div>
+<p>Then, Separation will take that data, and render it with the less-logic partials file: <strong>projct/public/collections/blogs.hbs</strong></p>
+<div class="highlight-html"><div class="highlight"><pre>
+</pre></div>
+</div>
+</div>
+<div class="section" id="special-types">
+<h2>Special Types<a class="headerlink" href="#special-types" title="Permalink to this headline">¶</a></h2>
+<p>Separation has some special internal logic for dealing with certain data API types, such as Collection, Form and Document API types.  The bottom line, is that these types return JSON data, but sometimes there are some particular ways of calling them.</p>
+</div>
+<div class="section" id="tips-and-tricks">
+<h2>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline">¶</a></h2>
+<p>This section show a few short-cuts and work arounds for using Separation.</p>
+<div class="section" id="inline-partials">
+<h3>Inline Partials<a class="headerlink" href="#inline-partials" title="Permalink to this headline">¶</a></h3>
+<p>It is possible not to specify an partial file, but to put the Handlebar logic directly into the configuration file.  This may sound silly, but if you are just substituting a single value from an data source, it may be more efficient.  For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">about</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&#39;%dataAPI%/json-data/blurbsReportByTag/all&#39;</span>
+    <span class="l-Scalar-Plain">args</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+    <span class="l-Scalar-Plain">partial</span><span class="p-Indicator">:</span> <span class="s">&#39;{{{blurbs.about}}}&#39;</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
+</pre></div>
+</div>
+<p>The above example will pull a list of &#8220;blurbs&#8221; and then the handlebar logic will render the &#8220;about&#8221; key of the blurbs response JSON.</p>
+</div>
+<div class="section" id="fetching-html">
+<h3>Fetching HTML<a class="headerlink" href="#fetching-html" title="Permalink to this headline">¶</a></h3>
+<p>In some cases, you don&#8217;t want to use a logicless template, you want to either plug in static HTML from a file, or have a script generate the HTML the old fashioned way.  No proble, refer to the URL of the HTML, and specify the type as &#8220;html&#8221;.</p>
+</div>
+<div class="section" id="cacheing-data">
+<h3>Cacheing Data<a class="headerlink" href="#cacheing-data" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
