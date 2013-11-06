@@ -54,6 +54,10 @@ class Framework {
 					$container->build->upgrade($root);
 					exit;
 					break;
+
+				case 'check':
+					$container->build->environmentCheck($root);
+					exit;
 			}
 			exit;
 		}
