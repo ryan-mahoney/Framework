@@ -187,13 +187,12 @@
           
   <div class="section" id="data-api">
 <h1>Data API<a class="headerlink" href="#data-api" title="Permalink to this headline">¶</a></h1>
-<p>The philosopy of FMF is that the front-end developer should not need to write queries.  All of the queries should be pre-written or generated and be accessable via a RESTful API.</p>
-<p>Most data is obtained through the Collection service.</p>
-<p>The collection service is a rich API generator for accessing data stored in MongoDB via over HTTP in JSON format.</p>
+<p>The philosophy of FMF is that the front-end developer should not need to write queries.  All of the queries should be pre-written or generated and be accessible via an HTTP API.</p>
+<p>FMF utilized a software services named Collection to automatically provide a rich API in JSON format.</p>
 <div class="section" id="a-collection-file">
 <h2>A Collection File<a class="headerlink" href="#a-collection-file" title="Permalink to this headline">¶</a></h2>
 <p>A complete list of available collections can be obtained <a class="reference external" href="https://github.com/virtuecenter/collection/tree/master/available">here</a>.</p>
-<p>To add a new collection to your project, simply copy the file to your own project&#8217;s <strong>/collection</strong> folder.</p>
+<p>To add a new collection to your project, simply copy the file to your own project&#8217;s <strong>/collections</strong> folder.</p>
 <p>A collection file looks like this:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="cm">/*</span>
@@ -219,9 +218,9 @@
 </div>
 <div class="section" id="automatic-api">
 <h2>Automatic API<a class="headerlink" href="#automatic-api" title="Permalink to this headline">¶</a></h2>
-<p>The following HTTP API will be available for your colltions:</p>
+<p>The following HTTP API will be available for your collections:</p>
 <p><strong>http://project.com/json-data/collection/method/limit/offset/sort</strong></p>
-<p>If the method takes and argument, it should be deliniated with a hyphen, for example:</p>
+<p>If the method takes and argument, it should be delimited with a hyphen, for example:</p>
 <p><strong>http://project.com/json-data/collection/method-arg/limit/offset/sort</strong></p>
 </div>
 <div class="section" id="complete-list-of-methods">
