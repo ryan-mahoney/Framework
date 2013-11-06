@@ -1,18 +1,16 @@
 Data API
 ========
 
-The philosopy of FMF is that the front-end developer should not need to write queries.  All of the queries should be pre-written or generated and be accessable via a RESTful API.
+The philosophy of FMF is that the front-end developer should not need to write queries.  All of the queries should be pre-written or generated and be accessible via an HTTP API.
 
-Most data is obtained through the Collection service.
-
-The collection service is a rich API generator for accessing data stored in MongoDB via over HTTP in JSON format.
+FMF utilized a software services named Collection to automatically provide a rich API in JSON format.
 
 A Collection File
 +++++++++++++++++
 
 A complete list of available collections can be obtained `here <https://github.com/virtuecenter/collection/tree/master/available>`_.
 
-To add a new collection to your project, simply copy the file to your own project's **/collection** folder.
+To add a new collection to your project, simply copy the file to your own project's **/collections** folder.
 
 A collection file looks like this:
 
@@ -41,11 +39,11 @@ A collection file looks like this:
 Automatic API
 +++++++++++++
 
-The following HTTP API will be available for your colltions:
+The following HTTP API will be available for your collections:
 
 **http://project.com/json-data/collection/method/limit/offset/sort**
 
-If the method takes and argument, it should be deliniated with a hyphen, for example:
+If the method takes and argument, it should be delimited with a hyphen, for example:
 
 **http://project.com/json-data/collection/method-arg/limit/offset/sort**
 
