@@ -53,17 +53,24 @@ Complete List of Methods
 all
 ***
 
+\http://json.virtuecenter.com/json-data/blogs/all/10/0/{"created_date":-1}
+
 `Get all the documents in a collection. <http://json.virtuecenter.com/json-data/blogs/all/10/0/%7B%22created_date%22:-1%7D?pretty>`_
 
 byId
 ****
 
-Get one document by its _id value.
+\http://json.virtuecenter.com/json-data/blogs/byId-50490cb9b79921001200000b
+
+`Get one document by its _id value. <http://json.virtuecenter.com/json-data/blogs/byId-50490cb9b79921001200000b?pretty>`_
 
 bySlug
 ******
 
-Get one document by it's code_name or "slug" value.
+\http://json.virtuecenter.com/json-data/blogs/bySlug-naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools
+
+
+`Get one document by it's code_name or "slug" value. <http://json.virtuecenter.com/json-data/blogs/bySlug-naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools>`_
 
 featured
 ********
