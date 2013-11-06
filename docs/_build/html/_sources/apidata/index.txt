@@ -41,11 +41,11 @@ Automatic API
 
 The following HTTP API will be available for your collections:
 
-**http://project.com/json-data/collection/method/limit/offset/sort**
+**\http://project.com/json-data/collection/method/limit/offset/sort**
 
 If the method takes and argument, it should be delimited with a hyphen, for example:
 
-**http://project.com/json-data/collection/method-arg/limit/offset/sort**
+**\http://project.com/json-data/collection/method-arg/limit/offset/sort**
 
 Complete List of Methods
 ++++++++++++++++++++++++
