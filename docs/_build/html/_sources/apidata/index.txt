@@ -16,7 +16,7 @@ To add a new collection to your project, simply copy the file to your own projec
 
 A collection file looks like this:
 
-..code-sample:: php
+..code-block:: php
 
 	<?php
 	/*
@@ -31,7 +31,9 @@ A collection file looks like this:
 		public $singular = 'blog';
 	}
 
+
 ** Note: **
+
  * whenever you add a new collection, don't forget to rebuild your project: php public/index.php build
  * to upgrade all of your collections to their latest versions, run: php public/index.php upgrade
 
