@@ -45,7 +45,7 @@ The following HTTP API will be available for your collections:
 
 If the method takes and argument, it should be delimited with a hyphen, for example:
 
-**\http://project.com/json-data/collection/method-arg/limit/offset/sort**
+\http://project.com/json-data/collection/\ **method-arg**\ /limit/offset/sort
 
 Complete List of Methods
 ++++++++++++++++++++++++
@@ -53,7 +53,7 @@ Complete List of Methods
 all
 ***
 
-`Get all the documents in a collection. <>`_
+`Get all the documents in a collection. <http://json.virtuecenter.com/json-data/blogs/all/10/0/%7B%22created_date%22:-1%7D?pretty>`_
 
 byId
 ****
