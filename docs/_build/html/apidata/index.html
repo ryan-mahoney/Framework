@@ -195,26 +195,20 @@
 <p>A complete list of available collections can be obtained <a class="reference external" href="https://github.com/virtuecenter/collection/available">here</a>.</p>
 <p>To add a new collection to your project, simply copy the file to your own project&#8217;s <strong>/collection</strong> folder.</p>
 <p>A collection file looks like this:</p>
-<p>..code-block:: php</p>
-<blockquote>
-<div><p>&lt;?php
-/*</p>
-<blockquote>
-<div><ul class="simple">
-<li>&#64;version .1</li>
-<li>&#64;link <a class="reference external" href="https://raw.github.com/virtuecenter/collection/master/available/blogs.php">https://raw.github.com/virtuecenter/collection/master/available/blogs.php</a></li>
-<li>&#64;mode upgrade</li>
-</ul>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
-</div></blockquote>
-<p>namespace Collection;</p>
-<dl class="docutils">
-<dt>class blogs {</dt>
-<dd>public $publishable = true;
-public $singular = &#8216;blog&#8217;;</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="cm">/*</span>
+<span class="cm"> * @version .1</span>
+<span class="cm"> * @link https://raw.github.com/virtuecenter/collection/master/available/blogs.php</span>
+<span class="cm"> * @mode upgrade</span>
+<span class="cm"> */</span>
+<span class="k">namespace</span> <span class="nx">Collection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">blogs</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="nv">$publishable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$singular</span> <span class="o">=</span> <span class="s1">&#39;blog&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>** Note: **</p>
 <blockquote>
 <div><ul class="simple">
@@ -234,7 +228,7 @@ public $singular = &#8216;blog&#8217;;</dd>
 <h2>Complete List of Methods<a class="headerlink" href="#complete-list-of-methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="all">
 <h3>all<a class="headerlink" href="#all" title="Permalink to this headline">¶</a></h3>
-<p><a href="#id3"><span class="problematic" id="id4">`Get all the documents in a collection. &lt;&gt;`_</span></a></p>
+<p><a href="#id1"><span class="problematic" id="id2">`Get all the documents in a collection. &lt;&gt;`_</span></a></p>
 </div>
 <div class="section" id="byid">
 <h3>byId<a class="headerlink" href="#byid" title="Permalink to this headline">¶</a></h3>
