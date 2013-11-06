@@ -16,7 +16,7 @@ To add a new collection to your project, simply copy the file to your own projec
 
 A collection file looks like this:
 
-..code-block:: php
+.. code-block:: php
 
 	<?php
 	/*
