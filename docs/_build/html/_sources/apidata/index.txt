@@ -75,7 +75,9 @@ bySlug
 featured
 ********
 
-Get documents marked as featured. 
+\http://json.virtuecenter.com/json-data/blogs/featured
+
+`Get documents marked as featured. <http://json.virtuecenter.com/json-data/blogs/featured>`_
 
 byCategoryId
 ************
