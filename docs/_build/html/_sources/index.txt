@@ -28,6 +28,7 @@ Contents:
    bundles/index
    appliance/index
    separation/index
+   apidata/index
 
 ------------
 
