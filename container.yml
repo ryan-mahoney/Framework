@@ -25,7 +25,9 @@ services:
         arguments: ['%root%', '@db']
     field:
         class:     'Field\Field'
-        arguments: ['@db', '@captcha']
+        arguments: ['%root%', '@db', '@captcha']
+    fieldRoute:
+        class:     'Field\FieldRoute'
     captcha:
         class:     'Captcha\Captcha'
     formRoute:
