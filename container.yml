@@ -101,3 +101,6 @@ services:
     bundleRoute:
         class:     'Bundle\BundleRoute'
         arguments: ['@container']
+    manager:
+        class:     'Manager\Manager'
+        arguments: ['@separation']

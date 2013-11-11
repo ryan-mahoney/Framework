@@ -1,0 +1,257 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick Start Guide &mdash; FMF 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link rel="stylesheet" href="../_static/sphinx_rtd_theme.css" type="text/css" />
+      
+
+      
+  
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'1.0',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_rtd_theme.js"></script>
+    
+    
+
+  
+    <link rel="top" title="FMF 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Installation" href="../setup/index.html"/>
+        <link rel="prev" title="PHP Federated Micro-Framework" href="../index.html"/> 
+
+  
+  
+    <script type="text/javascript" src="//use.typekit.net/hiw1hhg.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+    
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html">PHP Federated Micro-Framework</a>
+        <form class="wy-form" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+        <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#obtain-run-virtual-server">Obtain &amp; Run Virtual Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#existing-project-git-pull-the-project-to-the-shared-drive">Existing Project: git pull the Project to the Shared Drive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-project-build-from-scratch">New Project: Build from Scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compose-project-or-download-vendors-folder">Compose Project Or Download Vendors Folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-project-data">Import Project Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verify-in-web-browser">Verify in Web Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-code">Write Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#creating-a-project">Creating A Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#web-servers">Web Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/index.html#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#build-and-re-build">Build and Re-Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#auto-generated-routes">Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#api-centric">API Centric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#service-oriented-architecture">Service Oriented Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#less-logic-templates">Less-Logic Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#pubsub-pattern">PubSub Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#no-sql">No-SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#queues">Queues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../folder/index.html">Folder Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#app">app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#collections">collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#config">config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#filters">filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#forms">forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#public">public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#subscribers">subscribers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../folder/index.html#vendors">vendors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#form">Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#pubsub">PubSub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#separation">Separation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theming/index.html">Theming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#sample-project">Sample Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#listing-auto-generated-routes">Listing Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#types-of-pages">Types of Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-layouts">Working with Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-partials">Working with Partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#separation-applications">Separation Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bundles/index.html">Bundles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appliance/index.html">Server Appliance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#installing-virtualbox">Installing VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#obtaining-the-appliance">Obtaining the Appliance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#using-the-appliance">Using the Appliance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#shared-drive">Shared Drive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#demo-project">Demo Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#new-project">New Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../separation/index.html">Separation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#a-sample-configuration-file">A Sample Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#html-layout-template-outer-template">HTML Layout Template (Outer Template)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#data-binding-json-api-data-and-less-logic-partial-templates">Data Binding, JSON API data and Less-Logic Partial Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#special-types">Special Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#tips-and-tricks">Tips and Tricks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apidata/index.html">Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apidata/index.html#a-collection-file">A Collection File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apidata/index.html#automatic-api">Automatic API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apidata/index.html#complete-list-of-methods">Complete List of Methods</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="/">FMF 1.0 documentation</a>        
+      </nav>
+      
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<ul class="wy-breadcrumbs">
+  <li><a href="/">Docs</a> &raquo;</li>
+  <li><a href="">Quick Start Guide</a></li>
+  
+
+  	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
+	<li class="wy-breadcrumbs-aside"><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
+	<li class="wy-breadcrumbs-aside"><span class='st_googleplus_large' displayText='Google +'></span></li>
+	<li class="wy-breadcrumbs-aside"><span class='st_twitter_large' displayText='Tweet'></span></li>
+	<li class="wy-breadcrumbs-aside" style="margin-left: 20px"><span class='st_facebook_large' displayText='Facebook'></span></li>
+<li class="wy-breadcrumbs-aside">
+      <a href="https://github.com///edit/quickstart/index.rst" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+</ul>
+<hr/>
+          
+  <div class="section" id="quick-start-guide">
+<h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<p>This guide covers the basic steps to get your local environment ready so you can start working on a project as quickly as possible.</p>
+<div class="section" id="obtain-run-virtual-server">
+<h2>Obtain &amp; Run Virtual Server<a class="headerlink" href="#obtain-run-virtual-server" title="Permalink to this headline">¶</a></h2>
+<p>You could setup an entire development environment with a web server, database server, search server, etc – but the fastest way to get started is just to use the pre-configured server appliance.  The files and directions are here <a class="reference internal" href="../appliance/index.html#appliance"><em>Installing VirtualBox</em></a></p>
+</div>
+<div class="section" id="existing-project-git-pull-the-project-to-the-shared-drive">
+<h2>Existing Project: git pull the Project to the Shared Drive<a class="headerlink" href="#existing-project-git-pull-the-project-to-the-shared-drive" title="Permalink to this headline">¶</a></h2>
+<p>If a project has already been created, just pull it down to the shared drive. Most projects will be stored in Git, if you don&#8217;t know Git – learn it.  The shared drive will be mapped on Windows computers as <strong>//fmf/www</strong> each website project should be saved here.</p>
+<p>Restart the appliance whenever you install a new website project.</p>
+</div>
+<div class="section" id="new-project-build-from-scratch">
+<h2>New Project: Build from Scratch<a class="headerlink" href="#new-project-build-from-scratch" title="Permalink to this headline">¶</a></h2>
+<p>If you are building a brand new project from scratch, follow these directions: <a class="reference internal" href="../setup/index.html#create"><em>Creating A Project</em></a></p>
+</div>
+<div class="section" id="compose-project-or-download-vendors-folder">
+<h2>Compose Project Or Download Vendors Folder<a class="headerlink" href="#compose-project-or-download-vendors-folder" title="Permalink to this headline">¶</a></h2>
+<p>Modern PHP applications obtain their dependencies via <a class="reference external" href="http://getcomposer.org/">Composer</a>.  Composer puts all the dependencies in a “vendors” folder and creates an autoloader.  You can run Composer either locally or on the virtual server from within the project simply by running the command below.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> /var/www/myproject
+composer install
+</pre></div>
+</div>
+<p>If for some reason you can not run Composer, you could download a pre-compose vendors folder from <a class="reference external" href="http://virtuecenter-fmf.s3.amazonaws.com/vendor.zip">here</a>, but composing on your own project is always better.</p>
+</div>
+<div class="section" id="import-project-data">
+<h2>Import Project Data<a class="headerlink" href="#import-project-data" title="Permalink to this headline">¶</a></h2>
+<p>If your project is pre-built, it may need to have it&#8217;s data dump installed.  You will need to extract the data dump, enter the dump folder, list the folder to see the database name, and run mongorestore to import the data.</p>
+<div class="highlight-bash"><div class="highlight"><pre>tar xzf ./dump.tar.gz
+<span class="nb">cd </span>dump
+ls
+mongorestore dbname ./dbname
+</pre></div>
+</div>
+</div>
+<div class="section" id="verify-in-web-browser">
+<h2>Verify in Web Browser<a class="headerlink" href="#verify-in-web-browser" title="Permalink to this headline">¶</a></h2>
+<p>When you login to your virtual server, it tells you what it&#8217;s IP is.  If you have installed a new project and re-started Nginx (or the server itself), then going to that IP address in your local web browser should bring up the project.</p>
+</div>
+<div class="section" id="write-code">
+<h2>Write Code<a class="headerlink" href="#write-code" title="Permalink to this headline">¶</a></h2>
+<p>Good luck!</p>
+</div>
+</div>
+
+
+        </div>
+
+        <hr class="docutils" style="margin-top: 60px">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'fmfdoc'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+
+      </div>
+    </section>
+
+    
+  </div>
+</body>
+</html>
