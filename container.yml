@@ -25,7 +25,7 @@ services:
         arguments: ['%root%', '@db']
     field:
         class:     'Field\Field'
-        arguments: ['%root%', '@db', '@captcha']
+        arguments: ['%root%', '@db', '@manager']
     fieldRoute:
         class:     'Field\FieldRoute'
     captcha:
@@ -103,4 +103,4 @@ services:
         arguments: ['@container']
     manager:
         class:     'Manager\Manager'
-        arguments: ['@separation']
+        arguments: ['@separation', '@response']
