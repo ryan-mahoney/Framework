@@ -46,7 +46,14 @@ He can be reached at `ryan@virtuecenter.com <mailto:ryan@virtuecenter.com>`_
 Contributions
 =============
 
-There are currently no outside contributors to FMF, however Faizan Sattar from Saleforce.com has advised on the architecture and Daniel Bickett from Ranger came up with the name.
+There are currently no outside contributors to FMF, however Faizan Sattar from Salesforce.com has advised on the architecture and Daniel Bickett from Ranger came up with the name.
+
+------------
+
+Contributing to FMF
+===================
+
+In keeping with the history and tradition of constraint-based creative works, the FMF development process occurs, as a rule, two floors underground.
 
 ------------
 
