@@ -104,9 +104,6 @@ services:
     manager:
         class:     'Manager\Manager'
         arguments: ['@separation', '@response']
-    storage:
-        class:     'Upload\Storage\FileSystem'
-        arguments: ['%root%']
     upload:
-        class:     'Upload\File'
-        arguments: ['tmp', '@storage']
+        class:     'Upload\Upload'
+        arguments: ['%root%']
