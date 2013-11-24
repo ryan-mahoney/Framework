@@ -105,5 +105,5 @@ services:
         class:     'Manager\Manager'
         arguments: ['@separation', '@response']
     upload:
-        class:     'Upload\Upload'
+        class:     'UploadWrapper\UploadWrapper'
         arguments: ['%root%']
