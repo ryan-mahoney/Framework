@@ -107,3 +107,5 @@ services:
     uploadwrapper:
         class:     'UploadWrapper\UploadWrapper'
         arguments: ['%root%']
+    slugify:
+        class:     'Cocur\Slugify\Slugify'
