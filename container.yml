@@ -109,3 +109,6 @@ services:
         arguments: ['%root%']
     slugify:
         class:     'Cocur\Slugify\Slugify'
+    imageResizer:
+        class:     'ImageResizer\ImageResizer'
+        arguments: ['@slim']
