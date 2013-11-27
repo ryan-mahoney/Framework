@@ -89,6 +89,7 @@ class Framework {
 		}
 
 		//smart routing
+		$container->imageResizer->route();
 		$container->helperRoute->helpers($root);
 		$container->collectionRoute->json($root);
 		$container->collectionRoute->app($root);
