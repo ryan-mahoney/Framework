@@ -29,6 +29,7 @@ Contents:
    appliance/index
    separation/index
    apidata/index
+   manager/index
 
 ------------
 
