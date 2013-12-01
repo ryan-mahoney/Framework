@@ -66,6 +66,9 @@ services:
     db:
         class:     'DB\Mongo'
         arguments: ['@config', '@topic']
+    dbmigration:
+        class:     'DB\Migration'
+        arguments: ['@db']
     post:
         class:     'HTTP\Post'
     response:

@@ -58,6 +58,10 @@ class Framework {
 				case 'check':
 					$container->build->environmentCheck($root);
 					exit;
+
+				case 'dburi':
+				    $container->dbmigration->addURI();
+				    exit;
 			}
 			exit;
 		}
