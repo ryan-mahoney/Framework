@@ -5,28 +5,28 @@ Every website needs a content management system.
 
 ---------
 
-background
+Background
 ++++++++++
 
 The FMF framework has a capacity to add "bundles" to an existing project.  Semantic-CM is an FMF based content management system that can be added as a bundle.
 
 ---------
 
-installation
+Installation
 ++++++++++++
 
 In order to install the manager, you first have an an FMF project.
 
 There are essentially two ways to install the manager.
 
-installing as a download
+Installing as a Download
 ************************
 
 You can download the manager from Github, and move the "Manager" folder into your project's "bundles" folder.
 
 Here is the `Download Package <https://github.com/virtuecenter/manager/archive/master.zip>`_.
 
-installing as a symbolic link
+Installing as a Symbolic Link
 *****************************
 
 You can clone the manager from Github, and then symbolically link it into your projects "bundles" folder.
@@ -50,8 +50,8 @@ The above assumes that you have a a project names "myproject" installed in your 
 
 -----------
 
-installing managers and collections
-+++++++++++++++++++++++++++++++++++
+Installing Individual Managers and Collections
+++++++++++++++++++++++++++++++++++++++++++++++
 
 Semantic-CM has a library of available managers (and collections) you will need.  Simply copy them into your project's "managers" and "collections" folders, re-build your project and you are good to go.
 
