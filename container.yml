@@ -103,7 +103,7 @@ services:
         arguments: ['@container']
     manager:
         class:     'Manager\Manager'
-        arguments: ['@separation', '@response']
+        arguments: ['@separation', '@response', '%root%']
     uploadwrapper:
         class:     'UploadWrapper\UploadWrapper'
         arguments: ['%root%']
