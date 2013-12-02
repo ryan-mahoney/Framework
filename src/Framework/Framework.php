@@ -25,14 +25,25 @@
 namespace Framework;
 use Container\Container;
 
+function container () {
+	return Framework::container();
+}
+
 class Framework {
+	private static $container;
+
+	public static function container () {
+		return self::$container;
+	}
+
 	public function frontController () {
 		$sapi = php_sapi_name();
 		$root = (($sapi == 'cli') ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
 		if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
 			$root .= '/public';
 		}
-		$container = new Container($root, $root . '/../container.yml');
+		self::$container = new Container($root, $root . '/../container.yml');
+		$container = self::$container;
 		if ($sapi == 'cli') {
 			if (!isset($_SERVER['argv'][1])) {
 				exit;
