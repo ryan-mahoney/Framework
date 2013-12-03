@@ -31,6 +31,18 @@ function container () {
 
 class Framework {
 	private static $container;
+	private static $keyCache = [];
+
+	public static function keySet ($name, $value) {
+		self::$keyCache[$name] = $value;
+	}
+
+	public static  function keyGet ($name) {
+		if (!isset(self::$keyCache[$name])) {
+			return false;
+		}
+		return self::$keyCache[$name];
+	}
 
 	public static function container () {
 		return self::$container;
