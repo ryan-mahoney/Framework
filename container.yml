@@ -22,7 +22,7 @@ services:
         arguments: ['@collection', '@slim', '@db', '@separation', '@response']
     collection:
         class:     'Collection\Collection'
-        arguments: ['%root%', '@db']
+        arguments: ['%root%', '@db', '@queue']
     field:
         class:     'Field\Field'
         arguments: ['%root%', '@db', '@manager']
@@ -115,3 +115,6 @@ services:
     imageResizer:
         class:     'ImageResizer\ImageResizer'
         arguments: ['@slim']
+    twitter:
+        class:     'Twitter\Twitter'
+        arguments: ['%root%', '@cache', '@queue', '@db', '@config']

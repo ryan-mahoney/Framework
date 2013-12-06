@@ -69,6 +69,8 @@ class Framework {
 
 				case 'worker':
 					set_time_limit(0);
+					$this->cache($root, $container);
+					$container->topic->load($root);
 					$container->worker->work();
 					exit;
 					break;
@@ -85,6 +87,15 @@ class Framework {
 				case 'dburi':
 				    $container->dbmigration->addURI();
 				    exit;
+
+				case 'reindex':
+					exit;
+
+				case 'topics':
+					$this->cache($root, $container);
+					$container->topic->load($root);
+					$container->topic->show();
+					exit;
 			}
 			exit;
 		}
@@ -97,21 +108,7 @@ class Framework {
 		}
 		
 		//configuration cache
-		$items = [
-			$root . '-collections.json' => false, 
-			$root . '-filters.json' => false, 
-			$root . '-forms.json' => false, 
-			$root . '-bundles.json' => false, 
-			$root . '-topics.json' => false
-		];
-		$result = $container->cache->getBatch($items);
-		if ($result === true) {
-			$container->collectionRoute->cacheSet(json_decode($items[$root . '-collections.json'], true));
-			$container->filter->cacheSet(json_decode($items[$root . '-filters.json'], true));
-			$container->formRoute->cacheSet(json_decode($items[$root . '-forms.json'], true));
-			$container->bundleRoute->cacheSet(json_decode($items[$root . '-bundles.json'], true));
-			$container->topic->cacheSet(json_decode($items[$root . '-topics.json'], true));
-		}
+		$this->cache($root, $container);
 
 		//smart routing
 		$container->imageResizer->route();
@@ -143,6 +140,24 @@ class Framework {
 		$slim->run();
 		$container->filter->apply($root);
 		echo $container->response;
+	}
+
+	private function cache ($root, $container) {
+		$items = [
+			$root . '-collections.json' => false, 
+			$root . '-filters.json' => false, 
+			$root . '-forms.json' => false, 
+			$root . '-bundles.json' => false, 
+			$root . '-topics.json' => false
+		];
+		$result = $container->cache->getBatch($items);
+		if ($result === true) {
+			$container->collectionRoute->cacheSet(json_decode($items[$root . '-collections.json'], true));
+			$container->filter->cacheSet(json_decode($items[$root . '-filters.json'], true));
+			$container->formRoute->cacheSet(json_decode($items[$root . '-forms.json'], true));
+			$container->bundleRoute->cacheSet(json_decode($items[$root . '-bundles.json'], true));
+			$container->topic->cacheSet(json_decode($items[$root . '-topics.json'], true));
+		}
 	}
 
 	private function routeList ($slim) {
