@@ -38,7 +38,7 @@
         "virtuecenter/separation": "dev-master",
         "virtuecenter/bundle": "dev-master",
         "virtuecenter/manager": "dev-master",
-        "virtuecenter/twitter": "dev-master"
+        "virtuecenter/twitter": "dev-master",
         "virtuecenter/uploadwrapper": "dev-master"
     },
     "autoload": {
