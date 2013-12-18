@@ -25,6 +25,7 @@ Contents:
    folder/index
    components/index
    theming/index
+   forms/index
    bundles/index
    appliance/index
    separation/index
