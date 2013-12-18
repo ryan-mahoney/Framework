@@ -14,10 +14,10 @@ Creating a form with FMF involves at least 4 files: a confguration file, a layou
 
 The files can be found:
 
-/app/forms/example.yml
-/forms/example.php 
-/public/layouts/forms/example.html
-/public/partials/forms/example.hbs
+- /app/forms/example.yml
+- /forms/example.php 
+- /public/layouts/forms/example.html
+- /public/partials/forms/example.hbs
 
 This form will be automatically routes to:
 
@@ -34,6 +34,9 @@ The Application Config
           args: []
           partial: 'forms/example.hbs'
           type: "Form"
+
+
+----------------------------
 
 The Layout
 ++++++++++
@@ -52,6 +55,8 @@ The Layout
   </html>
 
 
+----------------------------
+
 The Partial
 +++++++++++
 
@@ -62,6 +67,8 @@ The Partial
     {{{id}}}
   </form>
 
+
+----------------------------
 
 The Form Class
 ++++++++++++++
@@ -102,6 +109,8 @@ There are 3 possible options for $after: redirect, notice, or function.
 
 "function" calls a predefined function in the page with the following options: form, submittedData, response
 
+
+----------------------------
 
 Saving Data
 +++++++++++

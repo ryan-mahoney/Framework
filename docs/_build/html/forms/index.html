@@ -210,10 +210,12 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Creating a form with FMF involves at least 4 files: a confguration file, a layout, a partial and a form class.</p>
 <p>The files can be found:</p>
-<p>/app/forms/example.yml
-/forms/example.php
-/public/layouts/forms/example.html
-/public/partials/forms/example.hbs</p>
+<ul class="simple">
+<li>/app/forms/example.yml</li>
+<li>/forms/example.php</li>
+<li>/public/layouts/forms/example.html</li>
+<li>/public/partials/forms/example.hbs</li>
+</ul>
 <p>This form will be automatically routes to:</p>
 <p>/form/example</p>
 </div>
@@ -228,6 +230,7 @@
 </pre></div>
 </div>
 </div>
+<hr class="docutils" />
 <div class="section" id="the-layout">
 <h2>The Layout<a class="headerlink" href="#the-layout" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -242,6 +245,7 @@
 </pre></div>
 </div>
 </div>
+<hr class="docutils" />
 <div class="section" id="the-partial">
 <h2>The Partial<a class="headerlink" href="#the-partial" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">data-xhr=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
@@ -251,6 +255,7 @@
 </pre></div>
 </div>
 </div>
+<hr class="docutils" />
 <div class="section" id="the-form-class">
 <h2>The Form Class<a class="headerlink" href="#the-form-class" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -284,6 +289,7 @@
 <p>&#8220;notice&#8221; displays a message.</p>
 <p>&#8220;function&#8221; calls a predefined function in the page with the following options: form, submittedData, response</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="saving-data">
 <h2>Saving Data<a class="headerlink" href="#saving-data" title="Permalink to this headline">¶</a></h2>
 <p>The above code will put a form on your page.  But to have the data actually save to the database, you need a subscriber to subscribe to it&#8217;s document.  For example:</p>
