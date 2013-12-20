@@ -16,7 +16,7 @@ services:
         arguments: ['@container']
     separation:
         class:     'Separation\Separation'
-        arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow']
+        arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@slim']
     collectionRoute:
         class:     'Collection\CollectionRoute'
         arguments: ['@collection', '@slim', '@db', '@separation', '@response']

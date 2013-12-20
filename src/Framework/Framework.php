@@ -37,7 +37,7 @@ class Framework {
 		self::$keyCache[$name] = $value;
 	}
 
-	public static  function keyGet ($name) {
+	public static function keyGet ($name) {
 		if (!isset(self::$keyCache[$name])) {
 			return false;
 		}
@@ -95,6 +95,10 @@ class Framework {
 					$this->cache($root, $container);
 					$container->topic->load($root);
 					$container->topic->show();
+					exit;
+
+				case 'count':
+					$container->collection->statsAll();
 					exit;
 			}
 			exit;
