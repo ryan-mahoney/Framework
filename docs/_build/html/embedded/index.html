@@ -220,12 +220,158 @@
 </ul>
 <div class="section" id="link-the-child-from-the-parent">
 <h3>Link the child from the parent<a class="headerlink" href="#link-the-child-from-the-parent" title="Permalink to this headline">¶</a></h3>
-<p>code sample of field php</p>
-<p>code sample of field html</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Manager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">categories</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$collection</span> <span class="o">=</span> <span class="s1">&#39;categories&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;Categories&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$titleField</span> <span class="o">=</span> <span class="s1">&#39;title&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$singular</span> <span class="o">=</span> <span class="s1">&#39;Category&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$description</span> <span class="o">=</span> <span class="s1">&#39;{{count}} categories&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$definition</span> <span class="o">=</span> <span class="s1">&#39;....&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$acl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;superadmin&#39;</span><span class="p">];</span>
+    <span class="k">public</span> <span class="nv">$tabs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Main&#39;</span><span class="p">,</span> <span class="s1">&#39;SEO&#39;</span><span class="p">];</span>
+    <span class="k">public</span> <span class="nv">$icon</span> <span class="o">=</span> <span class="s1">&#39;checkmark sign&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$category</span> <span class="o">=</span> <span class="s1">&#39;Content&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$after</span> <span class="o">=</span> <span class="s1">&#39;function&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$function</span> <span class="o">=</span> <span class="s1">&#39;ManagerSaved&#39;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;collection&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;categories&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;_id&#39;</span>
+    <span class="p">];</span>
+
+        <span class="k">function</span> <span class="nf">titleField</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+                        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Title&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;required&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;InputText&#39;</span>
+                <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">subcategoryField</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;subcategory&#39;</span><span class="p">,</span>  <span class="c1">//this field will hold the embedded manager</span>
+                        <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sub Categories&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;required&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span>      <span class="s1">&#39;Manager&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;manager&#39;</span>       <span class="o">=&gt;</span> <span class="s1">&#39;subcategories&#39;</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">formPartial</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$partial</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;&#39;HBS&#39;</span>
+<span class="s">                {{#Form}}{{/Form}}</span>
+<span class="s">                    &lt;div class=&quot;top-container&quot;&gt;</span>
+<span class="s">                        {{#DocumentHeader}}{{/DocumentHeader}}</span>
+<span class="s">                        {{#DocumentTabs}}{{/DocumentTabs}}</span>
+<span class="s">                    &lt;/div&gt;</span>
+
+<span class="s">                    &lt;div class=&quot;bottom-container&quot;&gt;</span>
+<span class="s">                        &lt;div class=&quot;ui tab active&quot; data-tab=&quot;Main&quot;&gt;</span>
+<span class="s">                            {{#DocumentFormLeft}}</span>
+<span class="s">                                {{#FieldLeft title Title required}}{{/FieldLeft}}</span>
+<span class="s">                                &lt;!-- &quot;subcategory&quot; is the field in the parent --&gt;</span>
+<span class="s">                                &lt;!-- &quot;subcategories&quot; is the name of the embedded manager php file --&gt;</span>
+<span class="s">                                                    {{#FieldEmbedded subcategory subcategories}}{{/FieldEmbedded}}</span>
+<span class="s">                                {{{id}}}</span>
+<span class="s">                            {{/DocumentFormLeft}}</span>
+<span class="s">                        &lt;/div&gt;</span>
+<span class="s">                        &lt;/div&gt;</span>
+<span class="s">                    &lt;/form&gt;</span>
+<span class="s">HBS;</span>
+        <span class="k">return</span> <span class="nv">$partial</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="designate-the-child-as-embedded">
 <h3>Designate the child as embedded<a class="headerlink" href="#designate-the-child-as-embedded" title="Permalink to this headline">¶</a></h3>
-<p>public $embedded = true;</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Manager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">subcategories</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$collection</span> <span class="o">=</span> <span class="s1">&#39;categories&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;Subcategories&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$titleField</span> <span class="o">=</span> <span class="s1">&#39;title&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$singular</span> <span class="o">=</span> <span class="s1">&#39;Subcategory&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$description</span> <span class="o">=</span> <span class="s1">&#39;4 subcategories&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$definition</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$acl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;superadmin&#39;</span><span class="p">];</span>
+        <span class="k">public</span> <span class="nv">$icon</span> <span class="o">=</span> <span class="s1">&#39;browser&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$category</span> <span class="o">=</span> <span class="s1">&#39;Content&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$after</span> <span class="o">=</span> <span class="s1">&#39;function&#39;</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nv">$function</span> <span class="o">=</span> <span class="s1">&#39;embeddedUpsert&#39;</span><span class="p">;</span>  <span class="c1">//important!  the function name is different</span>
+        <span class="k">public</span> <span class="nv">$embedded</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>  <span class="c1">//important!  it is designated at embedded</span>
+        <span class="k">public</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s1">&#39;collection&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;categories&#39;</span><span class="p">,</span>  <span class="c1">//important! it refers to the parent manager&#39;s collection</span>
+                <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;_id&#39;</span>
+        <span class="p">];</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span> <span class="p">(</span><span class="nv">$field</span><span class="o">=</span><span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">field</span> <span class="o">=</span> <span class="nv">$field</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">function</span> <span class="nf">titleField</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;label&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;Title&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;required&#39;</span>      <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+                        <span class="s1">&#39;display&#39;</span>       <span class="o">=&gt;</span> <span class="s1">&#39;InputText&#39;</span>
+                <span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">tablePartial</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nv">$partial</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;&#39;HBS&#39;</span>
+<span class="s">                        &lt;!-- &quot;Subcategories&quot; is just a label --&gt;</span>
+<span class="s">                        {{#EmbeddedCollectionHeader Subcategories}}{{/EmbeddedCollectionHeader}}</span>
+
+<span class="s">                        &lt;!-- &quot;subcategory&quot; is the name of the field in the parent manager --&gt;</span>
+<span class="s">                        {{#if subcategory}}</span>
+<span class="s">                                &lt;table class=&quot;ui table manager segment&quot;&gt;</span>
+<span class="s">                                        &lt;thead&gt;</span>
+<span class="s">                                                &lt;tr&gt;&lt;th&gt;Title&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="s">                                                &lt;tr&gt;&lt;th class=&quot;trash&quot;&gt;Delete&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="s">                                        &lt;/thead&gt;</span>
+<span class="s">                                        &lt;tbody&gt;</span>
+
+<span class="s">                                                &lt;!-- &quot;subcategory&quot; is the name of the field in the parent manager --&gt;</span>
+<span class="s">                                                {{#each subcategory}}</span>
+<span class="s">                                                        &lt;tr data-id=&quot;{{dbURI}}&quot;&gt;</span>
+<span class="s">                                                                &lt;td&gt;{{title}}&lt;/td&gt;</span>
+<span class="s">                                                                &lt;td&gt;&lt;div class=&quot;manager trash ui icon button&quot;&gt;&lt;i class=&quot;trash icon small&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;/td&gt;</span>
+<span class="s">                                                        &lt;/tr&gt;</span>
+<span class="s">                                                {{/each}}</span>
+<span class="s">                                        &lt;/tbody&gt;</span>
+<span class="s">                                &lt;/table&gt;</span>
+<span class="s">                    {{else}}</span>
+
+<span class="s">                        &lt;!-- &quot;subcategory&quot; is the name of the field in the parent manager --&gt;</span>
+<span class="s">                            {{#EmbeddedCollectionEmpty subcategory}}{{/EmbeddedCollectionEmpty}}</span>
+<span class="s">                {{/if}}</span>
+<span class="s">HBS;</span>
+                <span class="k">return</span> <span class="nv">$partial</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">formPartial</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nv">$partial</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;&#39;HBS&#39;</span>
+<span class="s">                        {{#EmbeddedHeader}}{{/EmbeddedHeader}}</span>
+
+<span class="s">                        {{#FieldFull title Title}}{{/FieldFull}}</span>
+
+<span class="s">                            {{{id}}}</span>
+
+<span class="s">                        {{#EmbeddedFooter}}{{/EmbeddedFooter}}</span>
+<span class="s">HBS;</span>
+                <span class="k">return</span> <span class="nv">$partial</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
