@@ -25,71 +25,71 @@ Link the child from the parent
 
 .. code-block:: php
 
-	<?php
-	namespace Manager;
+    <?php
+    namespace Manager;
 
-	class categories {
-		private $field = false;
-	    public $collection = 'categories';
-	    public $title = 'Categories';
-	    public $titleField = 'title';
-	    public $singular = 'Category';
-	    public $description = '{{count}} categories';
-	    public $definition = '....';
-	    public $acl = ['content', 'admin', 'superadmin'];
-	    public $tabs = ['Main', 'SEO'];
-	    public $icon = 'checkmark sign';
-	    public $category = 'Content';
-	    public $after = 'function';
-	    public $function = 'ManagerSaved';
-	    public $storage = [
-	        'collection' => 'categories',
-	        'key' => '_id'
-	    ];
+    class categories {
+        private $field = false;
+        public $collection = 'categories';
+        public $title = 'Categories';
+        public $titleField = 'title';
+        public $singular = 'Category';
+        public $description = '{{count}} categories';
+        public $definition = '....';
+        public $acl = ['content', 'admin', 'superadmin'];
+        public $tabs = ['Main', 'SEO'];
+        public $icon = 'checkmark sign';
+        public $category = 'Content';
+        public $after = 'function';
+        public $function = 'ManagerSaved';
+        public $storage = [
+            'collection' => 'categories',
+            'key' => '_id'
+        ];
 
-		function titleField () {
-			return array(
-				'name' => 'title',
-				'label' => 'Title',
-				'required' => true,
-				'display' => 'InputText'
-			);
-		}
+        function titleField () {
+            return array(
+                'name' => 'title',
+                'label' => 'Title',
+                'required' => true,
+                'display' => 'InputText'
+            );
+        }
 
-		public function subcategoryField() {
-			return [
-				'name' => 'subcategory',  //this field will hold the embedded manager
-				'label' => 'Sub Categories',
-				'required' => false,
-				'display'	=>	'Manager',
-				'manager'	=> 'subcategories'
-			];
-		}
+        public function subcategoryField() {
+            return [
+                'name' => 'subcategory',  //this field will hold the embedded manager
+                'label' => 'Sub Categories',
+                'required' => false,
+                'display'    =>    'Manager',
+                'manager'    => 'subcategories'
+            ];
+        }
 
-	    public function formPartial () {
-	        $partial = <<<'HBS'
-	   	     	{{#Form}}{{/Form}}
-		            <div class="top-container">
-		                {{#DocumentHeader}}{{/DocumentHeader}}
-		                {{#DocumentTabs}}{{/DocumentTabs}}
-		            </div>
+        public function formPartial () {
+            $partial = <<<'HBS'
+                    {{#Form}}{{/Form}}
+                    <div class="top-container">
+                        {{#DocumentHeader}}{{/DocumentHeader}}
+                        {{#DocumentTabs}}{{/DocumentTabs}}
+                    </div>
 
-		            <div class="bottom-container">
-		                <div class="ui tab active" data-tab="Main">
-		                    {{#DocumentFormLeft}}
-		                        {{#FieldLeft title Title required}}{{/FieldLeft}}
-		                        <!-- "subcategory" is the field in the parent -->
-		                        <!-- "subcategories" is the name of the embedded manager php file -->
-							    {{#FieldEmbedded subcategory subcategories}}{{/FieldEmbedded}}
-		                        {{{id}}}
-		                    {{/DocumentFormLeft}}                 
-		                </div>
-			        </div>
-			    </form>
-	HBS;
-	        return $partial;
-	    }
-	}
+                    <div class="bottom-container">
+                        <div class="ui tab active" data-tab="Main">
+                            {{#DocumentFormLeft}}
+                                {{#FieldLeft title Title required}}{{/FieldLeft}}
+                                <!-- "subcategory" is the field in the parent -->
+                                <!-- "subcategories" is the name of the embedded manager php file -->
+                                {{#FieldEmbedded subcategory subcategories}}{{/FieldEmbedded}}
+                                {{{id}}}
+                            {{/DocumentFormLeft}}                 
+                        </div>
+                    </div>
+                </form>
+    HBS;
+            return $partial;
+        }
+    }
 
 
 
@@ -98,83 +98,83 @@ Designate the child as embedded
 
 .. code-block:: php
 
-	<?php
-	namespace Manager;
+    <?php
+    namespace Manager;
 
-	class subcategories {
-		private $field = false;
-		public $collection = 'categories';
-		public $title = 'Subcategories';
-		public $titleField = 'title';
-		public $singular = 'Subcategory';
-		public $description = '4 subcategories';
-		public $definition = '';
-		public $acl = ['content', 'admin', 'superadmin'];
-		public $icon = 'browser';
-		public $category = 'Content';
-		public $after = 'function';
-		public $function = 'embeddedUpsert';  //important!  the function name is different 
-		public $embedded = true;  //important!  it is designated at embedded
-		public $storage = [
-			'collection' => 'categories',  //important! it refers to the parent manager's collection
-			'key' => '_id'
-		];
+    class subcategories {
+        private $field = false;
+        public $collection = 'categories';
+        public $title = 'Subcategories';
+        public $titleField = 'title';
+        public $singular = 'Subcategory';
+        public $description = '4 subcategories';
+        public $definition = '';
+        public $acl = ['content', 'admin', 'superadmin'];
+        public $icon = 'browser';
+        public $category = 'Content';
+        public $after = 'function';
+        public $function = 'embeddedUpsert';  //important!  the function name is different 
+        public $embedded = true;  //important!  it is designated at embedded
+        public $storage = [
+            'collection' => 'categories',  //important! it refers to the parent manager's collection
+            'key' => '_id'
+        ];
 
-		public function __construct ($field=false) {
-			$this->field = $field;
-		}
+        public function __construct ($field=false) {
+            $this->field = $field;
+        }
 
-		function titleField () {
-			return [
-				'name'		=> 'title',
-				'label'		=> 'Title',
-				'required'	=> false,
-				'display'	=> 'InputText'
-			];
-		}
-		
-		public function tablePartial () {
-			$partial = <<<'HBS'
-				<!-- "Subcategories" is just a label -->
-				{{#EmbeddedCollectionHeader Subcategories}}{{/EmbeddedCollectionHeader}}
-				
-				<!-- "subcategory" is the name of the field in the parent manager -->
-				{{#if subcategory}}
-					<table class="ui table manager segment">
-						<thead>
-							<tr><th>Title</th></tr>
-							<tr><th class="trash">Delete</th></tr>
-						</thead>
-						<tbody>
+        function titleField () {
+            return [
+                'name'        => 'title',
+                'label'        => 'Title',
+                'required'    => false,
+                'display'    => 'InputText'
+            ];
+        }
+        
+        public function tablePartial () {
+            $partial = <<<'HBS'
+                <!-- "Subcategories" is just a label -->
+                {{#EmbeddedCollectionHeader Subcategories}}{{/EmbeddedCollectionHeader}}
+                
+                <!-- "subcategory" is the name of the field in the parent manager -->
+                {{#if subcategory}}
+                    <table class="ui table manager segment">
+                        <thead>
+                            <tr><th>Title</th></tr>
+                            <tr><th class="trash">Delete</th></tr>
+                        </thead>
+                        <tbody>
 
-							<!-- "subcategory" is the name of the field in the parent manager -->
-							{{#each subcategory}}
-								<tr data-id="{{dbURI}}">
-									<td>{{title}}</td>
-									<td><div class="manager trash ui icon button"><i class="trash icon small"></i></div></td>
-								</tr>
-							{{/each}}
-						</tbody>
-					</table>
-			    {{else}}
+                            <!-- "subcategory" is the name of the field in the parent manager -->
+                            {{#each subcategory}}
+                                <tr data-id="{{dbURI}}">
+                                    <td>{{title}}</td>
+                                    <td><div class="manager trash ui icon button"><i class="trash icon small"></i></div></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                {{else}}
 
-			    	<!-- "subcategory" is the name of the field in the parent manager -->
-				    {{#EmbeddedCollectionEmpty subcategory}}{{/EmbeddedCollectionEmpty}}
-		        {{/if}}
-	HBS;
-			return $partial;
-		}
+                    <!-- "subcategory" is the name of the field in the parent manager -->
+                    {{#EmbeddedCollectionEmpty subcategory}}{{/EmbeddedCollectionEmpty}}
+                {{/if}}
+    HBS;
+            return $partial;
+        }
 
-		public function formPartial () {
-			$partial = <<<'HBS'
-				{{#EmbeddedHeader}}{{/EmbeddedHeader}}
+        public function formPartial () {
+            $partial = <<<'HBS'
+                {{#EmbeddedHeader}}{{/EmbeddedHeader}}
 
-			        {{#FieldFull title Title}}{{/FieldFull}}
+                    {{#FieldFull title Title}}{{/FieldFull}}
 
-				    {{{id}}}
+                    {{{id}}}
 
-				{{#EmbeddedFooter}}{{/EmbeddedFooter}}
-	HBS;
-			return $partial;
-		}
-	}
+                {{#EmbeddedFooter}}{{/EmbeddedFooter}}
+    HBS;
+            return $partial;
+        }
+    }
