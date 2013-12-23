@@ -31,6 +31,7 @@ Contents:
    separation/index
    apidata/index
    manager/index
+   embedded/index
 
 ------------
 
