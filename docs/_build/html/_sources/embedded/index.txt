@@ -1,5 +1,5 @@
-Embedding Forms Within Forms
-============================
+Embedded Managers
+=================
 
 When a project utilizes a document oriented data store, such as MongoDB, the functionality of nesting documents within documents is commonly used.  
 
@@ -9,7 +9,7 @@ To achieve this functionality, FMF and Semantic-CM have a rich set if logic and 
 
 
 Steps to Embedding Manager
-==========================
+++++++++++++++++++++++++++
 
 You will need two managers, one functioning as a “parent” and one as a “child”.
 
@@ -21,7 +21,7 @@ There are a few things to be mindful of:
 
 
 Link the child from the parent
-++++++++++++++++++++++++++++++
+******************************
 
 code sample of field php
 
@@ -29,7 +29,7 @@ code sample of field html
 
 
 Designate the child as embedded
-+++++++++++++++++++++++++++++++
+*******************************
 
 public $embedded = true;
 
