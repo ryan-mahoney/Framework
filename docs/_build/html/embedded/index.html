@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Embedding Forms Within Forms &mdash; FMF 1.0 documentation</title>
+  <title>Embedded Managers &mdash; FMF 1.0 documentation</title>
   
 
   
@@ -164,10 +164,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../manager/index.html#installing-individual-managers-and-collections">Installing Individual Managers and Collections</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Embedding Forms Within Forms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#steps-to-embedding-manager">Steps to Embedding Manager</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#link-the-child-from-the-parent">Link the child from the parent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#designate-the-child-as-embedded">Designate the child as embedded</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Embedded Managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#steps-to-embedding-manager">Steps to Embedding Manager</a></li>
 </ul>
 </li>
 </ul>
@@ -192,7 +190,7 @@
 <script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <ul class="wy-breadcrumbs">
   <li><a href="/">Docs</a> &raquo;</li>
-  <li><a href="">Embedding Forms Within Forms</a></li>
+  <li><a href="">Embedded Managers</a></li>
   
 
   	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
@@ -206,14 +204,13 @@
 </ul>
 <hr/>
           
-  <div class="section" id="embedding-forms-within-forms">
-<h1>Embedding Forms Within Forms<a class="headerlink" href="#embedding-forms-within-forms" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="embedded-managers">
+<h1>Embedded Managers<a class="headerlink" href="#embedded-managers" title="Permalink to this headline">¶</a></h1>
 <p>When a project utilizes a document oriented data store, such as MongoDB, the functionality of nesting documents within documents is commonly used.</p>
 <p>For example, if you have a manager for “categories” it may have an embedded document that stores “sub-categories”.</p>
 <p>To achieve this functionality, FMF and Semantic-CM have a rich set if logic and user interfaces for facilitating this use case.  That being said, it is at times counter-intuitive, so this document gives concrete examples</p>
-</div>
 <div class="section" id="steps-to-embedding-manager">
-<h1>Steps to Embedding Manager<a class="headerlink" href="#steps-to-embedding-manager" title="Permalink to this headline">¶</a></h1>
+<h2>Steps to Embedding Manager<a class="headerlink" href="#steps-to-embedding-manager" title="Permalink to this headline">¶</a></h2>
 <p>You will need two managers, one functioning as a “parent” and one as a “child”.</p>
 <p>There are a few things to be mindful of:</p>
 <ul class="simple">
@@ -222,13 +219,14 @@
 <li>EM: the name of the embedded manager, for example: “subcategories”</li>
 </ul>
 <div class="section" id="link-the-child-from-the-parent">
-<h2>Link the child from the parent<a class="headerlink" href="#link-the-child-from-the-parent" title="Permalink to this headline">¶</a></h2>
+<h3>Link the child from the parent<a class="headerlink" href="#link-the-child-from-the-parent" title="Permalink to this headline">¶</a></h3>
 <p>code sample of field php</p>
 <p>code sample of field html</p>
 </div>
 <div class="section" id="designate-the-child-as-embedded">
-<h2>Designate the child as embedded<a class="headerlink" href="#designate-the-child-as-embedded" title="Permalink to this headline">¶</a></h2>
+<h3>Designate the child as embedded<a class="headerlink" href="#designate-the-child-as-embedded" title="Permalink to this headline">¶</a></h3>
 <p>public $embedded = true;</p>
+</div>
 </div>
 </div>
 
