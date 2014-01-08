@@ -206,12 +206,12 @@
           
   <div class="section" id="embedded-managers">
 <h1>Embedded Managers<a class="headerlink" href="#embedded-managers" title="Permalink to this headline">¶</a></h1>
-<p>When a project utilizes a document oriented data store, such as MongoDB, the functionality of nesting documents within documents is commonly used.</p>
+<p>When a project utilizes a document oriented data store, such as MongoDB, the functionality of nesting documents within other documents is commonly used.</p>
 <p>For example, if you have a manager for “categories” it may have an embedded document that stores “sub-categories”.</p>
-<p>To achieve this functionality, FMF and Semantic-CM have a rich set if logic and user interfaces for facilitating this use case.  That being said, it is at times counter-intuitive, so this document gives concrete examples</p>
+<p>To achieve this functionality, FMF and Semantic-CM have a rich set if logic and user interfaces for facilitating this use case.  That being said, it is at times confusing because there are many step.</p>
 <div class="section" id="steps-to-embedding-manager">
 <h2>Steps to Embedding Manager<a class="headerlink" href="#steps-to-embedding-manager" title="Permalink to this headline">¶</a></h2>
-<p>You will need two managers, one functioning as a “parent” and one as a “child”.</p>
+<p>You will need two managers, one acting as a “parent” or container and one as a embedded “child”.</p>
 <p>There are a few things to be mindful of:</p>
 <ul class="simple">
 <li>PC: the name of the parent storage collection, for example: “categories”</li>
@@ -275,7 +275,7 @@
 <span class="s">                            {{#FieldLeft title Title required}}{{/FieldLeft}}</span>
 <span class="s">                            &lt;!-- &quot;subcategory&quot; is the field in the parent --&gt;</span>
 <span class="s">                            &lt;!-- &quot;subcategories&quot; is the name of the embedded manager php file --&gt;</span>
-<span class="s">                            {{#FieldEmbedded subcategory subcategories}}{{/FieldEmbedded}}</span>
+<span class="s">                            {{#FieldEmbedded field=&quot;subcategory&quot; manager=&quot;subcategories&quot;}}</span>
 <span class="s">                            {{{id}}}</span>
 <span class="s">                        {{/DocumentFormLeft}}</span>
 <span class="s">                    &lt;/div&gt;</span>
@@ -305,10 +305,10 @@
     <span class="k">public</span> <span class="nv">$icon</span> <span class="o">=</span> <span class="s1">&#39;browser&#39;</span><span class="p">;</span>
     <span class="k">public</span> <span class="nv">$category</span> <span class="o">=</span> <span class="s1">&#39;Content&#39;</span><span class="p">;</span>
     <span class="k">public</span> <span class="nv">$after</span> <span class="o">=</span> <span class="s1">&#39;function&#39;</span><span class="p">;</span>
-    <span class="k">public</span> <span class="nv">$function</span> <span class="o">=</span> <span class="s1">&#39;embeddedUpsert&#39;</span><span class="p">;</span>  <span class="c1">//important!  the function name is different</span>
-    <span class="k">public</span> <span class="nv">$embedded</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>  <span class="c1">//important!  it is designated at embedded</span>
+    <span class="k">public</span> <span class="nv">$function</span> <span class="o">=</span> <span class="s1">&#39;embeddedUpsert&#39;</span><span class="p">;</span>     <span class="c1">//important!  the function name is different</span>
+    <span class="k">public</span> <span class="nv">$embedded</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>                 <span class="c1">//important!  it is designated at embedded</span>
     <span class="k">public</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">&#39;collection&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;categories&#39;</span><span class="p">,</span>  <span class="c1">//important! it refers to the parent manager&#39;s collection</span>
+        <span class="s1">&#39;collection&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;categories&#39;</span><span class="p">,</span>        <span class="c1">//important! it refers to the parent manager&#39;s collection</span>
         <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;_id&#39;</span>
     <span class="p">];</span>
 
@@ -328,7 +328,7 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">tablePartial</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nv">$partial</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;&#39;HBS&#39;</span>
 <span class="s">            &lt;!-- &quot;Subcategories&quot; is just a label --&gt;</span>
-<span class="s">            {{#EmbeddedCollectionHeader Subcategories}}{{/EmbeddedCollectionHeader}}</span>
+<span class="s">            {{#EmbeddedCollectionHeader label=&quot;Subcategories&quot;}}</span>
 
 <span class="s">            &lt;!-- &quot;subcategory&quot; is the name of the field in the parent manager --&gt;</span>
 <span class="s">            {{#if subcategory}}</span>
@@ -350,8 +350,8 @@
 <span class="s">                &lt;/table&gt;</span>
 <span class="s">            {{else}}</span>
 
-<span class="s">                &lt;!-- &quot;subcategory&quot; is the name of the field in the parent manager --&gt;</span>
-<span class="s">                {{#EmbeddedCollectionEmpty subcategory}}{{/EmbeddedCollectionEmpty}}</span>
+<span class="s">                &lt;!-- &quot;subcategory&quot; is a label that says what type of thing will be added --&gt;</span>
+<span class="s">                {{#EmbeddedCollectionEmpty singular=&quot;Subcategory&quot;}}</span>
 <span class="s">            {{/if}}</span>
 <span class="s">HBS;</span>
         <span class="k">return</span> <span class="nv">$partial</span><span class="p">;</span>
@@ -359,13 +359,10 @@
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">formPartial</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nv">$partial</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;&#39;HBS&#39;</span>
-<span class="s">            {{#EmbeddedHeader}}{{/EmbeddedHeader}}</span>
-
-<span class="s">                {{#FieldFull title Title}}{{/FieldFull}}</span>
-
-<span class="s">                {{{id}}}</span>
-
-<span class="s">            {{#EmbeddedFooter}}{{/EmbeddedFooter}}</span>
+<span class="s">            {{#EmbeddedHeader}}</span>
+<span class="s">            {{#FieldFull title Title}}{{/FieldFull}}</span>
+<span class="s">            {{{id}}}</span>
+<span class="s">            {{#EmbeddedFooter}}</span>
 <span class="s">HBS;</span>
         <span class="k">return</span> <span class="nv">$partial</span><span class="p">;</span>
     <span class="p">}</span>
