@@ -1,17 +1,17 @@
 Embedded Managers
 =================
 
-When a project utilizes a document oriented data store, such as MongoDB, the functionality of nesting documents within documents is commonly used.  
+When a project utilizes a document oriented data store, such as MongoDB, the functionality of nesting documents within other documents is commonly used.  
 
 For example, if you have a manager for “categories” it may have an embedded document that stores “sub-categories”.
 
-To achieve this functionality, FMF and Semantic-CM have a rich set if logic and user interfaces for facilitating this use case.  That being said, it is at times counter-intuitive, so this document gives concrete examples
+To achieve this functionality, FMF and Semantic-CM have a rich set if logic and user interfaces for facilitating this use case.  That being said, it is at times confusing because there are many step.
 
 
 Steps to Embedding Manager
 ++++++++++++++++++++++++++
 
-You will need two managers, one functioning as a “parent” and one as a “child”.
+You will need two managers, one acting as a “parent” or container and one as a embedded “child”.
 
 There are a few things to be mindful of:
 
@@ -80,7 +80,7 @@ Link the child from the parent
                                 {{#FieldLeft title Title required}}{{/FieldLeft}}
                                 <!-- "subcategory" is the field in the parent -->
                                 <!-- "subcategories" is the name of the embedded manager php file -->
-                                {{#FieldEmbedded subcategory subcategories}}{{/FieldEmbedded}}
+                                {{#FieldEmbedded field="subcategory" manager="subcategories"}}
                                 {{{id}}}
                             {{/DocumentFormLeft}}                 
                         </div>
@@ -113,10 +113,10 @@ Designate the child as embedded
         public $icon = 'browser';
         public $category = 'Content';
         public $after = 'function';
-        public $function = 'embeddedUpsert';  //important!  the function name is different 
-        public $embedded = true;  //important!  it is designated at embedded
+        public $function = 'embeddedUpsert';     //important!  the function name is different 
+        public $embedded = true;                 //important!  it is designated at embedded
         public $storage = [
-            'collection' => 'categories',  //important! it refers to the parent manager's collection
+            'collection' => 'categories',        //important! it refers to the parent manager's collection
             'key' => '_id'
         ];
 
@@ -136,7 +136,7 @@ Designate the child as embedded
         public function tablePartial () {
             $partial = <<<'HBS'
                 <!-- "Subcategories" is just a label -->
-                {{#EmbeddedCollectionHeader Subcategories}}{{/EmbeddedCollectionHeader}}
+                {{#EmbeddedCollectionHeader label="Subcategories"}}
                 
                 <!-- "subcategory" is the name of the field in the parent manager -->
                 {{#if subcategory}}
@@ -158,8 +158,8 @@ Designate the child as embedded
                     </table>
                 {{else}}
 
-                    <!-- "subcategory" is the name of the field in the parent manager -->
-                    {{#EmbeddedCollectionEmpty subcategory}}{{/EmbeddedCollectionEmpty}}
+                    <!-- "subcategory" is a label that says what type of thing will be added -->
+                    {{#EmbeddedCollectionEmpty singular="Subcategory"}}
                 {{/if}}
     HBS;
             return $partial;
@@ -167,13 +167,10 @@ Designate the child as embedded
 
         public function formPartial () {
             $partial = <<<'HBS'
-                {{#EmbeddedHeader}}{{/EmbeddedHeader}}
-
-                    {{#FieldFull title Title}}{{/FieldFull}}
-
-                    {{{id}}}
-
-                {{#EmbeddedFooter}}{{/EmbeddedFooter}}
+                {{#EmbeddedHeader}}
+                {{#FieldFull title Title}}{{/FieldFull}}
+                {{{id}}}
+                {{#EmbeddedFooter}}
     HBS;
             return $partial;
         }
