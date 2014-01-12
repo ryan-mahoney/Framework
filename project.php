@@ -36,7 +36,26 @@ require __DIR__ . \'/../vendor/autoload.php\';
 
 if (!file_exists('.gitignore')) {
 file_put_contents('.gitignore', 'composer.lock
-vendor');
+vendor
+managers/cache.json
+public/helpers/_build.php
+acl/_build.json
+bundles/cache.json
+collections/cache.json
+filters/cache.json
+forms/cache.json
+managers/cache.json
+public/storage
+public/layouts/Manager
+public/partials/Manager
+public/css/Manager
+public/js/Manager
+public/fonts/Manager
+public/layouts/Manager
+public/images/Manager
+public/helpers/Manager
+public/imagecache
+public/storage');
 }
 
 $root = getcwd();

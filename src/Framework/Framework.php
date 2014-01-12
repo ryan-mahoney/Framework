@@ -124,6 +124,7 @@ class Framework {
 		$container->formRoute->app($root);
 		$container->topic->load($root);
 		$container->bundleRoute->app($root);
+		$container->authentication->aclRoute();
 		
 		//custom routing
 		$routePath = $root . '/../Route.php';
@@ -148,11 +149,12 @@ class Framework {
 
 	private function cache ($root, $container) {
 		$items = [
-			$root . '-collections.json' => false, 
-			$root . '-filters.json' => false, 
-			$root . '-forms.json' => false, 
-			$root . '-bundles.json' => false, 
-			$root . '-topics.json' => false
+			$root . '-collections.json' => false,
+			$root . '-filters.json' => false,
+			$root . '-forms.json' => false,
+			$root . '-bundles.json' => false,
+			$root . '-topics.json' => false,
+			$root . '-acl.json' => false
 		];
 		$result = $container->cache->getBatch($items);
 		if ($result === true) {
@@ -161,6 +163,7 @@ class Framework {
 			$container->formRoute->cacheSet(json_decode($items[$root . '-forms.json'], true));
 			$container->bundleRoute->cacheSet(json_decode($items[$root . '-bundles.json'], true));
 			$container->topic->cacheSet(json_decode($items[$root . '-topics.json'], true));
+			$container->authentication->cacheSet(json_decode($items[$root . '-acl.json'], true));
 		}
 	}
 
