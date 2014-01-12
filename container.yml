@@ -7,7 +7,7 @@ services:
             - [registerAutoloader, []]
     build:
         class:     'Build\Build'
-        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search']
+        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication']
     pubSubBuild:
         class:     'PubSub\PubSubBuild'
         arguments: ['%root%', '@yamlSlow']
@@ -44,7 +44,7 @@ services:
         arguments: []
     authentication:
         class:     'Authentication\Authentication'
-        arguments: ['@db', '@config']
+        arguments: ['%root%', '@db', '@config', '@yamlSlow', '@slim', '@cache']
     helperRoute:
         class:     'Helper\HelperRoute'
         arguments: ['@slim', '@handlebars']
@@ -54,8 +54,6 @@ services:
     filter:
         class:     'Filter\Filter'
         arguments: ['@response']
-    cache:
-        class:     'Cache\Cache'
     cache:
         class:     'Cache\Cache'
     handlebars:
