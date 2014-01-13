@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Concepts &mdash; FMF 1.0 documentation</title>
+  <title>Access Control &mdash; FMF 1.0 documentation</title>
   
 
   
@@ -38,9 +38,7 @@
     
 
   
-    <link rel="top" title="FMF 1.0 documentation" href="../index.html"/>
-        <link rel="next" title="Folder Structure" href="../folder/index.html"/>
-        <link rel="prev" title="Installation" href="../setup/index.html"/> 
+    <link rel="top" title="FMF 1.0 documentation" href="../index.html"/> 
 
   
   
@@ -67,7 +65,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix">
-        <ul class="current">
+        <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/index.html">Quick Start Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/index.html#obtain-run-virtual-server">Obtain &amp; Run Virtual Server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/index.html#existing-project-git-pull-the-project-to-the-shared-drive">Existing Project: git pull the Project to the Shared Drive</a></li>
@@ -85,16 +83,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../setup/index.html#windows">Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#build-and-re-build">Build and Re-Build</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#auto-generated-routes">Auto-Generated Routes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#api-centric">API Centric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#service-oriented-architecture">Service Oriented Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#less-logic-templates">Less-Logic Templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pubsub-pattern">PubSub Pattern</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#no-sql">No-SQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#search">Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#queues">Queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#build-and-re-build">Build and Re-Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#auto-generated-routes">Auto-Generated Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#api-centric">API Centric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#service-oriented-architecture">Service Oriented Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#less-logic-templates">Less-Logic Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#pubsub-pattern">PubSub Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#no-sql">No-SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/index.html#queues">Queues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../folder/index.html">Folder Structure</a><ul>
@@ -193,7 +191,7 @@
 <script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <ul class="wy-breadcrumbs">
   <li><a href="/">Docs</a> &raquo;</li>
-  <li><a href="">Concepts</a></li>
+  <li><a href="">Access Control</a></li>
   
 
   	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
@@ -202,69 +200,49 @@
 	<li class="wy-breadcrumbs-aside"><span class='st_twitter_large' displayText='Tweet'></span></li>
 	<li class="wy-breadcrumbs-aside" style="margin-left: 20px"><span class='st_facebook_large' displayText='Facebook'></span></li>
 <li class="wy-breadcrumbs-aside">
-      <a href="https://github.com///edit/concepts/index.rst" class="icon icon-github"> Edit on GitHub</a>
+      <a href="https://github.com///edit/acl/index.rst" class="icon icon-github"> Edit on GitHub</a>
     </li>
 </ul>
 <hr/>
           
-  <div class="section" id="concepts">
-<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="build-and-re-build">
-<h2>Build and Re-Build<a class="headerlink" href="#build-and-re-build" title="Permalink to this headline">¶</a></h2>
-<p>Making a modern website or mobile-website is complicated, and as such, folder structures have become cluttered.  FMF provides a facility for building projects initially, which sets up all the folders and some configurations you will need.  Just run the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>myproject
-php public/index.php build
+  <div class="section" id="access-control">
+<h1>Access Control<a class="headerlink" href="#access-control" title="Permalink to this headline">¶</a></h1>
+<p>Access Control is a universal concern for website developers.  How is access enforced, applied, revoked, etc.  FMF makes access control fairly manageable through a range of APIs and consistant user interfaces.</p>
+<div class="section" id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<p>Users belong to groups, this is managed via the &#8220;Users&#8221; manager.</p>
+<p>Groups have access to routes.</p>
+<p>Routes are specified in Yaml files.</p>
+<p>To grant a user specific access to a route, the user is placed in a group.</p>
+<p>Then specify how you want your access applied to routes by adding or modifying one of the files in your project&#8217;s /acl folder.</p>
+</div>
+<div class="section" id="configuring-access-control">
+<h2>Configuring Access Control<a class="headerlink" href="#configuring-access-control" title="Permalink to this headline">¶</a></h2>
+<p>The &#8220;imports&#8221; section is incase you want to reference another ACL.yaml file.</p>
+<p>The &#8220;groups&#8221; block specified a sub-section for each group, with a list of which routes or regexes are restricted to the group.</p>
+<p>You can specify a specific path to a route, or a regex if you want to restrict access to a family of pages.</p>
+<p>The redirectLogin, redirectDenied do what the seem like.  If the user is not logged in, they will be redirected to the login.  If the user is logged in, but does not have access, they are redirected to another route.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">imports</span><span class="p-Indicator">:</span>
+
+<span class="l-Scalar-Plain">groups</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">member</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">routes</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;/member/dashboard&#39;</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;/form/directory&#39;</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;/form/profile&#39;</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;/jobs&#39;</span>
+        <span class="l-Scalar-Plain">regexes</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;/^job/[a-z0-9\-_]*.html$/&#39;</span>
+        <span class="l-Scalar-Plain">redirectLogin</span><span class="p-Indicator">:</span> <span class="s">&#39;/form/login&#39;</span>
+        <span class="l-Scalar-Plain">redirectDenied</span><span class="p-Indicator">:</span> <span class="s">&#39;/page/denied.html&#39;</span>
+
+    <span class="l-Scalar-Plain">registered</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">routes</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="s">&#39;/form/membership&#39;</span>
+        <span class="l-Scalar-Plain">redirectLogin</span><span class="p-Indicator">:</span> <span class="s">&#39;/form/login&#39;</span>
+        <span class="l-Scalar-Plain">redirectDenied</span><span class="p-Indicator">:</span> <span class="s">&#39;/page/denied.html&#39;</span>
 </pre></div>
 </div>
-<p>Also, the FMF build process handles a variety of caches.  Whenever you add or change <em>config</em>, <em>collections</em>, <em>forms</em>, <em>filter</em> or <em>subscribers</em> files, you will need to re-run the build commond.  It may seem tedious, but it runs fast and it&#8217;s a heck of a lot better to have a build process and a fast website than to have a website that is slow because it lacks optimization.</p>
-<p>In the future, the build process may also work with <a class="reference external" href="http://gruntjs.com/">grunt</a> to minify JS/CSS and possibly build the entire project as a <a class="reference external" href="http://php.net/manual/en/book.phar.php">phar</a> for easy distribution and deployment.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="auto-generated-routes">
-<h2>Auto-Generated Routes<a class="headerlink" href="#auto-generated-routes" title="Permalink to this headline">¶</a></h2>
-<p>A lot of &#8220;lacing-up&#8221; of application routes is handled automatically by FMF.  For example, if you have a <em>form</em> file named &#8220;contact&#8221; in your project, the route /form/contact will automatically be created.  The same is true for <em>collections</em>.  So, if you have a <em>collection</em> &#8220;blogs&#8221;, then the &#8220;/blogs&#8221; and &#8220;blog/:slug&#8221; routes will also be generated.</p>
-<p>This is convenient, but it also helps if you are building many website with the same data collections, because you will get familiar with the route layout and it will make development and testing easier.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="api-centric">
-<h2>API Centric<a class="headerlink" href="#api-centric" title="Permalink to this headline">¶</a></h2>
-<p>Some frameworks really emphasize their amazing <a class="reference external" href="http://four.laravel.com/docs/eloquent">object relational mappers</a> [ORMs].  ORMs are tools that try to make the banal work of writing SQL commands more modern and automated.  ORMs are crap.  They make queries that are easy to write... easy to write... and complex queries even more difficult.  But &#8211; why would you use a SQL database in the first place, right?</p>
-<p>If you are using FMF, you are also using <a class="reference external" href="http://www.mongodb.org/">MongoDB</a> (or a derivative like <a class="reference external" href="http://www.tokutek.com/products/tokumx-for-mongodb/">TokuMX</a>), so an ORM won&#8217;t help you much, as the native <a class="reference external" href="http://pecl.php.net/package/mongo">mongo</a> driver provides a simple mechanism for writing queries.</p>
-<p>But then, why are you writing queries?  FMF comes with a very robust RESTful API for working with MongoDB data sources and discourages you as much as possible from writing queries.  Instead, you should be creating APIs and depending on built in components like the <em>form</em> component for saving, validating and sanitizing data for you.</p>
-<p>At a time when mobile applications are so pervasive, you are going to have to write an API anyway &#8211; so you might as well just create one universal API for both web and mobile applications and be done with it.</p>
-<p>End rant.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="service-oriented-architecture">
-<h2>Service Oriented Architecture<a class="headerlink" href="#service-oriented-architecture" title="Permalink to this headline">¶</a></h2>
-<p>I know <a class="reference external" href="http://en.wikipedia.org/wiki/Service-oriented_architecture">Service Oriented Architecture</a> [SOA] sounds like some kind of nonsense buzzword, but bear with me.  By utilizing a <a class="reference external" href="https://github.com/virtuecenter/container">dependency injection container</a>, FMF provides a range of &#8220;services&#8221; to applications that creates an excellent decoupling of logic and maximizes the potential for unit-testing the framework and your own services.</p>
-<p>This approach to architecting software has been popular in other languages like Java for a long time and it&#8217;s finally catching on in PHP.  The reason is simple &#8211; it makes applications easier to test and maintain.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="less-logic-templates">
-<h2>Less-Logic Templates<a class="headerlink" href="#less-logic-templates" title="Permalink to this headline">¶</a></h2>
-<p>Isn&#8217;t PHP itself a templating language?  Well, that&#8217;s how I always looked at it.  Smarty?  No thank you!  But then, as a plethora of JS based templating languages emerged, I realized that the real beauty of logic-less templates is that they really force the API to provide data in a useful format and prevent front-end developers from writing queries.</p>
-<p>I think the battle for best templating language is not over yet, but for now, I choose Handlebars which is popular in <a class="reference external" href="http://handlebarsjs.com/">Javascript</a> and has a <a class="reference external" href="https://github.com/virtuecenter/handlebars.php">PHP implementation</a> as well.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="pubsub-pattern">
-<h2>PubSub Pattern<a class="headerlink" href="#pubsub-pattern" title="Permalink to this headline">¶</a></h2>
-<p>This pattern allows parts of the application to publish a &#8220;topic&#8221; which other parts of your application can &#8220;subscribe&#8221; to.  This is another excellent strategy to acheive a high level of decoupling.  Making components more separate, more testable and more reusable.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="no-sql">
-<h2>No-SQL<a class="headerlink" href="#no-sql" title="Permalink to this headline">¶</a></h2>
-<p>SQL is legacy.  I&#8217;m sorry.  It&#8217;s been around for a long time, and I know it&#8217;s not going away.  Neither is COBOL, but that doesn&#8217;t mean we have to use it.  MongoDB, despite a few warts, seems to be the winner of No-SQL databases.  The main reason for using MongoDB for the persistent storage layer is that is speeds up development.  Once you are comfortable with it, it&#8217;s much faster to develop applications using Mongo than say MySQL.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="search">
-<h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
-<p>Just about every application needs to have a search facility.  Search is a <a class="reference external" href="http://en.wikipedia.org/wiki/NP-hard">hard problem</a> that thankfully has been more or less solved by <a class="reference external" href="http://lucene.apache.org/">Lucene</a>.  <a class="reference external" href="http://lucene.apache.org/solr/">Solr</a> is a fairly simple application that handles both the indexing and retreival of data.  Solr is built into FMF in a number of ways and will make your search consumption easier whenever you need search in your application... which is always.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="queues">
-<h2>Queues<a class="headerlink" href="#queues" title="Permalink to this headline">¶</a></h2>
-<p>Once your application needs to do some API calls to remote systems or do some data processing that takes a while to run (can you say Map-Reduce?), then you are probably going to need a queue and some workers running to get this stuff done in the background.  Without a queue, your application&#8217;s users need to wait around on your application.  Nobody likes waiting.  Under the hood, the <a class="reference external" href="http://kr.github.io/beanstalkd/">Beanstalkd</a> queue server is used.  Each website gets it&#8217;s own queue and worker that is managed transparently by the build script.</p>
 </div>
 </div>
 
