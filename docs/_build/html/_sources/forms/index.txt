@@ -3,9 +3,9 @@ Forms
 
 For a website or mobile web application to collect information, it must contain forms.
 
-While forms may seem like a mundane topic, they can only be ignored at the detriment of a successful project.
+While forms may seem like a mundane topic, they can only be ignored at the detriment of a successful website project.
 
-Forms must encompass the important fields, be visually layed out in a clear manner and function properly.
+Forms must encompass the important fields and be visually layed out in a clear manner and function properly.
 
 Overview
 ++++++++
@@ -147,3 +147,30 @@ In your /subscribers/topics.yml:
       $documentObject->upsert();
       $post->statusSaved();
   };
+
+
+Javascrpt Files to Include
+++++++++++++++++++++++++++
+
+FMF depends on the following files being included in order for forms to properly be submitted:
+
+*Note: You can more or less use any version of jquery, but don't include it twice*
+
+*Note: all of the form files are automatically copied into your project's "/public/js" folder on build.
+
+.. code-block:: httml
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.form.js"></script>
+  <script type="text/javascript" src="/js/formXHR.js"></script>
+  <script type="text/javascript" src="/js/formHelperSemantic.js"></script>
+
+
+Common Errors
++++++++++++++
+
+1. Your form's partial should include an "id slot", {{{id}}}
+2. Your form needs to actually be submitted, so you will need an <input type="submit" /> or other common form submission method.
+3. check your Firebug or other AJAX console if your form submission fails
+4. If your form does not submit via ajax, check your javascript paths 
+5. Don't forget to put data-xhr="true" in your form tag

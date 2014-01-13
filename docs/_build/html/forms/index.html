@@ -132,6 +132,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#the-partial">The Partial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-form-class">The Form Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#saving-data">Saving Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#javascrpt-files-to-include">Javascrpt Files to Include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-errors">Common Errors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bundles/index.html">Bundles</a></li>
@@ -208,8 +210,8 @@
   <div class="section" id="forms">
 <h1>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h1>
 <p>For a website or mobile web application to collect information, it must contain forms.</p>
-<p>While forms may seem like a mundane topic, they can only be ignored at the detriment of a successful project.</p>
-<p>Forms must encompass the important fields, be visually layed out in a clear manner and function properly.</p>
+<p>While forms may seem like a mundane topic, they can only be ignored at the detriment of a successful website project.</p>
+<p>Forms must encompass the important fields and be visually layed out in a clear manner and function properly.</p>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Creating a form with FMF involves at least 4 files: a confguration file, a layout, a partial and a form class.</p>
@@ -322,6 +324,27 @@
 <span class="p">};</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="javascrpt-files-to-include">
+<h2>Javascrpt Files to Include<a class="headerlink" href="#javascrpt-files-to-include" title="Permalink to this headline">¶</a></h2>
+<p>FMF depends on the following files being included in order for forms to properly be submitted:</p>
+<p><em>Note: You can more or less use any version of jquery, but don&#8217;t include it twice</em></p>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Note: all of the form files are automatically copied into your project&#8217;s &#8220;/public/js&#8221; folder on build.</p>
+<div class="highlight-httml"><pre>&lt;script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/js/jquery.form.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/js/formXHR.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/js/formHelperSemantic.js"&gt;&lt;/script&gt;</pre>
+</div>
+</div>
+<div class="section" id="common-errors">
+<h2>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Your form&#8217;s partial should include an &#8220;id slot&#8221;, {{{id}}}</li>
+<li>Your form needs to actually be submitted, so you will need an &lt;input type=&#8221;submit&#8221; /&gt; or other common form submission method.</li>
+<li>check your Firebug or other AJAX console if your form submission fails</li>
+<li>If your form does not submit via ajax, check your javascript paths</li>
+<li>Don&#8217;t forget to put data-xhr=&#8221;true&#8221; in your form tag</li>
+</ol>
 </div>
 </div>
 
