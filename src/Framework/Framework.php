@@ -105,7 +105,7 @@ class Framework {
 		}
 		if (strlen(session_id()) == 0) {
     		session_start();
-		} 
+		}
 		$slim = $container->slim;
 		if (isset($_POST) && !empty($_POST)) {
 			$container->post->populate($slim->request->getResourceUri(), $_POST);
