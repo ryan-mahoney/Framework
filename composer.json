@@ -37,7 +37,7 @@
         "opine/search": "dev-master",
         "opine/separation": "dev-master",
         "opine/bundle": "dev-master",
-        "opine/manager": "dev-master",
+        "opine/semantic-cm": "dev-master",
         "opine/twitter": "dev-master",
         "opine/uploadwrapper": "dev-master"
     },
