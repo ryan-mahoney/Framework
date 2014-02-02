@@ -29,7 +29,6 @@
         "opine/helper": "dev-master",
         "opine/http": "dev-master",
         "opine/imageresizer": "dev-master",
-        "opine/manager": "dev-master",
         "opine/mail": "dev-master",
         "opine/person": "dev-master",
         "opine/pubsub": "dev-master",
