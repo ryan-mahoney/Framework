@@ -6,82 +6,82 @@ services:
         calls:
             - [registerAutoloader, []]
     build:
-        class:     'Build\Build'
+        class:     'Opine\Build'
         arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication']
     pubSubBuild:
-        class:     'PubSub\PubSubBuild'
+        class:     'Opine\PubSubBuild'
         arguments: ['%root%', '@yamlSlow']
     topic:
-        class:     'PubSub\Topic'
+        class:     'Opine\Topic'
         arguments: ['@container']
     separation:
-        class:     'Separation\Separation'
+        class:     'Opine\Separation'
         arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@slim']
     collectionRoute:
-        class:     'Collection\CollectionRoute'
+        class:     'Opine\CollectionRoute'
         arguments: ['@collection', '@slim', '@db', '@separation', '@response']
     collection:
-        class:     'Collection\Collection'
+        class:     'Opine\Collection'
         arguments: ['%root%', '@db', '@queue']
     field:
-        class:     'Field\Field'
+        class:     'Opine\Field'
         arguments: ['%root%', '@db', '@manager']
     fieldRoute:
-        class:     'Field\FieldRoute'
+        class:     'Opine\FieldRoute'
     captcha:
         class:     'Captcha\Captcha'
     formRoute:
-        class:     'Form\FormRoute'
+        class:     'Opine\FormRoute'
         arguments: ['@slim', '@form', '@field', '@post', '@separation', '@topic', '@response']
     form:
-        class:     'Form\Form'
+        class:     'Opine\Form'
         arguments: ['%root%', '@field', '@post', '@db', '@response']
     managerRoute:
-        class:     'Manager\ManagerRoute'
+        class:     'Opine\ManagerRoute'
         arguments: ['@authentication', '@separation', '@slim', '@form', '@manager']
     manager:
-        class:     'Manager\Manager'
+        class:     'Opine\Manager'
         arguments: []
     authentication:
-        class:     'Authentication\Authentication'
+        class:     'Opine\Authentication'
         arguments: ['%root%', '@db', '@config', '@yamlSlow', '@slim', '@cache']
     helperRoute:
-        class:     'Helper\HelperRoute'
+        class:     'Opine\HelperRoute'
         arguments: ['@slim', '@handlebars']
     configRoute:
-        class:     'Config\ConfigRoute'
+        class:     'Opine\ConfigRoute'
         arguments: ['@config', '@cache']
     filter:
-        class:     'Filter\Filter'
+        class:     'Opine\Filter'
         arguments: ['@response']
     cache:
-        class:     'Cache\Cache'
+        class:     'Opine\Cache'
     handlebars:
         class:     'Handlebars\Handlebars'
     config:
-        class:     'Config\Config'
+        class:     'Opine\Config'
         arguments: ['%root%', '@cache']
     db:
-        class:     'DB\Mongo'
+        class:     'Opine\Mongo'
         arguments: ['@config', '@topic']
     dbmigration:
-        class:     'DB\Migration'
+        class:     'Opine\Migration'
         arguments: ['@db']
     post:
-        class:     'HTTP\Post'
+        class:     'Opine\HTTPPost'
     response:
-        class:     'HTTP\Response'
+        class:     'Opine\HTTPResponse'
     person:
-        class:     'Person\Person'
+        class:     'Opine\Person'
         arguments: ['@db', '@config']
     errors:
-        class:     'Errors\Errors'
+        class:     'Opine\Errors'
         arguments: ['@config', '@topic', '@separation']
     mail:
-        class:     'Mail\Mail'
+        class:     'Opine\Mail'
         arguments: ['@mailSES']
     mailSES:
-        class:     'Mail\SES'
+        class:     'Opine\SES'
         arguments: ['@config']
     yamlSlow:
         class:     'Symfony\Component\Yaml\Yaml'
@@ -89,30 +89,30 @@ services:
         class:     'Pheanstalk_Pheanstalk'
         arguments: ['127.0.0.1']
     queue:
-        class:     'Queue\Queue'
+        class:     'Opine\Queue'
         arguments: ['@queueGateway', '%root%']
     worker:
-        class:     'Queue\Worker'
+        class:     'Opine\Worker'
         arguments: ['@queueGateway', '@topic', '%root%']
     searchGateway:
         class:     'Elasticsearch\Client'
     search:
-        class:     'Search\Search'
+        class:     'Opine\Search'
         arguments: ['@searchGateway', '%root%']
     bundleRoute:
-        class:     'Bundle\BundleRoute'
+        class:     'Opine\BundleRoute'
         arguments: ['@container']
     manager:
-        class:     'Manager\Manager'
+        class:     'Opine\Manager'
         arguments: ['@separation', '@response', '%root%']
     uploadwrapper:
-        class:     'UploadWrapper\UploadWrapper'
+        class:     'Opine\UploadWrapper'
         arguments: ['%root%']
     slugify:
         class:     'Cocur\Slugify\Slugify'
     imageResizer:
-        class:     'ImageResizer\ImageResizer'
+        class:     'Opine\ImageResizer'
         arguments: ['@slim']
     twitter:
-        class:     'Twitter\Twitter'
+        class:     'Opine\Twitter'
         arguments: ['%root%', '@cache', '@queue', '@db', '@config']

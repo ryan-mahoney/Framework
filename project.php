@@ -11,7 +11,7 @@ file_put_contents('composer.json', '{
     "name": "project",
     "minimum-stability": "dev",
     "require": {
-        "virtuecenter/framework": "dev-master"
+        "opine/framework": "dev-master"
     }
 }');
 } else {
@@ -60,7 +60,7 @@ public/storage');
 
 $root = getcwd();
 echo 'Cloning dependency contiainer...', "\n\n";
-file_put_contents('container.yml', file_get_contents('vendor/virtuecenter/build/static/container.yml'));
+file_put_contents('container.yml', file_get_contents('vendor/opine/build/static/container.yml'));
 
 echo 'Building project...', "\n\n";
 flush();
@@ -68,8 +68,8 @@ passthru('php public/index.php build');
 
 echo 'Building complete.', "\n\n";
 
-echo 'Webserver config: (NGINX server block) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
-echo 'Webserver config: (APACHE .htaccess file) ', "\n\n", file_get_contents('vendor/virtuecenter/build/static/apache.conf'), "\n\n";
+echo 'Webserver config: (NGINX server block) ', "\n\n", file_get_contents('vendor/opine/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
+echo 'Webserver config: (APACHE .htaccess file) ', "\n\n", file_get_contents('vendor/opine/build/static/apache.conf'), "\n\n";
 
 echo 'If you are working locally do not forget to add the host name to your /etc/hosts file and restart your webserver.', "\n\n";
 
