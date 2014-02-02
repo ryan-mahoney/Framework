@@ -1,6 +1,6 @@
 if (!is_writable(__DIR__)) {
-	echo 'You need write permissions for this directory.', "\n";
-	exit;
+    echo 'You need write permissions for this directory.', "\n";
+    exit;
 }
 if (version_compare(PHP_VERSION, '5.4.0', '<')) {
     echo 'You need at least PHP version 5.4.0, your version us: ', PHP_VERSION, "\n";
@@ -15,7 +15,7 @@ file_put_contents('composer.json', '{
     }
 }');
 } else {
-	echo 'composer.json already exists.', "\n\n";
+    echo 'composer.json already exists.', "\n\n";
 }
 
 echo 'Installing dependencies with composer.', "\n\n";
@@ -31,7 +31,7 @@ date_default_timezone_set(\'America/New_York\');
 require __DIR__ . \'/../vendor/autoload.php\';
 (new Framework\Framework())->frontController();');
 } else {
-	echo 'public/index.php already exists.', "\n";	
+    echo 'public/index.php already exists.', "\n";    
 }
 
 if (!file_exists('.gitignore')) {
