@@ -1,6 +1,6 @@
 <?php
 /**
- * virtuecenter\framework
+ * Opine\Framework
  *
  * Copyright (c)2013 Ryan Mahoney, https://github.com/virtuecenter <ryan@virtuecenter.com>
  *
@@ -22,8 +22,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Framework;
-use Container\Container;
+namespace Opine;
+use Opine\Container;
 
 function container () {
 	return Framework::container();
