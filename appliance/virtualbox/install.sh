@@ -49,15 +49,15 @@ dpkg -i elasticsearch-0.90.5.deb
 #EXPOSE 80 11211 27017 11300
 
 # Configure nginx, PHP and other pieces of software for use.
-wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/smb.conf -O /usr/share/samba/smb.conf
-wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/nginx.conf -O /etc/nginx/nginx.conf
-wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/fastcgi_params -O /etc/nginx/fastcgi_params
-wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/php.ini -O /usr/local/lib/php.ini
-wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/php-fpm.conf -O /usr/local/etc/php-fpm.conf
-wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/php-fpm -O /etc/init.d/php-fpm
+wget https://raw.github.com/opine/framework/master/appliance/virtualbox/config/smb.conf -O /usr/share/samba/smb.conf
+wget https://raw.github.com/opine/framework/master/appliance/virtualbox/config/nginx.conf -O /etc/nginx/nginx.conf
+wget https://raw.github.com/opine/framework/master/appliance/virtualbox/config/fastcgi_params -O /etc/nginx/fastcgi_params
+wget https://raw.github.com/opine/framework/master/appliance/virtualbox/config/php.ini -O /usr/local/lib/php.ini
+wget https://raw.github.com/opine/framework/master/appliance/virtualbox/config/php-fpm.conf -O /usr/local/etc/php-fpm.conf
+wget https://raw.github.com/opine/framework/master/appliance/virtualbox/config/php-fpm -O /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
 update-rc.d php-fpm defaults
-wget https://raw.github.com/virtuecenter/framework/master/appliance/virtualbox/config/beanstalkd -O /etc/default/beanstalkd
+wget https://raw.github.com/opine/framework/master/appliance/virtualbox/config/beanstalkd -O /etc/default/beanstalkd
 
 # Run commands to start up the environment.
 /etc/init.d/nginx stop
