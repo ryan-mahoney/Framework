@@ -39,7 +39,10 @@ file_put_contents('.gitignore', 'composer.lock
 vendor
 managers/cache.json
 public/helpers/_build.php
+public/css/fields
+public/js/fields
 acl/_build.json
+subscribers/_build.php
 bundles/cache.json
 collections/cache.json
 filters/cache.json
