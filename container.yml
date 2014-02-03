@@ -36,9 +36,6 @@ services:
     form:
         class:     'Opine\Form'
         arguments: ['%root%', '@field', '@post', '@db', '@response']
-    manager:
-        class:     'Opine\Semantic-CM'
-        arguments: []
     authentication:
         class:     'Opine\Authentication'
         arguments: ['%root%', '@db', '@config', '@yamlSlow', '@slim', '@cache']
@@ -100,7 +97,7 @@ services:
         class:     'Opine\BundleRoute'
         arguments: ['@container']
     manager:
-        class:     'Opine\Manager'
+        class:     'Opine\Manager\Manager'
         arguments: ['@separation', '@response', '%root%']
     uploadwrapper:
         class:     'Opine\UploadWrapper'
