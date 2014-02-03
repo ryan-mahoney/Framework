@@ -36,11 +36,8 @@ services:
     form:
         class:     'Opine\Form'
         arguments: ['%root%', '@field', '@post', '@db', '@response']
-    managerRoute:
-        class:     'Opine\ManagerRoute'
-        arguments: ['@authentication', '@separation', '@slim', '@form', '@manager']
     manager:
-        class:     'Opine\Manager'
+        class:     'Opine\Semantic-CM'
         arguments: []
     authentication:
         class:     'Opine\Authentication'
