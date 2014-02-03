@@ -29,7 +29,7 @@ if (!file_exists('public/index.php')) {
 file_put_contents('public/index.php', '<?php
 date_default_timezone_set(\'America/New_York\');
 require __DIR__ . \'/../vendor/autoload.php\';
-(new Framework\Framework())->frontController();');
+(new Opine\Framework())->frontController();');
 } else {
     echo 'public/index.php already exists.', "\n";    
 }
