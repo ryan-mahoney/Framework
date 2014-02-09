@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# FMF documentation build configuration file, created by
+# Opine documentation build configuration file, created by
 # sphinx-quickstart on Sun Oct 20 19:01:30 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -40,8 +40,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'FMF'
-copyright = u'2013, Ryan Mahoney'
+project = u'Opine'
+copyright = u'2013, 2014 Ryan Mahoney'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -165,7 +165,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'FMFdoc'
+htmlhelp_basename = 'Opinedoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -184,7 +184,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'FMF.tex', u'FMF Documentation',
+  ('index', 'Opine.tex', u'Opine Documentation',
    u'Ryan Mahoney', 'manual'),
 ]
 
@@ -214,7 +214,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'fmf', u'FMF Documentation',
+    ('index', 'Opine', u'Opine Documentation',
      [u'Ryan Mahoney'], 1)
 ]
 
@@ -228,8 +228,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'FMF', u'FMF Documentation',
-   u'Ryan Mahoney', 'FMF', 'One line description of project.',
+  ('index', 'opine', u'Opine Documentation',
+   u'Ryan Mahoney', 'Opine', 'One line description of project.',
    'Miscellaneous'),
 ]
 
