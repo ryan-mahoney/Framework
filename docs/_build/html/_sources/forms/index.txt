@@ -10,7 +10,7 @@ Forms must encompass the important fields and be visually layed out in a clear m
 Overview
 ++++++++
 
-Creating a form with FMF involves at least 4 files: a confguration file, a layout, a partial and a form class.
+Creating a form with Opine-PHP involves at least 4 files: a confguration file, a layout, a partial and a form class.
 
 The files can be found:
 
@@ -152,7 +152,7 @@ In your /subscribers/topics.yml:
 Javascrpt Files to Include
 ++++++++++++++++++++++++++
 
-FMF depends on the following files being included in order for forms to properly be submitted:
+Opine-PHP depends on the following files being included in order for forms to properly be submitted:
 
 *Note: You can more or less use any version of jquery, but don't include it twice*
 

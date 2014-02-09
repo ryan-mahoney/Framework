@@ -217,7 +217,7 @@
 <div class="section" id="collection">
 <span id="id1"></span><h2>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
 <p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/collection">collection source</a></p>
-<p>Collections are at the heart of how FMF makes data accessable.  FMF will create RESTful APIs that produce JSON data, as well as front-end routes for collection data on a website front-end.</p>
+<p>Collections are at the heart of how Opine-PHP makes data accessable.  Opine-PHP will create RESTful APIs that produce JSON data, as well as front-end routes for collection data on a website front-end.</p>
 <p>Collection files are typically small, but they may contain logic for transforming individual documents returned:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">use</span> <span class="nx">UrlId\UrlId</span><span class="p">;</span>
@@ -507,7 +507,7 @@
 <span id="id4"></span><h2>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h2>
 <p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/separation">separation source</a></p>
 <p>Separation is a way to bind the data returned from a RESTful API to a &#8220;partial&#8221; template that will render the data into a complete page &#8220;layout&#8221;.</p>
-<p>FMF uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:</p>
+<p>Opine-PHP uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;separation-&gt;layout(&#39;home&#39;)-&gt;template()-&gt;write();</span>
 </pre></div>
 </div>

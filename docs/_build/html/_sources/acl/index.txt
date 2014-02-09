@@ -1,7 +1,9 @@
 Access Control
 ==============
 
-Access Control is a universal concern for website developers.  How is access enforced, applied, revoked, etc.  FMF makes access control fairly manageable through a range of APIs and consistant user interfaces.
+Access Control is a universal concern for website development.  How is access enforced, applied, revoked, etc.  
+
+Opine-PHP makes access control fairly manageable through a range of APIs and consistant user interfaces.
 
 
 The Basics

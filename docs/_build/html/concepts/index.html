@@ -216,33 +216,33 @@
 <h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="build-and-re-build">
 <h2>Build and Re-Build<a class="headerlink" href="#build-and-re-build" title="Permalink to this headline">¶</a></h2>
-<p>Making a modern website or mobile-website is complicated, and as such, folder structures have become cluttered.  FMF provides a facility for building projects initially, which sets up all the folders and some configurations you will need.  Just run the following command:</p>
+<p>Making a modern website or mobile-website is complicated, and as such, folder structures have become cluttered.  Opine-PHP provides a facility for building projects initially, which sets up all the folders and some configurations you will need.  Just run the following command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>myproject
 php public/index.php build
 </pre></div>
 </div>
-<p>Also, the FMF build process handles a variety of caches.  Whenever you add or change <em>config</em>, <em>collections</em>, <em>forms</em>, <em>filter</em> or <em>subscribers</em> files, you will need to re-run the build commond.  It may seem tedious, but it runs fast and it&#8217;s a heck of a lot better to have a build process and a fast website than to have a website that is slow because it lacks optimization.</p>
+<p>Also, the Opine-PHP build process handles a variety of caches.  Whenever you add or change <em>config</em>, <em>collections</em>, <em>forms</em>, <em>filter</em> or <em>subscribers</em> files, you will need to re-run the build commond.  It may seem tedious, but it runs fast and it&#8217;s a heck of a lot better to have a build process and a fast website than to have a website that is slow because it lacks optimization.</p>
 <p>In the future, the build process may also work with <a class="reference external" href="http://gruntjs.com/">grunt</a> to minify JS/CSS and possibly build the entire project as a <a class="reference external" href="http://php.net/manual/en/book.phar.php">phar</a> for easy distribution and deployment.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="auto-generated-routes">
 <h2>Auto-Generated Routes<a class="headerlink" href="#auto-generated-routes" title="Permalink to this headline">¶</a></h2>
-<p>A lot of &#8220;lacing-up&#8221; of application routes is handled automatically by FMF.  For example, if you have a <em>form</em> file named &#8220;contact&#8221; in your project, the route /form/contact will automatically be created.  The same is true for <em>collections</em>.  So, if you have a <em>collection</em> &#8220;blogs&#8221;, then the &#8220;/blogs&#8221; and &#8220;blog/:slug&#8221; routes will also be generated.</p>
+<p>A lot of &#8220;lacing-up&#8221; of application routes is handled automatically by Opine-PHP.  For example, if you have a <em>form</em> file named &#8220;contact&#8221; in your project, the route /form/contact will automatically be created.  The same is true for <em>collections</em>.  So, if you have a <em>collection</em> &#8220;blogs&#8221;, then the &#8220;/blogs&#8221; and &#8220;blog/:slug&#8221; routes will also be generated.</p>
 <p>This is convenient, but it also helps if you are building many website with the same data collections, because you will get familiar with the route layout and it will make development and testing easier.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="api-centric">
 <h2>API Centric<a class="headerlink" href="#api-centric" title="Permalink to this headline">¶</a></h2>
 <p>Some frameworks really emphasize their amazing <a class="reference external" href="http://four.laravel.com/docs/eloquent">object relational mappers</a> [ORMs].  ORMs are tools that try to make the banal work of writing SQL commands more modern and automated.  ORMs are crap.  They make queries that are easy to write... easy to write... and complex queries even more difficult.  But &#8211; why would you use a SQL database in the first place, right?</p>
-<p>If you are using FMF, you are also using <a class="reference external" href="http://www.mongodb.org/">MongoDB</a> (or a derivative like <a class="reference external" href="http://www.tokutek.com/products/tokumx-for-mongodb/">TokuMX</a>), so an ORM won&#8217;t help you much, as the native <a class="reference external" href="http://pecl.php.net/package/mongo">mongo</a> driver provides a simple mechanism for writing queries.</p>
-<p>But then, why are you writing queries?  FMF comes with a very robust RESTful API for working with MongoDB data sources and discourages you as much as possible from writing queries.  Instead, you should be creating APIs and depending on built in components like the <em>form</em> component for saving, validating and sanitizing data for you.</p>
+<p>If you are using Opine-PHP, you are also using <a class="reference external" href="http://www.mongodb.org/">MongoDB</a> (or a derivative like <a class="reference external" href="http://www.tokutek.com/products/tokumx-for-mongodb/">TokuMX</a>), so an ORM won&#8217;t help you much, as the native <a class="reference external" href="http://pecl.php.net/package/mongo">mongo</a> driver provides a simple mechanism for writing queries.</p>
+<p>But then, why are you writing queries?  Opine-PHP comes with a very robust RESTful API for working with MongoDB data sources and discourages you as much as possible from writing queries.  Instead, you should be creating APIs and depending on built in components like the <em>form</em> component for saving, validating and sanitizing data for you.</p>
 <p>At a time when mobile applications are so pervasive, you are going to have to write an API anyway &#8211; so you might as well just create one universal API for both web and mobile applications and be done with it.</p>
 <p>End rant.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="service-oriented-architecture">
 <h2>Service Oriented Architecture<a class="headerlink" href="#service-oriented-architecture" title="Permalink to this headline">¶</a></h2>
-<p>I know <a class="reference external" href="http://en.wikipedia.org/wiki/Service-oriented_architecture">Service Oriented Architecture</a> [SOA] sounds like some kind of nonsense buzzword, but bear with me.  By utilizing a <a class="reference external" href="https://github.com/virtuecenter/container">dependency injection container</a>, FMF provides a range of &#8220;services&#8221; to applications that creates an excellent decoupling of logic and maximizes the potential for unit-testing the framework and your own services.</p>
+<p>I know <a class="reference external" href="http://en.wikipedia.org/wiki/Service-oriented_architecture">Service Oriented Architecture</a> [SOA] sounds like some kind of nonsense buzzword, but bear with me.  By utilizing a <a class="reference external" href="https://github.com/virtuecenter/container">dependency injection container</a>, Opine-PHP provides a range of &#8220;services&#8221; to applications that creates an excellent decoupling of logic and maximizes the potential for unit-testing the framework and your own services.</p>
 <p>This approach to architecting software has been popular in other languages like Java for a long time and it&#8217;s finally catching on in PHP.  The reason is simple &#8211; it makes applications easier to test and maintain.</p>
 </div>
 <hr class="docutils" />
@@ -264,7 +264,7 @@ php public/index.php build
 <hr class="docutils" />
 <div class="section" id="search">
 <h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
-<p>Just about every application needs to have a search facility.  Search is a <a class="reference external" href="http://en.wikipedia.org/wiki/NP-hard">hard problem</a> that thankfully has been more or less solved by <a class="reference external" href="http://lucene.apache.org/">Lucene</a>.  <a class="reference external" href="http://lucene.apache.org/solr/">Solr</a> is a fairly simple application that handles both the indexing and retreival of data.  Solr is built into FMF in a number of ways and will make your search consumption easier whenever you need search in your application... which is always.</p>
+<p>Just about every application needs to have a search facility.  Search is a <a class="reference external" href="http://en.wikipedia.org/wiki/NP-hard">hard problem</a> that thankfully has been more or less solved by <a class="reference external" href="http://lucene.apache.org/">Lucene</a>.  <a class="reference external" href="http://www.elasticsearch.org/">Elastic Search</a> is a fairly simple application that handles both the indexing and retreival of data.  Elastic Search is built into Opine-PHP in a number of ways and will make your search consumption easier whenever you need search in your application... which is always.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="queues">
