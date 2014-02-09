@@ -232,7 +232,7 @@
 <ul class="simple">
 <li><a class="reference external" href="http://memcached.org/">Memcached</a></li>
 <li><a class="reference external" href="http://www.mongodb.org/">MongoDB</a></li>
-<li><a class="reference external" href="http://lucene.apache.org/solr/">Solr</a></li>
+<li><a class="reference external" href="http://www.elasticsearch.org/">Elastic Search</a></li>
 <li><a class="reference external" href="http://kr.github.io/beanstalkd/">Beanstalkd</a></li>
 <li>PHP Modules:
 <a class="reference external" href="http://pecl.php.net/package/memcache">memcache</a>, <a class="reference external" href="http://php.net/manual/en/book.image.php">gd</a>, <a class="reference external" href="http://pecl.php.net/package/mongo">mongo</a>, <a class="reference external" href="http://pecl.php.net/package/yaml">yaml</a></li>
@@ -249,7 +249,7 @@
 <p>Open your command line terminal.  Enter the following commands to make a new folder, go into it, download the framework, and compose / build it.</p>
 <div class="highlight-bash"><div class="highlight"><pre>mkdir myproject
 <span class="nb">cd </span>myproject
-php -r <span class="s2">&quot;eval(file_get_contents(&#39;https://raw.github.com/virtuecenter/framework/master/project.php&#39;));&quot;</span>
+php -r <span class="s2">&quot;eval(file_get_contents(&#39;https://raw.github.com/Opine-Org/Framework/master/project.php&#39;));&quot;</span>
 composer install
 php public/index.php build
 </pre></div>
@@ -264,7 +264,7 @@ php public/index.php build
 <div class="highlight-nginx"><div class="highlight"><pre>  <span class="k">server</span> <span class="p">{</span>
     <span class="kn">listen</span>       <span class="s">*:80</span><span class="p">;</span>
     <span class="kn">server_name</span>  <span class="s">myrpoject.localhost</span> <span class="s">myproject.com</span><span class="p">;</span>
-    <span class="kn">root</span>         <span class="s">/etc/nginx/sites-available/myproject/public</span><span class="p">;</span>
+    <span class="kn">root</span>         <span class="s">/var/www/myproject/public</span><span class="p">;</span>
 
     <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
 

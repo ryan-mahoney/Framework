@@ -103,7 +103,7 @@ http://project.localhost/json-data/blogs/all/10/0/{"display_date":-1}
 
 This URL will return some JSON, that probably looks like:
 
-.. code-block:: json
+.. code-block:: javascript
 
 	{
 		"blogs": [

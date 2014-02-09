@@ -19,7 +19,7 @@ For Full-Stack Development:
 
 * `Memcached <http://memcached.org/>`_
 * `MongoDB <http://www.mongodb.org/>`_
-* `Solr <http://lucene.apache.org/solr/>`_
+* `Elastic Search <http://www.elasticsearch.org/>`_
 * `Beanstalkd <http://kr.github.io/beanstalkd/>`_
 * PHP Modules: 
   `memcache <http://pecl.php.net/package/memcache>`_, `gd <http://php.net/manual/en/book.image.php>`_, `mongo <http://pecl.php.net/package/mongo>`_, `yaml <http://pecl.php.net/package/yaml>`_
@@ -42,7 +42,7 @@ Open your command line terminal.  Enter the following commands to make a new fol
 
    mkdir myproject
    cd myproject
-   php -r "eval(file_get_contents('https://raw.github.com/virtuecenter/framework/master/project.php'));"
+   php -r "eval(file_get_contents('https://raw.github.com/Opine-Org/Framework/master/project.php'));"
    composer install
    php public/index.php build
 
@@ -61,7 +61,7 @@ Nginx is the recommended web-server for Opine-PHP.
     server {
       listen       *:80;
       server_name  myrpoject.localhost myproject.com;
-      root         /etc/nginx/sites-available/myproject/public;
+      root         /var/www/myproject/public;
 
       try_files $uri /index.php?$query_string;
 

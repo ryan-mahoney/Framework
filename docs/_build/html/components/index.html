@@ -215,8 +215,8 @@
   <div class="section" id="components">
 <h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="collection">
-<span id="id1"></span><h2>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
-<p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/collection">collection source</a></p>
+<h2>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
+<p id="id1">Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/collection">collection source</a></p>
 <p>Collections are at the heart of how Opine-PHP makes data accessable.  Opine-PHP will create RESTful APIs that produce JSON data, as well as front-end routes for collection data on a website front-end.</p>
 <p>Collection files are typically small, but they may contain logic for transforming individual documents returned:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -250,42 +250,43 @@
 <hr class="docutils" />
 <p>An example of the result of a collection can be found here: <a class="reference external" href="http://json.virtuecenter.com/json-data/blogs/all?pretty">Blogs Collection API</a></p>
 <p>Collection APIs are handy, because you can see the field layout easily in JSON:</p>
-<div class="highlight-json"><pre>{
-    "blogs": [
-        {
-            "_id": "50490cb9b79921001200000b",
-            "body": "&lt;p&gt;Article Content&lt;/p&gt;",
-            "code_name": "naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools",
-            "comments": "t",
-            "description": "Some Descriptive Text"",
-            "display_date": {
-                "sec": 1346126400,
-                "usec": 0
-            },
-            "featured": "f",
-            "image": {
-                "name": "us-davis-pepper-spray.jpg",
-                "size": "411507",
-                "type": "image/jpeg",
-                "url": "http://virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg",
-                "height": "453",
-                "width": "680"
-            },
-            "pinned": "f",
-            "status": "published",
-            "tags": [],
-            "title": "NAACP calls for an end to Birmingham police using pepper spray in schools",
-            "display_date__MdY": "Aug 28, 2012",
-            "path": "/blog/naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools.html"
-        }
-    ],
-    "pagination": {
-        "limit": 20,
-        "total": 1,
-        "page": 1,
-        "pageCount": 1
-    }
-}</pre>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;blogs&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="o">:</span> <span class="s2">&quot;50490cb9b79921001200000b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;p&gt;Article Content&lt;/p&gt;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;code_name&quot;</span><span class="o">:</span> <span class="s2">&quot;naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comments&quot;</span><span class="o">:</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some Descriptive Text&quot;&quot;,</span>
+<span class="s2">            &quot;</span><span class="nx">display_date</span><span class="s2">&quot;: {</span>
+<span class="s2">                &quot;</span><span class="nx">sec</span><span class="s2">&quot;: 1346126400,</span>
+<span class="s2">                &quot;</span><span class="nx">usec</span><span class="s2">&quot;: 0</span>
+<span class="s2">            },</span>
+<span class="s2">            &quot;</span><span class="nx">featured</span><span class="s2">&quot;: &quot;</span><span class="nx">f</span><span class="s2">&quot;,</span>
+<span class="s2">            &quot;</span><span class="nx">image</span><span class="s2">&quot;: {</span>
+<span class="s2">                &quot;</span><span class="nx">name</span><span class="s2">&quot;: &quot;</span><span class="nx">us</span><span class="o">-</span><span class="nx">davis</span><span class="o">-</span><span class="nx">pepper</span><span class="o">-</span><span class="nx">spray</span><span class="p">.</span><span class="nx">jpg</span><span class="s2">&quot;,</span>
+<span class="s2">                &quot;</span><span class="nx">size</span><span class="s2">&quot;: &quot;</span><span class="mi">411507</span><span class="s2">&quot;,</span>
+<span class="s2">                &quot;</span><span class="nx">type</span><span class="s2">&quot;: &quot;</span><span class="nx">image</span><span class="o">/</span><span class="nx">jpeg</span><span class="s2">&quot;,</span>
+<span class="s2">                &quot;</span><span class="nx">url</span><span class="s2">&quot;: &quot;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//virtuecenter.s3.amazonaws.com/files/2012-09-06-16/us-davis-pepper-spray.jpg&quot;,</span>
+                <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="s2">&quot;453&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="s2">&quot;680&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;pinned&quot;</span><span class="o">:</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;published&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;NAACP calls for an end to Birmingham police using pepper spray in schools&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;display_date__MdY&quot;</span><span class="o">:</span> <span class="s2">&quot;Aug 28, 2012&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;/blog/naacp_calls_for_an_end_to_birmingham_police_using_pepper_spray_in_schools.html&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;pagination&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;pageCount&quot;</span><span class="o">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <hr class="docutils" />
 <p>The API for working with collection data is restul and follows the follwing format:</p>
