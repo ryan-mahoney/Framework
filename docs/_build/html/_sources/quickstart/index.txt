@@ -13,7 +13,7 @@ Existing Project: git pull the Project to the Shared Drive
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-If a project has already been created, just pull it down to the shared drive. Most projects will be stored in Git, if you don't know Git – learn it.  The shared drive will be mapped on Windows computers as **//fmf/www** each website project should be saved here. 
+If a project has already been created, just pull it down to the shared drive. Most projects will be stored in Git, if you don't know Git – learn it.  The shared drive will be mapped on Windows computers as **//opine/www** each website project should be saved here. 
 
 Restart the appliance whenever you install a new website project.
 
@@ -33,8 +33,6 @@ Modern PHP applications obtain their dependencies via `Composer <http://getcompo
 
    cd /var/www/myproject
    composer install
-
-If for some reason you can not run Composer, you could download a pre-compose vendors folder from `here <http://virtuecenter-fmf.s3.amazonaws.com/vendor.zip>`_, but composing on your own project is always better.
 
 
 Import Project Data

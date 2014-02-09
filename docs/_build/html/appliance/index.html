@@ -214,7 +214,7 @@
           
   <div class="section" id="server-appliance">
 <h1>Server Appliance<a class="headerlink" href="#server-appliance" title="Permalink to this headline">¶</a></h1>
-<p>FMF does not compromise on using the latest server technologies and platforms.  As such, FMF has many dependencies, some of which are hard to install and configure.</p>
+<p>Opine-PHP does not compromise on using the latest server technologies and platforms.  As such, Opine-PHP has many dependencies, some of which are hard to install and configure.</p>
 <p>A VirtualBox appliance has been created which bundles all of the dependencies into one file.  This document will show you how to install your own local server appliance so you can quickly begin developing websites on this advanced platform.</p>
 <div class="section" id="installing-virtualbox">
 <span id="appliance"></span><h2>Installing VirtualBox<a class="headerlink" href="#installing-virtualbox" title="Permalink to this headline">¶</a></h2>
@@ -224,7 +224,7 @@
 </div>
 <div class="section" id="obtaining-the-appliance">
 <h2>Obtaining the Appliance<a class="headerlink" href="#obtaining-the-appliance" title="Permalink to this headline">¶</a></h2>
-<p>To run the FMF server, you will need to download and import the server appliance.  You can <a class="reference external" href="http://virtuecenter-fmf.s3.amazonaws.com/fmf.ova">download it here</a>.  It is a large file, a little over 1GB.</p>
+<p>The appliance is currently offline.</p>
 </div>
 <div class="section" id="using-the-appliance">
 <h2>Using the Appliance<a class="headerlink" href="#using-the-appliance" title="Permalink to this headline">¶</a></h2>
@@ -239,12 +239,12 @@
 <div class="section" id="shared-drive">
 <h2>Shared Drive<a class="headerlink" href="#shared-drive" title="Permalink to this headline">¶</a></h2>
 <p>In order to allow you to work from your &#8220;host&#8221; machine, but view files through the server appliance, a shared directory is automatically created that makes your /var/www folder accessible.</p>
-<p>If you are using Windows, you should automatically see a new shared drive appear named FMF.  Putting a folder in this directory makes it accessible to your web server.  For example, if you had a project called &#8220;myproject&#8221;, it would be pulled from git such that it was in the &#8220;/var/www/myproject&#8221; folder on Linux and the &#8220;//fmf/www/myproject&#8221; folder on Windows. Each project contains a vhost.conf file that Nginx reads to establish the VHOST for the project.  Nginx expects all VHOSTS to be in the directory structure of &#8220;/var/www/myproject/vhost.conf&#8221;.</p>
+<p>If you are using Windows, you should automatically see a new shared drive appear named opine.  Putting a folder in this directory makes it accessible to your web server.  For example, if you had a project called &#8220;myproject&#8221;, it would be pulled from git such that it was in the &#8220;/var/www/myproject&#8221; folder on Linux and the &#8220;//opine/www/myproject&#8221; folder on Windows. Each project contains a vhost.conf file that Nginx reads to establish the VHOST for the project.  Nginx expects all VHOSTS to be in the directory structure of &#8220;/var/www/myproject/vhost.conf&#8221;.</p>
 <img alt="https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/006-WindowsAccess.PNG" src="https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/006-WindowsAccess.PNG" />
 </div>
 <div class="section" id="demo-project">
 <h2>Demo Project<a class="headerlink" href="#demo-project" title="Permalink to this headline">¶</a></h2>
-<p>The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically assigned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account <em>fmf</em> and the password <em>fmf</em>.  Also, the super user account&#8217;s password is also <em>fmf</em>, in-case you need it.  The IP address is displayed when you login.</p>
+<p>The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically assigned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account <em>opine</em> and the password <em>opine</em>.  Also, the super user account&#8217;s password is also <em>opine</em>, in-case you need it.  The IP address is displayed when you login.</p>
 <img alt="https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/004-login.PNG" src="https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/004-login.PNG" />
 <p>Below, the IP address has been typed into the web browser on the host machine with the port # of 81. The demo site is displayed.</p>
 <img alt="https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/005-demosite.PNG" src="https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/005-demosite.PNG" />
@@ -257,7 +257,7 @@
 <div class="highlight-bash"><div class="highlight"><pre>sudo /etc/init.d/nginx restart
 </pre></div>
 </div>
-<p>You will be prompted for the super-user password, which is <em>FMF</em></p>
+<p>You will be prompted for the super-user password, which is <em>opine</em></p>
 </div>
 </div>
 

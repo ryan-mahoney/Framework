@@ -218,13 +218,13 @@
 <hr class="docutils" />
 <div class="section" id="sample-project">
 <h2>Sample Project<a class="headerlink" href="#sample-project" title="Permalink to this headline">¶</a></h2>
-<p>Here is a link to a <a class="reference external" href="https://github.com/virtuecenter/demo">Demo Project</a>. You can download, build and run this project and see a practical example of how an FMF works, and specifically, how it is themed.</p>
+<p>Here is a link to a <a class="reference external" href="https://github.com/virtuecenter/demo">Demo Project</a>. You can download, build and run this project and see a practical example of how an Opine-PHP works, and specifically, how it is themed.</p>
 <blockquote>
 <div><ul class="simple">
-<li>download and build as you would any FMF project</li>
-<li>create a database in Mongo called &#8220;fmfdemo&#8221;, with user &#8220;demo&#8221; and password as &#8220;password&#8221;.  From MongoDB terminal: use fmfdemo; db.addUser(&#8216;demo&#8217;, &#8216;password&#8217;);</li>
-<li>import the data: &#8220;tar xzf dump.tar.gz&#8221;, then &#8220;cd dump&#8221;, mongorestore -d fmfdemo ./fmfdemo</li>
-<li>configure your webserver, and edit your hosts file to point fmf-demo.localhost to 127.0.0.1</li>
+<li>download and build as you would any Opine-PHP project</li>
+<li>create a database in Mongo called &#8220;opinedemo&#8221;, with user &#8220;demo&#8221; and password as &#8220;password&#8221;.  From MongoDB terminal: use opinedemo; db.addUser(&#8216;demo&#8217;, &#8216;password&#8217;);</li>
+<li>import the data: &#8220;tar xzf dump.tar.gz&#8221;, then &#8220;cd dump&#8221;, mongorestore -d opinedemo ./opinedemo</li>
+<li>configure your webserver, and edit your hosts file to point opine-demo.localhost to 127.0.0.1</li>
 </ul>
 </div></blockquote>
 </div>
@@ -237,7 +237,7 @@
 <hr class="docutils" />
 <div class="section" id="types-of-pages">
 <h2>Types of Pages<a class="headerlink" href="#types-of-pages" title="Permalink to this headline">¶</a></h2>
-<p>The first consideration when theming an FMF page is to know what <em>type</em> of page you are dealing with.  For example, the page could be for a <em>Collection</em>, a <em>Document</em>, a <em>Form</em> or it may be a custom page, such as a homepage.  Determining the type is important, because the type will tell you where to find it&#8217;s constituent files.</p>
+<p>The first consideration when theming an Opine-PHP page is to know what <em>type</em> of page you are dealing with.  For example, the page could be for a <em>Collection</em>, a <em>Document</em>, a <em>Form</em> or it may be a custom page, such as a homepage.  Determining the type is important, because the type will tell you where to find it&#8217;s constituent files.</p>
 <p>Every page is going to need and app.yml file, a layout.html file and at least one partial.hbs file.</p>
 <p>When you build you project, the builder will put an app under &#8220;/app/collections/blogs.yml&#8221;, a layout under &#8220;/public/layouts/blogs.html&#8221;, and a partial under &#8220;/public/partials/blogs.hbs&#8221;.  In this sense, you start out with a &#8220;laced-up&#8221; application, and just need to modify these files.  For <em>Collections</em>, the builder will also create stub files for the related <em>Document</em> versions, so &#8220;/app/document/blog.yml&#8221;, &#8220;/public/layout/blog.html&#8221; and &#8220;/public/partial/blog.hbs&#8221; will also be created.</p>
 <p>At this point, you primary need to be focused on adding the relevant CSS, HTML structure and JS to your project and of course, being aware of the data structure supplied by your API so you can subsitute data in your partials file.</p>
@@ -286,13 +286,13 @@
 <span class="nt">&lt;/ul&gt;</span>
 </pre></div>
 </div>
-<p>Partials are just the individual parts of a webapages HTML.  FMF currently has standardized on HandlearsPHP as a templating language.  In the example above, the API must be providing a array of data called &#8220;menus&#8221;, and each menu has a &#8220;url&#8221; and &#8220;label&#8221; attribute.</p>
+<p>Partials are just the individual parts of a webapages HTML.  Opine-PHP currently has standardized on HandlearsPHP as a templating language.  In the example above, the API must be providing a array of data called &#8220;menus&#8221;, and each menu has a &#8220;url&#8221; and &#8220;label&#8221; attribute.</p>
 <p>If you need to know more about how Handlebars works, refer to the Javascript website as all the documentation is there and the PHP version functions the same way.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="separation-applications">
 <h2>Separation Applications<a class="headerlink" href="#separation-applications" title="Permalink to this headline">¶</a></h2>
-<p>One of the distinct features of FMF is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Separation library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.</p>
+<p>One of the distinct features of Opine-PHP is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Separation library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
 
 <span class="l-Scalar-Plain">binding</span><span class="p-Indicator">:</span>

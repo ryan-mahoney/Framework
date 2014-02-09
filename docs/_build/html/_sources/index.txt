@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PHP Federated Micro-Framework
-=============================
+Opine-PHP
+=========
 
 Opine is a concise PHP framework for building web applications. Each of its core services expresses a distinct architectural opinion.
 

@@ -257,7 +257,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>For more details on this component, see: <a class="reference internal" href="../components/index.html#collection"><em>Collection</em></a>.  FMF comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.</p>
+<p>For more details on this component, see: <a class="reference internal" href="../components/index.html#collection"><em>Collection</em></a>.  Opine-PHP comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="config">
@@ -372,7 +372,7 @@
 <p>The public folder stores files that should be publicly available on the website such as css and js files, as well as some files in the &#8220;layouts&#8221;, &#8220;partials&#8221; and &#8220;helpers&#8221; folder that are used for front-end theming.</p>
 <div class="section" id="public-index-php">
 <h3>public/index.php<a class="headerlink" href="#public-index-php" title="Permalink to this headline">¶</a></h3>
-<p>The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.</p>
+<p>The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the Opine-PHP front Controller.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="nx">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">);</span>
 <span class="k">require</span> <span class="s1">&#39;../vendor/autoload.php&#39;</span><span class="p">;</span>
@@ -437,7 +437,7 @@
 <hr class="docutils" />
 <div class="section" id="subscribers">
 <h2>subscribers<a class="headerlink" href="#subscribers" title="Permalink to this headline">¶</a></h2>
-<p>FMF relies heavily on the PubSub pattern.  As such, we need a way to specify &#8220;subscribers&#8221; that will receive published &#8220;topics&#8221;, as well as a mapping of which subscribers will be subscribed to which topics.</p>
+<p>Opine-PHP relies heavily on the PubSub pattern.  As such, we need a way to specify &#8220;subscribers&#8221; that will receive published &#8220;topics&#8221;, as well as a mapping of which subscribers will be subscribed to which topics.</p>
 <p>First, the subscriptions, in YAML format:</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">topics</span><span class="p-Indicator">:</span>
     <span class="l-Scalar-Plain">form-contact-save</span><span class="p-Indicator">:</span>
@@ -472,7 +472,7 @@
 <hr class="docutils" />
 <div class="section" id="vendors">
 <h2>vendors<a class="headerlink" href="#vendors" title="Permalink to this headline">¶</a></h2>
-<p>FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependencies it compiles and the auto-loader.</p>
+<p>Opine-PHP relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependencies it compiles and the auto-loader.</p>
 </div>
 </div>
 

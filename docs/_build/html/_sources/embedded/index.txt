@@ -5,7 +5,7 @@ When a project utilizes a document oriented data store, such as MongoDB, the fun
 
 For example, if you have a manager for “categories” it may have an embedded document that stores “sub-categories”.
 
-To achieve this functionality, FMF and Semantic-CM have a rich set if logic and user interfaces for facilitating this use case.  That being said, it is at times confusing because there are many step.
+To achieve this functionality, Opine-PHP and Semantic-CM have a rich set if logic and user interfaces for facilitating this use case.  That being said, it is at times confusing because there are many step.
 
 
 Steps to Embedding Manager
