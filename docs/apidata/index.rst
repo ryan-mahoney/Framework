@@ -1,14 +1,14 @@
 Data API
 ========
 
-The philosophy of FMF is that the front-end developer should not need to write queries.  All of the queries should be pre-written or generated and be accessible via an HTTP API.
+The philosophy of Opine-PHP is that the front-end developer should not need to write queries.  All of the queries should be pre-written or generated and be accessible via an HTTP API.
 
-FMF utilized a software services named Collection to automatically provide a rich API in JSON format.
+Opine-PHP utilized a software services named Collection to automatically provide a rich API in JSON format.
 
 A Collection File
 +++++++++++++++++
 
-A complete list of available collections can be obtained `here <https://github.com/virtuecenter/collection/tree/master/available>`_.
+A complete list of available collections can be obtained `here <https://github.com/Opine-Org/Collection/tree/master/available>`_.
 
 To add a new collection to your project, simply copy the file to your own project's **/collections** folder.
 
@@ -19,7 +19,7 @@ A collection file looks like this:
 	<?php
 	/*
 	 * @version .1
-	 * @link https://raw.github.com/virtuecenter/collection/master/available/blogs.php
+	 * @link https://raw.github.com/Opine-Org/Collection/master/available/blogs.php
 	 * @mode upgrade
 	 */
 	namespace Collection;

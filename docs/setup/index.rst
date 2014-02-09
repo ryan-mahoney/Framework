@@ -54,7 +54,7 @@ Web Servers
 Nginx & PHP-FPM
 ***************
 
-Nginx is the recommended web-server for FMF.
+Nginx is the recommended web-server for Opine-PHP.
 
 .. code-block:: nginx
 
@@ -92,4 +92,4 @@ Add the following logic to your .htaccess files:
 Windows
 +++++++
 
-FMF has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn't it time to make the `switch <http://www.ubuntu.com/>`_?
+Opine-PHP has been tested on Windows, but it is not tested as often as it is on Linux or MacOS.  Isn't it time to make the `switch <http://www.ubuntu.com/>`_?

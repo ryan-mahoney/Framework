@@ -8,7 +8,7 @@ Collection
 
 Fork on github here: `collection source <https://github.com/virtuecenter/collection>`_
 
-Collections are at the heart of how FMF makes data accessable.  FMF will create RESTful APIs that produce JSON data, as well as front-end routes for collection data on a website front-end.
+Collections are at the heart of how Opine-PHP makes data accessable.  Opine-PHP will create RESTful APIs that produce JSON data, as well as front-end routes for collection data on a website front-end.
 
 Collection files are typically small, but they may contain logic for transforming individual documents returned:
 
@@ -352,7 +352,7 @@ Fork on github here: `separation source <https://github.com/virtuecenter/separat
 
 Separation is a way to bind the data returned from a RESTful API to a "partial" template that will render the data into a complete page "layout".
 
-FMF uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:
+Opine-PHP uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:
 
 .. code-block:: php
 

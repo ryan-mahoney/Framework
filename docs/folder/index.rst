@@ -54,7 +54,7 @@ The collections folder stores *collection* files that are each one small class f
       public $singular = 'blog';
   }
 
-For more details on this component, see: :ref:`collection`.  FMF comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.
+For more details on this component, see: :ref:`collection`.  Opine-PHP comes with many pre-defined collections for popular data types like blogs, pages, videos, photo galleries, etc.
 
 ---------
 
@@ -184,7 +184,7 @@ The public folder stores files that should be publicly available on the website 
 public/index.php
 ****************
 
-The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the FMF front Controller.
+The index.php is an auto-generated bootstrap file that includes the auto-loader and calls the Opine-PHP front Controller.
 
 .. code-block:: php
 
@@ -262,7 +262,7 @@ The partials folder stores all of the *partials* files that will be used in layo
 subscribers
 +++++++++++
 
-FMF relies heavily on the PubSub pattern.  As such, we need a way to specify "subscribers" that will receive published "topics", as well as a mapping of which subscribers will be subscribed to which topics.
+Opine-PHP relies heavily on the PubSub pattern.  As such, we need a way to specify "subscribers" that will receive published "topics", as well as a mapping of which subscribers will be subscribed to which topics.
 
 First, the subscriptions, in YAML format:
 
@@ -304,4 +304,4 @@ For more details on this component, see: :ref:`pubsub`.
 vendors
 +++++++
 
-FMF relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependencies it compiles and the auto-loader.
+Opine-PHP relies heavily on PHP composer.  The vendors folder is where composer stores all the various dependencies it compiles and the auto-loader.

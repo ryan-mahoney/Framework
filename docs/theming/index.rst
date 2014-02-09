@@ -8,12 +8,12 @@ Applying a visual theme to a website or mobile-web application is a critical asp
 Sample Project
 ++++++++++++++
 
-Here is a link to a `Demo Project <https://github.com/virtuecenter/demo>`_. You can download, build and run this project and see a practical example of how an FMF works, and specifically, how it is themed.
+Here is a link to a `Demo Project <https://github.com/virtuecenter/demo>`_. You can download, build and run this project and see a practical example of how an Opine-PHP works, and specifically, how it is themed.
 
- * download and build as you would any FMF project
- * create a database in Mongo called "fmfdemo", with user "demo" and password as "password".  From MongoDB terminal: use fmfdemo; db.addUser('demo', 'password');
- * import the data: "tar xzf dump.tar.gz", then "cd dump", mongorestore -d fmfdemo ./fmfdemo
- * configure your webserver, and edit your hosts file to point fmf-demo.localhost to 127.0.0.1
+ * download and build as you would any Opine-PHP project
+ * create a database in Mongo called "opinedemo", with user "demo" and password as "password".  From MongoDB terminal: use opinedemo; db.addUser('demo', 'password');
+ * import the data: "tar xzf dump.tar.gz", then "cd dump", mongorestore -d opinedemo ./opinedemo
+ * configure your webserver, and edit your hosts file to point opine-demo.localhost to 127.0.0.1
 
 ---------
 
@@ -29,7 +29,7 @@ For example, if you are working with the "blogs" *Collection*, the routes "/blog
 Types of Pages
 ++++++++++++++
 
-The first consideration when theming an FMF page is to know what *type* of page you are dealing with.  For example, the page could be for a *Collection*, a *Document*, a *Form* or it may be a custom page, such as a homepage.  Determining the type is important, because the type will tell you where to find it's constituent files.  
+The first consideration when theming an Opine-PHP page is to know what *type* of page you are dealing with.  For example, the page could be for a *Collection*, a *Document*, a *Form* or it may be a custom page, such as a homepage.  Determining the type is important, because the type will tell you where to find it's constituent files.  
 
 Every page is going to need and app.yml file, a layout.html file and at least one partial.hbs file.  
 
@@ -89,7 +89,7 @@ Working with Partials
 	{{/each}}
 	</ul>
 
-Partials are just the individual parts of a webapages HTML.  FMF currently has standardized on HandlearsPHP as a templating language.  In the example above, the API must be providing a array of data called "menus", and each menu has a "url" and "label" attribute.
+Partials are just the individual parts of a webapages HTML.  Opine-PHP currently has standardized on HandlearsPHP as a templating language.  In the example above, the API must be providing a array of data called "menus", and each menu has a "url" and "label" attribute.
 
 If you need to know more about how Handlebars works, refer to the Javascript website as all the documentation is there and the PHP version functions the same way.
 
@@ -98,7 +98,7 @@ If you need to know more about how Handlebars works, refer to the Javascript web
 Separation Applications
 +++++++++++++++++++++++
 
-One of the distinct features of FMF is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Separation library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.
+One of the distinct features of Opine-PHP is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Separation library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.
 
 .. code-block:: yaml
 

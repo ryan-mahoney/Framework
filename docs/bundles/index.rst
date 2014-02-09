@@ -1,7 +1,7 @@
 Bundles
 =======
 
-Bundles allow for packages applications to be embedded within other FMF applications.  Bundles should not be confused with services.  If you create a new service, you would simply add it to the composer.json and the projects container and use the new service objects. Bundles should be used when you are distributing an application that has it's own routes and visual layouts.
+Bundles allow for packages applications to be embedded within other Opine-PHP applications.  Bundles should not be confused with services.  If you create a new service, you would simply add it to the composer.json and the projects container and use the new service objects. Bundles should be used when you are distributing an application that has it's own routes and visual layouts.
 
 Quick notes about bundles (complete documentation coming soon)
 
