@@ -1,10 +1,10 @@
 Components
 ==========
 
-.. _collection:
-
 Collection
 ++++++++++
+
+.. _collection:
 
 Fork on github here: `collection source <https://github.com/virtuecenter/collection>`_
 
@@ -48,7 +48,7 @@ An example of the result of a collection can be found here: `Blogs Collection AP
 Collection APIs are handy, because you can see the field layout easily in JSON:
 
 
-.. code-block:: json
+.. code-block:: javascript
 
     {
         "blogs": [

@@ -1,6 +1,8 @@
 Forms
 =====
 
+.. _forms:
+
 For a website or mobile web application to collect information, it must contain forms.
 
 While forms may seem like a mundane topic, they can only be ignored at the detriment of a successful website project.
@@ -156,9 +158,9 @@ Opine-PHP depends on the following files being included in order for forms to pr
 
 *Note: You can more or less use any version of jquery, but don't include it twice*
 
-*Note: all of the form files are automatically copied into your project's "/public/js" folder on build.
+*Note: all of the form files are automatically copied into your project's "/public/js" folder on build.*
 
-.. code-block:: httml
+.. code-block:: html
 
   <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="/js/jquery.form.js"></script>

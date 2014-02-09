@@ -172,7 +172,7 @@ The forms folder contains PHP configuration classes for each of the forms on the
 		}
 	}
 
-For more details on this component, see: :ref:`form`.
+For more details on this component, see: :ref:`forms`.
 
 ----------
 
