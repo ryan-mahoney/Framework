@@ -1,7 +1,7 @@
 Server Appliance
 ================
 
-FMF does not compromise on using the latest server technologies and platforms.  As such, FMF has many dependencies, some of which are hard to install and configure.  
+Opine-PHP does not compromise on using the latest server technologies and platforms.  As such, Opine-PHP has many dependencies, some of which are hard to install and configure.  
 
 A VirtualBox appliance has been created which bundles all of the dependencies into one file.  This document will show you how to install your own local server appliance so you can quickly begin developing websites on this advanced platform.
 
@@ -20,7 +20,7 @@ Once downloaded, follow the installation steps for your platform, it is easy to 
 Obtaining the Appliance
 +++++++++++++++++++++++
 
-To run the FMF server, you will need to download and import the server appliance.  You can `download it here <http://virtuecenter-fmf.s3.amazonaws.com/fmf.ova>`_.  It is a large file, a little over 1GB.
+The appliance is currently offline.
 
 
 Using the Appliance
@@ -46,14 +46,14 @@ Shared Drive
 
 In order to allow you to work from your "host" machine, but view files through the server appliance, a shared directory is automatically created that makes your /var/www folder accessible.
 
-If you are using Windows, you should automatically see a new shared drive appear named FMF.  Putting a folder in this directory makes it accessible to your web server.  For example, if you had a project called "myproject", it would be pulled from git such that it was in the "/var/www/myproject" folder on Linux and the "//fmf/www/myproject" folder on Windows. Each project contains a vhost.conf file that Nginx reads to establish the VHOST for the project.  Nginx expects all VHOSTS to be in the directory structure of "/var/www/myproject/vhost.conf".
+If you are using Windows, you should automatically see a new shared drive appear named opine.  Putting a folder in this directory makes it accessible to your web server.  For example, if you had a project called "myproject", it would be pulled from git such that it was in the "/var/www/myproject" folder on Linux and the "//opine/www/myproject" folder on Windows. Each project contains a vhost.conf file that Nginx reads to establish the VHOST for the project.  Nginx expects all VHOSTS to be in the directory structure of "/var/www/myproject/vhost.conf".
 
 .. image:: https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/006-WindowsAccess.PNG
 
 Demo Project
 ++++++++++++
 
-The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically assigned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account *fmf* and the password *fmf*.  Also, the super user account's password is also *fmf*, in-case you need it.  The IP address is displayed when you login.
+The Appliance comes pre-installed with the demo project running on port 81.  In order to view the demo project, you will need to know the dynamically assigned IP address of your Virtual Server.  Determining the IP address is easy.  You can login to the server with the user account *opine* and the password *opine*.  Also, the super user account's password is also *opine*, in-case you need it.  The IP address is displayed when you login.
 
 .. image:: https://raw.github.com/virtuecenter/framework/master/docs/appliance/images/004-login.PNG
 
@@ -74,4 +74,4 @@ To restart Nginx:
 
    sudo /etc/init.d/nginx restart
 
-You will be prompted for the super-user password, which is *FMF*
+You will be prompted for the super-user password, which is *opine*
