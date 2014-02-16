@@ -2,9 +2,7 @@ parameters:
 
 services:
     slim:
-        class:     'Slim\Slim'
-        calls:
-            - [registerAutoloader, []]
+        class:     'Slim\App'
     build:
         class:     'Opine\Build'
         arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication']
