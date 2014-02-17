@@ -48,67 +48,77 @@ class Framework {
         return self::$container;
     }
 
-    public function frontController () {
-        $sapi = php_sapi_name();
+    public function __construct () {
+        $root = $this->root();
+        self::$container = new Container($root, $root . '/../container.yml');
+    }
+
+    public function commandLine () {
+        $root = $this->root();
+        $container = self::$container;
+        if (!isset($_SERVER['argv'][1])) {
+            exit;
+        }
+        $command = $_SERVER['argv'][1];
+        switch ($command) {
+            case 'build':
+                $container->build->project($root);
+                exit;
+                break;
+
+            case 'worker':
+                set_time_limit(0);
+                $this->cache($root, $container);
+                $container->topic->load($root);
+                $container->worker->work();
+                exit;
+                break;
+
+            case 'upgrade':
+                $container->build->upgrade($root);
+                exit;
+                break;
+
+            case 'check':
+                $container->build->environmentCheck($root);
+                exit;
+
+            case 'dburi':
+                $container->dbmigration->addURI();
+                exit;
+
+            case 'reindex':
+                exit;
+
+            case 'topics':
+                $this->cache($root, $container);
+                $container->topic->load($root);
+                $container->topic->show();
+                exit;
+
+            case 'count':
+                $container->collection->statsAll();
+                exit;
+        }
+    }
+
+    private function root () {
         $root = (($sapi == 'cli') ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
         if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
             $root .= '/public';
         }
-        self::$container = new Container($root, $root . '/../container.yml');
+        return $root;
+    }
+
+    public function frontController () {
+        $root = $this->root();
         $container = self::$container;
-        if ($sapi == 'cli') {
-            if (!isset($_SERVER['argv'][1])) {
-                exit;
-            }
-            $command = $_SERVER['argv'][1];
-            switch ($command) {
-                case 'build':
-                    $container->build->project($root);
-                    exit;
-                    break;
-
-                case 'worker':
-                    set_time_limit(0);
-                    $this->cache($root, $container);
-                    $container->topic->load($root);
-                    $container->worker->work();
-                    exit;
-                    break;
-
-                case 'upgrade':
-                    $container->build->upgrade($root);
-                    exit;
-                    break;
-
-                case 'check':
-                    $container->build->environmentCheck($root);
-                    exit;
-
-                case 'dburi':
-                    $container->dbmigration->addURI();
-                    exit;
-
-                case 'reindex':
-                    exit;
-
-                case 'topics':
-                    $this->cache($root, $container);
-                    $container->topic->load($root);
-                    $container->topic->show();
-                    exit;
-
-                case 'count':
-                    $container->collection->statsAll();
-                    exit;
-            }
-            exit;
-        }
         if (strlen(session_id()) == 0) {
             session_start();
         }
-        $slim = $container->slim;
         if (isset($_POST) && !empty($_POST)) {
-            $container->post->populate($slim->request->getResourceUri(), $_POST);
+            $uriBase = str_replace('?' . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
+            $container->post->populate($uriBase, $_POST);
         }
         
         //configuration cache
@@ -141,10 +151,75 @@ class Framework {
         }
 
         //generate output
+        $slim = $container->slim;
         $this->routeList($slim);
         $slim->run();
         $container->filter->apply($root);
         echo $container->response;
+    }
+
+    public function react ($port) {
+        $root = $this->root();
+        $_SERVER['DOCUMENT_ROOT'] = $root;
+        $_SERVER['REQUEST_METHOD'] = 'GET';
+        $_SERVER['REQUEST_URI'] = '/';
+        $_SERVER['QUERY_STRING'] = '';
+        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.1';
+        $_SERVER['SERVER_NAME'] = 'react';
+        $_SERVER['SERVER_PORT'] = '80';
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+
+        ob_start();
+        $this->frontController();
+        ob_end_clean();
+
+        $container = self::$container;
+
+        $app = function ($request, $response) use (&$container) {
+            $text = '';
+            $container->response->body = '';
+            $slimResponse = false;
+            ob_start();
+            
+            try {
+                $querystring = '';
+                if (is_array($request->getQuery()) && !empty($request->getQuery())) {
+                    $querystring = http_build_query($request->getQuery());
+                }
+                $url = $request->getPath();
+                if ($querystring != '') {
+                    $url .= '?' . $querystring;
+                }
+                $_SERVER['REQUEST_URI'] = $url;
+                $_SERVER['QUERY_STRING'] = $querystring;
+                $container->bundleRoute->app($root);
+                $container->authentication->aclRoute();
+                $slimResponse = $container->slim->subRequest($url, $request->getMethod());
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+                $slimResponse = false;
+            }
+
+            $text = ob_get_clean();
+            if ($container->response->body != '') {
+                $text = $container->response->body;
+            }
+            if ($slimResponse !== false) {
+                echo $slimResponse->getStatus(), ' : ', $request->getPath(), "\n";
+                $response->writeHead($slimResponse->getStatus(), $slimResponse->getHeaders()->all());
+            } else {
+                $response->writeHead(500, array());
+            }
+            $response->end($text, true);
+        };
+
+        $loop = React\EventLoop\Factory::create();
+        $socket = new React\Socket\Server($loop);
+        $http = new React\Http\Server($socket);
+        $http->on('request', $app);
+        $socket->listen($port);
+        $loop->run();
     }
 
     private function cache ($root, $container) {

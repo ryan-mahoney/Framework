@@ -26,12 +26,35 @@ if (!file_exists('public')) {
     mkdir('public');
 }
 if (!file_exists('public/index.php')) {
-file_put_contents('public/index.php', '<?php
+    file_put_contents('public/index.php', '<?php
 date_default_timezone_set(\'America/New_York\');
 require __DIR__ . \'/../vendor/autoload.php\';
 (new Opine\Framework())->frontController();');
 } else {
     echo 'public/index.php already exists.', "\n";    
+}
+
+if (!file_exists('./cmd.sh')) {
+    file_put_contents('./cmd.sh', '#!/usr/bin/php
+<?php
+date_default_timezone_set(\'America/New_York\');
+require __DIR__ . \'/../vendor/autoload.php\';
+(new Opine\Framework())->commandLine();');
+    chmod('./cmd.sh', 0750);
+} else {
+    echo './cmd.sh already exists.', "\n";    
+}
+
+if (!file_exists('./react.sh')) {
+    file_put_contents('./react.sh', '#!/usr/bin/php
+<?php
+date_default_timezone_set(\'America/New_York\');
+require __DIR__ . \'/../vendor/autoload.php\';
+$port = isset($argv[1]) ? $argv[1] : 8086;
+(new Opine\Framework())->react($port);');
+    chmod('./react.sh', 0750);
+} else {
+    echo './react.sh already exists.', "\n";    
 }
 
 if (!file_exists('.gitignore')) {
@@ -63,11 +86,13 @@ public/storage');
 
 $root = getcwd();
 echo 'Cloning dependency contiainer...', "\n\n";
-file_put_contents('container.yml', file_get_contents('vendor/opine/build/static/container.yml'));
+if (!file_exists('container.yml')) {
+    file_put_contents('container.yml', file_get_contents('vendor/opine/build/static/container.yml'));
+}
 
 echo 'Building project...', "\n\n";
 flush();
-passthru('php public/index.php build');
+passthru('./cmd.sh build');
 
 echo 'Building complete.', "\n\n";
 
