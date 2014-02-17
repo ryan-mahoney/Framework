@@ -38,7 +38,7 @@ if (!file_exists('./cmd.sh')) {
     file_put_contents('./cmd.sh', '#!/usr/bin/php
 <?php
 date_default_timezone_set(\'America/New_York\');
-require __DIR__ . \'/../vendor/autoload.php\';
+require __DIR__ . \'/vendor/autoload.php\';
 (new Opine\Framework())->commandLine();');
     chmod('./cmd.sh', 0750);
 } else {
@@ -49,7 +49,7 @@ if (!file_exists('./react.sh')) {
     file_put_contents('./react.sh', '#!/usr/bin/php
 <?php
 date_default_timezone_set(\'America/New_York\');
-require __DIR__ . \'/../vendor/autoload.php\';
+require __DIR__ . \'/vendor/autoload.php\';
 $port = isset($argv[1]) ? $argv[1] : 8086;
 (new Opine\Framework())->react($port);');
     chmod('./react.sh', 0750);
