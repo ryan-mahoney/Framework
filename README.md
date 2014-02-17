@@ -9,7 +9,7 @@ It can be described as No-SQL, API-Centric, Less-Logic, Service Oriented, RESTfu
 
 *Learn all about it here*
 
-http://fmf.readthedocs.org
+http://opine-php.readthedocs.org
 
 - - -
 
