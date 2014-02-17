@@ -97,6 +97,7 @@ passthru('./cmd.sh build');
 echo 'Building complete.', "\n\n";
 
 echo 'Webserver config: (NGINX server block) ', "\n\n", file_get_contents('vendor/opine/build/static/nginx.conf'), "\n\n- - - - - -\n\n";
+echo 'Webserver config: (ReactPHP + NGINX server block) ', "\n\n", file_get_contents('vendor/opine/build/static/react-nginx.conf'), "\n\n- - - - - -\n\n";
 echo 'Webserver config: (APACHE .htaccess file) ', "\n\n", file_get_contents('vendor/opine/build/static/apache.conf'), "\n\n";
 
 echo 'If you are working locally do not forget to add the host name to your /etc/hosts file and restart your webserver.', "\n\n";
