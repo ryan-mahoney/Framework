@@ -103,7 +103,7 @@ class Framework {
     }
 
     private function root () {
-        $root = (($sapi == 'cli') ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
+        $root = (empty($_SERVER['DOCUMENT_ROOT']) ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
         if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
             $root .= '/public';
         }
