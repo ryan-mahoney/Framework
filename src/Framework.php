@@ -152,9 +152,9 @@ class Framework {
 
         //generate output
         $slim = $container->slim;
-        $this->routeList($slim);
+        //$this->routeList($slim);
         $slim->run();
-        $container->filter->apply($root);
+        //$container->filter->apply($root);
         echo $container->response;
     }
 
