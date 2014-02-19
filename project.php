@@ -35,7 +35,7 @@ require __DIR__ . \'/../vendor/autoload.php\';
 }
 
 if (!file_exists('./cmd.sh')) {
-    file_put_contents('./cmd.sh', '#!/usr/bin/php
+    file_put_contents('./cmd.sh', '#!/usr/local/bin/php
 <?php
 date_default_timezone_set(\'America/New_York\');
 require __DIR__ . \'/vendor/autoload.php\';
@@ -46,7 +46,7 @@ require __DIR__ . \'/vendor/autoload.php\';
 }
 
 if (!file_exists('./react.sh')) {
-    file_put_contents('./react.sh', '#!/usr/bin/php
+    file_put_contents('./react.sh', '#!/usr/local/bin/php
 <?php
 date_default_timezone_set(\'America/New_York\');
 require __DIR__ . \'/vendor/autoload.php\';
