@@ -61,6 +61,19 @@ class Framework {
         }
         $command = $_SERVER['argv'][1];
         switch ($command) {
+            case 'help':
+                echo 
+                    'The available commands are:', "\n",
+                    'build', "\n",
+                    'worker', "\n",
+                    'upgrade', "\n",
+                    'check', "\n",
+                    'dburi', "\n",
+                    'reindex', "\n",
+                    'topics', "\n",
+                    'count', "\n";
+                break;
+
             case 'build':
                 $container->build->project($root);
                 exit;
