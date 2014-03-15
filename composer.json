@@ -14,7 +14,6 @@
     ],
     "require": {
     	"php": ">=5.4.0",
-        "slim/slim": "2.4.2",
         "cocur/slugify": "v0.2.3",
         "opine/authentication": "dev-master",
         "opine/build": "dev-master",
@@ -38,7 +37,8 @@
         "opine/bundle": "dev-master",
         "opine/semantic-cm": "dev-master",
         "opine/twitter": "dev-master",
-        "opine/uploadwrapper": "dev-master"
+        "opine/uploadwrapper": "dev-master",
+        "opine/route": "dev-master"
     },
     "autoload": {
         "psr-4": {"Opine\\": "src/"}

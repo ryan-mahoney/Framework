@@ -164,10 +164,15 @@ class Framework {
         }
 
         //generate output
-        $slim = $container->slim;
-        //$this->routeList($slim);
-        $slim->run();
-        //$container->filter->apply($root);
+        $route = $container->route;
+        try {
+            $response = $route->run();
+            echo $response;
+        } catch (\Exception $e) {
+            echo $e->getMessage(), "\n\n";
+            print_r($e-getTrace());
+        }
+        
         echo $container->response;
     }
 
@@ -192,7 +197,7 @@ class Framework {
         $app = function ($request, $response) use (&$container) {
             $text = '';
             $container->response->body = '';
-            $slimResponse = false;
+            $routeResponse = false;
             ob_start();
             
             try {
@@ -208,19 +213,19 @@ class Framework {
                 $_SERVER['QUERY_STRING'] = $querystring;
                 $container->bundleRoute->app($root);
                 $container->authentication->aclRoute();
-                $slimResponse = $container->slim->subRequest($url, $request->getMethod());
+                $routeResponse = $container->route->subRequest($url, $request->getMethod());
             } catch (\Exception $e) {
                 echo $e->getMessage();
-                $slimResponse = false;
+                $routeResponse = false;
             }
 
             $text = ob_get_clean();
             if ($container->response->body != '') {
                 $text = $container->response->body;
             }
-            if ($slimResponse !== false) {
-                echo $slimResponse->getStatus(), ' : ', $request->getPath(), "\n";
-                $response->writeHead($slimResponse->getStatus(), $slimResponse->getHeaders()->all());
+            if ($routeResponse !== false) {
+                echo $routeResponse->getStatus(), ' : ', $request->getPath(), "\n";
+                $response->writeHead($routeResponse->getStatus(), $routeResponse->getHeaders()->all());
             } else {
                 $response->writeHead(500, array());
             }
@@ -255,9 +260,9 @@ class Framework {
         }
     }
 
-    private function routeList ($slim) {
-        $slim->get('/routes', function () use ($slim) {
-            $routes = $slim->router()->getNamedRoutes();
+    private function routeList ($route) {
+        $route->get('/routes', function () use ($route) {
+            $routes = $route->router()->getNamedRoutes();
             $paths = [];
             echo '<html><body>';
             foreach ($routes as $route) {

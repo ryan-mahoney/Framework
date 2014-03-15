@@ -1,8 +1,16 @@
 parameters:
 
 services:
-    slim:
-        class:     'Slim\Slim'
+    route:
+        class:     'Opine\Route'
+        arguments: ['@fastrouteCollector']
+    fastrouteCollector:
+        class:     'FastRoute\RouteCollector'
+        arguments: ['@fastrouteParser', '@fastrouteGenerator']
+    fastrouteParser:
+        class:     'FastRoute\RouteParser\Std'
+    fastrouteGenerator:
+        class:     'FastRoute\DataGenerator\GroupCountBased'
     build:
         class:     'Opine\Build'
         arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication']
@@ -14,10 +22,10 @@ services:
         arguments: ['@container']
     separation:
         class:     'Opine\Separation'
-        arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@slim']
+        arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@route']
     collectionRoute:
         class:     'Opine\CollectionRoute'
-        arguments: ['@collection', '@slim', '@db', '@separation', '@response']
+        arguments: ['@collection', '@route', '@db', '@separation', '@response']
     collection:
         class:     'Opine\Collection'
         arguments: ['%root%', '@db', '@queue']
@@ -30,16 +38,16 @@ services:
         class:     'Captcha\Captcha'
     formRoute:
         class:     'Opine\FormRoute'
-        arguments: ['@slim', '@form', '@field', '@post', '@separation', '@topic', '@response']
+        arguments: ['@route', '@form', '@field', '@post', '@separation', '@topic', '@response']
     form:
         class:     'Opine\Form'
         arguments: ['%root%', '@field', '@post', '@db', '@response']
     authentication:
         class:     'Opine\Authentication'
-        arguments: ['%root%', '@db', '@config', '@yamlSlow', '@slim', '@cache']
+        arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache']
     helperRoute:
         class:     'Opine\HelperRoute'
-        arguments: ['@slim', '@handlebars']
+        arguments: ['@route', '@handlebars']
     configRoute:
         class:     'Opine\ConfigRoute'
         arguments: ['@config', '@cache']
@@ -104,7 +112,7 @@ services:
         class:     'Cocur\Slugify\Slugify'
     imageResizer:
         class:     'Opine\ImageResizer'
-        arguments: ['@slim']
+        arguments: ['@route']
     twitter:
         class:     'Opine\Twitter'
         arguments: ['%root%', '@cache', '@queue', '@db', '@config']
