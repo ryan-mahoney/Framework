@@ -170,7 +170,7 @@ class Framework {
             echo $response;
         } catch (\Exception $e) {
             echo $e->getMessage(), "\n\n";
-            print_r($e-getTrace());
+            print_r($e->getTrace());
         }
         
         echo $container->response;
