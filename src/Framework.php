@@ -32,6 +32,7 @@ function container () {
 class Framework {
     private static $container;
     private static $keyCache = [];
+    private static $frontCalled = false;
 
     public static function keySet ($name, $value) {
         self::$keyCache[$name] = $value;
@@ -123,7 +124,7 @@ class Framework {
         return $root;
     }
 
-    public function frontController () {
+    private function firstCall () {
         $root = $this->root();
         $container = self::$container;
         if (strlen(session_id()) == 0) {
@@ -162,8 +163,16 @@ class Framework {
         if (method_exists($myRoute, 'custom')) {
             $myRoute->custom();
         }
+    }
+
+    public function frontController () {
+        if (self::$frontCalled == false) {
+            $this->firstCall();
+            self::$frontCalled = true;
+        }
 
         //generate output
+        $container = self::$container;
         $route = $container->route;
         try {
             $response = $route->run();
