@@ -169,22 +169,15 @@ class Framework {
         if (self::$frontCalled == false) {
             $this->firstCall();
             self::$frontCalled = true;
-        } else {
-            echo 'SECOND';
-            exit;
         }
-
-        //generate output
         $container = self::$container;
         $route = $container->route;
         try {
             $response = $route->run();
             echo $response;
         } catch (\Exception $e) {
-            echo $e->getMessage(), "\n\n";
-            print_r($e->getTrace());
+            echo $e->getMessage();
         }
-        
         echo $container->response;
     }
 
@@ -221,7 +214,6 @@ class Framework {
                 echo '<a href="', $pattern, '">', $route->getName(), '</a><br />';
             }
             echo '</body></html>';
-            exit;
         })->name('routes');
     }
 }
