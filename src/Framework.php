@@ -169,6 +169,9 @@ class Framework {
         if (self::$frontCalled == false) {
             $this->firstCall();
             self::$frontCalled = true;
+        } else {
+            echo 'SECOND';
+            exit;
         }
 
         //generate output
