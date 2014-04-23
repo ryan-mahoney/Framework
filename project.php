@@ -65,6 +65,7 @@ public/helpers/_build.php
 public/css/fields
 public/js/fields
 acl/_build.json
+acl/manager.yml
 subscribers/_build.php
 bundles/cache.json
 collections/cache.json
@@ -81,7 +82,10 @@ public/layouts/Manager
 public/images/Manager
 public/helpers/Manager
 public/imagecache
-public/storage');
+public/storage
+bundles/Manager
+bundles/Membership
+bundles/Calendar');
 }
 
 $root = getcwd();
