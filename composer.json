@@ -26,7 +26,7 @@
         "opine\/db": "1.0.1",
         "opine\/errors": "1.0.1",
         "opine\/filter": "1.0.1",
-        "opine\/form": "1.0.1",
+        "opine\/form": "dev-master",
         "opine\/helper": "1.0.1",
         "opine\/http": "1.0.1",
         "opine\/imageresizer": "1.0.1",
