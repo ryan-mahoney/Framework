@@ -17,7 +17,7 @@
     "require": {
         "php": ">=5.4.0",
         "cocur\/slugify": "v0.2.3",
-        "opine\/authentication": "1.0.1",
+        "opine\/authentication": "dev-master",
         "opine\/build": "1.0.1",
         "opine\/cache": "1.0.1",
         "opine\/collection": "1.0.1",
@@ -40,7 +40,9 @@
         "opine\/semantic-cm": "1.0.1",
         "opine\/twitter": "1.0.1",
         "opine\/uploadwrapper": "1.0.1",
-        "opine\/route": "1.0.1"
+        "opine\/route": "1.0.1",
+        "opine\/registration": "dev-master",
+        "opine\/membership": "dev-master"
     },
     "autoload": {
         "psr-4": {

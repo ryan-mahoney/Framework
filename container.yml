@@ -116,3 +116,6 @@ services:
     twitter:
         class:     'Opine\Twitter'
         arguments: ['%root%', '@cache', '@queue', '@db', '@config']
+    registration:
+        class:     'Opine\Registration'
+        arguments: ['@db']
