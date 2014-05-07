@@ -1,5 +1,5 @@
 {
-    "name": "opine\/framework",
+    "name": "opine/framework",
     "type": "library",
     "description": "Opine-PHP Micro-framework for integrating all Opine services",
     "keywords": [
@@ -10,43 +10,49 @@
         {
             "name": "Ryan Mahoney",
             "email": "ryan@virtuecenter.com",
-            "homepage": "http:\/\/opine-php.org",
+            "homepage": "http://opine-php.org",
             "role": "Developer"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "cocur\/slugify": "v0.2.3",
-        "opine\/authentication": "dev-master",
-        "opine\/build": "dev-master",
-        "opine\/cache": "dev-master",
-        "opine\/collection": "dev-master",
-        "opine\/config": "dev-master",
-        "opine\/container": "dev-master",
-        "opine\/db": "dev-master",
-        "opine\/errors": "dev-master",
-        "opine\/filter": "dev-master",
-        "opine\/form": "dev-master",
-        "opine\/helper": "dev-master",
-        "opine\/http": "dev-master",
-        "opine\/imageresizer": "dev-master",
-        "opine\/mail": "dev-master",
-        "opine\/person": "dev-master",
-        "opine\/pubsub": "dev-master",
-        "opine\/queue": "dev-master",
-        "opine\/search": "dev-master",
-        "opine\/separation": "dev-master",
-        "opine\/bundle": "dev-master",
-        "opine\/semantic-cm": "dev-master",
-        "opine\/twitter": "dev-master",
-        "opine\/uploadwrapper": "dev-master",
-        "opine\/route": "dev-master",
-        "opine\/registration": "dev-master",
-        "opine\/membership": "dev-master"
+        "cocur/slugify": "v0.2.3",
+        "opine/authentication": "dev-master",
+        "opine/build": "dev-master",
+        "opine/cache": "dev-master",
+        "opine/collection": "dev-master",
+        "opine/config": "dev-master",
+        "opine/container": "dev-master",
+        "opine/db": "dev-master",
+        "opine/errors": "dev-master",
+        "opine/filter": "dev-master",
+        "opine/form": "dev-master",
+        "opine/helper": "dev-master",
+        "opine/http": "dev-master",
+        "opine/imageresizer": "dev-master",
+        "opine/mail": "dev-master",
+        "opine/person": "dev-master",
+        "opine/pubsub": "dev-master",
+        "opine/queue": "dev-master",
+        "opine/search": "dev-master",
+        "opine/separation": "dev-master",
+        "opine/bundle": "dev-master",
+        "opine/semantic-cm": "dev-master",
+        "opine/twitter": "dev-master",
+        "opine/uploadwrapper": "dev-master",
+        "opine/route": "dev-master",
+        "opine/registration": "dev-master",
+        "opine/membership": "dev-master",
+        "opine/financial": "dev-master",
+        "opine/financialpaymentmock": "dev-master",
+        "opine/financialshippingmock": "dev-master",
+        "opine/financialtaxmock": "dev-master",
+        "opine/paymentbraintreegateway": "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "Opine\\": "src\/"
+            "Opine\\": "src/"
         }
     }
 }

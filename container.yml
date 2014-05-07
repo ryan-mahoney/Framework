@@ -119,3 +119,6 @@ services:
     registration:
         class:     'Opine\Registration'
         arguments: ['@db']
+    financial:
+        class:     'Opine\Financial'
+        arguments: ['@db']

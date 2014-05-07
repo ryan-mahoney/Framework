@@ -27,7 +27,7 @@ if (!file_exists('public')) {
 }
 if (!file_exists('public/index.php')) {
     file_put_contents('public/index.php', '<?php
-date_default_timezone_set(\'America/New_York\');
+date_default_timezone_set(\'UTC\');
 require __DIR__ . \'/../vendor/autoload.php\';
 (new Opine\Framework())->frontController();');
 } else {
@@ -37,7 +37,7 @@ require __DIR__ . \'/../vendor/autoload.php\';
 if (!file_exists('./cmd.sh')) {
     file_put_contents('./cmd.sh', '#!/usr/local/bin/php
 <?php
-date_default_timezone_set(\'America/New_York\');
+date_default_timezone_set(\'UTC\');
 require __DIR__ . \'/vendor/autoload.php\';
 (new Opine\Framework())->commandLine();');
     chmod('./cmd.sh', 0750);
