@@ -121,4 +121,4 @@ services:
         arguments: ['@db']
     financial:
         class:     'Opine\Financial'
-        arguments: ['@db']
+        arguments: ['@db', '@creditcardgateway', '@cashgateway', '@checkgateway', '@storecreditgateway', '@giftcardgateway']
