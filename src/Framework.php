@@ -160,8 +160,8 @@ class Framework {
             exit ('Route class not defined properly.');
         }
         $myRoute = new \Route($container);
-        if (method_exists($myRoute, 'custom')) {
-            $myRoute->custom();
+        if (method_exists($myRoute, 'paths')) {
+            $myRoute->paths();
         }
     }
 

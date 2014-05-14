@@ -1,13 +1,21 @@
 #!/usr/local/bin/php
 <?php
-date_default_timezone_set('UTC');
-
 $directory = getcwd();
+if (!is_writable($directory)) {
+    echo 'You need write permissions for this directory.', "\n";
+    exit;
+}
+if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+    echo 'You need at least PHP version 5.4.0, your version us: ', PHP_VERSION, "\n";
+    exit;
+}
+date_default_timezone_set('UTC');
 $pieces = explode('/', $directory);
 $serviceName = array_pop($pieces);
 
-@mkdir ($directory . '/src');
-put($directory . '/src/' . $serviceName . '.php', '/**
+@mkdir($directory . '/src');
+put($directory . '/src/' . $serviceName . '.php', '<?php
+/**
  * Opine\\' . $serviceName . '
  *
  * Copyright (c)2013, 2014 Ryan Mahoney, https://github.com/Opine-Org <ryan@virtuecenter.com>
