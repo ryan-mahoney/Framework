@@ -35,6 +35,7 @@ $directories = [
     $bundleRoot . '/fields',
     $bundleRoot . '/forms',
     $bundleRoot . '/subscribers',
+    $bundleRoot . '/collections'
 ];
 
 foreach ($directories as $directory) {
