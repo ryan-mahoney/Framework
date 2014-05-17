@@ -25,7 +25,7 @@ services:
         arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@route']
     collectionRoute:
         class:     'Opine\CollectionRoute'
-        arguments: ['@collection', '@route', '@db', '@separation', '@response']
+        arguments: ['%root%', '@collection', '@route', '@db', '@separation']
     collection:
         class:     'Opine\Collection'
         arguments: ['%root%', '@db', '@queue']
@@ -38,10 +38,10 @@ services:
         class:     'Captcha\Captcha'
     formRoute:
         class:     'Opine\FormRoute'
-        arguments: ['@route', '@form', '@field', '@post', '@separation', '@topic', '@response']
+        arguments: ['@route', '@form', '@field', '@post', '@separation', '@topic']
     form:
         class:     'Opine\Form'
-        arguments: ['%root%', '@field', '@post', '@db', '@response']
+        arguments: ['%root%', '@field', '@post', '@db']
     authentication:
         class:     'Opine\Authentication'
         arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache']
@@ -53,7 +53,7 @@ services:
         arguments: ['@config', '@cache']
     filter:
         class:     'Opine\Filter'
-        arguments: ['@response']
+        arguments: []
     cache:
         class:     'Opine\Cache'
     handlebars:
@@ -69,8 +69,6 @@ services:
         arguments: ['@db']
     post:
         class:     'Opine\HTTPPost'
-    response:
-        class:     'Opine\HTTPResponse'
     person:
         class:     'Opine\Person'
         arguments: ['@db', '@config']
@@ -104,7 +102,7 @@ services:
         arguments: ['@container']
     manager:
         class:     'Opine\Manager\Manager'
-        arguments: ['@separation', '@response', '%root%']
+        arguments: ['@separation', '%root%']
     uploadwrapper:
         class:     'Opine\UploadWrapper'
         arguments: ['%root%']

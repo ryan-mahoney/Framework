@@ -69,7 +69,7 @@ The config folder stores individual component configurations, such as the databa
   return [
       'name' => 'db',
       'conn' => 'mongodb://user:pass@localhost/db',
-      'dataAPI'  => 'http://json.virtuecenter.com'
+      'dataAPI'  => '%HTTP_HOST%'
   ];
 
 ---------
