@@ -88,7 +88,6 @@ bundles/Membership
 bundles/Calendar');
 }
 
-$root = getcwd();
 echo 'Cloning dependency contiainer...', "\n\n";
 if (!file_exists('container.yml')) {
     file_put_contents('container.yml', file_get_contents('vendor/opine/build/static/container.yml'));
