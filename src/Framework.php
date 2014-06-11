@@ -33,6 +33,7 @@ class Framework {
     private static $container;
     private static $keyCache = [];
     private static $frontCalled = false;
+    private static $responseCode = 200;
 
     public static function keySet ($name, $value) {
         self::$keyCache[$name] = $value;
@@ -145,9 +146,9 @@ class Framework {
         $container->collectionRoute->app($root);
         $container->collectionRoute->collectionList($root);
         $container->formRoute->json();
-        $container->formRoute->app($root);
+        $container->formRoute->app();
         $container->topic->load($root);
-        $container->bundleRoute->app($root);
+        $container->bundleRoute->app();
         $container->authentication->aclRoute();
         
         //custom routing
@@ -172,6 +173,7 @@ class Framework {
         }
         $container = self::$container;
         $route = $container->route;
+        http_response_code();
         try {
             $response = $route->run();
             echo $response;

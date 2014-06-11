@@ -38,10 +38,10 @@ services:
         class:     'Captcha\Captcha'
     formRoute:
         class:     'Opine\FormRoute'
-        arguments: ['@route', '@form', '@field', '@post', '@separation', '@topic']
+        arguments: ['@route', '@form', '@field', '@post', '@separation', '@topic', '%root%']
     form:
         class:     'Opine\Form'
-        arguments: ['%root%', '@field', '@post', '@db']
+        arguments: ['%root%', '@field', '@post', '@db', '@separation']
     authentication:
         class:     'Opine\Authentication'
         arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache']
@@ -99,7 +99,7 @@ services:
         arguments: ['@searchGateway', '%root%']
     bundleRoute:
         class:     'Opine\BundleRoute'
-        arguments: ['@container']
+        arguments: ['@container', '%root%']
     manager:
         class:     'Opine\Manager\Manager'
         arguments: ['@separation', '%root%']
