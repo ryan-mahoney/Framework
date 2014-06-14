@@ -38,13 +38,16 @@ services:
         class:     'Captcha\Captcha'
     formRoute:
         class:     'Opine\FormRoute'
-        arguments: ['@route', '@form', '@field', '@post', '@separation', '@topic', '%root%']
+        arguments: ['%root%', '@route', '@form', '@field', '@post', '@separation', '@topic']
     form:
         class:     'Opine\Form'
         arguments: ['%root%', '@field', '@post', '@db', '@separation']
     authentication:
         class:     'Opine\Authentication'
-        arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache']
+        arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache', '@authenticationCollector']
+    authenticationCollector:
+        class:     'FastRoute\RouteCollector'
+        arguments: ['@fastrouteParser', '@fastrouteGenerator']
     helperRoute:
         class:     'Opine\HelperRoute'
         arguments: ['@route', '@handlebars']
@@ -88,21 +91,21 @@ services:
         arguments: ['127.0.0.1']
     queue:
         class:     'Opine\Queue'
-        arguments: ['@queueGateway', '%root%']
+        arguments: ['%root%', '@queueGateway']
     worker:
         class:     'Opine\Worker'
-        arguments: ['@queueGateway', '@topic', '%root%']
+        arguments: ['%root%', '@queueGateway', '@topic']
     searchGateway:
         class:     'Elasticsearch\Client'
     search:
         class:     'Opine\Search'
-        arguments: ['@searchGateway', '%root%']
+        arguments: ['%root%', '@searchGateway']
     bundleRoute:
         class:     'Opine\BundleRoute'
-        arguments: ['@container', '%root%']
+        arguments: ['%root%', '@container']
     manager:
         class:     'Opine\Manager\Manager'
-        arguments: ['@separation', '%root%']
+        arguments: ['%root%', '@separation']
     uploadwrapper:
         class:     'Opine\UploadWrapper'
         arguments: ['%root%']

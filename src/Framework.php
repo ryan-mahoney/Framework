@@ -26,6 +26,9 @@ namespace Opine;
 use Opine\Container;
 
 function container () {
+    if (Framework::container() == null) {
+        new Framework();
+    }
     return Framework::container();
 }
 
