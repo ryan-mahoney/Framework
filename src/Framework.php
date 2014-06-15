@@ -144,12 +144,10 @@ class Framework {
 
         //smart routing
         $container->imageResizer->route();
-        $container->helperRoute->helpers($root);
-        $container->collectionRoute->json();
-        $container->collectionRoute->app();
+        $container->helperRoute->helpers();
+        $container->collectionRoute->paths();
         $container->collectionRoute->collectionList();
-        $container->formRoute->json();
-        $container->formRoute->app();
+        $container->formRoute->paths();
         $container->topic->load($root);
         $container->bundleRoute->app();
         $container->authentication->aclRoute();
