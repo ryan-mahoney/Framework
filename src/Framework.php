@@ -146,8 +146,8 @@ class Framework {
         $container->imageResizer->route();
         $container->helperRoute->helpers($root);
         $container->collectionRoute->json();
-        $container->collectionRoute->app($root);
-        $container->collectionRoute->collectionList($root);
+        $container->collectionRoute->app();
+        $container->collectionRoute->collectionList();
         $container->formRoute->json();
         $container->formRoute->app();
         $container->topic->load($root);

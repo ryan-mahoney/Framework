@@ -45,18 +45,6 @@ require __DIR__ . \'/vendor/autoload.php\';
     echo './cmd.sh already exists.', "\n";    
 }
 
-if (!file_exists('./react.sh')) {
-    file_put_contents('./react.sh', '#!/usr/local/bin/php
-<?php
-date_default_timezone_set(\'America/New_York\');
-require __DIR__ . \'/vendor/autoload.php\';
-$port = isset($argv[1]) ? $argv[1] : 8086;
-(new Opine\Framework())->react($port);');
-    chmod('./react.sh', 0750);
-} else {
-    echo './react.sh already exists.', "\n";    
-}
-
 if (!file_exists('.gitignore')) {
 file_put_contents('.gitignore', 'composer.lock
 vendor
