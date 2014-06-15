@@ -41,7 +41,7 @@ services:
         arguments: ['%root%', '@route', '@form', '@field', '@post', '@separation', '@topic']
     form:
         class:     'Opine\Form'
-        arguments: ['%root%', '@field', '@post', '@db', '@separation']
+        arguments: ['%root%', '@field', '@post', '@db', '@separation', '@topic']
     authentication:
         class:     'Opine\Authentication'
         arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache', '@authenticationCollector']
