@@ -1,0 +1,12 @@
+#!/usr/local/bin/php
+<?php
+date_default_timezone_set('UTC');
+if (!isset($_SERVER['PWD'])) {
+	die('PWD not set in _SERVER variable');
+}
+$autoloadPath = $_SERVER['PWD'] . '/vendor/autoload.php';
+if (!file_exists($autoloadPath)) {
+	die('Can not find composer autoloader: ' . $autoloadPath);
+}
+require $autoloadPath;
+(new Opine\CommandLine())->run();

@@ -12,7 +12,15 @@ file_put_contents('composer.json', '{
     "minimum-stability": "dev",
     "require": {
         "opine/framework": "dev-master"
-    }
+    },
+    "classmap": [
+        "forms",
+        "managers",
+        "collections",
+        "controllers",
+        "models",
+        "views"
+    ]
 }');
 } else {
     echo 'composer.json already exists.', "\n\n";

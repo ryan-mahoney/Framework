@@ -3,7 +3,7 @@ parameters:
 services:
     route:
         class:     'Opine\Route'
-        arguments: ['@fastrouteCollector']
+        arguments: ['%root%', '@fastrouteCollector']
     fastrouteCollector:
         class:     'FastRoute\RouteCollector'
         arguments: ['@fastrouteParser', '@fastrouteGenerator']
@@ -13,7 +13,7 @@ services:
         class:     'FastRoute\DataGenerator\GroupCountBased'
     build:
         class:     'Opine\Build'
-        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication']
+        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication', '@route']
     pubSubBuild:
         class:     'Opine\PubSubBuild'
         arguments: ['%root%', '@yamlSlow']
@@ -104,8 +104,11 @@ services:
         class:     'Opine\BundleRoute'
         arguments: ['%root%', '@container']
     manager:
-        class:     'Opine\Manager\Manager'
-        arguments: ['%root%', '@separation']
+        class:     'Opine\Manager'
+        arguments: ['%root%', '@separation', '@post', '@authentication']
+    managerRoute:
+        class:     'Opine\Manager\Route'
+        arguments: ['%root%', '@route', '@form', '@formRoute', '@authentication', '@separation', '@bundleRoute', '@search', '@manager', '@uploadwrapper', '@db', '@slugify']
     uploadwrapper:
         class:     'Opine\UploadWrapper'
         arguments: ['%root%']
@@ -123,3 +126,12 @@ services:
     financial:
         class:     'Opine\Financial'
         arguments: ['@db', '@creditcardgateway', '@cashgateway', '@checkgateway', '@storecreditgateway', '@giftcardgateway']
+    membershipRoute:
+        class:     'Opine\Membership\Route'
+        arguments: ['%root%', '@db', '@person', '@route']
+    registrationRoute:
+        class:      'Opine\Registration\Route'
+        arguments: ['%root%', '@route', '@separation', '@formRoute', '@registration', '@authentication']
+    personRoute:
+        class:      'Opine\Person\Route'
+        arguments: ['%root%', '@route', '@separation']
