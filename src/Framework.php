@@ -73,20 +73,19 @@ class Framework {
         }
         if (isset($_POST) && !empty($_POST)) {
             $uriBase = str_replace('?' . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
-            $container->post->populate($uriBase, $_POST);
+            self::$container->post->populate($uriBase, $_POST);
         }
         $this->cache();
         $this->routing();
     }
 
     public function routing () {
-        $container = self::$container;
-        $container->imageResizer->paths();
-        $container->collectionRoute->paths();
-        $container->formRoute->paths();
-        $container->bundleRoute->paths();
-        $container->helperRoute->helpers();
-        $container->authentication->aclRoute();
+        self::$container->imageResizer->paths();
+        self::$container->collectionRoute->paths();
+        self::$container->formRoute->paths();
+        self::$container->bundleRoute->paths();
+        self::$container->helperRoute->helpers();
+        self::$container->authentication->aclRoute();
 
         $routePath = $this->root . '/../Route.php';
         if (!file_exists($routePath)) {
@@ -96,7 +95,7 @@ class Framework {
         if (!class_exists('\Route')) {
             exit ('Route class not defined properly.');
         }
-        $myRoute = new \Route($container->route);
+        $myRoute = new \Route(self::$container->route);
         if (method_exists($myRoute, 'paths')) {
             $myRoute->paths();
         }
@@ -107,8 +106,7 @@ class Framework {
             $this->firstCall();
             self::$frontCalled = true;
         }
-        $container = self::$container;
-        $route = $container->route;
+        $route = self::$container->route;
         http_response_code();
         try {
             $response = $route->run();
@@ -116,26 +114,26 @@ class Framework {
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-        echo $container->response;
+        echo self::$container->response;
     }
 
     public function cache () {
-        $container = self::$container;
         $items = [
             $this->root . '-collections' => false,
             $this->root . '-forms' => false,
             $this->root . '-bundles' => false,
             $this->root . '-topics' => false,
-            $this->root . '-routes' => false
+            $this->root . '-routes' => false,
+            $this->root . '-acl' => false
         ];
-        $result = $container->cache->getBatch($items);
+        $result = self::$container->cache->getBatch($items);
         if ($result === true) {
-            $container->collectionRoute->cacheSet(json_decode($items[$this->root . '-collections'], true));
-            $container->formRoute->cacheSet(json_decode($items[$this->root . '-forms'], true));
-            $container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
-            $container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
-            $container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
-            //$container->authentication->cacheSet(json_decode($items[$this->root . '-acl'], true));
+            self::$container->collectionRoute->cacheSet(json_decode($items[$this->root . '-collections'], true));
+            self::$container->formRoute->cacheSet(json_decode($items[$this->root . '-forms'], true));
+            self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
+            self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
+            self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
+            self::$container->authentication->cacheSet(json_decode($items[$this->root . '-acl'], true));
         }
     }
 }

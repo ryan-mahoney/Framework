@@ -47,7 +47,11 @@ services:
         arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache', '@authenticationCollector']
     authenticationCollector:
         class:     'FastRoute\RouteCollector'
-        arguments: ['@fastrouteParser', '@fastrouteGenerator']
+        arguments: ['@authFastrouteParser', '@authFastrouteGenerator']
+    authFastrouteParser:
+        class:     'FastRoute\RouteParser\Std'
+    authFastrouteGenerator:
+        class:     'FastRoute\DataGenerator\GroupCountBased'
     helperRoute:
         class:     'Opine\HelperRoute'
         arguments: ['%root%', '@handlebars', '@bundleRoute']
