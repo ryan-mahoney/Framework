@@ -3,7 +3,10 @@ parameters:
 services:
     route:
         class:     'Opine\Route'
-        arguments: ['%root%', '@fastrouteCollector']
+        arguments: ['%root%', '@fastrouteCollector', '@container']
+    redirect:
+        class:     'Opine\Redirect'
+        arguments: ['@route']
     fastrouteCollector:
         class:     'FastRoute\RouteCollector'
         arguments: ['@fastrouteParser', '@fastrouteGenerator']
@@ -16,7 +19,7 @@ services:
         arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication', '@route']
     pubSubBuild:
         class:     'Opine\PubSubBuild'
-        arguments: ['%root%', '@yamlSlow']
+        arguments: ['%root%', '@yamlSlow', '@bundleRoute']
     topic:
         class:     'Opine\Topic'
         arguments: ['@container']
@@ -28,7 +31,7 @@ services:
         arguments: ['%root%', '@collection', '@route', '@db', '@separation']
     collection:
         class:     'Opine\Collection'
-        arguments: ['%root%', '@db', '@queue']
+        arguments: ['%root%', '@db', '@queue', '@search']
     field:
         class:     'Opine\Field'
         arguments: ['%root%', '@container']
@@ -109,10 +112,10 @@ services:
         arguments: ['%root%', '@container']
     manager:
         class:     'Opine\Manager'
-        arguments: ['%root%', '@separation', '@post', '@authentication']
+        arguments: ['%root%', '@separation', '@post', '@authentication', '@db', '@collection']
     managerRoute:
         class:     'Opine\Manager\Route'
-        arguments: ['%root%', '@route', '@form', '@formRoute', '@authentication', '@separation', '@bundleRoute', '@search', '@manager', '@uploadwrapper', '@db', '@slugify']
+        arguments: ['%root%', '@route', '@form', '@formRoute', '@authentication', '@separation', '@bundleRoute', '@search', '@manager', '@uploadwrapper', '@db', '@slugify', '@redirect']
     uploadwrapper:
         class:     'Opine\UploadWrapper'
         arguments: ['%root%']
