@@ -1,40 +1,40 @@
-git clone git@github.com:Opine-Org/Semantic-CM.git
-git clone git@github.com:Opine-Org/Route.git
-git clone git@github.com:Opine-Org/PubSub.git
-git clone git@github.com:Opine-Org/Person.git
-git clone git@github.com:Opine-Org/ImageResizer.git
-git clone git@github.com:Opine-Org/Helper.git
-git clone git@github.com:Opine-Org/HTTP.git
-git clone git@github.com:Opine-Org/Framework.git
-git clone git@github.com:Opine-Org/Form.git
-git clone git@github.com:Opine-Org/FinancialTaxMock.git
-git clone git@github.com:Opine-Org/FinancialShippingMock.git
-git clone git@github.com:Opine-Org/FinancialPaymentMock.git
-git clone git@github.com:Opine-Org/Financial.git
-git clone git@github.com:Opine-Org/Collection.git
-git clone git@github.com:Opine-Org/Bundle.git
-git clone git@github.com:Opine-Org/Build.git
-git clone git@github.com:Opine-Org/Authentication.git
-git clone git@github.com:Opine-Org/Separation.git
-git clone git@github.com:Opine-Org/Registration.git
-git clone git@github.com:Opine-Org/Membership.git
-git clone git@github.com:Opine-Org/Errors.git
-git clone git@github.com:Opine-Org/Cache.git
-git clone git@github.com:Opine-Org/Handlebars.git
-git clone git@github.com:Opine-Org/Search.git
-git clone git@github.com:Opine-Org/Queue.git
-git clone git@github.com:Opine-Org/Field.git
-git clone git@github.com:Opine-Org/UrlId.git
-git clone git@github.com:Opine-Org/Twitter.git
-git clone git@github.com:Opine-Org/PaymentBraintreeGateway.git
-git clone git@github.com:Opine-Org/Mail.git
-git clone git@github.com:Opine-Org/Filter.git
-git clone git@github.com:Opine-Org/Container.git
-git clone git@github.com:Opine-Org/Config.git
-git clone git@github.com:Opine-Org/Order.git
-git clone git@github.com:Opine-Org/SyncMedia.git
-git clone git@github.com:Opine-Org/Vote.git
-git clone git@github.com:Opine-Org/Petition.git
-git clone git@github.com:Opine-Org/Survey.git
-git clone git@github.com:Opine-Org/Donation.git
-git clone git@github.com:Opine-Org/Demo.git
+git clone git@github.com:Opine-Org/Semantic-CM.git semantic-sm
+git clone git@github.com:Opine-Org/Route.git route
+git clone git@github.com:Opine-Org/PubSub.git pubsub
+git clone git@github.com:Opine-Org/Person.git person
+git clone git@github.com:Opine-Org/ImageResizer.git imageresizer
+git clone git@github.com:Opine-Org/Helper.git helper
+git clone git@github.com:Opine-Org/HTTP.git http
+git clone git@github.com:Opine-Org/Framework.git framework
+git clone git@github.com:Opine-Org/Form.git form
+git clone git@github.com:Opine-Org/FinancialTaxMock.git financialtaxmock
+git clone git@github.com:Opine-Org/FinancialShippingMock.git financialshippingmock
+git clone git@github.com:Opine-Org/FinancialPaymentMock.git financialpaymentmock
+git clone git@github.com:Opine-Org/Financial.git financial
+git clone git@github.com:Opine-Org/Collection.git collection
+git clone git@github.com:Opine-Org/Bundle.git bundle
+git clone git@github.com:Opine-Org/Build.git build
+git clone git@github.com:Opine-Org/Authentication.git authentication
+git clone git@github.com:Opine-Org/Separation.git separation
+git clone git@github.com:Opine-Org/Registration.git registration
+git clone git@github.com:Opine-Org/Membership.git membership
+git clone git@github.com:Opine-Org/Errors.git errors
+git clone git@github.com:Opine-Org/Cache.git cache
+git clone git@github.com:Opine-Org/Handlebars.git handlebars
+git clone git@github.com:Opine-Org/Search.git search
+git clone git@github.com:Opine-Org/Queue.git queue
+git clone git@github.com:Opine-Org/Field.git field
+git clone git@github.com:Opine-Org/UrlId.git urlid
+git clone git@github.com:Opine-Org/Twitter.git twitter
+git clone git@github.com:Opine-Org/PaymentBraintreeGateway.git paymentbraintreegateway
+git clone git@github.com:Opine-Org/Mail.git mail
+git clone git@github.com:Opine-Org/Filter.git filter
+git clone git@github.com:Opine-Org/Container.git container
+git clone git@github.com:Opine-Org/Config.git config
+git clone git@github.com:Opine-Org/Order.git order
+git clone git@github.com:Opine-Org/SyncMedia.git syncmedia
+git clone git@github.com:Opine-Org/Vote.git vote
+git clone git@github.com:Opine-Org/Petition.git petition
+git clone git@github.com:Opine-Org/Survey.git survey
+git clone git@github.com:Opine-Org/Donation.git donation
+git clone git@github.com:Opine-Org/Demo.git demo
