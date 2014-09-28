@@ -38,3 +38,4 @@ git clone git@github.com:Opine-Org/Petition.git petition
 git clone git@github.com:Opine-Org/Survey.git survey
 git clone git@github.com:Opine-Org/Donation.git donation
 git clone git@github.com:Opine-Org/Demo.git demo
+git clone git@github.com:Opine-Org/handlebars.php.git handlebars.php
