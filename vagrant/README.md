@@ -4,7 +4,8 @@
 sudo apt-get install virtualbox
 wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb
 sudo dpkg -i vagrant_1.6.5_x86_64.deb
-vagrant init ubuntu/trusty64
+wget https://raw.githubusercontent.com/Opine-Org/Framework/master/vagrant/Vagrantfile
+wget https://raw.githubusercontent.com/Opine-Org/Framework/master/vagrant/provision.sh
 vagrant provision
 vagrant plugin install vagrant-gatling-rsync
 vagrant up
