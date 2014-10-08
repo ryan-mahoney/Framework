@@ -25,9 +25,9 @@
 namespace Opine;
 use Opine\Container;
 
-function container () {
+function container ($nocache=false) {
     if (Framework::container() == null) {
-        new Framework();
+        new Framework($nocache);
     }
     return Framework::container();
 }
@@ -54,9 +54,9 @@ class Framework {
         return self::$container;
     }
 
-    public function __construct () {
+    public function __construct ($noContainerCache=false) {
         $this->root = $this->root();
-        self::$container = new Container($this->root, $this->root . '/../container.yml');
+        self::$container = new Container($this->root, $this->root . '/../container.yml', $noContainerCache);
     }
 
     public function root () {

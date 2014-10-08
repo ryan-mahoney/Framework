@@ -4,6 +4,9 @@ services:
     route:
         class:     'Opine\Route'
         arguments: ['%root%', '@fastrouteCollector', '@container']
+    containerCache:
+        class:     'Opine\ContainerCache'
+        arguments: ['%root%', '@container', '@bundleRoute', '@cache']
     redirect:
         class:     'Opine\Redirect'
         arguments: ['@route']
@@ -16,7 +19,7 @@ services:
         class:     'FastRoute\DataGenerator\GroupCountBased'
     build:
         class:     'Opine\Build'
-        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication', '@route']
+        arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication', '@route', '@containerCache']
     pubSubBuild:
         class:     'Opine\PubSubBuild'
         arguments: ['%root%', '@yamlSlow', '@bundleRoute']
@@ -133,12 +136,3 @@ services:
     financial:
         class:     'Opine\Financial'
         arguments: ['@db', '@creditcardgateway', '@cashgateway', '@checkgateway', '@storecreditgateway', '@giftcardgateway']
-    membershipRoute:
-        class:     'Opine\Membership\Route'
-        arguments: ['%root%', '@db', '@person', '@route']
-    registrationRoute:
-        class:      'Opine\Registration\Route'
-        arguments: ['%root%', '@route', '@separation', '@formRoute', '@registration', '@authentication']
-    personRoute:
-        class:      'Opine\Person\Route'
-        arguments: ['%root%', '@route', '@separation']

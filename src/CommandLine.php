@@ -6,7 +6,7 @@ class CommandLine {
         if (!isset($_SERVER['argv'][1])) {
             die('no command supplied');
         }
-        $framework = new Framework();
+        $framework = new Framework(true);
         $container = $framework->container();
         $framework->cache();
         $framework->routing();
@@ -56,6 +56,10 @@ class CommandLine {
 
             case 'count':
                 $container->collection->statsAll();
+                break;
+
+            case 'container':
+                $container->build->container($root);
                 break;
         }
     }
