@@ -1,0 +1,7 @@
+{
+    "name": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "opine/framework": "dev-master"
+    }
+}
