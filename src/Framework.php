@@ -24,6 +24,7 @@
  */
 namespace Opine;
 use Opine\Container;
+use Route;
 
 function container ($nocache=false) {
     if (Framework::container() == null) {
@@ -86,16 +87,7 @@ class Framework {
         self::$container->bundleRoute->paths();
         self::$container->helperRoute->helpers();
         self::$container->authentication->aclRoute();
-
-        $routePath = $this->root . '/../Route.php';
-        if (!file_exists($routePath)) {
-            exit('Route.php file undefined for project.');
-        }
-        require $routePath;
-        if (!class_exists('\Route')) {
-            exit ('Route class not defined properly.');
-        }
-        $myRoute = new \Route(self::$container->route);
+        $myRoute = new Route(self::$container->route);
         if (method_exists($myRoute, 'paths')) {
             $myRoute->paths();
         }
