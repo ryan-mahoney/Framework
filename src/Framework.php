@@ -120,7 +120,7 @@ class Framework {
         ];
         $result = self::$container->cache->getBatch($items);
         if ($result === true) {
-            self::$container->collectionRoute->cacheSet(json_decode($items[$this->root . '-collections'], true));
+            self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
             self::$container->formRoute->cacheSet(json_decode($items[$this->root . '-forms'], true));
             self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
             self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
