@@ -1,22 +1,11 @@
-parameters:
+imports:
+    - 'vendor/opine/collection/package-container.yml'
+    - 'vendor/opine/route/package-container.yml'
 
 services:
-    route:
-        class:     'Opine\Route'
-        arguments: ['%root%', '@fastrouteCollector', '@container']
     containerCache:
-        class:     'Opine\ContainerCache'
+        class:     'Opine\Container\Cache'
         arguments: ['%root%', '@container', '@bundleRoute', '@cache']
-    redirect:
-        class:     'Opine\Redirect'
-        arguments: ['@route']
-    fastrouteCollector:
-        class:     'FastRoute\RouteCollector'
-        arguments: ['@fastrouteParser', '@fastrouteGenerator']
-    fastrouteParser:
-        class:     'FastRoute\RouteParser\Std'
-    fastrouteGenerator:
-        class:     'FastRoute\DataGenerator\GroupCountBased'
     build:
         class:     'Opine\Build'
         arguments: ['@pubSubBuild', '@collectionRoute', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication', '@route', '@containerCache']
@@ -29,12 +18,6 @@ services:
     separation:
         class:     'Opine\Separation'
         arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@route']
-    collectionRoute:
-        class:     'Opine\CollectionRoute'
-        arguments: ['%root%', '@collection', '@route', '@db', '@separation']
-    collection:
-        class:     'Opine\Collection'
-        arguments: ['%root%', '@db', '@queue', '@search']
     field:
         class:     'Opine\Field'
         arguments: ['%root%', '@container']
