@@ -1,6 +1,7 @@
 imports:
     - 'vendor/opine/collection/package-container.yml'
     - 'vendor/opine/route/package-container.yml'
+    - 'vendor/opine/form/package-container.yml'
 
 services:
     containerCache:
@@ -25,12 +26,6 @@ services:
         class:     'Opine\FieldRoute'
     captcha:
         class:     'Captcha\Captcha'
-    formRoute:
-        class:     'Opine\FormRoute'
-        arguments: ['%root%', '@route', '@form', '@field', '@post', '@separation', '@topic']
-    form:
-        class:     'Opine\Form'
-        arguments: ['%root%', '@field', '@post', '@db', '@separation', '@topic']
     authentication:
         class:     'Opine\Authentication'
         arguments: ['%root%', '@db', '@config', '@yamlSlow', '@route', '@cache', '@authenticationCollector']
