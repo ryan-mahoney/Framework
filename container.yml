@@ -91,12 +91,6 @@ services:
     bundleRoute:
         class:     'Opine\BundleRoute'
         arguments: ['%root%', '@container']
-    manager:
-        class:     'Opine\Manager'
-        arguments: ['%root%', '@separation', '@post', '@authentication', '@db', '@collection']
-    managerRoute:
-        class:     'Opine\Manager\Route'
-        arguments: ['%root%', '@route', '@form', '@formRoute', '@authentication', '@separation', '@bundleRoute', '@search', '@manager', '@uploadwrapper', '@db', '@slugify', '@redirect']
     uploadwrapper:
         class:     'Opine\UploadWrapper'
         arguments: ['%root%']
