@@ -25,6 +25,7 @@ services:
         arguments: ['%root%', '@container']
     fieldRoute:
         class:     'Opine\FieldRoute'
+        arguments: ['%root%']
     captcha:
         class:     'Captcha\Captcha'
     authentication:
