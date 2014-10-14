@@ -6,10 +6,10 @@ imports:
 services:
     containerCache:
         class:     'Opine\Container\Cache'
-        arguments: ['%root%', '@container', '@bundleRoute', '@cache']
+        arguments: ['%root%', '@container', '@bundleRoute']
     build:
         class:     'Opine\Build'
-        arguments: ['%root%', '@pubSubBuild', '@collectionModel', '@helperRoute', '@formRoute', '@configRoute', '@bundleRoute', '@fieldRoute', '@filter', '@cache', '@search', '@authentication', '@route', '@containerCache']
+        arguments: ['%root%', '@fieldRoute', '@pubSubBuild', '@collectionModel', '@helperRoute', '@configRoute', '@formModel', '@bundleRoute', '@cache', '@search', '@route', '@containerCache', '@handlebarService']
     pubSubBuild:
         class:     'Opine\PubSubBuild'
         arguments: ['%root%', '@yamlSlow', '@bundleRoute']
@@ -19,6 +19,7 @@ services:
     separation:
         class:     'Opine\Separation'
         arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@route']
+        scope:     'prototype'
     field:
         class:     'Opine\Field'
         arguments: ['%root%', '@container']
@@ -39,6 +40,12 @@ services:
     helperRoute:
         class:     'Opine\HelperRoute'
         arguments: ['%root%', '@handlebars', '@bundleRoute']
+    handlebarCache:
+        class:     '\LightnCandy'
+        arguments: []
+    handlebarService:
+        class:     'Opine\Handlebars'
+        arguments: ['%root%', '@handlebarCache', '@bundleRoute']
     configRoute:
         class:     'Opine\ConfigRoute'
         arguments: ['@config', '@cache']

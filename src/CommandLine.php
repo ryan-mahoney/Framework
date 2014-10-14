@@ -8,7 +8,6 @@ class CommandLine {
         }
         $framework = new Framework(true);
         $container = $framework->container();
-        $framework->cache();
         $framework->routing();
         $root = $framework->root();
         switch ($_SERVER['argv'][1]) {

@@ -24,7 +24,9 @@
  */
 namespace Opine;
 use Opine\Container;
+use Opine\Cache;
 use Route;
+use Exception;
 
 function container ($nocache=false) {
     if (Framework::container() == null) {
@@ -36,8 +38,7 @@ function container ($nocache=false) {
 class Framework {
     private static $container;
     private static $keyCache = [];
-    private static $frontCalled = false;
-    private static $responseCode = 200;
+    private $routeCached = false;
     private $root;
 
     public static function keySet ($name, $value) {
@@ -57,7 +58,26 @@ class Framework {
 
     public function __construct ($noContainerCache=false) {
         $this->root = $this->root();
+        $items = [
+            $this->root . '-collections' => false,
+            $this->root . '-forms' => false,
+            $this->root . '-bundles' => false,
+            $this->root . '-topics' => false,
+            $this->root . '-routes' => false,
+            $this->root . '-container' => false
+        ];
+        $cache = new Cache();
+        $cacheResult = $cache->getBatch($items);
+        if ($noContainerCache === false && $cacheResult === true) {
+            $noContainerCache = json_decode($items[$this->root . '-container'], true);
+        }
+        if ($items[$this->root . '-routes'] != false) {
+            $this->routeCached = true;
+        }
         self::$container = new Container($this->root, $this->root . '/../container.yml', $noContainerCache);
+        if ($cacheResult === true) {
+            $this->cache($items);
+        }
     }
 
     public function root () {
@@ -66,18 +86,6 @@ class Framework {
             $root .= '/public';
         }
         return $root;
-    }
-
-    private function firstCall () {
-        if (strlen(session_id()) == 0) {
-            session_start();
-        }
-        if (isset($_POST) && !empty($_POST)) {
-            $uriBase = str_replace('?' . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
-            self::$container->post->populate($uriBase, $_POST);
-        }
-        $this->cache();
-        $this->routing();
     }
 
     public function routing () {
@@ -94,38 +102,33 @@ class Framework {
     }
 
     public function frontController () {
-        if (self::$frontCalled == false) {
-            $this->firstCall();
-            self::$frontCalled = true;
+        if (strlen(session_id()) == 0) {
+            session_start();
         }
-        $route = self::$container->route;
-        http_response_code();
+        if (isset($_POST) && !empty($_POST)) {
+            $uriBase = str_replace('?' . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
+            self::$container->post->populate($uriBase, $_POST);
+        }
+        if ($this->routeCached === false) {
+            $this->routing();
+        }
+        http_response_code(200);
         try {
-            $response = $route->run();
+            $response = self::$container->route->run();
             echo $response;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            if (http_response_code() == 200) {
+                http_response_code(500);
+            }
             echo $e->getMessage();
         }
-        echo self::$container->response;
     }
 
-    public function cache () {
-        $items = [
-            $this->root . '-collections' => false,
-            $this->root . '-forms' => false,
-            $this->root . '-bundles' => false,
-            $this->root . '-topics' => false,
-            $this->root . '-routes' => false,
-            $this->root . '-acl' => false
-        ];
-        $result = self::$container->cache->getBatch($items);
-        if ($result === true) {
-            self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
-            self::$container->formRoute->cacheSet(json_decode($items[$this->root . '-forms'], true));
-            self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
-            self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
-            self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
-            self::$container->authentication->cacheSet(json_decode($items[$this->root . '-acl'], true));
-        }
+    public function cache (array &$items) {        
+        self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
+        self::$container->formModel->cacheSet(json_decode($items[$this->root . '-forms'], true));
+        self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
+        self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
+        self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
     }
 }

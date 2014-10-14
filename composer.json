@@ -29,6 +29,7 @@
         "opine/filter": "dev-master",
         "opine/form": "dev-master",
         "opine/helper": "dev-master",
+        "opine/handlebars": "dev-master",
         "opine/http": "dev-master",
         "opine/imageresizer": "dev-master",
         "opine/mail": "dev-master",
