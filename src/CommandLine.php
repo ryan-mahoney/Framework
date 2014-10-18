@@ -15,13 +15,16 @@ class CommandLine {
                 echo 
                     'The available commands are:', "\n",
                     'build', "\n",
-                    'worker', "\n",
-                    'upgrade', "\n",
                     'check', "\n",
-                    'dburi', "\n",
-                    'reindex', "\n",
-                    'topics', "\n",
-                    'count', "\n";
+                    'collection-counts-refresh', "\n",
+                    'container-build', "\n",
+                    'database-migrate-dburi', "\n",
+                    'search-reindex [collection]', "\n",
+                    'search-index-drop', "\n",
+                    'topics-show', "\n",
+                    'upgrade', "\n",
+                    'version', "\n",
+                    'worker', "\n";
                 break;
 
             case 'build':
@@ -42,23 +45,36 @@ class CommandLine {
                 $container->build->environmentCheck($root);
                 break;
 
-            case 'dburi':
+            case 'database-migrate-dburi':
                 $container->dbmigration->addURI();
                 break;
 
-            case 'reindex':
+            case 'search-reindex':
+                if (isset($_SERVER['argv'][2])) {
+                    $container->collectionModel->reIndex($_SERVER['argv'][2]);
+                } else {
+                    $container->collectionModel->reIndexAll();
+                }
                 break;
 
-            case 'topics':
+            case 'search-index-drop':
+                $container->search->indexDrop();
+                break;
+
+            case 'topics-show':
                 $container->topic->show();
                 break;
 
-            case 'count':
+            case 'collection-counts-refresh':
                 $container->collection->statsAll();
                 break;
 
-            case 'container':
+            case 'container-build':
                 $container->build->container($root);
+                break;
+
+            case 'version':
+                echo 'Unknown', "\n";
                 break;
         }
     }

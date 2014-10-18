@@ -93,8 +93,6 @@ class Framework {
         self::$container->collectionRoute->paths();
         self::$container->formRoute->paths();
         self::$container->bundleRoute->paths();
-        //self::$container->helperRoute->helpers();
-        //self::$container->authentication->aclRoute();
         $myRoute = new Route(self::$container->route);
         if (method_exists($myRoute, 'paths')) {
             $myRoute->paths();
