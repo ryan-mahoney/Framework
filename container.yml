@@ -50,9 +50,6 @@ services:
     configRoute:
         class:     'Opine\ConfigRoute'
         arguments: ['@config', '@cache']
-    filter:
-        class:     'Opine\Filter'
-        arguments: []
     cache:
         class:     'Opine\Cache'
     handlebars:
