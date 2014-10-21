@@ -51,7 +51,7 @@
         "opine/cache": "dev-master#7eb3327506e02737c1077bb7bfe0597f6340ef62",
         "opine/db": "dev-master#a8a6d7e5fa5bd993cf7f682dac825b2fe13a61f9",
         "opine/separation": "dev-master#b4979e473649734d80d99ad10d27af73f25366cf",
-        "opine/handlebars": "dev-master#65a458d0c4b3b9a3e95ad998fdcd87deda150862"
+        "opine/handlebars": "dev-master#65a458d0c4b3b9a3e95ad998fdcd87deda150862",
         "opine/route": "dev-master#ef1245f144ba4c71f69f398775e5220d5c984dfc",
         "opine/semantic-cm": "dev-master#ec5d4f0e373a1f4f18326f512fb8fb6dd5dc4484",
         "opine/urlid": "dev-master#3a12183edd8b138288667e39632280a8efb5460a",
