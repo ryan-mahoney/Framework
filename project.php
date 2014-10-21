@@ -55,33 +55,22 @@ require __DIR__ . \'/vendor/autoload.php\';
 
 if (!file_exists('.gitignore')) {
 file_put_contents('.gitignore', 'composer.lock
-vendor
-managers/cache.json
-public/helpers/_build.php
-public/css/fields
-public/js/fields
-acl/_build.json
-acl/manager.yml
-subscribers/_build.php
-bundles/cache.json
-collections/cache.json
-filters/cache.json
-forms/cache.json
-managers/cache.json
-public/storage
-public/layouts/Manager
-public/partials/Manager
-public/css/Manager
-public/js/Manager
-public/fonts/Manager
-public/layouts/Manager
-public/images/Manager
-public/helpers/Manager
-public/imagecache
-public/storage
-bundles/Manager
-bundles/Membership
-bundles/Calendar');
+/vendor
+/public/css/fields
+/public/js/fields
+/subscribers/_build.php
+/public/storage
+/public/layouts/Manager
+/public/partials/Manager
+/public/css/Manager
+/public/js/Manager
+/public/fonts/Manager
+/public/layouts/Manager
+/public/images/Manager
+/public/helpers/Manager
+/public/imagecache
+/bundles/Manager
+/cache');
 }
 
 echo 'Cloning dependency contiainer...', "\n\n";
