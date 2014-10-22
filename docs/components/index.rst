@@ -343,20 +343,20 @@ Here is the subscriber that stores data in the database that is published when f
 
 ----------
 
-.. _separation:
+.. _layout:
 
-Separation
+Layout
 ++++++++++
 
-Fork on github here: `separation source <https://github.com/virtuecenter/separation>`_
+Fork on github here: `layout source <https://github.com/virtuecenter/layout>`_
 
-Separation is a way to bind the data returned from a RESTful API to a "partial" template that will render the data into a complete page "layout".
+Layout is a way to bind the data returned from a RESTful API to a "partial" template that will render the data into a complete page "layout".
 
-Opine-PHP uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:
+Opine-PHP uses layout under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:
 
 .. code-block:: php
 
-  $this->separation->layout('home')->template()->write();
+  $this->layout->layout('home')->template()->write();
 
 In the above example, it will load the "public/layouts/home.html" layout file.
 

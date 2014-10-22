@@ -66,7 +66,7 @@ class CommandLine {
                 break;
 
             case 'collection-counts-refresh':
-                $container->collection->statsAll();
+                $container->collectionModel->statsAll();
                 break;
 
             case 'container-build':

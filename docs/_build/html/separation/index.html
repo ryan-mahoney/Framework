@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Separation &mdash; Opine 1.0 documentation</title>
+  <title>Layout &mdash; Opine 1.0 documentation</title>
   
 
   
@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../components/index.html#collection">Collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/index.html#form">Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/index.html#pubsub">PubSub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../components/index.html#separation">Separation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#layout">Layout</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../theming/index.html">Theming</a><ul>
@@ -121,7 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#types-of-pages">Types of Pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-layouts">Working with Layouts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-partials">Working with Partials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#separation-applications">Separation Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#layout-applications">Layout Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#best-practices">Best Practices</a></li>
 </ul>
 </li>
@@ -146,7 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#new-project">New Project</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Separation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Layout</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-sample-configuration-file">A Sample Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#html-layout-template-outer-template">HTML Layout Template (Outer Template)</a></li>
@@ -198,7 +198,7 @@
 <script type="text/javascript">stLight.options({publisher: "437da74a-28a4-47ae-84fd-958107b69e59", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <ul class="wy-breadcrumbs">
   <li><a href="/">Docs</a> &raquo;</li>
-  <li><a href="">Separation</a></li>
+  <li><a href="">Layout</a></li>
   
 
   	<li class="wy-breadcrumbs-aside"><span class='st_email_large' displayText='Email'></span></li>
@@ -207,20 +207,20 @@
 	<li class="wy-breadcrumbs-aside"><span class='st_twitter_large' displayText='Tweet'></span></li>
 	<li class="wy-breadcrumbs-aside" style="margin-left: 20px"><span class='st_facebook_large' displayText='Facebook'></span></li>
 <li class="wy-breadcrumbs-aside">
-      <a href="https://github.com///edit/separation/index.rst" class="icon icon-github"> Edit on GitHub</a>
+      <a href="https://github.com///edit/layout/index.rst" class="icon icon-github"> Edit on GitHub</a>
     </li>
 </ul>
 <hr/>
           
-  <div class="section" id="separation">
-<h1>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h1>
-<p>Separation is a software service for binding logic-less templates to JSON data sources.</p>
+  <div class="section" id="layout">
+<h1>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h1>
+<p>Layout is a software service for binding logic-less templates to JSON data sources.</p>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>These days, more websites are being built without direct database queries, but with RESTful API calls that return JSON data.</p>
 <p>Traditionally, the MVC approach to building websites would have Views containing presentation logic.  Many modern applications are getting rid of Views in favor of logic-less templates, or, the slightly more flexible less-logic templates.</p>
-<p>The Opine-PHPs relies heavily on the Handlebars engine for rendering HTML and RESTful APIs for all data.  As such, the Separation library allows us to create a configuration file that specified where all the partials in an HTML layout will obtain their data from, and then it processes each partial outputting a fully populated HTML template.</p>
-<p>Beyond its core features, Separation has the ability to to interact with a few specialized types of bindings, such as for working with Opine-PHP&#8217;s custom data APIs, such as Collection, Document and Form.</p>
+<p>The Opine-PHPs relies heavily on the Handlebars engine for rendering HTML and RESTful APIs for all data.  As such, the Layout library allows us to create a configuration file that specified where all the partials in an HTML layout will obtain their data from, and then it processes each partial outputting a fully populated HTML template.</p>
+<p>Beyond its core features, Layout has the ability to to interact with a few specialized types of bindings, such as for working with Opine-PHP&#8217;s custom data APIs, such as Collection, Document and Form.</p>
 </div>
 <div class="section" id="a-sample-configuration-file">
 <h2>A Sample Configuration File<a class="headerlink" href="#a-sample-configuration-file" title="Permalink to this headline">¶</a></h2>
@@ -248,10 +248,10 @@
                 <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;Form&quot;</span>
 </pre></div>
 </div>
-<p>In the configuration file above,  is a YAML file that Separation would read to know:</p>
+<p>In the configuration file above,  is a YAML file that Layout would read to know:</p>
 <blockquote>
 <div><ul class="simple">
-<li>which other Separation files to import (header, footers, etc.)</li>
+<li>which other Layout files to import (header, footers, etc.)</li>
 <li>any JS files it will compile</li>
 <li>most importantly, which data to bind</li>
 </ul>
@@ -289,7 +289,7 @@
         <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&#39;Collection&#39;</span>
 </pre></div>
 </div>
-<p>For this binding, Separation will send and HTTP GET request to the url:</p>
+<p>For this binding, Layout will send and HTTP GET request to the url:</p>
 <p>%dataAPI%/json-data/blogs/all/10/0/{&#8220;display_date&#8221;:-1}</p>
 <p>%dataAPI% is a variable set in the projects database config that usually specified the URL of the project, but could specify an external data-source.  This is helpful for abstracting out the URL so it doesn&#8217;t need to be changed when switching from development to production.  It is the same as:</p>
 <p><a class="reference external" href="http://project.localhost/json-data/blogs/all/10/0">http://project.localhost/json-data/blogs/all/10/0</a>/{&#8220;display_date&#8221;:-1}</p>
@@ -326,7 +326,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Then, Separation will take that data, and render it with the less-logic partials file: <strong>projct/public/collections/blogs.hbs</strong></p>
+<p>Then, Layout will take that data, and render it with the less-logic partials file: <strong>projct/public/collections/blogs.hbs</strong></p>
 <div class="highlight-html"><div class="highlight"><pre>{{#each}}
         <span class="nt">&lt;div&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{path}}&quot;</span><span class="nt">&gt;</span>{{title}}<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
 {{/each}}
@@ -335,11 +335,11 @@
 </div>
 <div class="section" id="special-types">
 <h2>Special Types<a class="headerlink" href="#special-types" title="Permalink to this headline">¶</a></h2>
-<p>Separation has some special internal logic for dealing with certain data API types, such as Collection, Form and Document API types.  The bottom line, is that these types return JSON data, but sometimes there are some particular ways of calling them.</p>
+<p>Layout has some special internal logic for dealing with certain data API types, such as Collection, Form and Document API types.  The bottom line, is that these types return JSON data, but sometimes there are some particular ways of calling them.</p>
 </div>
 <div class="section" id="tips-and-tricks">
 <h2>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline">¶</a></h2>
-<p>This section show a few short-cuts and work arounds for using Separation.</p>
+<p>This section show a few short-cuts and work arounds for using Layout.</p>
 <div class="section" id="inline-partials">
 <h3>Inline Partials<a class="headerlink" href="#inline-partials" title="Permalink to this headline">¶</a></h3>
 <p>It is possible not to specify an partial file, but to put the Handlebar logic directly into the configuration file.  This may sound silly, but if you are just substituting a single value from an data source, it may be more efficient.  For example:</p>

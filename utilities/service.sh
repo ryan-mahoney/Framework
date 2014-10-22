@@ -52,19 +52,23 @@ return [
 
 @mkdir ($directory . '/tests');
 put($directory . '/tests/bootstrap.php', '<?php
-require_once $directory . \'/../vendor/autoload.php\';
+require_once __DIR__ . \'/../vendor/autoload.php\';
 ');
+
+@mkdir ($directory . '/public');
+put($directory . '/public/placeholder', '');
 
 put($directory . '/tests/' . $serviceName . 'Test.php', '<?php
 namespace Opine;
+use PHPUnit_Framework_TestCase;
 
-class ' . $serviceName . 'Test extends \PHPUnit_Framework_TestCase {
+class ' . $serviceName . 'Test extends PHPUnit_Framework_TestCase {
     private $db;
 
     public function setup () {
-        date_default_timezone_set(\'UTC\');
-        $root = __DIR__;
-        $container = new Container($root, $root . \'/container.yml\');
+        date_default_timezone_set('UTC');
+        $root = __DIR__ . \'/../public\';
+        $container = new Container($root, $root . \'/../container.yml\');
         $this->db = $container->db;
     }
 
@@ -144,7 +148,7 @@ put($directory . '/container.yml', "services:
         class:     'Opine\Mongo'
         arguments: ['@config', '@topic']
     yamlSlow:
-        class:     'Symfony\Component\Yaml\Yaml");
+        class:     'Symfony\Component\Yaml\Yaml'");
 
 put($directory . '/phpunit.xml', '<?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./tests/bootstrap.php" colors="true">

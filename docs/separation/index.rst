@@ -1,7 +1,7 @@
-Separation
+Layout
 ==========
 
-Separation is a software service for binding logic-less templates to JSON data sources.
+Layout is a software service for binding logic-less templates to JSON data sources.
 
 Introduction
 ++++++++++++
@@ -10,9 +10,9 @@ These days, more websites are being built without direct database queries, but w
 
 Traditionally, the MVC approach to building websites would have Views containing presentation logic.  Many modern applications are getting rid of Views in favor of logic-less templates, or, the slightly more flexible less-logic templates.
 
-The Opine-PHPs relies heavily on the Handlebars engine for rendering HTML and RESTful APIs for all data.  As such, the Separation library allows us to create a configuration file that specified where all the partials in an HTML layout will obtain their data from, and then it processes each partial outputting a fully populated HTML template.
+The Opine-PHPs relies heavily on the Handlebars engine for rendering HTML and RESTful APIs for all data.  As such, the Layout library allows us to create a configuration file that specified where all the partials in an HTML layout will obtain their data from, and then it processes each partial outputting a fully populated HTML template.
 
-Beyond its core features, Separation has the ability to to interact with a few specialized types of bindings, such as for working with Opine-PHP's custom data APIs, such as Collection, Document and Form.
+Beyond its core features, Layout has the ability to to interact with a few specialized types of bindings, such as for working with Opine-PHP's custom data APIs, such as Collection, Document and Form.
 
 A Sample Configuration File
 +++++++++++++++++++++++++++
@@ -44,9 +44,9 @@ Configuration file: **project/app/hompeage.yaml**
 			type: "Form"
 
 
-In the configuration file above,  is a YAML file that Separation would read to know:
+In the configuration file above,  is a YAML file that Layout would read to know:
 
- * which other Separation files to import (header, footers, etc.)
+ * which other Layout files to import (header, footers, etc.)
  * any JS files it will compile
  * most importantly, which data to bind
 
@@ -93,7 +93,7 @@ In the example above, there is binding called "blogs", see below:
 			type: 'Collection'
 
 
-For this binding, Separation will send and HTTP GET request to the url: 
+For this binding, Layout will send and HTTP GET request to the url: 
 
 %dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}
 
@@ -137,7 +137,7 @@ This URL will return some JSON, that probably looks like:
 	}
 
 
-Then, Separation will take that data, and render it with the less-logic partials file: **projct/public/collections/blogs.hbs**
+Then, Layout will take that data, and render it with the less-logic partials file: **projct/public/collections/blogs.hbs**
 
 .. code-block:: html
 
@@ -149,13 +149,13 @@ Then, Separation will take that data, and render it with the less-logic partials
 Special Types
 +++++++++++++
 
-Separation has some special internal logic for dealing with certain data API types, such as Collection, Form and Document API types.  The bottom line, is that these types return JSON data, but sometimes there are some particular ways of calling them.
+Layout has some special internal logic for dealing with certain data API types, such as Collection, Form and Document API types.  The bottom line, is that these types return JSON data, but sometimes there are some particular ways of calling them.
 
 
 Tips and Tricks
 +++++++++++++++
 
-This section show a few short-cuts and work arounds for using Separation.
+This section show a few short-cuts and work arounds for using Layout.
 
 Inline Partials
 ***************

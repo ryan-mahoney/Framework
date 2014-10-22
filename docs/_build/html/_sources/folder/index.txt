@@ -36,7 +36,7 @@ These files are written in the YAML language.
           url: "%dataAPI%/footer"
           type: "html"
 
-For more details on this component, see: :ref:`separation`.
+For more details on this component, see: :ref:`layout`.
 
 ---------
 
