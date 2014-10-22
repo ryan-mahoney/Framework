@@ -376,17 +376,15 @@ The config file is concerned with:
 
 .. code-block:: yaml
 
-  js:
-
-  binding:
+  regions:
       contact:
-          url: '%dataAPI%/json-form/contact'
+          url: '/api/form/contact'
           args: []
           partial: 'form-contact.hbs'
           type: "Form"
       header:
-          url: "%dataAPI%/header"
+          url: "/header"
           type: "html"
       footer:
-          url: "%dataAPI%/footer"
+          url: "/footer"
           type: "html"

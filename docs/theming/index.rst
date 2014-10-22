@@ -102,9 +102,7 @@ One of the distinct features of Opine-PHP is that it is largely driven by config
 
 .. code-block:: yaml
 
-  js:
-
-  binding:
+  regions:
       contact:
           url: '%dataAPI%/json-form/contact'
           args: []

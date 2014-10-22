@@ -43,7 +43,7 @@ Collection files are typically small, but they may contain logic for transformin
 
 ----------
 
-An example of the result of a collection can be found here: `Blogs Collection API <http://json.virtuecenter.com/json-data/blogs/all?pretty>`_
+An example of the result of a collection can be found here: `Blogs Collection API <http://json.virtuecenter.com/api/collection/Blogs/all?pretty>`_
 
 Collection APIs are handy, because you can see the field layout easily in JSON:
 
@@ -93,11 +93,11 @@ Collection APIs are handy, because you can see the field layout easily in JSON:
 
 The API for working with collection data is restul and follows the follwing format:
 
-http://website.com/json-date/collection/method/limit/page/sortjson
+http://website.com/api/collection/COLLECTION/method/limit/page/sortjson
 
 For example:
 
-http://json.virtuecenter.com/json-data/blogs/all/5/0/{"display_date":-1}
+http://json.virtuecenter.com/api/collection/Blogs/all/5/0/{"display_date":-1}
 
 The API has many built in methods:
 
@@ -120,7 +120,7 @@ The API has many built in methods:
 
 To use a method that takes and argument, hyphenate the argument with the method, for example:
 
-http://json.virtuecenter.com/json-data/blogs/byTag-GovernorBentley
+http://json.virtuecenter.com/api/collection/Blogs/byTag-GovernorBentley
 
 
 ----------
@@ -376,17 +376,15 @@ The config file is concerned with:
 
 .. code-block:: yaml
 
-  js:
-
-  binding:
+  regions:
       contact:
-          url: '%dataAPI%/json-form/contact'
+          url: '/api/form/contact'
           args: []
           partial: 'form-contact.hbs'
           type: "Form"
       header:
-          url: "%dataAPI%/header"
+          url: "/header"
           type: "html"
       footer:
-          url: "%dataAPI%/footer"
+          url: "/footer"
           type: "html"

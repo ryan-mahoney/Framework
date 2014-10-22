@@ -24,21 +24,19 @@ Configuration file: **project/app/hompeage.yaml**
 	imports:
 	 - base.yml
 
-	js:
-
-	binding:
+	regions:
 		blogs:
-			url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+			url: '/api/collection/Blogs/all/10/0/{"display_date":-1}'
 			args: []
 			partial: 'collections/blogs.hbs'
 			type: 'Collection'
 		about:
-			url: '%dataAPI%/json-data/blurbs/all'
+			url: '/api/collection/blurbs/all'
 			args: []
 			partial: '{{{blurbs.about}}}'
 			type: 'Collection'
 		contactbrief:
-			url: '%dataAPI%/json-form/contactbrief'
+			url: '/json-form/contactbrief'
 			args: []
 			partial: 'forms/contactbrief.hbs'
 			type: "Form"
@@ -87,7 +85,7 @@ In the example above, there is binding called "blogs", see below:
 .. code-block:: yaml
 
 		blogs:
-			url: '%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}'
+			url: '/api/collection/blogs/all/10/0/{"display_date":-1}'
 			args: []
 			partial: 'collections/blogs.hbs'
 			type: 'Collection'
@@ -95,11 +93,11 @@ In the example above, there is binding called "blogs", see below:
 
 For this binding, Layout will send and HTTP GET request to the url: 
 
-%dataAPI%/json-data/blogs/all/10/0/{"display_date":-1}
+/api/collection/Blogs/all/10/0/{"display_date":-1}
 
-%dataAPI% is a variable set in the projects database config that usually specified the URL of the project, but could specify an external data-source.  This is helpful for abstracting out the URL so it doesn't need to be changed when switching from development to production.  It is the same as:
+ is a variable set in the projects database config that usually specified the URL of the project, but could specify an external data-source.  This is helpful for abstracting out the URL so it doesn't need to be changed when switching from development to production.  It is the same as:
 
-http://project.localhost/json-data/blogs/all/10/0/{"display_date":-1}
+http://project.localhost/api/collection/Blogs/all/10/0/{"display_date":-1}
 
 This URL will return some JSON, that probably looks like:
 
@@ -166,7 +164,7 @@ It is possible not to specify an partial file, but to put the Handlebar logic di
 .. code-block:: yaml
 
 	about:
-		url: '%dataAPI%/json-data/blurbsReportByTag/all'
+		url: '/api/collection/blurbsReportByTag/all'
 		args: []
 		partial: '{{{blurbs.about}}}'
 		type: 'Collection'
@@ -182,5 +180,5 @@ In some cases, you don't want to use a logicless template, you want to either pl
 .. code-block:: yaml
 	
 	header:
-		url: '%dataAPI%/Manager/header'
+		url: '/Manager/header'
 		type: 'html'

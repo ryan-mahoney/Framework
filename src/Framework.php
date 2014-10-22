@@ -113,7 +113,7 @@ class Framework {
         }
         http_response_code(200);
         try {
-            self::$container->language->pathEvaluate($this->pathDetermine());
+            $path = self::$container->language->pathEvaluate($this->pathDetermine());
             $response = self::$container->route->run($_SERVER['REQUEST_METHOD'], $path);
             echo $response;
         } catch (Exception $e) {
