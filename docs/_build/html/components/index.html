@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#collection">Collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#form">Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pubsub">PubSub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#separation">Separation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#layout">Layout</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../theming/index.html">Theming</a><ul>
@@ -121,7 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#types-of-pages">Types of Pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-layouts">Working with Layouts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#working-with-partials">Working with Partials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#separation-applications">Separation Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theming/index.html#layout-applications">Layout Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theming/index.html#best-practices">Best Practices</a></li>
 </ul>
 </li>
@@ -146,13 +146,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#new-project">New Project</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../separation/index.html">Separation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#a-sample-configuration-file">A Sample Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#html-layout-template-outer-template">HTML Layout Template (Outer Template)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#data-binding-json-api-data-and-less-logic-partial-templates">Data Binding, JSON API data and Less-Logic Partial Templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#special-types">Special Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#tips-and-tricks">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../layout/index.html">Layout</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#a-sample-configuration-file">A Sample Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#html-layout-template-outer-template">HTML Layout Template (Outer Template)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#data-binding-json-api-data-and-less-logic-partial-templates">Data Binding, JSON API data and Less-Logic Partial Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#special-types">Special Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#tips-and-tricks">Tips and Tricks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../apidata/index.html">Data API</a><ul>
@@ -504,12 +504,12 @@
 </div>
 <hr class="docutils" />
 </div>
-<div class="section" id="separation">
-<span id="id4"></span><h2>Separation<a class="headerlink" href="#separation" title="Permalink to this headline">¶</a></h2>
-<p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/separation">separation source</a></p>
-<p>Separation is a way to bind the data returned from a RESTful API to a &#8220;partial&#8221; template that will render the data into a complete page &#8220;layout&#8221;.</p>
-<p>Opine-PHP uses separation under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;separation-&gt;layout(&#39;home&#39;)-&gt;template()-&gt;write();</span>
+<div class="section" id="layout">
+<span id="id4"></span><h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
+<p>Fork on github here: <a class="reference external" href="https://github.com/virtuecenter/layout">layout source</a></p>
+<p>Layout is a way to bind the data returned from a RESTful API to a &#8220;partial&#8221; template that will render the data into a complete page &#8220;layout&#8221;.</p>
+<p>Opine-PHP uses layout under-the-hood for rendering collections and forms.  Here is a simple example for how it may be used for rendering a homepage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;layout-&gt;layout(&#39;home&#39;)-&gt;template()-&gt;write();</span>
 </pre></div>
 </div>
 <p>In the above example, it will load the &#8220;public/layouts/home.html&#8221; layout file.</p>

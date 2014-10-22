@@ -15,7 +15,8 @@ git clone git@github.com:Opine-Org/Collection.git collection
 git clone git@github.com:Opine-Org/Bundle.git bundle
 git clone git@github.com:Opine-Org/Build.git build
 git clone git@github.com:Opine-Org/Authentication.git authentication
-git clone git@github.com:Opine-Org/Separation.git separation
+git clone git@github.com:Opine-Org/Language.git language
+git clone git@github.com:Opine-Org/Layout.git layout
 git clone git@github.com:Opine-Org/Registration.git registration
 git clone git@github.com:Opine-Org/Membership.git membership
 git clone git@github.com:Opine-Org/Errors.git errors

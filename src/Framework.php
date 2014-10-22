@@ -64,7 +64,8 @@ class Framework {
             $this->root . '-bundles' => false,
             $this->root . '-topics' => false,
             $this->root . '-routes' => false,
-            $this->root . '-container' => false
+            $this->root . '-container' => false,
+            $this->root . '-languages' => false
         ];
         $cache = new Cache();
         $cacheResult = $cache->getBatch($items);
@@ -112,7 +113,8 @@ class Framework {
         }
         http_response_code(200);
         try {
-            $response = self::$container->route->run();
+            $path = self::$container->language->pathEvaluate($this->pathDetermine());
+            $response = self::$container->route->run($_SERVER['REQUEST_METHOD'], $path);
             echo $response;
         } catch (Exception $e) {
             if (http_response_code() == 200) {
@@ -122,11 +124,20 @@ class Framework {
         }
     }
 
+    private function pathDetermine () {
+        $path = $_SERVER['REQUEST_URI'];
+        if (substr_count($path, '?') > 0) {
+            $path = str_replace('?' . $_SERVER['QUERY_STRING'], '', $path);
+        }
+        return $path;
+    }
+
     public function cache (array &$items) {        
         self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
         self::$container->formModel->cacheSet(json_decode($items[$this->root . '-forms'], true));
         self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
         self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
         self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
+        self::$container->language->cacheSet(json_decode($items[$this->root . '-languages'], true));
     }
 }

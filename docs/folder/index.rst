@@ -21,22 +21,20 @@ These files are written in the YAML language.
 
 .. code-block:: yaml
 
-  js:
-
-  binding:
+  regions:
       contact:
-          url: '%dataAPI%/json-form/contact'
+          url: '/api/form/Contact'
           args: []
           partial: 'form-contact.hbs'
           type: "Form"
       header:
-          url: "%dataAPI%/header"
+          url: "/header"
           type: "html"
       footer:
-          url: "%dataAPI%/footer"
+          url: "/footer"
           type: "html"
 
-For more details on this component, see: :ref:`separation`.
+For more details on this component, see: :ref:`layout`.
 
 ---------
 

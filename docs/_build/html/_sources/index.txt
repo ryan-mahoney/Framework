@@ -24,7 +24,7 @@ Contents:
    forms/index
    bundles/index
    appliance/index
-   separation/index
+   layout/index
    apidata/index
    acl/index
    manager/index

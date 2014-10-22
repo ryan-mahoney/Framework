@@ -2,22 +2,21 @@ imports:
     - 'vendor/opine/collection/package-container.yml'
     - 'vendor/opine/route/package-container.yml'
     - 'vendor/opine/form/package-container.yml'
+    - 'vendor/opine/language/package-container.yml'
+    - 'vendor/opine/build/package-container.yml'
 
 services:
     containerCache:
         class:     'Opine\Container\Cache'
         arguments: ['%root%', '@container', '@bundleRoute']
-    build:
-        class:     'Opine\Build'
-        arguments: ['%root%', '@fieldRoute', '@pubSubBuild', '@collectionModel', '@helperRoute', '@configRoute', '@formModel', '@bundleRoute', '@cache', '@search', '@route', '@containerCache', '@handlebarService']
     pubSubBuild:
         class:     'Opine\PubSubBuild'
         arguments: ['%root%', '@yamlSlow', '@bundleRoute']
     topic:
         class:     'Opine\Topic'
         arguments: ['@container']
-    separation:
-        class:     'Opine\Separation'
+    layout:
+        class:     'Opine\Layout'
         arguments: ['%root%', '@handlebars', '@cache', '@config', '@yamlSlow', '@route']
         scope:     'prototype'
     field:
@@ -70,7 +69,7 @@ services:
         arguments: ['@db', '@config']
     errors:
         class:     'Opine\Errors'
-        arguments: ['@config', '@topic', '@separation']
+        arguments: ['@config', '@topic', '@layout']
     mail:
         class:     'Opine\Mail'
         arguments: ['@mailSES']

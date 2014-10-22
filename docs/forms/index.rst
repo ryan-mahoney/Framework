@@ -30,9 +30,9 @@ The Application Config
 
 .. code-block:: yaml
 
-  binding:
+  regions:
       example:
-          url: '%dataAPI%/json-form/example'
+          url: '/api/form/Example'
           args: []
           partial: 'forms/example.hbs'
           type: "Form"

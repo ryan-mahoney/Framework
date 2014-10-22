@@ -95,16 +95,14 @@ If you need to know more about how Handlebars works, refer to the Javascript web
 
 ----------
 
-Separation Applications
+Layout Applications
 +++++++++++++++++++++++
 
-One of the distinct features of Opine-PHP is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Separation library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.
+One of the distinct features of Opine-PHP is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Layout library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.
 
 .. code-block:: yaml
 
-  js:
-
-  binding:
+  regions:
       contact:
           url: '%dataAPI%/json-form/contact'
           args: []

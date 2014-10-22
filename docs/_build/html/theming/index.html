@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../components/index.html#collection">Collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/index.html#form">Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/index.html#pubsub">PubSub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../components/index.html#separation">Separation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/index.html#layout">Layout</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Theming</a><ul>
@@ -121,7 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#types-of-pages">Types of Pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-layouts">Working with Layouts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-partials">Working with Partials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#separation-applications">Separation Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#layout-applications">Layout Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
 </ul>
 </li>
@@ -146,13 +146,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../appliance/index.html#new-project">New Project</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../separation/index.html">Separation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#a-sample-configuration-file">A Sample Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#html-layout-template-outer-template">HTML Layout Template (Outer Template)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#data-binding-json-api-data-and-less-logic-partial-templates">Data Binding, JSON API data and Less-Logic Partial Templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#special-types">Special Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../separation/index.html#tips-and-tricks">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../layout/index.html">Layout</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#a-sample-configuration-file">A Sample Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#html-layout-template-outer-template">HTML Layout Template (Outer Template)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#data-binding-json-api-data-and-less-logic-partial-templates">Data Binding, JSON API data and Less-Logic Partial Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#special-types">Special Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layout/index.html#tips-and-tricks">Tips and Tricks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../apidata/index.html">Data API</a><ul>
@@ -290,9 +290,9 @@
 <p>If you need to know more about how Handlebars works, refer to the Javascript website as all the documentation is there and the PHP version functions the same way.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="separation-applications">
-<h2>Separation Applications<a class="headerlink" href="#separation-applications" title="Permalink to this headline">¶</a></h2>
-<p>One of the distinct features of Opine-PHP is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Separation library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.</p>
+<div class="section" id="layout-applications">
+<h2>Layout Applications<a class="headerlink" href="#layout-applications" title="Permalink to this headline">¶</a></h2>
+<p>One of the distinct features of Opine-PHP is that it is largely driven by configuration files.  Wherever possible, simple configuration files are used in place of mechanical coding.  The Layout library is used to read a YAML file, and then pull in the data for each binding, provide the data to the themeing engine, obtain the markup from a partial, and put that markup into a layout... and finally, return a fully populated layout file.</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
 
 <span class="l-Scalar-Plain">binding</span><span class="p-Indicator">:</span>
