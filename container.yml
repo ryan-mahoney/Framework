@@ -66,7 +66,7 @@ services:
         class:     'Opine\HTTPPost'
     person:
         class:     'Opine\Person'
-        arguments: ['@db', '@config']
+        arguments: ['@db', '@config', '@cache']
     errors:
         class:     'Opine\Errors'
         arguments: ['@config', '@topic', '@layout']

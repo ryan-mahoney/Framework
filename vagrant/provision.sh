@@ -6,7 +6,7 @@ sudo usermod -a -G vagrant www-data
 
 # additional repositories
 sudo wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add - 2> /dev/null
-sudo deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main 2> /dev/null
+sudo echo "deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main" | sudo tee -a /etc/apt/sources.list 2> /dev/null
 
 # update
 sudo apt-get update 2> /dev/null

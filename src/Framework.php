@@ -25,6 +25,7 @@
 namespace Opine;
 use Opine\Container;
 use Opine\Cache;
+use Opine\Person;
 use Route;
 use Exception;
 
@@ -39,6 +40,7 @@ class Framework {
     private static $container;
     private static $keyCache = [];
     private $routeCached = false;
+    private $apiToken = false;
     private $root;
 
     public static function keySet ($name, $value) {
@@ -58,6 +60,7 @@ class Framework {
 
     public function __construct ($noContainerCache=false) {
         $this->root = $this->root();
+        $this->apiToken = Person::apiTokenFromRequest();
         $items = [
             $this->root . '-collections' => false,
             $this->root . '-forms' => false,
@@ -67,6 +70,9 @@ class Framework {
             $this->root . '-container' => false,
             $this->root . '-languages' => false
         ];
+        if ($this->apiToken !== false) {
+            $items['person-' . $this->apiToken] = false;
+        }
         $cache = new Cache();
         $cacheResult = $cache->getBatch($items);
         if ($noContainerCache === false && $cacheResult === true) {
@@ -76,9 +82,7 @@ class Framework {
             $this->routeCached = true;
         }
         self::$container = new Container($this->root, $this->root . '/../container.yml', $noContainerCache);
-        if ($cacheResult === true) {
-            $this->cache($items);
-        }
+        $this->cache($items);
     }
 
     public function root () {
@@ -101,9 +105,6 @@ class Framework {
     }
 
     public function frontController () {
-        if (strlen(session_id()) == 0) {
-            session_start();
-        }
         if (isset($_POST) && !empty($_POST)) {
             $uriBase = str_replace('?' . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
             self::$container->post->populate($uriBase, $_POST);
@@ -132,12 +133,22 @@ class Framework {
         return $path;
     }
 
-    public function cache (array &$items) {        
+    public function cache (array &$items) {
         self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
         self::$container->formModel->cacheSet(json_decode($items[$this->root . '-forms'], true));
         self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
         self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
         self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
         self::$container->language->cacheSet(json_decode($items[$this->root . '-languages'], true));
+        if ($this->apiToken !== false) {
+            if ($items['person-' . $this->apiToken] != false) {
+                self::$container->person->establish(json_decode($items['person-' . $this->apiToken], true));
+            } else {
+                $person = self::$container->person->findByApiToken($this->apiToken, true);
+                if ($person != false) {
+                    self::$container->person->establish($person);
+                }
+            }
+        }
     }
 }
