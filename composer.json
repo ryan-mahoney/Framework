@@ -18,7 +18,6 @@
     "require": {
         "php": ">=5.4.0",
         "cocur/slugify": "v0.2.3",
-        "opine/authentication": "dev-master",
         "opine/build": "dev-master",
         "opine/bundle": "dev-master",
         "opine/cache": "dev-master",
@@ -26,7 +25,6 @@
         "opine/config": "dev-master",
         "opine/container": "dev-master",
         "opine/db": "dev-master",
-        "opine/errors": "dev-master",
         "opine/field": "dev-master",
         "opine/form": "dev-master",
         "opine/handlebars": "dev-master",

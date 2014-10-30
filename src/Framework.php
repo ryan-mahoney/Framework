@@ -97,7 +97,7 @@ class Framework {
         self::$container->imageResizer->paths();
         self::$container->collectionRoute->paths();
         self::$container->formRoute->paths();
-        self::$container->bundleRoute->paths();
+        self::$container->bundleModel->paths();
         $myRoute = new Route(self::$container->route);
         if (method_exists($myRoute, 'paths')) {
             $myRoute->paths();
@@ -136,7 +136,7 @@ class Framework {
     public function cache (array &$items) {
         self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
         self::$container->formModel->cacheSet(json_decode($items[$this->root . '-forms'], true));
-        self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
+        self::$container->bundleModel->cacheSet(json_decode($items[$this->root . '-bundles'], true));
         self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
         self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
         self::$container->language->cacheSet(json_decode($items[$this->root . '-languages'], true));
