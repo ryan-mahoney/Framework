@@ -6,6 +6,7 @@ imports:
     - 'vendor/opine/language/package-container.yml'
     - 'vendor/opine/build/package-container.yml'
     - 'vendor/opine/config/package-container.yml'
+    - 'vendor/opine/pubsub/package-container.yml'
     - 'vendor/opine/helper/package-container.yml'
     - 'vendor/opine/bundle/package-container.yml'
     - 'vendor/opine/field/package-container.yml'
