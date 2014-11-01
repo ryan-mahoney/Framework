@@ -66,7 +66,7 @@ class ' . $serviceName . 'Test extends PHPUnit_Framework_TestCase {
     private $db;
 
     public function setup () {
-        date_default_timezone_set('UTC');
+        date_default_timezone_set(\'UTC\');
         $root = __DIR__ . \'/../public\';
         $container = new Container($root, $root . \'/../container.yml\');
         $this->db = $container->db;

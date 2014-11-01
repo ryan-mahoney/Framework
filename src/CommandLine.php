@@ -19,6 +19,7 @@ class CommandLine {
                     'collection-counts-refresh', "\n",
                     'container-build', "\n",
                     'database-migrate-dburi', "\n",
+                    'queue-peek', "\n",
                     'search-reindex [collection]', "\n",
                     'search-index-drop', "\n",
                     'topics-show', "\n",
@@ -31,9 +32,12 @@ class CommandLine {
                 $container->build->project($root);
                 break;
 
+            case 'queue-peek':
+                $container->queue->peekReady();
+                break;
+
             case 'worker':
                 set_time_limit(0);
-                $container->topic->load($root);
                 $container->worker->work();
                 break;
 
@@ -74,7 +78,11 @@ class CommandLine {
                 break;
 
             case 'version':
-                echo 'Unknown', "\n";
+                echo file_get_contents($root . '/../vendor/opine/framework/version.txt'), "\n";
+                break;
+
+            default:
+                echo 'Unknown command', "\n";
                 break;
         }
     }
