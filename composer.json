@@ -17,7 +17,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "cocur/slugify": "v0.2.3",
         "opine/build": "dev-master",
         "opine/bundle": "dev-master",
         "opine/cache": "dev-master",
@@ -39,10 +38,7 @@
         "opine/queue": "dev-master",
         "opine/route": "dev-master",
         "opine/search": "dev-master",
-        "opine/semantic-cm": "dev-master",
-        "opine/twitter": "dev-master",
-        "opine/uploadwrapper": "dev-master",
-        "opine/urlid": "dev-master"
+        "opine/semantic-cm": "dev-master"
     },
     "autoload": {
         "psr-4": {
