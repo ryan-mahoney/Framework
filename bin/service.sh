@@ -66,7 +66,7 @@ class ' . $serviceName . 'Test extends PHPUnit_Framework_TestCase {
     private $db;
 
     public function setup () {
-        date_default_timezone_set('UTC');
+        date_default_timezone_set(\'UTC\');
         $root = __DIR__ . \'/../public\';
         $container = new Container($root, $root . \'/../container.yml\');
         $this->db = $container->db;
@@ -146,9 +146,7 @@ put($directory . '/container.yml', "services:
         arguments: ['%root%', '@cache']
     db:
         class:     'Opine\Mongo'
-        arguments: ['@config', '@topic']
-    yamlSlow:
-        class:     'Symfony\Component\Yaml\Yaml'");
+        arguments: ['@config', '@topic']");
 
 put($directory . '/phpunit.xml', '<?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./tests/bootstrap.php" colors="true">

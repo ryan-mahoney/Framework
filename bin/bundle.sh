@@ -34,7 +34,6 @@ $directories = [
     $bundleRoot . '/app/forms',
     $bundleRoot . '/fields',
     $bundleRoot . '/forms',
-    $bundleRoot . '/subscribers',
     $bundleRoot . '/collections'
 ];
 
@@ -51,12 +50,12 @@ namespace Opine\\' . $serviceName . ';
 
 class Route {
     private $root;
-    private $bundleRoot;
+    private $bundleModel;
     private $route;
 
-    public function __construct ($container, $root, $bundleRoot) {
+    public function __construct ($container, $root, $bundleModel) {
         $this->root = $root;
-        $this->bundleRoot = $bundleRoot;
+        $this->bundleModel = $bundleModel;
         $this->route = $container->route;
     }
 

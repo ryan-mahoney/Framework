@@ -68,7 +68,9 @@ class Framework {
             $this->root . '-topics' => false,
             $this->root . '-routes' => false,
             $this->root . '-container' => false,
-            $this->root . '-languages' => false
+            $this->root . '-languages' => false,
+            $this->root . '-config' => false,
+            'xxx' => false
         ];
         if ($this->apiToken !== false) {
             $items['person-' . $this->apiToken] = false;
@@ -97,7 +99,7 @@ class Framework {
         self::$container->imageResizer->paths();
         self::$container->collectionRoute->paths();
         self::$container->formRoute->paths();
-        self::$container->bundleRoute->paths();
+        self::$container->bundleModel->paths();
         $myRoute = new Route(self::$container->route);
         if (method_exists($myRoute, 'paths')) {
             $myRoute->paths();
@@ -136,10 +138,22 @@ class Framework {
     public function cache (array &$items) {
         self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
         self::$container->formModel->cacheSet(json_decode($items[$this->root . '-forms'], true));
-        self::$container->bundleRoute->cacheSet(json_decode($items[$this->root . '-bundles'], true));
+        self::$container->bundleModel->cacheSet(json_decode($items[$this->root . '-bundles'], true));
         self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
         self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
         self::$container->language->cacheSet(json_decode($items[$this->root . '-languages'], true));
+        $environment = 'default';
+        if (isset($_SERVER['OPINE-ENV'])) {
+            $environment = $_SERVER['OPINE-ENV'];
+        }
+        $config = json_decode($items[$this->root . '-config'], true);
+        if (isset($config[$environment])) {
+            self::$container->config->cacheSet($config[$environment]);
+        } elseif (isset($config['default'])) {
+            self::$container->config->cacheSet($config['default']);
+        } else {
+            self::$container->config->cacheSet(false);
+        }
         if ($this->apiToken !== false) {
             if ($items['person-' . $this->apiToken] != false) {
                 self::$container->person->establish(json_decode($items['person-' . $this->apiToken], true));
