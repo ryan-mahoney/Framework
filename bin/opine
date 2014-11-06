@@ -9,4 +9,6 @@ if (!file_exists($autoloadPath)) {
 	die('Can not find composer autoloader: ' . $autoloadPath);
 }
 require $autoloadPath;
+$composerBin = trim(shell_exec('which composer'));
+echo shell_exec($composerBin . ' dump-autoload');
 (new Opine\CommandLine())->run();
