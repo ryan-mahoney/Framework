@@ -96,7 +96,7 @@ class Framework {
     }
 
     public function routing () {
-        self::$container->imageResizer->paths();
+        self::$container->imageResizerRoute->paths();
         self::$container->collectionRoute->paths();
         self::$container->formRoute->paths();
         self::$container->bundleModel->paths();
