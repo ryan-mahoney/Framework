@@ -26,7 +26,7 @@ sudo apt-get install -y git 2> /dev/null
 sudo apt-get install -y memcached libmemcached-tools 2> /dev/null
 sudo apt-get install -y beanstalkd 2> /dev/null
 sudo apt-get install -y libmcrypt-dev libxml2-dev libtidy-dev libzip-dev libgd2-xpm-dev libcurl4-openssl-dev libyaml-dev libevent-dev 2> /dev/null
-sudo apt-get install -y php5 php5-cli php5-fpm php-pear php5-dev php5-gd php5-curl php5-mcrypt php5-curl php5-tidy 2> /dev/null
+sudo apt-get install -y php5 php5-cli php5-fpm php-pear php5-dev php5-gd php5-curl php5-mcrypt php5-curl php5-tidy php5-mongo php5-memcache 2> /dev/null
 
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password ROOTPASSWORD' 2> /dev/null
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password ROOTPASSWORD' 2> /dev/null
@@ -43,23 +43,18 @@ then
 fi
 
 # php configuration
-printf "\n" | sudo pecl install yaml mongo
-yes | sudo pecl install memcache 2> /dev/null
-sudo echo "extension=memcache.so" | sudo tee -a /etc/php5/fpm/php.ini
-sudo echo "memcache.hash_strategy=\"consistent\"" | sudo tee -a /etc/php5/fpm/php.ini
+printf "\n" | sudo pecl install yaml
 sudo echo "extension=yaml.so" | sudo tee -a /etc/php5/fpm/php.ini
-sudo echo "extension=mongo.so" | sudo tee -a /etc/php5/fpm/php.ini
 
-sudo echo "opcache.enable=1" | sudo tee -a /etc/php5/fpm/php.ini
-sudo echo "opcache.memory_consumption=128" | sudo tee -a /etc/php5/fpm/php.ini
-sudo echo "opcache.max_accelerated_files=4000" | sudo tee -a /etc/php5/fpm/php.ini
-sudo echo "opcache.revalidate_freq=60" | sudo tee -a /etc/php5/fpm/php.ini
+php5enmod mcrypt
 
 # php composer
 sudo curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 # nginx configuration
+sed -i 's/www\-data/vagrant/' /etc/nginx/nginx.conf
+sed -i 's/www\-data/vagrant/' /etc/php5/fpm/pool.d/www.conf
 sudo mkdir /var/www
 sudo ln -s /var/www/project/server/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 sudo /etc/init.d/nginx restart
