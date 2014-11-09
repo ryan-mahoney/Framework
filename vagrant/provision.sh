@@ -26,9 +26,10 @@ sudo mv composer.phar /usr/local/bin/composer
 # nginx configuration
 sed -i 's/www\-data/vagrant/' /etc/nginx/nginx.conf
 sed -i 's/www\-data/vagrant/' /etc/php5/fpm/pool.d/www.conf
-sudo mkdir /var/www
 mkdir /var/www/storage
 mkdir /var/www/imagecache
+chown vagrant /var/www --recursive
+chgrp vagrant /var/www --recursive
 sudo ln -s /var/www/project/server/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 sudo /etc/init.d/nginx restart
 ln -s /usr/bin/php /usr/local/bin/php
