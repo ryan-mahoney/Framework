@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "ubuntu/trusty64"
     config.vm.provision "shell", path: "provision.sh"
     config.vm.network "forwarded_port", guest: 80, host: 8080
-    config.vm.synced_folder "./project", "/var/www/project", type: "rsync", rsync__exclude: ".git/", rsync__args: ["--verbose", "--archive", "-z"]
+    config.vm.synced_folder "./project", "/var/www/project", type: "rsync", rsync__exclude: ".git/", rsync__args: ["--verbose", "--archive", "-z", "--copy-links", "--copy-dirlinks"]
     config.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--memory", "1024"]
     end

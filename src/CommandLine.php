@@ -28,7 +28,22 @@ class CommandLine {
                     'worker', "\n";
                 break;
 
+            case 'manager-install':
+                if (!isset($_SERVER['argv'][2])) {
+                    return;
+                }
+                $container->build->managerInstall($_SERVER['argv'][2]);
+                break;
+
+            case 'collection-install':
+                if (!isset($_SERVER['argv'][2])) {
+                    return;
+                }
+                $container->build->collectionInstall($_SERVER['argv'][2]);
+                break;
+
             case 'build':
+                echo shell_exec('cd ' . $root . '/.. && composer dump-autoload');
                 $container->build->project($root);
                 break;
 
