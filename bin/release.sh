@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/env php
 <?php
 $file = json_decode(file_get_contents(__DIR__ . '/../composer.json'), true);
 $root = str_replace('/framework/bin', '', __DIR__);

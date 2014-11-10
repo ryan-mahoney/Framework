@@ -32,4 +32,6 @@ chown vagrant /var/www --recursive
 chgrp vagrant /var/www --recursive
 sudo ln -s /var/www/project/server/vhost.conf /etc/nginx/sites-enabled/vhost.conf
 sudo /etc/init.d/nginx restart
-ln -s /usr/bin/php /usr/local/bin/php
+sudo /etc/init.d/elasticsearch start
+sudo /etc/init.d/beanstalkd start
+sudo /etc/init.d/memcached start
