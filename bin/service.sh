@@ -1,5 +1,9 @@
 #!/usr/local/bin/php
 <?php
+$namesapce = 'Opine';
+if (isset($argv[1])) {
+    $namespace = $argv[1];
+}
 $directory = getcwd();
 if (!is_writable($directory)) {
     echo 'You need write permissions for this directory.', "\n";
@@ -16,7 +20,7 @@ $serviceName = array_pop($pieces);
 @mkdir($directory . '/src');
 put($directory . '/src/' . $serviceName . '.php', '<?php
 /**
- * Opine\\' . $serviceName . '
+ * ' . $namespace . '\\' . $serviceName . '
  *
  * Copyright (c)2013, 2014 Ryan Mahoney, https://github.com/Opine-Org <ryan@virtuecenter.com>
  *
@@ -38,7 +42,7 @@ put($directory . '/src/' . $serviceName . '.php', '<?php
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Opine;
+namespace ' . $namespace . ';
 
 class ' . $serviceName . ' {
 }');
@@ -52,6 +56,7 @@ return [
 
 @mkdir ($directory . '/tests');
 put($directory . '/tests/bootstrap.php', '<?php
+date_default_timezone_set(\'UTC\');
 require_once __DIR__ . \'/../vendor/autoload.php\';
 ');
 
@@ -59,17 +64,13 @@ require_once __DIR__ . \'/../vendor/autoload.php\';
 put($directory . '/public/placeholder', '');
 
 put($directory . '/tests/' . $serviceName . 'Test.php', '<?php
-namespace Opine;
+namespace ' . $namespace . ';
 use PHPUnit_Framework_TestCase;
 
 class ' . $serviceName . 'Test extends PHPUnit_Framework_TestCase {
-    private $db;
-
     public function setup () {
-        date_default_timezone_set(\'UTC\');
         $root = __DIR__ . \'/../public\';
         $container = new Container($root, $root . \'/../container.yml\');
-        $this->db = $container->db;
     }
 
     public function testSample () {
@@ -78,11 +79,11 @@ class ' . $serviceName . 'Test extends PHPUnit_Framework_TestCase {
 }');
 
 put($directory . '/composer.json', '{
-    "name": "opine/' . strtolower($serviceName) . '",
+    "name": "' . strtolower($namespace) . '/' . strtolower($serviceName) . '",
     "type": "library",
     "minimum-stability": "dev",
     "description": "",
-    "keywords": [""],
+    "keywords": [],
     "license": "MIT",
     "authors": [
         {
@@ -94,18 +95,16 @@ put($directory . '/composer.json', '{
     ],
     "require": {
         "php": ">=5.4.0",
-        "phpunit/phpunit": "3.7.32",
-        "opine/db": "dev-master",
-        "opine/container": "dev-master"
+        "phpunit/phpunit": "3.7.32"
     },
     "autoload": {
-        "psr-4": {"Opine\\": "src/"}
+        "psr-4": {"' . $namespace . '\\\\": "src/"}
     }
 }');
 
-put($directory . '/.gitignore', 'vendor
-composer.lock
-report');
+put($directory . '/.gitignore', '/vendor
+/composer.lock
+/report');
 
 put($directory . '/.scrutinizer.yml', 'tools:
     external_code_coverage: true
@@ -135,18 +134,7 @@ after_script:
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 ');
 
-put($directory . '/container.yml', "services:
-    cache:
-        class:     'Opine\Cache'
-    topic:
-        class:     'Opine\Topic'
-        arguments: ['@container']
-    config:
-        class:     'Opine\Config'
-        arguments: ['%root%', '@cache']
-    db:
-        class:     'Opine\Mongo'
-        arguments: ['@config', '@topic']");
+put($directory . '/container.yml', "services:");
 
 put($directory . '/phpunit.xml', '<?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./tests/bootstrap.php" colors="true">
