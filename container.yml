@@ -20,3 +20,4 @@ imports:
     - 'vendor/opine/queue/package-container.yml'
     - 'vendor/opine/route/package-container.yml'
     - 'vendor/opine/search/package-container.yml'
+    - 'vendor/opine/secret/package-container.yml'
