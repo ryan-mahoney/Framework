@@ -12,18 +12,18 @@ class CommandLine {
         $root = $framework->root();
         switch ($_SERVER['argv'][1]) {
             case 'help':
-                echo 
+                echo
                     'The available commands are:', "\n",
                     'build', "\n",
                     'check', "\n",
                     'collection-counts-refresh', "\n",
                     'container-build', "\n",
+                    'database-create-indexes', "\n",
                     'database-migrate-dburi', "\n",
                     'queue-peek', "\n",
                     'search-reindex [collection]', "\n",
                     'search-index-drop', "\n",
                     'topics-show', "\n",
-                    'upgrade', "\n",
                     'version', "\n",
                     'worker', "\n";
                 break;
@@ -56,10 +56,6 @@ class CommandLine {
                 $container->worker->work();
                 break;
 
-            case 'upgrade':
-                $container->build->upgrade($root);
-                break;
-
             case 'check':
                 $container->build->environmentCheck($root);
                 break;
@@ -68,11 +64,15 @@ class CommandLine {
                 $container->dbmigration->addURI();
                 break;
 
+            case 'database-create-indexes':
+                $container->collectionModel->reIndexDataAll();
+                break;
+
             case 'search-reindex':
                 if (isset($_SERVER['argv'][2])) {
-                    $container->collectionModel->reIndex($_SERVER['argv'][2]);
+                    $container->collectionModel->reIndexSearch($_SERVER['argv'][2]);
                 } else {
-                    $container->collectionModel->reIndexAll();
+                    $container->collectionModel->reIndexSearchAll();
                 }
                 break;
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
-$namesapce = 'Opine';
-if (isset($argv[1])) {
+$namespace = 'Opine';
+if (isset($argv[1]) && !empty($argv[1])) {
     $namespace = $argv[1];
 }
 $directory = getcwd();
@@ -9,8 +9,8 @@ if (!is_writable($directory)) {
     echo 'You need write permissions for this directory.', "\n";
     exit;
 }
-if (version_compare(PHP_VERSION, '5.4.0', '<')) {
-    echo 'You need at least PHP version 5.4.0, your version us: ', PHP_VERSION, "\n";
+if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+    echo 'You need at least PHP version 5.5.0, your version us: ', PHP_VERSION, "\n";
     exit;
 }
 date_default_timezone_set('UTC');
@@ -30,10 +30,10 @@ put($directory . '/src/' . $serviceName . '.php', '<?php
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE

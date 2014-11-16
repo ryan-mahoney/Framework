@@ -29,12 +29,17 @@ $directories = [
     $bundleRoot . '/public/layouts',
     $bundleRoot . '/public/partials',
     $bundleRoot . '/app',
+    $bundleRoot . '/app/models',
     $bundleRoot . '/app/collections',
     $bundleRoot . '/app/documents',
     $bundleRoot . '/app/forms',
     $bundleRoot . '/fields',
     $bundleRoot . '/forms',
-    $bundleRoot . '/collections'
+    $bundleRoot . '/collections',
+    $bundleRoot . '/controllers',
+    $bundleRoot . '/models',
+    $bundleRoot . '/views',
+    $bundleRoot . '/managers'
 ];
 
 foreach ($directories as $directory) {
@@ -49,16 +54,15 @@ if (!file_exists($bundleRouteRoot)) {
 namespace Opine\\' . $serviceName . ';
 
 class Route {
-    private $root;
-    private $bundleModel;
     private $route;
 
-    public function __construct ($container, $root, $bundleModel) {
-        $this->root = $root;
-        $this->bundleModel = $bundleModel;
-        $this->route = $container->route;
+    public function __construct ($route) {
+        $this->route = $route;
     }
 
     public function paths () {}
+
+    public static function location () {
+        return __DIR__;
+    }
 }');
-}

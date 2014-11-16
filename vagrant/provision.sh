@@ -12,7 +12,7 @@ sudo echo "deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable
 sudo apt-get update 2> /dev/null
 
 # install software
-sudo apt-get install -y wget curl make autoconf vim nano mlocate nginx openssl default-jre mongodb-server elasticsearch git memcached libmemcached-tools beanstalkd php5 php5-cli php5-fpm php-pear php5-dev php5-gd php5-curl php5-mcrypt php5-curl php5-tidy php5-mongo php5-memcache 2> /dev/null
+sudo apt-get install -y libyaml-dev wget curl make autoconf vim nano mlocate nginx openssl default-jre mongodb-server elasticsearch git memcached libmemcached-tools beanstalkd php5 php5-cli php5-fpm php-pear php5-dev php5-gd php5-curl php5-mcrypt php5-curl php5-tidy php5-mongo php5-memcache 2> /dev/null
 
 # php configuration
 sudo pecl install yaml

@@ -1,11 +1,10 @@
-
-git clone git@github.com:Opine-Org/Authentication.git authentication
 git clone git@github.com:Opine-Org/Build.git build
 git clone git@github.com:Opine-Org/Bundle.git bundle
 git clone git@github.com:Opine-Org/Cache.git cache
 git clone git@github.com:Opine-Org/Collection.git collection
 git clone git@github.com:Opine-Org/Config.git config
 git clone git@github.com:Opine-Org/Container.git container
+git clone git@github.com:Opine-Org/DB.git db
 git clone git@github.com:Opine-Org/Errors.git errors
 git clone git@github.com:Opine-Org/Field.git field
 git clone git@github.com:Opine-Org/Form.git form
@@ -22,4 +21,6 @@ git clone git@github.com:Opine-Org/PubSub.git pubsub
 git clone git@github.com:Opine-Org/Queue.git queue
 git clone git@github.com:Opine-Org/Route.git route
 git clone git@github.com:Opine-Org/Search.git search
-git clone git@github.com:Opine-Org/Semantic-CM.git semantic-sm
+git clone git@github.com:Opine-Org/Secret.git secret
+git clone git@github.com:Opine-Org/Semantic-CM.git semantic-cm
+git clone git@github.com:Opine-Org/UploadWrapper.git uploadwrapper

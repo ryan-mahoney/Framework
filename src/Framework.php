@@ -108,8 +108,7 @@ class Framework {
 
     public function frontController () {
         if (isset($_POST) && !empty($_POST)) {
-            $uriBase = str_replace('?' . $_SERVER['QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
-            self::$container->post->populate($uriBase, $_POST);
+            self::$container->post->populate($_POST);
         }
         if ($this->routeCached === false) {
             $this->routing();

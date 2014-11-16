@@ -38,6 +38,7 @@
         "opine/queue": "dev-master",
         "opine/route": "dev-master",
         "opine/search": "dev-master",
+        "opine/secret": "dev-master",
         "opine/semantic-cm": "dev-master"
     },
     "autoload": {
