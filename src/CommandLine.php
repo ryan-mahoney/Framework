@@ -1,15 +1,23 @@
 <?php
 namespace Opine;
 
+use Opine\Container\Service as Container;
+use Opine\Cache\Service as Cache;
+use Opine\Config\Service as Config;
+
 class CommandLine {
 	public function run () {
         if (!isset($_SERVER['argv'][1])) {
             die('no command supplied');
         }
-        $framework = new Framework(true);
-        $container = $framework->container();
-        $framework->routing();
-        $root = $framework->root();
+        if (empty(getenv('OPINE_ENV'))) {
+            die('OPINE_ENV should be set on command line, even if only to: defualt');
+        }
+        $root = $this->root();
+        $config = new Config($root);
+        $config->cacheSet();
+        $container = Container::instance($root, $config, $root . '/../container.yml');
+        $this->routing($container);
         switch ($_SERVER['argv'][1]) {
             case 'help':
                 echo
@@ -98,6 +106,25 @@ class CommandLine {
             default:
                 echo 'Unknown command', "\n";
                 break;
+        }
+    }
+
+    private function root () {
+        $root = getcwd();
+        if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
+            $root .= '/public';
+        }
+        return $root;
+    }
+
+    private function routing ($container) {
+        $container->get('imageResizerRoute')->paths();
+        $container->get('collectionRoute')->paths();
+        $container->get('formRoute')->paths();
+        $container->get('bundleModel')->paths();
+        $myRoute = new \Route($container->get('route'));
+        if (method_exists($myRoute, 'paths')) {
+            $myRoute->paths();
         }
     }
 }
