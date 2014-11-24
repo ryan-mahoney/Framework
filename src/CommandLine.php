@@ -32,64 +32,63 @@ class CommandLine {
                 if (!isset($_SERVER['argv'][2])) {
                     return;
                 }
-                $container->build->managerInstall($_SERVER['argv'][2]);
+                $container->get('build')->managerInstall($_SERVER['argv'][2]);
                 break;
 
             case 'collection-install':
                 if (!isset($_SERVER['argv'][2])) {
                     return;
                 }
-                $container->build->collectionInstall($_SERVER['argv'][2]);
+                $container->get('build')->collectionInstall($_SERVER['argv'][2]);
                 break;
 
             case 'build':
-                echo shell_exec('cd ' . $root . '/.. && composer dump-autoload');
-                $container->build->project($root);
+                $container->get('build')->project($root);
                 break;
 
             case 'queue-peek':
-                $container->queue->peekReady();
+                $container->get('queue')->peekReady();
                 break;
 
             case 'worker':
                 set_time_limit(0);
-                $container->worker->work();
+                $container->get('worker')->work();
                 break;
 
             case 'check':
-                $container->build->environmentCheck($root);
+                $container->get('build')->environmentCheck($root);
                 break;
 
             case 'database-migrate-dburi':
-                $container->dbmigration->addURI();
+                $container->get('dbmigration')->addURI();
                 break;
 
             case 'database-create-indexes':
-                $container->collectionModel->reIndexDataAll();
+                $container->get('collectionModel')->reIndexDataAll();
                 break;
 
             case 'search-reindex':
                 if (isset($_SERVER['argv'][2])) {
-                    $container->collectionModel->reIndexSearch($_SERVER['argv'][2]);
+                    $container->get('collectionModel')->reIndexSearch($_SERVER['argv'][2]);
                 } else {
-                    $container->collectionModel->reIndexSearchAll();
+                    $container->get('collectionModel')->reIndexSearchAll();
                 }
                 break;
 
             case 'search-index-drop':
-                $container->search->indexDrop();
+                $container->get('search')->indexDrop();
                 break;
 
             case 'topics-show':
-                $container->topic->show();
+                $container->get('topic')->show();
                 break;
 
             case 'collection-counts-refresh':
-                $container->collectionModel->statsAll();
+                $container->get('collectionModel')->statsAll();
                 break;
 
             case 'container-build':
-                $container->build->container($root);
+                $container->get('build')->container($root);
                 break;
 
             case 'version':

@@ -290,7 +290,7 @@ And here is the subscriber that stores data in the database that is published wh
 		if ($document === false || empty($document)) {
 			throw new \Exception('Document not found in post');
 		}
-		$documentObject = $db->documentStage($event['dbURI'], $document);
+		$documentObject = $db->document($event['dbURI'], $document);
 		$documentObject->upsert();
 		$post->statusSaved();
 	};

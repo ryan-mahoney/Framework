@@ -10,10 +10,10 @@
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,44 +23,30 @@
  * THE SOFTWARE.
  */
 namespace Opine;
-use Opine\Container;
-use Opine\Cache;
-use Opine\Person;
-use Route;
+use Opine\Container\Service as Container;
+use Opine\Cache\Service as Cache;
+use Opine\Config\Service as Config;
 use Exception;
 
-function container ($nocache=false) {
-    if (Framework::container() == null) {
-        new Framework($nocache);
-    }
-    return Framework::container();
-}
-
 class Framework {
-    private static $container;
-    private static $keyCache = [];
+    private $container;
     private $routeCached = false;
-    private $apiToken = false;
+    private $apiToken;
     private $root;
-
-    public static function keySet ($name, $value) {
-        self::$keyCache[$name] = $value;
-    }
-
-    public static function keyGet ($name) {
-        if (!isset(self::$keyCache[$name])) {
-            return false;
-        }
-        return self::$keyCache[$name];
-    }
-
-    public static function container () {
-        return self::$container;
-    }
+    private $environment;
 
     public function __construct ($noContainerCache=false) {
+        $this->environment = 'default';
+        if (isset($_SERVER['OPINE_ENV'])) {
+            $this->environment = $_SERVER['OPINE_ENV'];
+        } else {
+            $test = getenv('OPINE_ENV');
+            if ($test !== false) {
+                $this->environment = $test;
+            }
+        }
         $this->root = $this->root();
-        $this->apiToken = Person::apiTokenFromRequest();
+        $this->apiToken = $this->apiTokenFromRequest();
         $items = [
             $this->root . '-collections' => false,
             $this->root . '-forms' => false,
@@ -69,10 +55,9 @@ class Framework {
             $this->root . '-routes' => false,
             $this->root . '-container' => false,
             $this->root . '-languages' => false,
-            $this->root . '-config' => false,
-            'xxx' => false
+            $this->root . '-config' => false
         ];
-        if ($this->apiToken !== false) {
+        if (!empty($this->apiToken)) {
             $items['person-' . $this->apiToken] = false;
         }
         $cache = new Cache();
@@ -83,7 +68,19 @@ class Framework {
         if ($items[$this->root . '-routes'] != false) {
             $this->routeCached = true;
         }
-        self::$container = new Container($this->root, $this->root . '/../container.yml', $noContainerCache);
+        $config = new Config($this->root);
+        if ($items[$this->root . '-config'] !== false) {
+            $configData = json_decode($items[$this->root . '-config'], true);
+            if (isset($configData[$this->environment])) {
+                $config->cacheSet($configData[$this->environment]);
+            } elseif (isset($configData['default'])) {
+                $config->cacheSet($configData['default']);
+            }
+        } else {
+            $config->cacheSet();
+        }
+        $this->container = Container::instance($this->root, $config, $this->root . '/../container.yml', $noContainerCache);
+        $this->container->set('cache', $cache);
         $this->cache($items);
     }
 
@@ -96,11 +93,11 @@ class Framework {
     }
 
     public function routing () {
-        self::$container->imageResizerRoute->paths();
-        self::$container->collectionRoute->paths();
-        self::$container->formRoute->paths();
-        self::$container->bundleModel->paths();
-        $myRoute = new Route(self::$container->route);
+        $this->container->get('imageResizerRoute')->paths();
+        $this->container->get('collectionRoute')->paths();
+        $this->container->get('formRoute')->paths();
+        $this->container->get('bundleModel')->paths();
+        $myRoute = new \Route($this->container->get('route'));
         if (method_exists($myRoute, 'paths')) {
             $myRoute->paths();
         }
@@ -108,15 +105,15 @@ class Framework {
 
     public function frontController () {
         if (isset($_POST) && !empty($_POST)) {
-            self::$container->post->populate($_POST);
+            $this->container->get('post')->populate($_POST);
         }
         if ($this->routeCached === false) {
             $this->routing();
         }
         http_response_code(200);
         try {
-            $path = self::$container->language->pathEvaluate($this->pathDetermine());
-            $response = self::$container->route->run($_SERVER['REQUEST_METHOD'], $path);
+            $path = $this->container->get('language')->pathEvaluate($this->pathDetermine());
+            $response = $this->container->get('route')->run($_SERVER['REQUEST_METHOD'], $path);
             echo $response;
         } catch (Exception $e) {
             if (http_response_code() == 200) {
@@ -135,33 +132,40 @@ class Framework {
     }
 
     public function cache (array &$items) {
-        self::$container->collectionModel->cacheSet(json_decode($items[$this->root . '-collections'], true));
-        self::$container->formModel->cacheSet(json_decode($items[$this->root . '-forms'], true));
-        self::$container->bundleModel->cacheSet(json_decode($items[$this->root . '-bundles'], true));
-        self::$container->topic->cacheSet(json_decode($items[$this->root . '-topics'], true));
-        self::$container->route->cacheSet(json_decode($items[$this->root . '-routes'], true));
-        self::$container->language->cacheSet(json_decode($items[$this->root . '-languages'], true));
-        $environment = 'default';
-        if (isset($_SERVER['OPINE-ENV'])) {
-            $environment = $_SERVER['OPINE-ENV'];
-        }
-        $config = json_decode($items[$this->root . '-config'], true);
-        if (isset($config[$environment])) {
-            self::$container->config->cacheSet($config[$environment]);
-        } elseif (isset($config['default'])) {
-            self::$container->config->cacheSet($config['default']);
-        } else {
-            self::$container->config->cacheSet(false);
-        }
-        if ($this->apiToken !== false) {
+        $this->container->get('collectionModel')->cacheSet(json_decode($items[$this->root . '-collections'], true));
+        $this->container->get('formModel')->cacheSet(json_decode($items[$this->root . '-forms'], true));
+        $this->container->get('bundleModel')->cacheSet(json_decode($items[$this->root . '-bundles'], true));
+        $this->container->get('topic')->cacheSet(json_decode($items[$this->root . '-topics'], true));
+        $this->container->get('route')->cacheSet(json_decode($items[$this->root . '-routes'], true));
+        $this->container->get('language')->cacheSet(json_decode($items[$this->root . '-languages'], true));
+        if (!empty($this->apiToken)) {
             if ($items['person-' . $this->apiToken] != false) {
-                self::$container->person->establish(json_decode($items['person-' . $this->apiToken], true));
+                $person = json_decode($items['person-' . $this->apiToken], true);
+                $this->container->get('person')->establish($person);
+                $this->container->get('db')->userIdSet($person['_id']);
             } else {
-                $person = self::$container->person->findByApiToken($this->apiToken, true);
+                $person = $this->container->get('person')->findByApiToken($this->apiToken, true);
                 if ($person != false) {
-                    self::$container->person->establish($person);
+                    $this->container->get('person')->establish($person);
+                    $this->container->get('db')->userIdSet($person['_id']);
                 }
             }
         }
+    }
+
+    private function apiTokenFromRequest () {
+        if (isset($_SERVER['api_token'])) {
+            return $_SERVER['api_token'];
+        }
+        if (isset($_GET['api_token'])) {
+            return $_GET['api_token'];
+        }
+        if (isset($_POST['api_token'])) {
+            return $_POST['api_token'];
+        }
+        if (isset($_COOKIE['api_token'])) {
+            return $_COOKIE['api_token'];
+        }
+        return false;
     }
 }

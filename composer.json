@@ -29,6 +29,7 @@
         "opine/handlebars": "dev-master",
         "opine/helper": "dev-master",
         "opine/http": "dev-master",
+        "opine/interfaces": "dev-master",
         "opine/imageresizer": "dev-master",
         "opine/language": "dev-master",
         "opine/layout": "dev-master",

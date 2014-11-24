@@ -65,12 +65,16 @@ put($directory . '/public/placeholder', '');
 
 put($directory . '/tests/' . $serviceName . 'Test.php', '<?php
 namespace ' . $namespace . ';
+
 use PHPUnit_Framework_TestCase;
+use Opine\Config\Service as Config;
+use Opine\Container\Service as Container;
 
 class ' . $serviceName . 'Test extends PHPUnit_Framework_TestCase {
     public function setup () {
         $root = __DIR__ . \'/../public\';
-        $container = new Container($root, $root . \'/../container.yml\');
+        $config = new Config($root);
+        $container = Container::service($root, $config, $root . \'/../container.yml\');
     }
 
     public function testSample () {
