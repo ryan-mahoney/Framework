@@ -20,5 +20,5 @@ foreach ($file['require'] as $require => $value) {
         continue;
     }
     echo $folder, "\n";
-    echo shell_exec('cd ' . $folderPath . ' && git add . && git commit -m "' . $message . '" && git push origin master'), "\n\n";
+    echo shell_exec('cd ' . $folderPath . ' && git add -u && git add . && git commit -m "' . $message . '" && git push origin master'), "\n\n";
 }

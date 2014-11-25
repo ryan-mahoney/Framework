@@ -79,7 +79,7 @@ class Framework {
         } else {
             $config->cacheSet();
         }
-        $this->container = Container::instance($this->root, $config, $this->root . '/../container.yml', $noContainerCache);
+        $this->container = Container::instance($this->root, $config, $this->root . '/../config/container.yml', $noContainerCache);
         $this->container->set('cache', $cache);
         $this->cache($items);
     }
