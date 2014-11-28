@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/opine-org/framework.png?label=ready&title=Ready)](https://waffle.io/opine-org/framework)
 Opine-PHP Framework
 ===================
 
