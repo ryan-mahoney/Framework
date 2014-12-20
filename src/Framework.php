@@ -26,8 +26,10 @@ namespace Opine;
 use Opine\Container\Service as Container;
 use Opine\Cache\Service as Cache;
 use Opine\Config\Service as Config;
-use Exception;
+use Exception as BaseException;
 use Whoops;
+
+class Exception extends BaseException {}
 
 class Framework {
     private $container;
@@ -36,19 +38,38 @@ class Framework {
     private $root;
     private $environment;
 
-    public function __construct ($noContainerCache=false) {
-        $whoops = new Whoops\Run;
-        $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler);
-        $whoops->register();
+    private function environment () {
         $this->environment = 'default';
         if (isset($_SERVER['OPINE_ENV'])) {
             $this->environment = $_SERVER['OPINE_ENV'];
-        } else {
-            $test = getenv('OPINE_ENV');
-            if ($test !== false) {
-                $this->environment = $test;
-            }
         }
+        if ($this->environment == 'default') {
+            $test = getenv('OPINE_ENV');
+            if (empty($test)) {
+                return;
+            }
+            $this->environment = $test;
+        }
+    }
+
+    private function errors () {
+        if ($this->environment == 'prod') {
+            return;
+        }
+        $run = new Whoops\Run();
+        $handler = new Whoops\Handler\PrettyPageHandler();
+        $run->pushHandler($handler);
+        $run->pushHandler(function ($exception, $inspector, $run) {
+            $inspector->getFrames()->map(function ($frame) {
+                return $frame;
+            });
+        });
+        $run->register();
+    }
+
+    public function __construct ($noContainerCache=false) {
+        $this->environment();
+        $this->errors();
         $this->root = $this->root();
         $this->apiToken = $this->apiTokenFromRequest();
         $items = [
