@@ -27,6 +27,7 @@ use Opine\Container\Service as Container;
 use Opine\Cache\Service as Cache;
 use Opine\Config\Service as Config;
 use Exception;
+use Whoops;
 
 class Framework {
     private $container;
@@ -36,6 +37,9 @@ class Framework {
     private $environment;
 
     public function __construct ($noContainerCache=false) {
+        $whoops = new Whoops\Run;
+        $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
         $this->environment = 'default';
         if (isset($_SERVER['OPINE_ENV'])) {
             $this->environment = $_SERVER['OPINE_ENV'];

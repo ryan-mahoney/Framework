@@ -40,7 +40,8 @@
         "opine/route": "dev-master",
         "opine/search": "dev-master",
         "opine/secret": "dev-master",
-        "opine/semantic-cm": "dev-master"
+        "opine/semantic-cm": "dev-master",
+        "filp/whoops": "~1.0"
     },
     "autoload": {
         "psr-4": {
