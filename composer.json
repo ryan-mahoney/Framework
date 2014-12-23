@@ -40,7 +40,7 @@
         "opine/route"       : "3.0.1",
         "opine/search"      : "dev-master",
         "opine/secret"      : "dev-master",
-        "opine/semantic-cm" : "dev-master",
+        "opine/semantic-cm" : "1.5.5",
         "filp/whoops"       : "~1.0"
     },
     "autoload": {
