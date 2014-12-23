@@ -121,10 +121,5 @@ class CommandLine {
         $container->get('imageResizerRoute')->paths();
         $container->get('collectionRoute')->paths();
         $container->get('formRoute')->paths();
-        $container->get('bundleModel')->paths();
-        $myRoute = new \Route($container->get('route'));
-        if (method_exists($myRoute, 'paths')) {
-            $myRoute->paths();
-        }
     }
 }

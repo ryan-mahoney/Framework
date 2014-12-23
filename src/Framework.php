@@ -121,11 +121,6 @@ class Framework {
         $this->container->get('imageResizerRoute')->paths();
         $this->container->get('collectionRoute')->paths();
         $this->container->get('formRoute')->paths();
-        $this->container->get('bundleModel')->paths();
-        $myRoute = new \Route($this->container->get('route'));
-        if (method_exists($myRoute, 'paths')) {
-            $myRoute->paths();
-        }
     }
 
     public function frontController () {
