@@ -85,7 +85,6 @@ class ' . $serviceName . 'Test extends PHPUnit_Framework_TestCase {
 put($directory . '/composer.json', '{
     "name": "' . strtolower($namespace) . '/' . strtolower($serviceName) . '",
     "type": "library",
-    "minimum-stability": "dev",
     "description": "",
     "keywords": [],
     "license": "MIT",
