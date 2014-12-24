@@ -16,7 +16,7 @@ $version = $argv[2];
 
 $cmd = "cd " . __DIR__ . "/../../ && find . | grep composer.json | grep -v bower | grep -v vagrant | sed 's/\.\//" . str_replace('/', '\/', __DIR__ . '/../../') . "/'";
 $composers = explode("\n", trim(shell_exec($cmd)));
-$pattern = '/("' . str_replace('/', '\/', $component) . '")( *\: *)("[\.0-9]*")/';
+$pattern = '/("' . str_replace('/', '\/', $component) . '")((?: *)\:(?: *))("[\.0-9\-a-z]*")/';
 foreach ($composers as $composer) {
     $content = file_get_contents($composer);
     if (substr_count($content, $component) < 1) {

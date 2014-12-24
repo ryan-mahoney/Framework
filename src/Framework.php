@@ -23,22 +23,27 @@
  * THE SOFTWARE.
  */
 namespace Opine;
+
 use Opine\Container\Service as Container;
 use Opine\Cache\Service as Cache;
 use Opine\Config\Service as Config;
 use Exception as BaseException;
 use Whoops;
 
-class Exception extends BaseException {}
+class Exception extends BaseException
+{
+}
 
-class Framework {
+class Framework
+{
     private $container;
     private $routeCached = false;
     private $apiToken;
     private $root;
     private $environment;
 
-    private function environment () {
+    private function environment()
+    {
         $this->environment = 'default';
         if (isset($_SERVER['OPINE_ENV'])) {
             $this->environment = $_SERVER['OPINE_ENV'];
@@ -52,7 +57,8 @@ class Framework {
         }
     }
 
-    private function errors () {
+    private function errors()
+    {
         if ($this->environment == 'prod') {
             return;
         }
@@ -67,35 +73,36 @@ class Framework {
         $run->register();
     }
 
-    public function __construct ($noContainerCache=false) {
+    public function __construct($noContainerCache = false)
+    {
         $this->environment();
         $this->errors();
         $this->root = $this->root();
         $this->apiToken = $this->apiTokenFromRequest();
         $items = [
-            $this->root . '-collections' => false,
-            $this->root . '-forms' => false,
-            $this->root . '-bundles' => false,
-            $this->root . '-topics' => false,
-            $this->root . '-routes' => false,
-            $this->root . '-container' => false,
-            $this->root . '-languages' => false,
-            $this->root . '-config' => false
+            $this->root.'-collections' => false,
+            $this->root.'-forms' => false,
+            $this->root.'-bundles' => false,
+            $this->root.'-topics' => false,
+            $this->root.'-routes' => false,
+            $this->root.'-container' => false,
+            $this->root.'-languages' => false,
+            $this->root.'-config' => false,
         ];
         if (!empty($this->apiToken)) {
-            $items['person-' . $this->apiToken] = false;
+            $items['person-'.$this->apiToken] = false;
         }
         $cache = new Cache();
         $cacheResult = $cache->getBatch($items);
         if ($noContainerCache === false && $cacheResult === true) {
-            $noContainerCache = json_decode($items[$this->root . '-container'], true);
+            $noContainerCache = json_decode($items[$this->root.'-container'], true);
         }
-        if ($items[$this->root . '-routes'] != false) {
+        if ($items[$this->root.'-routes'] != false) {
             $this->routeCached = true;
         }
         $config = new Config($this->root);
-        if ($items[$this->root . '-config'] !== false) {
-            $configData = json_decode($items[$this->root . '-config'], true);
+        if ($items[$this->root.'-config'] !== false) {
+            $configData = json_decode($items[$this->root.'-config'], true);
             if (isset($configData[$this->environment])) {
                 $config->cacheSet($configData[$this->environment]);
             } elseif (isset($configData['default'])) {
@@ -104,26 +111,30 @@ class Framework {
         } else {
             $config->cacheSet();
         }
-        $this->container = Container::instance($this->root, $config, $this->root . '/../config/containers/test-container.yml', $noContainerCache);
+        $this->container = Container::instance($this->root, $config, $this->root.'/../config/containers/test-container.yml', $noContainerCache);
         $this->container->set('cache', $cache);
         $this->cache($items);
     }
 
-    public function root () {
+    public function root()
+    {
         $root = (empty($_SERVER['DOCUMENT_ROOT']) ? getcwd() : $_SERVER['DOCUMENT_ROOT']);
-        if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
+        if (substr($root, -6, 6) != 'public' && file_exists($root.'/public')) {
             $root .= '/public';
         }
+
         return $root;
     }
 
-    public function routing () {
+    public function routing()
+    {
         $this->container->get('imageResizerRoute')->paths();
         $this->container->get('collectionRoute')->paths();
         $this->container->get('formRoute')->paths();
     }
 
-    public function frontController () {
+    public function frontController()
+    {
         if (isset($_POST) && !empty($_POST)) {
             $this->container->get('post')->populate($_POST);
         }
@@ -143,24 +154,27 @@ class Framework {
         }
     }
 
-    private function pathDetermine () {
+    private function pathDetermine()
+    {
         $path = $_SERVER['REQUEST_URI'];
         if (substr_count($path, '?') > 0) {
-            $path = str_replace('?' . $_SERVER['QUERY_STRING'], '', $path);
+            $path = str_replace('?'.$_SERVER['QUERY_STRING'], '', $path);
         }
+
         return $path;
     }
 
-    public function cache (array &$items) {
-        $this->container->get('collectionModel')->cacheSet(json_decode($items[$this->root . '-collections'], true));
-        $this->container->get('formModel')->cacheSet(json_decode($items[$this->root . '-forms'], true));
-        $this->container->get('bundleModel')->cacheSet(json_decode($items[$this->root . '-bundles'], true));
-        $this->container->get('topic')->cacheSet(json_decode($items[$this->root . '-topics'], true));
-        $this->container->get('route')->cacheSet(json_decode($items[$this->root . '-routes'], true));
-        $this->container->get('language')->cacheSet(json_decode($items[$this->root . '-languages'], true));
+    public function cache(array &$items)
+    {
+        $this->container->get('collectionModel')->cacheSet(json_decode($items[$this->root.'-collections'], true));
+        $this->container->get('formModel')->cacheSet(json_decode($items[$this->root.'-forms'], true));
+        $this->container->get('bundleModel')->cacheSet(json_decode($items[$this->root.'-bundles'], true));
+        $this->container->get('topic')->cacheSet(json_decode($items[$this->root.'-topics'], true));
+        $this->container->get('route')->cacheSet(json_decode($items[$this->root.'-routes'], true));
+        $this->container->get('language')->cacheSet(json_decode($items[$this->root.'-languages'], true));
         if (!empty($this->apiToken)) {
-            if ($items['person-' . $this->apiToken] != false) {
-                $person = json_decode($items['person-' . $this->apiToken], true);
+            if ($items['person-'.$this->apiToken] != false) {
+                $person = json_decode($items['person-'.$this->apiToken], true);
                 $this->container->get('person')->establish($person);
                 $this->container->get('db')->userIdSet($person['_id']);
             } else {
@@ -173,7 +187,8 @@ class Framework {
         }
     }
 
-    private function apiTokenFromRequest () {
+    private function apiTokenFromRequest()
+    {
         if (isset($_SERVER['api_token'])) {
             return $_SERVER['api_token'];
         }
@@ -186,6 +201,7 @@ class Framework {
         if (isset($_COOKIE['api_token'])) {
             return $_COOKIE['api_token'];
         }
+
         return false;
     }
 }

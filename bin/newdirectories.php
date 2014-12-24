@@ -7,43 +7,43 @@ if (isset($argv[1]) && $argv[1] == 'run') {
 }
 
 $files = [
-    $dir . '/configs'                => $dir . '/config',
-    $dir . '/controllers'            => $dir . '/app/controllers',
-    $dir . '/models'                 => $dir . '/app/models',
-    $dir . '/views'                  => $dir . '/app/views',
-    $dir . '/helpers'                => $dir . '/app/helpers',
-    $dir . '/Route.php'              => $dir . '/app/Route.php',
-    $dir . '/topics.yml'             => $dir . '/config/topics.yml',
-    $dir . '/bundles/bundles.yml'    => $dir . '/config/bundles.yml',
-    $dir . '/container.yml'          => $dir . '/config/container.yml',
-    $dir . '/package-container.yml'  => $dir . '/config/package-container.yml',
-    $dir . '/collections'            => $dir . '/config/collections',
-    $dir . '/forms'                  => $dir . '/config/forms',
-    $dir . '/managers'               => $dir . '/config/managers',
-    $dir . '/cache'                  => $dir . '/var/cache'
+    $dir.'/configs'                => $dir.'/config',
+    $dir.'/controllers'            => $dir.'/app/controllers',
+    $dir.'/models'                 => $dir.'/app/models',
+    $dir.'/views'                  => $dir.'/app/views',
+    $dir.'/helpers'                => $dir.'/app/helpers',
+    $dir.'/Route.php'              => $dir.'/app/Route.php',
+    $dir.'/topics.yml'             => $dir.'/config/topics.yml',
+    $dir.'/bundles/bundles.yml'    => $dir.'/config/bundles.yml',
+    $dir.'/container.yml'          => $dir.'/config/container.yml',
+    $dir.'/package-container.yml'  => $dir.'/config/package-container.yml',
+    $dir.'/collections'            => $dir.'/config/collections',
+    $dir.'/forms'                  => $dir.'/config/forms',
+    $dir.'/managers'               => $dir.'/config/managers',
+    $dir.'/cache'                  => $dir.'/var/cache',
 ];
 
-if (!file_exists($dir . '/configs') && !file_exists($dir . '/config')) {
+if (!file_exists($dir.'/configs') && !file_exists($dir.'/config')) {
     if ($mode == 'stage') {
-        echo 'mkdir ' . $dir . '/config', "\n";
+        echo 'mkdir '.$dir.'/config', "\n";
     } else {
-        mkdir($dir . '/config');
+        mkdir($dir.'/config');
     }
 }
 
-if (!file_exists($dir . '/app')) {
+if (!file_exists($dir.'/app')) {
     if ($mode == 'stage') {
-        echo 'mkdir ' . $dir . '/app', "\n";
+        echo 'mkdir '.$dir.'/app', "\n";
     } else {
-        mkdir($dir . '/app');
+        mkdir($dir.'/app');
     }
 }
 
-if (!file_exists($dir . '/var')) {
+if (!file_exists($dir.'/var')) {
     if ($mode == 'stage') {
-        echo 'mkdir ' . $dir . '/var', "\n";
+        echo 'mkdir '.$dir.'/var', "\n";
     } else {
-        mkdir($dir . '/var');
+        mkdir($dir.'/var');
     }
 }
 
@@ -53,7 +53,7 @@ foreach ($files as $file => $newFile) {
         echo $shortName, ': does not exist.', "\n";
         continue;
     }
-    $cmd = 'mv ' . $file . ' ' . $newFile;
+    $cmd = 'mv '.$file.' '.$newFile;
     if ($mode == 'stage') {
         echo $cmd, "\n";
     } else {
@@ -61,7 +61,7 @@ foreach ($files as $file => $newFile) {
     }
 }
 
-if (file_exists($dir . '/composer.json')) {
+if (file_exists($dir.'/composer.json')) {
     $replaces = [
         '"controllers"' => '"app/controllers"',
         '"helpers"'     => '"app/helpers"',
@@ -70,15 +70,15 @@ if (file_exists($dir . '/composer.json')) {
         '"Route.php"'   => '"app/Route.php"',
         '"collections"' => '"config/collections"',
         '"forms"'       => '"config/forms"',
-        '"managers"'    => '"config/managers"'
+        '"managers"'    => '"config/managers"',
     ];
-    $composer = file_get_contents($dir . '/composer.json');
+    $composer = file_get_contents($dir.'/composer.json');
     foreach ($replaces as $replace => $newReplace) {
         $composer = str_replace($replace, $newReplace, $composer);
     }
     if ($mode == 'stage') {
         echo "\n", $composer;
     } else {
-        file_put_contents($dir . '/composer.json', $composer);
+        file_put_contents($dir.'/composer.json', $composer);
     }
 }

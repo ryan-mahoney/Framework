@@ -2,11 +2,12 @@
 namespace Opine;
 
 use Opine\Container\Service as Container;
-use Opine\Cache\Service as Cache;
 use Opine\Config\Service as Config;
 
-class CommandLine {
-	public function run () {
+class CommandLine
+{
+    public function run()
+    {
         if (!isset($_SERVER['argv'][1])) {
             die('no command supplied');
         }
@@ -16,7 +17,7 @@ class CommandLine {
         $root = $this->root();
         $config = new Config($root);
         $config->cacheSet();
-        $container = Container::instance($root, $config, $root . '/../config/containers/test-container.yml');
+        $container = Container::instance($root, $config, $root.'/../config/containers/test-container.yml');
         $this->routing($container);
         switch ($_SERVER['argv'][1]) {
             case 'help':
@@ -100,7 +101,7 @@ class CommandLine {
                 break;
 
             case 'version':
-                echo file_get_contents($root . '/../vendor/opine/framework/version.txt'), "\n";
+                echo file_get_contents($root.'/../vendor/opine/framework/version.txt'), "\n";
                 break;
 
             default:
@@ -109,15 +110,18 @@ class CommandLine {
         }
     }
 
-    private function root () {
+    private function root()
+    {
         $root = getcwd();
-        if (substr($root, -6, 6) != 'public' && file_exists($root . '/public')) {
+        if (substr($root, -6, 6) != 'public' && file_exists($root.'/public')) {
             $root .= '/public';
         }
+
         return $root;
     }
 
-    private function routing ($container) {
+    private function routing($container)
+    {
         $container->get('imageResizerRoute')->paths();
         $container->get('collectionRoute')->paths();
         $container->get('formRoute')->paths();
