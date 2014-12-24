@@ -1,0 +1,23 @@
+imports:
+    - ../../../build/config/containers/package-container.yml
+    - ../../../bundle/config/containers/package-container.yml
+    - ../../../cache/config/containers/package-container.yml
+    - ../../../collection/config/containers/package-container.yml
+    - ../../../config/config/containers/package-container.yml
+    - ../../../container/config/containers/package-container.yml
+    - ../../../db/config/containers/package-container.yml
+    - ../../../field/config/containers/package-container.yml
+    - ../../../form/config/containers/package-container.yml
+    - ../../../handlebars/config/containers/package-container.yml
+    - ../../../helper/config/containers/package-container.yml
+    - ../../../http/config/containers/package-container.yml
+    - ../../../imageresizer/config/containers/package-container.yml
+    - ../../../layout/config/containers/package-container.yml
+    - ../../../mail/config/containers/package-container.yml
+    - ../../../language/config/containers/package-container.yml
+    - ../../../person/config/containers/package-container.yml
+    - ../../../pubsub/config/containers/package-container.yml
+    - ../../../queue/config/containers/package-container.yml
+    - ../../../route/config/containers/package-container.yml
+    - ../../../search/config/containers/package-container.yml
+    - ../../../secret/config/containers/package-container.yml
