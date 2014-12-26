@@ -40,7 +40,10 @@ function composerVersion ($path, $version) {
 }
 
 function commit ($folderPath, $version) {
-    shell_exec('cd ' . $folderPath . ' && git add -u && git add . && git commit -m "Upgrate to ' . $version . '" && git push origin master');
+    shell_exec('cd ' . $folderPath . ' && git add -u');
+    shell_exec('cd ' . $folderPath . ' && git add . ');
+    shell_exec('cd ' . $folderPath . ' && git commit -m "Upgrate to ' . $version . '"');
+    shell_exec('cd ' . $folderPath . ' && git push origin master');
 }
 
 function gitRelease ($path, $version, $token) {
