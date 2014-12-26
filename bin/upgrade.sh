@@ -47,6 +47,7 @@ function commit ($folderPath, $version) {
 }
 
 function gitRelease ($path, $version, $token) {
+    sleep(10);
     $cmd = 'cd ' . $path . ' && git remote -v';
     $repo = explode("\n", trim(shell_exec($cmd)))[0];
     $repo = str_replace([' (fetch)', ' (push)', '.git', 'origin' . "\t" . 'git@github.com:'], '', $repo);
