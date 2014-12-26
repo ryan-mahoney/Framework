@@ -94,8 +94,9 @@ class Framework
         }
         $cache = new Cache();
         $cacheResult = $cache->getBatch($items);
-        if ($noContainerCache === false && $cacheResult === true) {
-            $noContainerCache = json_decode($items[$this->root.'-container'], true);
+        $containerCache = [];
+        if ($noContainerCache === false && isset($items[$this->root.'-container'])) {
+            $containerCache = json_decode($items[$this->root.'-container'], true);
         }
         if ($items[$this->root.'-routes'] != false) {
             $this->routeCached = true;
@@ -111,7 +112,7 @@ class Framework
         } else {
             $config->cacheSet();
         }
-        $this->container = Container::instance($this->root, $config, $this->root.'/../config/containers/test-container.yml', $noContainerCache);
+        $this->container = Container::instance($this->root, $config, $this->root.'/../config/containers/container.yml', $noContainerCache, $containerCache);
         $this->container->set('cache', $cache);
         $this->cache($items);
     }

@@ -17,7 +17,7 @@ class CommandLine
         $root = $this->root();
         $config = new Config($root);
         $config->cacheSet();
-        $container = Container::instance($root, $config, $root.'/../config/containers/test-container.yml');
+        $container = Container::instance($root, $config, $root.'/../config/containers/container.yml');
         $this->routing($container);
         switch ($_SERVER['argv'][1]) {
             case 'help':

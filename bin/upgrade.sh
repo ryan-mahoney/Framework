@@ -47,6 +47,6 @@ function gitRelease ($path, $version, $token) {
     $cmd = 'cd ' . $path . ' && git remote -v';
     $repo = explode("\n", trim(shell_exec($cmd)))[0];
     $repo = str_replace([' (fetch)', ' (push)', '.git', 'origin' . "\t" . 'git@github.com:'], '', $repo);
-    $cmd = 'curl --data \'{"tag_name": "' . $version . '","target_commitish": "master","name": "' . $version . '","body": "Release of version ' . $version . '","draft": false,"prerelease": false}\' https://api.github.com/repos/' . $repo . '/releases?access_token=' . $token;
+    $cmd = 'curl --data \'{"tag_name": "v' . $version . '","target_commitish": "master","name": "v' . $version . '","body": "Release of version ' . $version . '","draft": false,"prerelease": false}\' https://api.github.com/repos/' . $repo . '/releases?access_token=' . $token;
     shell_exec($cmd);
 }
