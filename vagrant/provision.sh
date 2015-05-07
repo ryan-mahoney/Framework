@@ -5,14 +5,15 @@ sudo usermod -a -G www-data vagrant
 sudo usermod -a -G vagrant www-data
 
 # additional repositories
-sudo wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add - 2> /dev/null
-sudo echo "deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main" | sudo tee -a /etc/apt/sources.list 2> /dev/null
+sudo wget -q - https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.5.2.deb
+sudo dpkg -i ./elasticsearch-1.5.2.deb
+sudo rm ./elasticsearch-1.5.2.deb
 
 # update
 sudo apt-get update 2> /dev/null
 
 # install software
-sudo apt-get install -y wget libyaml-dev curl make autoconf vim nano mlocate nginx openssl default-jre mongodb-server elasticsearch git memcached libmemcached-tools beanstalkd php5 php5-cli php5-fpm php-pear php5-dev php5-gd php5-curl php5-mcrypt php5-curl php5-tidy php5-mongo php5-memcache 2> /dev/null
+sudo apt-get install -y wget node npm libyaml-dev curl make autoconf vim nano mlocate nginx openssl default-jre mongodb-server git memcached libmemcached-tools beanstalkd php5 php5-cli php5-fpm php-pear php5-dev php5-gd php5-curl php5-mcrypt php5-curl php5-tidy php5-mongo php5-memcache 2> /dev/null
 
 # php configuration
 sudo pecl install yaml
@@ -35,6 +36,5 @@ sudo /etc/init.d/nginx restart
 sudo /etc/init.d/elasticsearch start
 sudo /etc/init.d/beanstalkd start
 sudo service mongodb restart
-sudo /etc/init.d/nginx restart
 sudo killall php5-fpm
 sudo /etc/init.d/php5-fpm start
