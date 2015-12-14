@@ -111,7 +111,7 @@ class Framework
         }
         $this->container = Container::instance($this->root, $config, $this->root.'/../config/containers/container.yml', $noContainerCache, $containerCache);
         $this->container->set('cache', $cache);
-        $this->cache($cacheResult,$person);
+        $this->cache($cacheResult, $person);
     }
 
     public function root()
@@ -162,7 +162,7 @@ class Framework
         return $path;
     }
 
-    public function cache(array &$cacheResult)
+    public function cache(array &$cacheResult, $person)
     {
         $this->container->get('collectionModel')->cacheSet($cacheResult['collections']);
         $this->container->get('formModel')->cacheSet($cacheResult['forms']);
@@ -170,17 +170,14 @@ class Framework
         $this->container->get('topic')->cacheSet($cacheResult['topics']);
         $this->container->get('route')->cacheSet($cacheResult['routes']);
         $this->container->get('language')->cacheSet($cacheResult['languages']);
-        if (!empty($this->apiToken)) {
-            if ($items['person-'.$this->apiToken] != false) {
-                $person = json_decode($items['person-'.$this->apiToken], true);
+        if (!empty($person)) {
+            $this->container->get('person')->establish($person);
+            $this->container->get('db')->userIdSet($person['_id']);
+        } else {
+            $person = $this->container->get('person')->findByApiToken($this->apiToken, true);
+            if ($person != false) {
                 $this->container->get('person')->establish($person);
                 $this->container->get('db')->userIdSet($person['_id']);
-            } else {
-                $person = $this->container->get('person')->findByApiToken($this->apiToken, true);
-                if ($person != false) {
-                    $this->container->get('person')->establish($person);
-                    $this->container->get('db')->userIdSet($person['_id']);
-                }
             }
         }
     }
