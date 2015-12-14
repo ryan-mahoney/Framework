@@ -41,25 +41,30 @@ class Framework
     private $apiToken;
     private $root;
     private $environment;
+    private $cachePrefix;
 
     private function environment()
     {
+        // set environment
         $this->environment = 'default';
-        if (isset($_SERVER['OPINE_ENV'])) {
-            $this->environment = $_SERVER['OPINE_ENV'];
-        }
-        if ($this->environment == 'default') {
-            $test = getenv('OPINE_ENV');
-            if (empty($test)) {
-                return;
-            }
+        $test = getenv('OPINE_ENV');
+        if (!empty($test)) {
             $this->environment = $test;
         }
+
+        // set project
+        $projectName = 'project';
+        $test = getenv('OPINE_PROJECT');
+        if ($test !== false) {
+            $projectName = $test;
+        }
+
+        $this->cachePrefix = $projectName . $this->environment;
     }
 
     private function errors()
     {
-        if ($this->environment == 'prod') {
+        if ($this->environment == 'production') {
             return;
         }
         $run = new Whoops\Run();
@@ -75,35 +80,27 @@ class Framework
 
     public function __construct($noContainerCache = false)
     {
+        $cache = new Cache($this->root);
         $this->environment();
         $this->errors();
         $this->root = $this->root();
         $this->apiToken = $this->apiTokenFromRequest();
-        $items = [
-            $this->root.'-collections' => false,
-            $this->root.'-forms' => false,
-            $this->root.'-bundles' => false,
-            $this->root.'-topics' => false,
-            $this->root.'-routes' => false,
-            $this->root.'-container' => false,
-            $this->root.'-languages' => false,
-            $this->root.'-config' => false,
-        ];
+        $items = ['collections', 'forms', 'bundles', 'topics', 'routes', 'container', 'languages', 'config'];
+        $person = false;
         if (!empty($this->apiToken)) {
-            $items['person-'.$this->apiToken] = false;
+            $person = json_decode($cache->get('person-'.$this->apiToken), true);
         }
-        $cache = new Cache();
-        $cacheResult = $cache->getBatch($items);
+        $cacheResult = json_decode($cache->get($this->cachePrefix . '-opine'), true);
         $containerCache = [];
-        if ($noContainerCache === false && isset($items[$this->root.'-container'])) {
-            $containerCache = json_decode($items[$this->root.'-container'], true);
+        if ($noContainerCache === false && isset($cacheResult['container'])) {
+            $containerCache = $cacheResult['container'];
         }
-        if ($items[$this->root.'-routes'] != false) {
+        if ($cacheResult['routes'] != false) {
             $this->routeCached = true;
         }
         $config = new Config($this->root);
-        if ($items[$this->root.'-config'] !== false) {
-            $configData = json_decode($items[$this->root.'-config'], true);
+        if ($cacheResult['config'] !== false) {
+            $configData = json_decode($cacheResult['config'], true);
             if (isset($configData[$this->environment])) {
                 $config->cacheSet($configData[$this->environment]);
             } elseif (isset($configData['default'])) {
@@ -114,7 +111,7 @@ class Framework
         }
         $this->container = Container::instance($this->root, $config, $this->root.'/../config/containers/container.yml', $noContainerCache, $containerCache);
         $this->container->set('cache', $cache);
-        $this->cache($items);
+        $this->cache($cacheResult,$person);
     }
 
     public function root()
@@ -165,14 +162,14 @@ class Framework
         return $path;
     }
 
-    public function cache(array &$items)
+    public function cache(array &$cacheResult)
     {
-        $this->container->get('collectionModel')->cacheSet(json_decode($items[$this->root.'-collections'], true));
-        $this->container->get('formModel')->cacheSet(json_decode($items[$this->root.'-forms'], true));
-        $this->container->get('bundleModel')->cacheSet(json_decode($items[$this->root.'-bundles'], true));
-        $this->container->get('topic')->cacheSet(json_decode($items[$this->root.'-topics'], true));
-        $this->container->get('route')->cacheSet(json_decode($items[$this->root.'-routes'], true));
-        $this->container->get('language')->cacheSet(json_decode($items[$this->root.'-languages'], true));
+        $this->container->get('collectionModel')->cacheSet($cacheResult['collections']);
+        $this->container->get('formModel')->cacheSet($cacheResult['forms']);
+        $this->container->get('bundleModel')->cacheSet($cacheResult['bundles']);
+        $this->container->get('topic')->cacheSet($cacheResult['topics']);
+        $this->container->get('route')->cacheSet($cacheResult['routes']);
+        $this->container->get('language')->cacheSet($cacheResult['languages']);
         if (!empty($this->apiToken)) {
             if ($items['person-'.$this->apiToken] != false) {
                 $person = json_decode($items['person-'.$this->apiToken], true);

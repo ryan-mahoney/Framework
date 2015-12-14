@@ -1,6 +1,6 @@
 {
     "name": "opine/framework",
-    "version": "1.3.13",
+    "version": "1.3.14",
     "type": "library",
     "description": "Opine-PHP Micro-framework for integrating all Opine services",
     "keywords": [
