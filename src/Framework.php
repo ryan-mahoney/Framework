@@ -80,10 +80,10 @@ class Framework
 
     public function __construct($noContainerCache = false)
     {
+        $this->root = $this->root();
         $cache = new Cache($this->root);
         $this->environment();
         $this->errors();
-        $this->root = $this->root();
         $this->apiToken = $this->apiTokenFromRequest();
         $items = ['collections', 'forms', 'bundles', 'topics', 'routes', 'container', 'languages', 'config'];
         $person = false;
@@ -100,7 +100,7 @@ class Framework
         }
         $config = new Config($this->root);
         if ($cacheResult['config'] !== false) {
-            $configData = json_decode($cacheResult['config'], true);
+            $configData = $cacheResult['config'];
             if (isset($configData[$this->environment])) {
                 $config->cacheSet($configData[$this->environment]);
             } elseif (isset($configData['default'])) {
